@@ -1,10 +1,29 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta charset="utf-8">
     <script src="./requirements.js"></script>
+    <script src="./gui/LoginLogic.js"></script>
+    <link href="./gui/styles/LoginStyle.css" rel="stylesheet">
     <title></title>
-  </head>
-  <body>
-  </body>
+</head>
+<body>
+<div id="login">
+    <h1>Welcome to Visual Mathematics!</h1>
+    <h2>Login</h2>
+    <div class="inputWithLabel">
+    <label for="username">Username</label>
+    <input type="text" id="username">
+    </div>
+    <div class="inputWithLabel">
+    <label for="password">Password</label>
+    <input type="password" id="password">
+    </div>
+    <button onclick="sendLoginRequest">Login</button>
+    <div id="extra">
+    <button onclick="sendLoginRequest">Make Account!</button>
+    <button onclick="sendLoginRequest">Forgot Login?</button>
+    </div>
+</div>
+</body>
 </html>
