@@ -6,6 +6,11 @@ body {
     padding: 0;
 }
 
+#editor-view {
+    height: 100vh;
+    width: 100%;
+}
+
 #editor-header {
     height: 5%;
     width: 100%;
