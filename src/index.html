@@ -1,10 +1,36 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <script src="./requirements.js"></script>
-    <title></title>
-  </head>
-  <body>
-  </body>
+    <head>
+        <meta charset="utf-8">
+        <script src="./requirements.js"></script>
+        <script type="module" src="./gui/dragAndDrop.js"></script>
+        <link rel="stylesheet" type="text/css" href="gui/style/style.css">
+        <title></title>
+    </head>
+    <body>
+        <div id="editor-view">
+            <div id="editor-header">
+
+            </div>
+            <div id="editor-selection-area">
+                <div class="list-item">
+                    <p>Arithmetic<i class="down-arrow"></i></p>
+                </div>
+                <div class="list-item">
+                    <p>Arithmetic<i class="down-arrow"></i></p>
+                </div>
+                <div class="list-item">
+                    <p>Arithmetic<i class="down-arrow"></i></p>
+                </div>
+                <div class="addition-node">
+                    <input type="number">
+                    <p>+</p>
+                    <input type="number">
+                </div>
+            </div>
+            <div id="edit-area">
+
+            </div>
+        </div>
+    </body>
 </html>
