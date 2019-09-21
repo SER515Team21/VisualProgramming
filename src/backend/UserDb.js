@@ -10,11 +10,16 @@ class UserDb {
                 console.log(err);
             });
             UserDb.instance = this;
+            this.programDb.insert({username: "vcedgar", password: "12345"}, function (err, newDoc){
+                console.log(newDoc);
+
+            });
         }
         return UserDb.instance;
     }
-    queryUser(username, password) {
-        return false;
+    async userExists(un, pw) {
+        let doc = await this.programDb.find({username:un, password: pw});
+        return doc.length != 0;
     }
 }
 

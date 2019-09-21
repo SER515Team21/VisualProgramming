@@ -1,6 +1,6 @@
 function sendLoginRequest(){
-    const username = document.getElementById("username");
-    const password = document.getElementById("password");
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
 
-    console.log(LoginDb == LoginDb);
+    UserDb.userExists(username, password);
 }
