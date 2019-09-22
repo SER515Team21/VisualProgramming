@@ -27,9 +27,10 @@ body {
 
 .list-item {
     margin-top: 5px;
+    padding-bottom: 5px;
     background-color: lightgray;
     border-radius: 5px;
-    height: 50px;
+    height: fit-content;
     width: 95%;
 }
 
@@ -57,27 +58,37 @@ body {
     -webkit-transform: rotate(45deg);
 }
 
-.addition-node {
+.list-item p i.up-arrow {
+    margin-top: 5px;
+    margin-right: 15px;
+    float: right;
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+}
+
+.arithmetic-node {
     background-color: aqua;
     width: 100px;
     height: 50px;
     border-radius: 10px;
     text-align: center;
     align-content: center;
+    margin: 10px;
+    display: none;
 }
 
-.addition-node:hover {
+.arithmetic-node:hover {
     cursor: pointer;
     border: aquamarine solid 3px;
 }
 
-.addition-node p {
+.arithmetic-node p {
     text-align: center;
     color: black;
     display: inline-block;
 }
 
-.addition-node input {
+.arithmetic-node input {
     margin: 5px;
     display: inline-block;
     width: 20px;

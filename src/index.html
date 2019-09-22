@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <script src="./requirements.js"></script>
         <script type="module" src="./gui/dragAndDrop.js"></script>
+        <script type="module" src="./gui/domEvents.js"></script>
         <link rel="stylesheet" type="text/css" href="gui/style/style.css">
         <title></title>
     </head>
@@ -13,19 +14,34 @@
 
             </div>
             <div id="editor-selection-area">
-                <div class="list-item">
-                    <p>Arithmetic<i class="down-arrow"></i></p>
+                <div id="arithmetic-list" class="list-item">
+                    <p id="list-item-title">Arithmetic<i id="arithmetic-arrow" class="down-arrow"></i></p>
+                    <div id="addition-node" class="arithmetic-node">
+                        <input type="number">
+                        <p>+</p>
+                        <input type="number">
+                    </div>
+                    <div id="subtraction-node" class="arithmetic-node">
+                        <input type="number">
+                        <p>-</p>
+                        <input type="number">
+                    </div>
+                    <div id="multiplication-node" class="arithmetic-node">
+                        <input type="number">
+                        <p>x</p>
+                        <input type="number">
+                    </div>
+                    <div id="division-node" class="arithmetic-node">
+                        <input type="number">
+                        <p>&divide;</p>
+                        <input type="number">
+                    </div>
                 </div>
-                <div class="list-item">
-                    <p>Arithmetic<i class="down-arrow"></i></p>
+                <div id="algebra-list" class="list-item">
+                    <p>Algebra<i class="down-arrow"></i></p>
                 </div>
-                <div class="list-item">
-                    <p>Arithmetic<i class="down-arrow"></i></p>
-                </div>
-                <div class="addition-node">
-                    <input type="number">
-                    <p>+</p>
-                    <input type="number">
+                <div id="trigonometry-list" class="list-item">
+                    <p>Trigonometry<i class="down-arrow"></i></p>
                 </div>
             </div>
             <div id="edit-area">
