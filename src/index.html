@@ -4,6 +4,8 @@
     <meta charset="utf-8">
     <script src="./requirements.js"></script>
     <script src="./gui/LoginLogic.js"></script>
+    <script type="module" src="./gui/dragAndDrop.js"></script>
+    <link rel="stylesheet" type="text/css" href="gui/style/style.css">
     <link href="./gui/styles/LoginStyle.css" rel="stylesheet">
     <title></title>
 </head>
@@ -12,23 +14,47 @@
     <h1>Welcome to Visual Mathematics!</h1>
     <h2>Login</h2>
     <div class="inputWithLabel">
-    <label for="username">Username</label>
-    <input type="text" id="username">
+        <label for="username">Username</label>
+        <input type="text" id="username">
     </div>
     <div class="inputWithLabel">
-    <label for="password">Password</label>
-    <input type="password" id="password">
+        <label for="password">Password</label>
+        <input type="password" id="password">
     </div>
     <p id="loginFail" hidden>Incorrect username or password</p>
-    <button onclick="sendLoginRequest()">Login</button>
+        <button onclick="sendLoginRequest()">Login</button>
     <div id="extra">
-    <button onclick="sendLoginRequest">Make Account!</button>
-    <button onclick="sendLoginRequest">Forgot Login?</button>
+        <button onclick="sendLoginRequest">Make Account!</button>
+        <button onclick="sendLoginRequest">Forgot Login?</button>
     </div>
 </div>
 
 <div id="studentView" hidden>
     <p>Nothing here yet!</p>
+    <div id="editor-view">
+        <div id="editor-header">
+
+        </div>
+        <div id="editor-selection-area">
+            <div class="list-item">
+                <p>Arithmetic<i class="down-arrow"></i></p>
+            </div>
+            <div class="list-item">
+                <p>Arithmetic<i class="down-arrow"></i></p>
+            </div>
+            <div class="list-item">
+                <p>Arithmetic<i class="down-arrow"></i></p>
+            </div>
+            <div class="addition-node">
+                <input type="number">
+                <p>+</p>
+                <input type="number">
+            </div>
+        </div>
+        <div id="edit-area">
+
+        </div>
+    </div>
 </div>
 </body>
 </html>
