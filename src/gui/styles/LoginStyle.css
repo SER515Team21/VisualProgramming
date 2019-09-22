@@ -8,10 +8,13 @@
     height: fit-content;
     font-family: "Arial", sans-serif;
 }
-
 #login *{
     width: fit-content;
     margin: 0 auto;
+}
+
+#login [hidden] {
+    display: none;
 }
 
 #login > *{
