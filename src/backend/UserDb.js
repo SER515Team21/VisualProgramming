@@ -11,10 +11,7 @@ class UserDb {
         return UserDb.instance;
     }
     async userExists(un, pw) {
-        console.log("exists here");
         let doc = await this.programDb.cfind({username:un, password: pw}).exec();
-        console.log("exists here2");
-        console.log(doc)
         return doc.length != 0;
     }
 }
