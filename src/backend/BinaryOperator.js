@@ -4,32 +4,36 @@
  *
  * @date 9/22/2019
  */
+
+const Node = require('./Node.js');
+
 class BinaryOperator extends Node {
-	
-  var leftOperand;
-  var rightOperand;
-  const operatorText = "";
 
   constructor() {
+    super();
+    this.leftOperand = null;
+    this.rightOperand = null;
+    this.operatorText = '';
     if (this.constructor === BinaryOperator) {
       throw new TypeError('Abstract class \'BinaryOperator\' cannot be instantiated');
     }
   }
 
   getText() {
-    leftText = "?";
-	rightText = "?";
+    let leftText = '?';
+    let rightText = '?';
 
-	if (leftOperand != null) {
-	  leftText = leftOperand.getText();
-	}
+    if (this.leftOperand != null) {
+      leftText = this.leftOperand.getText();
+    }
 
-	if (rightOperand != null) {
-      rightText = rightOperand.getText();
-	}
+    if (this.rightOperand != null) {
+      rightText = this.rightOperand.getText();
+    }
 
-    return leftText + operatorText + rightText;
+    return leftText + this.operatorText + rightText;
   }
 
-
 }
+
+module.exports = BinaryOperator;

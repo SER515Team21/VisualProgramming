@@ -23,6 +23,21 @@ body {
     border-right: lightgray 1px solid;
     overflow-y: auto;
     padding-left: 15px;
+    float: left;
+}
+
+#edit-area {
+    height: 95%;
+    width: 60%;
+    padding-left: 15px;
+    float: left;
+}
+
+#solution-area {
+    height: 20%;
+    overflow-x: hidden;
+    float: left;
+    padding-left: 15px;
 }
 
 .list-item {
