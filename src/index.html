@@ -7,10 +7,11 @@
     <script type="module" src="./gui/dragAndDrop.js"></script>
     <link rel="stylesheet" type="text/css" href="gui/styles/EditorStyle.css">
     <link href="./gui/styles/LoginStyle.css" rel="stylesheet">
+    <link href="./gui/styles/GlobalStyles.css" rel="stylesheet">
     <title></title>
 </head>
 <body>
-<div id="login">
+ <div id="login" hidden>
     <h1>Welcome to Visual Mathematics!</h1>
     <h2>Login</h2>
     <div class="inputWithLabel">
@@ -29,31 +30,68 @@
     </div>
 </div>
 
-<div id="studentView" hidden>
-    <p>Nothing here yet!</p>
-    <div id="editor-view">
-        <div id="editor-header">
+<div id="studentView">
+    <header>
+        <div id="date">
+        </div>
+        <script>
+            document.getElementById("date").textContent = new Date().toDateString();
+        </script>
+        <div id="account-icon">
+            <img src="./gui/img/User.png" alt="User Icon">
+            <span id="account-username-display">Welcome, User</span>
+        </div>
+    </header>
+    <div class="node-search">
+        <div id="search-settings">
+            <input type="search">
+            <input type="radio" id="search-current" name="search-where" value="Search in current module">
+            <label for="search-current">Search Current</label>
+            <input type="radio" id="search-all" name="search-where" value="Search in all modules">
+            <label for="search-all">Search All</label>
+        </div>
+    </div>
+    <div class="tab-switcher">
+        <ul>
+            <li class="tab"><button>Upcoming Assignments</button></li>
+            <li class="tab"><button>Practice Equations</button></li>
+            <li class="tab"><button>View Grades</button></li>
+        </ul>
+        <div class="view active" id="Assignments">
 
         </div>
-        <div id="editor-selection-area">
-            <div class="list-item">
-                <p>Arithmetic<i class="down-arrow"></i></p>
-            </div>
-            <div class="list-item">
-                <p>Arithmetic<i class="down-arrow"></i></p>
-            </div>
-            <div class="list-item">
-                <p>Arithmetic<i class="down-arrow"></i></p>
-            </div>
-            <div class="addition-node">
-                <input type="number">
-                <p>+</p>
-                <input type="number">
-            </div>
-        </div>
-        <div id="edit-area">
+        <div class="view" id="Practice Equations">
 
         </div>
+        <div class="view" id="View Grades">
+
+        </div>
+    </div>
+<!--    -->
+<!--    <p>Nothing here yet!</p>-->
+<!--    <div id="editor-view">-->
+<!--        <div id="editor-header">-->
+
+<!--        </div>-->
+<!--        <div id="editor-selection-area">-->
+<!--            <div class="list-item">-->
+<!--                <p>Arithmetic<i class="down-arrow"></i></p>-->
+<!--            </div>-->
+<!--            <div class="list-item">-->
+<!--                <p>Arithmetic<i class="down-arrow"></i></p>-->
+<!--            </div>-->
+<!--            <div class="list-item">-->
+<!--                <p>Arithmetic<i class="down-arrow"></i></p>-->
+<!--            </div>-->
+<!--            <div class="addition-node">-->
+<!--                <input type="number">-->
+<!--                <p>+</p>-->
+<!--                <input type="number">-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div id="edit-area">-->
+
+<!--        </div>-->
     </div>
 </div>
 </body>
