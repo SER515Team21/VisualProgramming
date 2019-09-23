@@ -12,3 +12,9 @@ async function sendLoginRequest(){
         document.getElementById("studentView").hidden = false;
     }
 }
+async function sendNewAccountRequest(){
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+
+    await UserDb.addUser(username, password);
+}
