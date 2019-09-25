@@ -5,12 +5,14 @@
     <script src="./requirements.js"></script>
     <script src="./gui/LoginLogic.js"></script>
     <script type="module" src="./gui/dragAndDrop.js"></script>
+    <link rel="stylesheet" type="text/css" href="gui/styles/CSSReset.css">
+    <link rel="stylesheet" type="text/css" href="./gui/styles/GlobalStyles.css">
     <link rel="stylesheet" type="text/css" href="gui/styles/EditorStyle.css">
-    <link href="./gui/styles/LoginStyle.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="./gui/styles/LoginStyle.css">
     <title></title>
 </head>
 <body>
-<div id="login">
+<div id="login" hidden>
     <h1>Welcome to Visual Mathematics!</h1>
     <h2>Login</h2>
     <div class="inputWithLabel">
@@ -22,36 +24,133 @@
         <input type="password" id="password">
     </div>
     <p id="loginFail" hidden>Incorrect username or password</p>
-        <button onclick="sendLoginRequest()">Login</button>
+    <button onclick="sendLoginRequest()">Login</button>
     <div id="extra">
         <button onclick="sendNewAccountRequest()">Make Account!</button>
         <button onclick="sendLoginRequest">Forgot Login?</button>
     </div>
 </div>
 
-<div id="studentView" hidden>
-    <p>Nothing here yet!</p>
-    <div id="editor-view">
-        <div id="editor-header">
+<div id="studentView">
+    <header>
+        <div id="date">
+        </div>
+        <script>
+            document.getElementById("date").textContent = new Date().toDateString();
+        </script>
+        <div id="account-icon">
+            <img src="./gui/img/User.png" alt="User Icon">
+            <span id="account-username-display">Welcome, User</span>
+            <div id="logout">
+                <span>Logout</span>
+            </div>
+        </div>
+    </header>
+    <div class="node-search">
+        <div id="search-settings">
+            <input type="search">
+            <span class="radioGroup">
+                <input type="radio" id="search-current" name="search-where" value="Search in current module">
+                <label for="search-current">Search Current</label>
+            </span>
+            <span class="radioGroup">
+                <input type="radio" id="search-all" name="search-where" value="Search in all modules">
+                <label for="search-all">Search All</label>
+            </span>
+        </div>
+        <div id="search-results">
+            <button class="accordion">Arithmetic</button>
+            <div class="panel">
+                <div class="addition-node">
+                    <input type="number">
+                    <p>+</p>
+                    <input type="number">
+                </div>
+                <div class="addition-node">
+                    <input type="number">
+                    <p>+</p>
+                    <input type="number">
+                </div>
+            </div>
+
+            <button class="accordion">Algebraic Equations</button>
+            <div class="panel">
+                <div class="addition-node">
+                    <input type="number">
+                    <p>+</p>
+                    <input type="number">
+                </div>
+                <div class="addition-node">
+                    <input type="number">
+                    <p>+</p>
+                    <input type="number">
+                </div>
+                <div class="addition-node">
+                    <input type="number">
+                    <p>+</p>
+                    <input type="number">
+                </div>
+                <div class="addition-node">
+                    <input type="number">
+                    <p>+</p>
+                    <input type="number">
+                </div>
+            </div>
+
+            <button class="accordion">Graphing</button>
+            <div class="panel">
+                <div class="addition-node">
+                    <input type="number">
+                    <p>+</p>
+                    <input type="number">
+                </div>
+                <div class="addition-node">
+                    <input type="number">
+                    <p>+</p>
+                    <input type="number">
+                </div>
+                <div class="addition-node">
+                    <input type="number">
+                    <p>+</p>
+                    <input type="number">
+                </div>
+            </div>
+            <script>
+                let acc = document.getElementsByClassName("accordion");
+
+                for (let i = 0; i < acc.length; i++) {
+                    acc[i].addEventListener("click", function () {
+                        this.classList.toggle("active");
+                        var panel = this.nextElementSibling;
+                        if (panel.style.display === "block") {
+                            panel.style.display = "none";
+                        } else {
+                            panel.style.display = "block";
+                        }
+                    });
+                }
+            </script>
 
         </div>
-        <div id="editor-selection-area">
-            <div class="list-item">
-                <p>Arithmetic<i class="down-arrow"></i></p>
-            </div>
-            <div class="list-item">
-                <p>Arithmetic<i class="down-arrow"></i></p>
-            </div>
-            <div class="list-item">
-                <p>Arithmetic<i class="down-arrow"></i></p>
-            </div>
-            <div class="addition-node">
-                <input type="number">
-                <p>+</p>
-                <input type="number">
-            </div>
+    </div>
+    <div class="tab-switcher">
+        <ul>
+            <li class="tab">
+                <button>Upcoming Assignments</button>
+            </li>
+            <li class="tab">
+                <button>Practice Equations</button>
+            </li>
+            <li class="tab">
+                <button>View Grades</button>
+            </li>
+        </ul>
+        <div class="view" id="Assignments">
         </div>
-        <div id="edit-area">
+        <div class="view active" id="Practice Equations">
+            <div class="paper"></div>
+        </div>
+        <div class="view" id="View Grades">
 
         </div>
     </div>
