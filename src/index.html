@@ -1,52 +1,159 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <script src="./requirements.js"></script>
-        <script type="module" src="./gui/dragAndDrop.js"></script>
-        <script type="module" src="gui/editorEvents.js"></script>
-        <link rel="stylesheet" type="text/css" href="gui/style/style.css">
-        <title></title>
-    </head>
-    <body>
-        <div id="editor-view">
-            <div id="editor-header">
+<head>
+    <meta charset="utf-8">
+    <script src="./requirements.js"></script>
+    <script src="./gui/LoginLogic.js"></script>
+    <script type="module" src="./gui/dragAndDrop.js"></script>
+    <link rel="stylesheet" type="text/css" href="gui/styles/CSSReset.css">
+    <link rel="stylesheet" type="text/css" href="./gui/styles/GlobalStyles.css">
+    <link rel="stylesheet" type="text/css" href="gui/styles/EditorStyle.css">
+    <link rel="stylesheet" type="text/css" href="./gui/styles/LoginStyle.css">
+    <title></title>
+</head>
+<body>
+<div id="login" hidden>
+    <h1>Welcome to Visual Mathematics!</h1>
+    <h2>Login</h2>
+    <div class="inputWithLabel">
+        <label for="username">Username</label>
+        <input type="text" id="username">
+    </div>
+    <div class="inputWithLabel">
+        <label for="password">Password</label>
+        <input type="password" id="password">
+    </div>
+    <p id="loginFail" hidden>Incorrect username or password</p>
+    <button onclick="sendLoginRequest()">Login</button>
+    <div id="extra">
+        <button onclick="sendLoginRequest">Make Account!</button>
+        <button onclick="sendLoginRequest">Forgot Login?</button>
+    </div>
+</div>
 
-            </div>
-            <div id="editor-selection-area">
-                <div id="arithmetic-list" class="list-item">
-                    <p id="list-item-title">Arithmetic<i id="arithmetic-arrow" class="down-arrow"></i></p>
-                    <div id="addition-node" class="arithmetic-node" draggable="true">
-                        <input type="number">
-                        <p>+</p>
-                        <input type="number">
-                    </div>
-                    <div id="subtraction-node" class="arithmetic-node" draggable="true">
-                        <input type="number">
-                        <p>-</p>
-                        <input type="number">
-                    </div>
-                    <div id="multiplication-node" class="arithmetic-node" draggable="true">
-                        <input type="number">
-                        <p>x</p>
-                        <input type="number">
-                    </div>
-                    <div id="division-node" class="arithmetic-node" draggable="true">
-                        <input type="number">
-                        <p>&divide;</p>
-                        <input type="number">
-                    </div>
-                </div>
-                <div id="algebra-list" class="list-item">
-                    <p>Algebra<i class="down-arrow"></i></p>
-                </div>
-                <div id="trigonometry-list" class="list-item">
-                    <p>Trigonometry<i class="down-arrow"></i></p>
-                </div>
-            </div>
-            <div id="edit-area">
-
+<div id="studentView">
+    <header>
+        <div id="date">
+        </div>
+        <script>
+            document.getElementById("date").textContent = new Date().toDateString();
+        </script>
+        <div id="account-icon">
+            <img src="./gui/img/User.png" alt="User Icon">
+            <span id="account-username-display">Welcome, User</span>
+            <div id="logout">
+                <span>Logout</span>
             </div>
         </div>
-    </body>
+    </header>
+    <div class="node-search">
+        <div id="search-settings">
+            <input type="search">
+            <span class="radioGroup">
+                <input type="radio" id="search-current" name="search-where" value="Search in current module">
+                <label for="search-current">Search Current</label>
+            </span>
+            <span class="radioGroup">
+                <input type="radio" id="search-all" name="search-where" value="Search in all modules">
+                <label for="search-all">Search All</label>
+            </span>
+        </div>
+        <div id="search-results">
+            <button class="accordion">Arithmetic</button>
+            <div class="panel">
+                <div class="addition-node">
+                    <input type="number">
+                    <p>+</p>
+                    <input type="number">
+                </div>
+                <div class="addition-node">
+                    <input type="number">
+                    <p>+</p>
+                    <input type="number">
+                </div>
+            </div>
+
+            <button class="accordion">Algebraic Equations</button>
+            <div class="panel">
+                <div class="addition-node">
+                    <input type="number">
+                    <p>+</p>
+                    <input type="number">
+                </div>
+                <div class="addition-node">
+                    <input type="number">
+                    <p>+</p>
+                    <input type="number">
+                </div>
+                <div class="addition-node">
+                    <input type="number">
+                    <p>+</p>
+                    <input type="number">
+                </div>
+                <div class="addition-node">
+                    <input type="number">
+                    <p>+</p>
+                    <input type="number">
+                </div>
+            </div>
+
+            <button class="accordion">Graphing</button>
+            <div class="panel">
+                <div class="addition-node">
+                    <input type="number">
+                    <p>+</p>
+                    <input type="number">
+                </div>
+                <div class="addition-node">
+                    <input type="number">
+                    <p>+</p>
+                    <input type="number">
+                </div>
+                <div class="addition-node">
+                    <input type="number">
+                    <p>+</p>
+                    <input type="number">
+                </div>
+            </div>
+            <script>
+                let acc = document.getElementsByClassName("accordion");
+
+                for (let i = 0; i < acc.length; i++) {
+                    acc[i].addEventListener("click", function () {
+                        this.classList.toggle("active");
+                        var panel = this.nextElementSibling;
+                        if (panel.style.display === "block") {
+                            panel.style.display = "none";
+                        } else {
+                            panel.style.display = "block";
+                        }
+                    });
+                }
+            </script>
+
+        </div>
+    </div>
+    <div class="tab-switcher">
+        <ul>
+            <li class="tab">
+                <button>Upcoming Assignments</button>
+            </li>
+            <li class="tab">
+                <button>Practice Equations</button>
+            </li>
+            <li class="tab">
+                <button>View Grades</button>
+            </li>
+        </ul>
+        <div class="view" id="Assignments">
+        </div>
+        <div class="view active" id="Practice Equations">
+            <div class="paper"></div>
+        </div>
+        <div class="view" id="View Grades">
+
+        </div>
+    </div>
+</div>
+</body>
 </html>

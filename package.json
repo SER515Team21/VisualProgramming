@@ -48,7 +48,9 @@
   },
   "dependencies": {
     "electron-compile": "^6.4.4",
-    "electron-squirrel-startup": "^1.0.0"
+    "electron-squirrel-startup": "^1.0.0",
+    "nedb": "^1.8.0",
+    "nedb-promise": "^2.0.1"
   },
   "devDependencies": {
     "babel-plugin-transform-async-to-generator": "^6.24.1",
