@@ -1,10 +1,14 @@
 
-function pickUpNode() {
-  return 'TEST';
+function pickUpNode(event) {
+  event.dataTransfer.setData('text', event.target.id);
 }
 
-function dropNode() {
-  return 'TEST2';
+function dropNode(event) {
+  event.preventDefault();
+  let id = event.dataTransfer.getData('text');
+  event.target.appendChild(document.getElementById(id).cloneNode(true));
 }
 
-export { pickUpNode, dropNode };
+function allowDroppingNode(event) {
+  event.preventDefault();
+}

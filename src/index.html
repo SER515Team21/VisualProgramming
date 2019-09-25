@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <script src="./requirements.js"></script>
     <script src="./gui/LoginLogic.js"></script>
-    <script type="module" src="./gui/dragAndDrop.js"></script>
+    <script src="./gui/dragAndDrop.js"></script>
     <link rel="stylesheet" type="text/css" href="gui/styles/CSSReset.css">
     <link rel="stylesheet" type="text/css" href="./gui/styles/GlobalStyles.css">
     <link rel="stylesheet" type="text/css" href="gui/styles/EditorStyle.css">
@@ -61,7 +61,7 @@
         <div id="search-results">
             <button class="accordion">Arithmetic</button>
             <div class="panel">
-                <div class="arithmetic-node addition-node" draggable="true">
+                <div id="addition-node" class="arithmetic-node addition-node" draggable="true" ondragstart="pickUpNode(event)">
                     <input type="number">
                     <p></p>
                     <input type="number">
@@ -158,7 +158,7 @@
         <div class="view" id="Assignments">
         </div>
         <div class="view active" id="Practice Equations">
-            <div class="paper"></div>
+            <div class="paper" ondrop="dropNode(event)" ondragover="allowDroppingNode(event)"></div>
         </div>
         <div class="view" id="View Grades">
 
