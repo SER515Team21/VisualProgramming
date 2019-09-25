@@ -1,3 +1,9 @@
+/**
+ * This is an implementation of a Node Forest, which represents all node trees currently in the editor.
+ *
+ * @date 9/25/2019
+ */
+
 class NodeForest{
     static instance;
     nodeForest = {}
