@@ -1,6 +1,6 @@
-const Node = require('./Node');
+const BinaryOperator = require('./BinaryOperator');
 
-class Addition extends Node {
+class Addition extends BinaryOperator {
 
     constructor(left,right) {
         super();
@@ -13,7 +13,7 @@ class Addition extends Node {
     }
 }
 
-class Subtraction extends Node {
+class Subtraction extends BinaryOperator {
 
     constructor(left,right) {
         super();
@@ -26,7 +26,7 @@ class Subtraction extends Node {
     }
 }
 
-class Multiplication extends Node {
+class Multiplication extends BinaryOperator {
 
     constructor(left,right) {
         super();
@@ -39,7 +39,7 @@ class Multiplication extends Node {
     }
 }
 
-class Division extends Node {
+class Division extends BinaryOperator {
 
     constructor(left,right) {
         super();
