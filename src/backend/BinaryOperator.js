@@ -9,10 +9,10 @@ const Node = require('./Node.js');
 
 class BinaryOperator extends Node {
 
-  constructor(operatorText) {
+  constructor(operatorText, leftOperand = null, rightOperand = null) {
     super();
-    this.leftOperand = null;
-    this.rightOperand = null;
+    this.leftOperand = leftOperand;
+    this.rightOperand = rightOperand;
     this.operatorText = operatorText;
     if (this.constructor === BinaryOperator) {
       throw new TypeError('Abstract class \'BinaryOperator\' cannot be instantiated');

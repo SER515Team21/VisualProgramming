@@ -9,9 +9,9 @@ const Node = require('./Node.js');
 
 class UnaryOperator extends Node {
 
-  constructor(operatorText) {
+  constructor(operatorText, operand = null) {
     super();
-    this.operand = null;
+    this.operand = operand;
     this.operatorText = operatorText;
     if (this.constructor === UnaryOperator) {
       throw new TypeError('Abstract class \'UnaryOperator\' cannot be instantiated');
