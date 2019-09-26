@@ -7,10 +7,7 @@ class Addition extends BinaryOperator {
         this.left = left;
         this.right = right;
     }
-
-    get text() {
-        return this.left + " + " + this.right;
-    }
+    
 }
 
 class Subtraction extends BinaryOperator {
@@ -21,9 +18,6 @@ class Subtraction extends BinaryOperator {
         this.right = right;
     }
 
-    get text() {
-        return this.left + " - " + this.right;
-    }
 }
 
 class Multiplication extends BinaryOperator {
@@ -34,9 +28,6 @@ class Multiplication extends BinaryOperator {
         this.right = right;
     }
 
-    get text() {
-        return this.left + " * " + this.right;
-    }
 }
 
 class Division extends BinaryOperator {
@@ -47,9 +38,6 @@ class Division extends BinaryOperator {
         this.right = right;
     }
 
-    get text() {
-        return this.left + " / " + this.right;
-    }
 }
 
 
