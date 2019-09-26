@@ -46,7 +46,7 @@
             </div>
         </div>
     </header>
-    <div class="node-search">
+    <div class="node-search" ondragover="allowDroppingNode(event)" ondrop="deleteNode(event)">
         <div id="search-settings">
             <input type="search">
             <span class="radioGroup">
@@ -66,17 +66,17 @@
                     <p></p>
                     <input type="number">
                 </div>
-                <div class="arithmetic-node subtraction-node" draggable="true">
+                <div id="subtraction-node" class="arithmetic-node subtraction-node" draggable="true" ondragstart="pickUpNode(event)">
                     <input type="number">
                     <p></p>
                     <input type="number">
                 </div>
-                <div class="arithmetic-node multiplication-node" draggable="true">
+                <div id="multiplication-node" class="arithmetic-node multiplication-node" draggable="true" ondragstart="pickUpNode(event)">
                     <input type="number">
                     <p></p>
                     <input type="number">
                 </div>
-                <div class="arithmetic-node division-node" draggable="true">
+                <div id="division-node" class="arithmetic-node division-node" draggable="true" ondragstart="pickUpNode(event)">
                     <input type="number">
                     <p></p>
                     <input type="number">
@@ -158,7 +158,7 @@
         <div class="view" id="Assignments">
         </div>
         <div class="view active" id="Practice Equations">
-            <div class="paper" ondrop="dropNode(event)" ondragover="allowDroppingNode(event)"></div>
+            <div id="editorPane" class="paper" ondrop="dropNode(event)" ondragover="allowDroppingNode(event)"></div>
         </div>
         <div class="view" id="View Grades">
 
