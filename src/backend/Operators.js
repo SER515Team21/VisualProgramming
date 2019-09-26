@@ -3,17 +3,17 @@ const BinaryOperator = require('./BinaryOperator');
 class Addition extends BinaryOperator {
 
     constructor(left,right) {
-        super();
+        super(left,right);
         this.left = left;
         this.right = right;
     }
-    
+
 }
 
 class Subtraction extends BinaryOperator {
 
     constructor(left,right) {
-        super();
+        super(left,right);
         this.left = left;
         this.right = right;
     }
@@ -23,7 +23,7 @@ class Subtraction extends BinaryOperator {
 class Multiplication extends BinaryOperator {
 
     constructor(left,right) {
-        super();
+        super(left,right);
         this.left = left;
         this.right = right;
     }
@@ -32,11 +32,11 @@ class Multiplication extends BinaryOperator {
 
 class Division extends BinaryOperator {
 
-    constructor(left,right) {
-        super();
-        this.left = left;
-        this.right = right;
-    }
+     constructor(left,right) {
+         super(left,right);
+         this.left = left;
+         this.right = right;
+     }
 
 }
 
