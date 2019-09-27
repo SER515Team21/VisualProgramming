@@ -1,10 +1,7 @@
-
 function pickUpNode() {
-  return 'TEST';
+    return "TEST";
 }
 
 function dropNode() {
-  return 'TEST2';
+    return "TEST2";
 }
-
-export { pickUpNode, dropNode };
