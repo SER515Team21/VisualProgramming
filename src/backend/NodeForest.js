@@ -6,13 +6,14 @@
 
 class NodeForest{
     static instance;
+    static treeCount = 0;
     nodeForest = {}
 
     constructor(){
-        if(!UserDb.instance) {
-            UserDb.instance = this;
+        if(!NodeForest.instance) {
+            NodeForest.instance = this;
         }
-        return UserDb.instance;
+        return NodeForest.instance;
     }
 
     getNode(nodeId){
@@ -20,8 +21,9 @@ class NodeForest{
     }
 
     insertNode(newNode){
-        let nodeId = Math.floor(Date.now() / 1000);
-        this.nodeForest[nodeId] = newNode;
+        let nodeId = NodeForest.treeCount
+        this.nodeForest[NodeForest.treeCount] = newNode;
+        NodeForest.treeCount ++;
         return nodeId;
     }
 
