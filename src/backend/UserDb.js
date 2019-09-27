@@ -16,6 +16,12 @@ class UserDb {
             .exec();
         return doc.length !== 0;
     }
+
+    async addUser(un, pw) {
+        //Needs to be updated for check but this is for testing
+        let doc = await this.programDb.insert({username:un, password: pw});
+        return doc.length != 0;
+    }
 }
 
 module.exports = new UserDb();
