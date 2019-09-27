@@ -2,6 +2,10 @@ html, body {
     height: 100%;
 }
 
+[hidden] {
+    display: none;
+}
+
 .tab-switcher ul {
     display: block;
     list-style: none;
