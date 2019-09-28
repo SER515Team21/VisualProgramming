@@ -1,6 +1,5 @@
 /**
  * Handles processing of drag and drop events for the mathematical Nodes
- * @type {number}
  */
 
 let nodeCount = 0;
