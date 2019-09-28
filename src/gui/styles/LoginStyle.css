@@ -13,10 +13,6 @@
     margin: 0 auto;
 }
 
-#login [hidden] {
-    display: none;
-}
-
 #login > *{
     display: block;
 }
