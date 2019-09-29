@@ -35,38 +35,6 @@ class NodeForest {
         delete this.nodeForest[nodeId];
     }
 
-    static getNodeLitteralValues(node) {
-        const nodeStack = [node];
-        const valuesStack = [];
-        const valuesInOrder = [];
-        while (nodeStack.length != 0) {
-            const currentNode = nodeStack.pop();
-            // Unary operator case
-            if (currentNode.operand != null) {
-                nodeStack.push(currentNode.operand);
-                valuesStack.push(currentNode.operator);
-            }
-            // Binary operator case
-            else if (currentNode.leftOperand != null && currentNode.rightOperand != null) {
-                nodeStack.push(currentNode.rightOperand);
-                nodeStack.push(currentNode.leftOperand);
-                valuesStack.push(currentNode.operator);
-            }
-            // Number node
-            else if (currentNode.number != null) {
-                valuesInOrder.push(currentNode.number);
-                if (valuesStack.length != 0) {
-                    valuesInOrder.push(valuesStack.pop());
-                }
-            }
-            // One of the nodes has a null operand
-            else {
-                return null;
-            }
-        }
-        return valuesStack;
-    }
-
     static getNodeFromRoot(rootNode, nodeId) {
         const stack = [rootNode];
         while (stack.length != 0) {
