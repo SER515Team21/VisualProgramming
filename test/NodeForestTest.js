@@ -1,6 +1,6 @@
-/* global NodeForest */
-/* global Operators */
-/* global NumberNode */
+const NodeForest = require("../src/backend/NodeForest.js");
+const Operators = require("../src/backend/Operators.js");
+const NumberNode = require("../src/backend/NumberNode.js");
 
 // addition node
 const addNode = new Operators.Addition(new NumberNode("4"), new NumberNode("2"));
