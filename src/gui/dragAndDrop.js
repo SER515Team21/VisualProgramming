@@ -2,6 +2,9 @@
  * Handles processing of drag and drop events for the mathematical Nodes
  */
 
+/* global document */
+/* global NodeForest */
+
 let nodeCount = 0;
 
 function pickUpNode(event) {
@@ -15,7 +18,7 @@ function dropNode(event) {
     const parentId = event.dataTransfer.getData("parent");
     const node = document.getElementById(id);
 
-  // Determine behavior based upon source dragged from
+    // Determine behavior based upon source dragged from
     if (parentId !== "editorPane") {
         const clone = node.cloneNode(true);
         clone.id += nodeCount.toString();
@@ -24,23 +27,21 @@ function dropNode(event) {
         clone.style.top = `${event.pageY}px`;
         clone.style.left = `${event.pageX}px`;
         event.target.appendChild(clone);
+        NodeForest.insertNode(nodeCount);
     }
     else {
         node.style.position = "fixed";
         node.style.top = `${event.pageY}px`;
         node.style.left = `${event.pageX}px`;
     }
-
-  // Add node to tree/forest here
 }
 
 function deleteNode(event) {
     event.preventDefault();
     const id = event.dataTransfer.getData("text");
     document.getElementById(id).remove();
+    NodeForest.deleteNode(nodeCount);
     nodeCount--;
-
-  // Delete node from tree/forest here
 }
 
 function allowDroppingNode(event) {

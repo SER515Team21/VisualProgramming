@@ -7,7 +7,7 @@
 class NodeForest{
     static instance;
     static treeCount = 0;
-    nodeForest = {}
+    nodeForest = {};
 
     constructor(){
         if(!NodeForest.instance) {
@@ -21,7 +21,7 @@ class NodeForest{
     }
 
     insertNode(newNode){
-        let nodeId = NodeForest.treeCount
+        let nodeId = NodeForest.treeCount;
         this.nodeForest[NodeForest.treeCount] = newNode;
         NodeForest.treeCount ++;
         return nodeId;
@@ -36,3 +36,5 @@ class NodeForest{
         delete this.nodeForest[nodeId];
     }
 }
+
+module.exports = new NodeForest();
