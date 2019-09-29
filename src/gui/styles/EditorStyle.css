@@ -61,9 +61,7 @@
     height: 25px;
 }
 
-/*Temporary*/
-.addition-node {
-    background-color: aqua;
+.arithmetic-node {
     width: 100px;
     height: 50px;
     border-radius: 10px;
@@ -71,21 +69,41 @@
     align-content: center;
 }
 
-.addition-node:hover {
+.arithmetic-node {
+    background-color: aqua;
+}
+
+.arithmetic-node:hover {
     cursor: pointer;
     border: aquamarine solid 3px;
 }
 
-.addition-node p {
+.arithmetic-node p {
     text-align: center;
     color: black;
     display: inline-block;
 }
 
-.addition-node input {
-    margin: 5px;
+.arithmetic-node input {
+    margin-top: 13px !important;
     display: inline-block;
     width: 20px;
+}
+
+.addition-node p::before {
+    content: "+";
+}
+
+.subtraction-node p::before {
+    content: "-";
+}
+
+.multiplication-node p::before {
+    content: "x";
+}
+
+.division-node p::before {
+    content: "\00F7";
 }
 
 .paper {
