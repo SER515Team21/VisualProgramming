@@ -32,7 +32,12 @@ class Division extends BinaryOperator {
 
 }
 
-
+module.exports = {
+    Addition,
+    Subtraction,
+    Multiplication,
+    Division
+}
 
 //Test
 //const lol = new Addition(3,3);

@@ -17,7 +17,7 @@ class NodeForest {
     }
 
     getNode(nodeId, nodeRootId){
-        return this.getNodeFromParent(this.nodeForest[nodeRootId]);
+        return this.getNodeFromRoot(this.nodeForest[nodeRootId]);
     }
 
     insertRootNode(newNode){
@@ -29,10 +29,6 @@ class NodeForest {
     updateRootNode(newNode, oldId){
         this.nodeForest[oldId] = newNode;
         return oldId;
-    }
-
-    deleteNode(nodeId) {
-        delete this.nodeForest[nodeId];
     }
 
     deleteRootNode(nodeId){
@@ -51,7 +47,7 @@ class NodeForest {
                 valuesStack.push(currentNode.operator);
             }
             // Binary operator case
-            else if (currentNode.leftOperand != null || currentNode.rightOperand !== null) {
+            else if (currentNode.leftOperand != null && currentNode.rightOperand !== null) {
                 nodeStack.push(currentNode.rightOperand);
                 nodeStack.push(currentNode.leftOperand);
                 valuesStack.push(currentNode.operator);
@@ -63,12 +59,16 @@ class NodeForest {
                     valuesInOrder.push(valuesStack.pop());
                 }
             }
+            //One of the nodes has a null operand
+            else{
+                return null;
+            }
         }
         return valuesStack;
     }
 
-    getNodeFromParent(parentNode, nodeId){
-        let stack = [parentNode];
+    getNodeFromRoot(rootNode, nodeId){
+        let stack = [rootNode];
         while(stack.length != 0) {
             let currentNode = stack.pop();
             //Found it!
