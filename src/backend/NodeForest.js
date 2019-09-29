@@ -6,34 +6,36 @@
 
 class NodeForest{
     static instance;
-    static treeCount = 0;
-    nodeForest = {};
+    static treeCount;
+    static nodeForest;
 
     constructor(){
         if(!NodeForest.instance) {
             NodeForest.instance = this;
+            NodeForest.treeCount = 0;
+            NodeForest.nodeForest = {};
         }
         return NodeForest.instance;
     }
 
     getNode(nodeId){
-        return this.nodeForest[nodeId];
+        return NodeForest.nodeForest[nodeId];
     }
 
     insertNode(newNode){
         let nodeId = NodeForest.treeCount;
-        this.nodeForest[NodeForest.treeCount] = newNode;
+        NodeForest.nodeForest[NodeForest.treeCount] = newNode;
         NodeForest.treeCount ++;
         return nodeId;
     }
 
     updateNode(newNode, oldId){
-        this.nodeForest[oldId] = newNode;
+        NodeForest.nodeForest[oldId] = newNode;
         return oldId;
     }
 
     deleteNode(nodeId){
-        delete this.nodeForest[nodeId];
+        delete NodeForest.nodeForest[nodeId];
     }
 }
 
