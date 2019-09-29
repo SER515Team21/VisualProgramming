@@ -85,7 +85,7 @@
 }
 
 .arithmetic-node input {
-    margin: 5px;
+    margin-top: 13px !important;
     display: inline-block;
     width: 20px;
 }
