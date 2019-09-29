@@ -91,3 +91,5 @@ class NodeForest {
         }
     }
 }
+
+module.exports = new NodeForest();

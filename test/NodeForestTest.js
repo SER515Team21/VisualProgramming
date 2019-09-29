@@ -1,10 +1,5 @@
-const NodeForest = require("../backend/NodeForest.js")
-
-// Create a NodeForest
-let nodeForest = this
-
 // addition node
-
+let addNode = new Operators.Addition();
 //Parans Node
 
 //Multiplication Node
