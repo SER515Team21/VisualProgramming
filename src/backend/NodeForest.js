@@ -10,29 +10,36 @@ class NodeForest {
     constructor() {
         if (!NodeForest.instance) {
             NodeForest.instance = this;
-            NodeForest.treeCount = 0;
-            this.nodeForest = {};
+            NodeForest.nodeForest = {};
         }
         return NodeForest.instance;
     }
 
-    getNode(nodeId, nodeRootId) {
-        return this.getNodeFromRoot(this.nodeForest[nodeRootId]);
+    static treeCount(){
+        return NodeForest.nodeForest.length;
     }
 
-    insertRootNode(newNode) {
+    static getFirstTree(){
+        return NodeForest.nodeForest.values()[0];
+    }
+
+    static getNode(nodeId, nodeRootId) {
+        return NodeForest.getNodeFromRoot(NodeForest.nodeForest[nodeRootId], nodeId);
+    }
+
+    static insertRootNode(newNode) {
         // To insert node into a tree, please use
         // Get function to get the node, then set the operand correctly.
-        this.nodeForest[newNode.nodeId] = newNode;
+        NodeForest.nodeForest[newNode.nodeId] = newNode;
     }
 
-    updateRootNode(newNode, oldId) {
-        this.nodeForest[oldId] = newNode;
+    static updateRootNode(newNode, oldId) {
+        NodeForest.nodeForest[oldId] = newNode;
         return oldId;
     }
 
-    deleteRootNode(nodeId) {
-        delete this.nodeForest[nodeId];
+    static deleteRootNode(nodeId) {
+        delete NodeForest.nodeForest[nodeId];
     }
 
     static getNodeFromRoot(rootNode, nodeId) {
