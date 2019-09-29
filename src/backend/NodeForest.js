@@ -39,6 +39,34 @@ class NodeForest {
         delete this.nodeForest[nodeId];
     }
 
+    getNodeLitteralValues(node){
+        let nodeStack = [node];
+        let valuesStack = [];
+        let valuesInOrder = [];
+        while(nodeStack.length != 0) {
+            let currentNode = stack.pop();
+            //Unary operator case
+            if (currentNode.operand !== null) {
+                nodeStack.push(currentNode.operand);
+                valuesStack.push(currentNode.operator);
+            }
+            // Binary operator case
+            else if (currentNode.leftOperand != null || currentNode.rightOperand !== null) {
+                nodeStack.push(currentNode.rightOperand);
+                nodeStack.push(currentNode.leftOperand);
+                valuesStack.push(currentNode.operator);
+            }
+            // Number node
+            else if (currentNode.number != null) {
+                valuesInOrder.push(currentNode.number);
+                if(valuesStack.length!= 0) {
+                    valuesInOrder.push(valuesStack.pop());
+                }
+            }
+        }
+        return valuesStack;
+    }
+
     getNodeFromParent(parentNode, nodeId){
         let stack = [parentNode];
         while(stack.length != 0) {
