@@ -34,6 +34,7 @@ function dropNode(event) {
     }
 
     const resultPane = document.getElementById("resultPane");
+    resultPane.hidden = false;
     resultPane.innerHTML = "parsed result here";
   // Add node to tree/forest here
 }
