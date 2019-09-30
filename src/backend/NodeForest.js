@@ -15,12 +15,15 @@ class NodeForest {
         return NodeForest.instance;
     }
 
-    static treeCount(){
+    static treeCount() {
         return NodeForest.nodeForest.length;
     }
 
-    static getFirstTree(){
-        return NodeForest.nodeForest.values()[0];
+    static getFirstTree() {
+        if (this.treeCount() > 0) {
+            return NodeForest.nodeForest.values()[0];
+        }
+        return null;
     }
 
     static getNode(nodeId, nodeRootId) {
@@ -44,7 +47,7 @@ class NodeForest {
 
     static getNodeFromRoot(rootNode, nodeId) {
         const stack = [rootNode];
-        while (stack.length != 0) {
+        while (stack.length > 0) {
             const currentNode = stack.pop();
             // Found it!
             if (currentNode.nodeId === nodeId) {
