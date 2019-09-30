@@ -6,20 +6,11 @@
  */
 
 class NodeForest {
-
-    constructor() {
-        if (!NodeForest.instance) {
-            NodeForest.instance = this;
-            NodeForest.nodeForest = {};
-        }
-        return NodeForest.instance;
-    }
-
-    static treeCount(){
+    static treeCount() {
         return NodeForest.nodeForest.length;
     }
 
-    static getFirstTree(){
+    static getFirstTree() {
         return NodeForest.nodeForest.values()[0];
     }
 
@@ -68,5 +59,6 @@ class NodeForest {
         return null;
     }
 }
+NodeForest.nodeForest = {};
 
 module.exports = new NodeForest();
