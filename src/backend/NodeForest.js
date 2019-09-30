@@ -72,4 +72,4 @@ class NodeForest {
     }
 }
 
-module.exports = new NodeForest();
+module.exports = NodeForest;
