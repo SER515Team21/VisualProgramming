@@ -5,7 +5,7 @@
     <script src="./requirements.js"></script>
     <script src="./gui/LoginLogic.js"></script>
     <script src="gui/onLoad.js"></script>
-    <script type="module" src="./gui/dragAndDrop.js"></script>
+    <script src="./gui/dragAndDrop.js"></script>
     <link rel="stylesheet" type="text/css" href="gui/styles/CSSReset.css">
     <link rel="stylesheet" type="text/css" href="./gui/styles/GlobalStyles.css">
     <link rel="stylesheet" type="text/css" href="gui/styles/EditorStyle.css">
@@ -44,7 +44,7 @@
             </div>
         </div>
     </header>
-    <div class="node-search">
+    <div class="node-search" ondragover="allowDroppingNode(event)" ondrop="deleteNode(event)">
         <div id="search-settings">
             <input type="search">
             <span class="radioGroup">
@@ -59,36 +59,46 @@
         <div id="search-results">
             <button class="accordion">Arithmetic</button>
             <div class="panel">
-                <div class="addition-node">
+                <div id="addition-node" class="arithmetic-node addition-node" draggable="true" ondragstart="pickUpNode(event)">
                     <input type="number">
-                    <p>+</p>
+                    <p></p>
                     <input type="number">
                 </div>
-                <div class="addition-node">
+                <div id="subtraction-node" class="arithmetic-node subtraction-node" draggable="true" ondragstart="pickUpNode(event)">
                     <input type="number">
-                    <p>+</p>
+                    <p></p>
+                    <input type="number">
+                </div>
+                <div id="multiplication-node" class="arithmetic-node multiplication-node" draggable="true" ondragstart="pickUpNode(event)">
+                    <input type="number">
+                    <p></p>
+                    <input type="number">
+                </div>
+                <div id="division-node" class="arithmetic-node division-node" draggable="true" ondragstart="pickUpNode(event)">
+                    <input type="number">
+                    <p></p>
                     <input type="number">
                 </div>
             </div>
 
             <button class="accordion">Algebraic Equations</button>
             <div class="panel">
-                <div class="addition-node">
+                <div class="arithmetic-node">
                     <input type="number">
                     <p>+</p>
                     <input type="number">
                 </div>
-                <div class="addition-node">
+                <div class="arithmetic-node">
                     <input type="number">
                     <p>+</p>
                     <input type="number">
                 </div>
-                <div class="addition-node">
+                <div class="arithmetic-node">
                     <input type="number">
                     <p>+</p>
                     <input type="number">
                 </div>
-                <div class="addition-node">
+                <div class="arithmetic-node">
                     <input type="number">
                     <p>+</p>
                     <input type="number">
@@ -97,17 +107,17 @@
 
             <button class="accordion">Graphing</button>
             <div class="panel">
-                <div class="addition-node">
+                <div class="arithmetic-node">
                     <input type="number">
                     <p>+</p>
                     <input type="number">
                 </div>
-                <div class="addition-node">
+                <div class="arithmetic-node">
                     <input type="number">
                     <p>+</p>
                     <input type="number">
                 </div>
-                <div class="addition-node">
+                <div class="arithmetic-node">
                     <input type="number">
                     <p>+</p>
                     <input type="number">
@@ -131,7 +141,8 @@
         <div class="view" id="Assignments">
         </div>
         <div class="view active" id="Practice Equations">
-            <div class="paper"></div>
+            <div id="editorPane" class="paper" ondrop="dropNode(event)" ondragover="allowDroppingNode(event)"></div>
+            <div id="resultPane" hidden></div>
         </div>
         <div class="view" id="View Grades">
 
