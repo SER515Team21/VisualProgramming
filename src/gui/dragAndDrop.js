@@ -8,8 +8,6 @@
 /* global Operators */
 /* global NodeFactory */
 
-let nodeCount = 0;
-
 function pickUpNode(event) {
     event.dataTransfer.setData("text", event.target.id);
     event.dataTransfer.setData("parent", event.target.parentNode.id);
@@ -24,15 +22,11 @@ function dropNode(event) {
     // Determine behavior based upon source dragged from
     if (parentId !== "editorPane") {
         const clone = node.cloneNode(true);
-        // clone.id = nodeCount.toString();
         clone.id = NodeFactory.createNode(clone.classList, true);
-        // console.log(`class ${clone.classList}`);
-        nodeCount++;
         clone.style.position = "fixed";
         clone.style.top = `${event.pageY}px`;
         clone.style.left = `${event.pageX}px`;
         event.target.appendChild(clone);
-        NodeForest.insertRootNode(nodeCount);
     }
     else {
         node.style.position = "fixed";
@@ -47,8 +41,7 @@ function deleteNode(event) {
     event.preventDefault();
     const id = event.dataTransfer.getData("text");
     document.getElementById(id).remove();
-    NodeForest.deleteRootNode(nodeCount);
-    nodeCount--;
+    NodeForest.deleteRootNode(id);
 }
 
 function allowDroppingNode(event) {
