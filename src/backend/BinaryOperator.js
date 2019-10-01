@@ -5,50 +5,52 @@
  * @date 9/22/2019
  */
 
-const Node = require('./Node.js');
+const Node = require("./Node.js");
 
 class BinaryOperator extends Node {
 
-  constructor(operatorText, leftOperand = null, rightOperand = null) {
-    super();
-    this.leftOperand = leftOperand;
-    this.rightOperand = rightOperand;
-    this.operatorText = operatorText;
-    if (this.constructor === BinaryOperator) {
-      throw new TypeError('Abstract class \'BinaryOperator\' cannot be instantiated');
-    }
-  }
-
-  setLeftOperand(leftOperand) {
-    if (leftOperand instanceof Node) {
-      this.leftOperand = leftOperand;
-    } else {
-      this.leftOperand = null;
-    }
-  }
-
-  setRightOperand(rightOperand) {
-    if (rightOperand instanceof Node) {
-      this.rightOperand = rightOperand;
-    } else {
-      this.rightOperand = rightOperand;
-    }
-  }
-
-  getText() {
-    let leftText = '?';
-    let rightText = '?';
-
-    if (this.leftOperand != null) {
-      leftText = this.leftOperand.getText();
+    constructor(operatorText, leftOperand = null, rightOperand = null) {
+        super();
+        this.leftOperand = leftOperand;
+        this.rightOperand = rightOperand;
+        this.operatorText = operatorText;
+        if (this.constructor === BinaryOperator) {
+            throw new TypeError("Abstract class 'BinaryOperator' cannot be instantiated");
+        }
     }
 
-    if (this.rightOperand != null) {
-      rightText = this.rightOperand.getText();
+    setLeftOperand(leftOperand) {
+        if (leftOperand instanceof Node) {
+            this.leftOperand = leftOperand;
+        }
+        else {
+            this.leftOperand = null;
+        }
     }
 
-    return leftText + this.operatorText + rightText;
-  }
+    setRightOperand(rightOperand) {
+        if (rightOperand instanceof Node) {
+            this.rightOperand = rightOperand;
+        }
+        else {
+            this.rightOperand = rightOperand;
+        }
+    }
+
+    getText() {
+        let leftText = "?";
+        let rightText = "?";
+
+        if (this.leftOperand != null) {
+            leftText = this.leftOperand.getText();
+        }
+
+        if (this.rightOperand != null) {
+            rightText = this.rightOperand.getText();
+        }
+
+        return leftText + this.operatorText + rightText;
+    }
 
 }
 

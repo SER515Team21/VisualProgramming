@@ -16,7 +16,7 @@ async function sendLoginRequest() {
     }
 }
 
-async function sendNewAccountRequest(){
+async function sendNewAccountRequest() {
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
 

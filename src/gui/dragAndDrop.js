@@ -2,6 +2,9 @@
  * Handles processing of drag and drop events for the mathematical Nodes
  */
 
+/* global document */
+/* global Calculator */
+
 let nodeCount = 0;
 
 function pickUpNode(event) {
@@ -31,6 +34,7 @@ function dropNode(event) {
         node.style.left = `${event.pageX}px`;
     }
 
+    Calculator.updateResult();
   // Add node to tree/forest here
 }
 

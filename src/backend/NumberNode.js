@@ -5,18 +5,18 @@
  * @date 9/22/2019
  */
 
-const Node = require('./Node.js');
+const Node = require("./Node.js");
 
 class NumberNode extends Node {
 
-  constructor(number) {
-    super();
-    this.number = number;
-  }
+    constructor(number) {
+        super();
+        this.number = number;
+    }
 
-  getText() {
-    return this.number;
-  }
+    getText() {
+        return this.number;
+    }
 
 }
 
