@@ -3,6 +3,7 @@
  */
 
 /* global document */
+/* global Calculator */
 
 let nodeCount = 0;
 
@@ -33,9 +34,7 @@ function dropNode(event) {
         node.style.left = `${event.pageX}px`;
     }
 
-    const resultPane = document.getElementById("resultPane");
-    resultPane.hidden = false;
-    resultPane.innerHTML = "parsed result here";
+    Calculator.updateResult();
   // Add node to tree/forest here
 }
 
