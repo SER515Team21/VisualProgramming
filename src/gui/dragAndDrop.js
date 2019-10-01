@@ -21,7 +21,7 @@ function dropNode(event) {
   // Determine behavior based upon source dragged from
     if (parentId !== "editorPane") {
         const clone = node.cloneNode(true);
-        clone.id += nodeCount.toString();
+        clone.id = nodeCount.toString();
         nodeCount++;
         clone.style.position = "fixed";
         clone.style.top = `${event.pageY}px`;
