@@ -32,8 +32,9 @@ class Division extends BinaryOperator {
 
 }
 
-
-
-//Test
-//const lol = new Addition(3,3);
-//console.log(lol.text);
+module.exports = {
+    Addition,
+    Subtraction,
+    Multiplication,
+    Division
+}

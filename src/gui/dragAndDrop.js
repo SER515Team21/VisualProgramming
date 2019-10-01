@@ -4,6 +4,7 @@
 
 /* global document */
 /* global NodeForest */
+/* global Calculator */
 
 let nodeCount = 0;
 
@@ -27,20 +28,22 @@ function dropNode(event) {
         clone.style.top = `${event.pageY}px`;
         clone.style.left = `${event.pageX}px`;
         event.target.appendChild(clone);
-        NodeForest.insertNode(nodeCount);
+        NodeForest.insertRootNode(nodeCount);
     }
     else {
         node.style.position = "fixed";
         node.style.top = `${event.pageY}px`;
         node.style.left = `${event.pageX}px`;
     }
+
+    Calculator.updateResult();
 }
 
 function deleteNode(event) {
     event.preventDefault();
     const id = event.dataTransfer.getData("text");
     document.getElementById(id).remove();
-    NodeForest.deleteNode(nodeCount);
+    NodeForest.deleteRootNode(nodeCount);
     nodeCount--;
 }
 

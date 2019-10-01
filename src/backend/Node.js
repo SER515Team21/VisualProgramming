@@ -13,6 +13,8 @@ class Node {
         if (this.getText === undefined) {
             throw new TypeError("Child class of 'Node' must define method 'getText'");
         }
+        //gets timestamp for use as ID
+        this.nodeId = (new Date()).getTime();
     }
 }
 
