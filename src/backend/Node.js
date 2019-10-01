@@ -6,6 +6,7 @@
  */
 class Node {
     constructor() {
+        console.log("Node constructor called");
         if (this.constructor === Node) {
             throw new TypeError("Abstract class 'Node' cannot be instantiated");
         }
@@ -13,7 +14,8 @@ class Node {
         if (this.getText === undefined) {
             throw new TypeError("Child class of 'Node' must define method 'getText'");
         }
-        //gets timestamp for use as ID
+
+        // gets timestamp for use as ID
         this.nodeId = (new Date()).getTime();
     }
 }

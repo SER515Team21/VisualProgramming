@@ -4,6 +4,8 @@
 
 /* global document */
 /* global Calculator */
+/* global Operators */
+/* global NodeFactory */
 
 let nodeCount = 0;
 
@@ -21,7 +23,9 @@ function dropNode(event) {
   // Determine behavior based upon source dragged from
     if (parentId !== "editorPane") {
         const clone = node.cloneNode(true);
-        clone.id += nodeCount.toString();
+        // clone.id = nodeCount.toString();
+        clone.id = NodeFactory.createNode(clone.classList, true);
+        // console.log(`class ${clone.classList}`);
         nodeCount++;
         clone.style.position = "fixed";
         clone.style.top = `${event.pageY}px`;
