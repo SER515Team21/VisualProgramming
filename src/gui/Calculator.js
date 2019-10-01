@@ -13,7 +13,7 @@ class Calculator {
                 return root.getText();
             }
         }
-        return "invalid";
+        return "Invalid expression, please update and try again!";
     }
 
 
