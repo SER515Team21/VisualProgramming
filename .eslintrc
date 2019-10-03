@@ -1,0 +1,23 @@
+{
+  "extends": ["eslint:recommended", "eslint-config-airbnb"],
+  "rules": {
+    "import/extensions": 0,
+    "import/no-extraneous-dependencies": 0,
+    "import/no-unresolved": [2, { "ignore": ["electron"] }],
+    "linebreak-style": ["error", "unix"],
+    "no-plusplus": "off",
+    "indent": ["error", 4],
+    "func-names": "off",
+    "yoda": "warn",
+    "quotes": ["error", "double", { "allowTemplateLiterals": true }],
+    "camelcase": ["error", {"properties": "always"}],
+    "global-require": "error",
+    "no-mixed-requires": "error",
+    "no-path-concat": "error",
+    "brace-style": ["error", "stroustrup"],
+    "no-console": "warn",
+    "comma-dangle": "off",
+    "no-unused-vars": "off",
+    "no-trailing-spaces": "off"
+  }
+}
