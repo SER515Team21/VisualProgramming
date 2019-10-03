@@ -13,7 +13,7 @@
     <title></title>
 </head>
 <body>
-<div id="login">
+<div id="login" class="signlog">
     <h1>Welcome to Visual Mathematics!</h1>
     <h2>Login</h2>
     <div class="inputWithLabel">
@@ -24,12 +24,37 @@
         <label for="password">Password</label>
         <input type="password" id="password">
     </div>
-    <p id="loginFail" hidden>Incorrect username or password</p>
+    <div id="loginFail" hidden>
+        <p>Incorrect username or password</p>
+    </div>
     <button onclick="sendLoginRequest()">Login</button>
     <div id="extra">
-        <button onclick="sendNewAccountRequest()">Make Account!</button>
+        <button onclick="switchSignUp()">Make Account!</button>
         <button onclick="sendLoginRequest">Forgot Login?</button>
     </div>
+</div>
+
+<div id="signup" class="signlog" hidden>
+    <h1>Sign Up for Visual Mathematics!</h1>
+    <h2>Sign Up</h2>
+    <div class="inputWithLabel">
+        <label for="signupUserName">Username</label>
+        <input type="text" id="signupUserName">
+    </div>
+    <div class="inputWithLabel">
+        <label for="signupPassword">Password</label>
+        <input type="password" id="signupPassword">
+    </div>
+    <div class="inputWithLabel">
+        <label for="signupPassword2">Verify Password</label>
+        <input type="password" id="signupPassword2">
+    </div>
+    <div id="signUpSuccess" hidden>
+        <p>Success!</p>
+        <button onclick="returnToLogin()">Return to Login</button>
+    </div>
+    <p id="signUpError" hidden value=""></p>
+    <button onclick="sendSignUpRequest()">SignUp</button>
 </div>
 
 <div id="studentView" hidden>

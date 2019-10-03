@@ -16,9 +16,30 @@ async function sendLoginRequest() {
     }
 }
 
-async function sendNewAccountRequest() {
-    const username = document.getElementById("username").value;
-    const password = document.getElementById("password").value;
+function switchSignUp(){
+    document.getElementById("login").hidden = true;
+    document.getElementById("signup").hidden = false;
+}
 
-    await UserDb.addUser(username, password);
+function returnToLogin(){
+    document.getElementById("login").hidden = false;
+    document.getElementById("signup").hidden = true;
+}
+
+async function sendSignUpRequest() {
+    const username = document.getElementById("signupUserName").value;
+    const password = document.getElementById("signupPassword").value;
+    const password2 = document.getElementById("signupPassword2").value;
+
+    let error = await UserDb.addUser(username, password, password2);
+
+    if(error === null){
+        document.getElementById("signUpSuccess").hidden = false;
+        document.getElementById("signUpError").hidden = true;
+        document.getElementById("signUpError").value = "";
+    }
+    else{
+        document.getElementById("signUpError").value = error;
+        document.getElementById("signUpError").hidden = false;
+    }
 }

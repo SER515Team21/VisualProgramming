@@ -6,6 +6,10 @@ html, body {
     display: none;
 }
 
+.inputWithLabel {
+    margin: 5px auto;
+}
+
 .tab-switcher ul {
     display: block;
     list-style: none;
