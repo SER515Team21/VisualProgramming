@@ -17,10 +17,13 @@ class UserDb {
         return doc.length !== 0;
     }
 
-    async addUser(un, pw, pw2) {
-        // Needs to be updated for check but this is for testing
-        const doc = await this.programDb.insert({ username: un, password: pw });
-        return null;
+    async addUser(un, pw) {
+        let doc = await this.programDb.cfind({ username: un}).exec()
+        if(doc.length !== 0){
+            return false;
+        }
+        await this.programDb.insert({ username: un, password: pw });
+        return true;
     }
 }
 

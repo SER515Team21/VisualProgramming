@@ -31,15 +31,32 @@ async function sendSignUpRequest() {
     const password = document.getElementById("signupPassword").value;
     const password2 = document.getElementById("signupPassword2").value;
 
-    let error = await UserDb.addUser(username, password, password2);
-
-    if(error === null){
-        document.getElementById("signUpSuccess").hidden = false;
-        document.getElementById("signUpError").hidden = true;
-        document.getElementById("signUpError").value = "";
+    if(username === "" || password === "" || password2 === ""){
+        document.getElementById("enterAllValues").hidden = false;
+        document.getElementById("pwMatch").hidden = true;
+        document.getElementById("usTaken").hidden = true;
     }
-    else{
-        document.getElementById("signUpError").value = error;
-        document.getElementById("signUpError").hidden = false;
+    else if(password !== password2){
+        document.getElementById("enterAllValues").hidden = true;
+        document.getElementById("pwMatch").hidden = false;
+        document.getElementById("usTaken").hidden = true;
+    }
+    else {
+
+        let success = await UserDb.addUser(username, password);
+
+        if (success) {
+            document.getElementById("enterAllValues").hidden = true;
+            document.getElementById("pwMatch").hidden = true;
+            document.getElementById("usTaken").hidden = true;
+
+            document.getElementById("signUpSuccess").hidden = false;
+            console.log("askjfkasdhf");
+        }
+        else {
+            document.getElementById("enterAllValues").hidden = true;
+            document.getElementById("pwMatch").hidden = true;
+            document.getElementById("usTaken").hidden = false;
+        }
     }
 }
