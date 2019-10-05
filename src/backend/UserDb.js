@@ -11,16 +11,30 @@ class UserDb {
         return UserDb.instance;
     }
 
-    async userExists(un, pw) {
-        const doc = await this.programDb.cfind({ username: un, password: pw })
-            .exec();
+    async userExists(username, password = null) {
+        let doc = [];
+        if (password !== null) {
+            doc = await this.programDb.cfind({ username: username, password: password }).exec();
+        } else {
+            doc = await this.programDb.cfind({ username: username}).exec();
+        }
         return doc.length !== 0;
     }
 
-    async addUser(un, pw) {
+    async addUser(username, password, role = "student") {
         // Needs to be updated for check but this is for testing
-        const doc = await this.programDb.insert({ username: un, password: pw });
+        const doc = await this.programDb.insert({ username: username, password: password, role: role });
         return doc.length !== 0;
+    }
+
+    async updateRole(username, role = "student") {
+        let doc = [];
+        if (this.userExists(username)) {
+            doc = await this.programDb.update({ username: username, role: role});
+            return doc.length !==0;
+        } else {
+            return doc.length = 0;
+        }
     }
 }
 
