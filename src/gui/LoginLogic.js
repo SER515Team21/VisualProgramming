@@ -20,7 +20,7 @@ async function sendNewAccountRequest() {
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
 
-    //TODO Add element for role and remove default
+    //TODO Add element for role
     //const role = document.getElementById("role").value;
 
     await UserDb.addUser(username, password);
