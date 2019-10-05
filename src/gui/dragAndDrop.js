@@ -15,11 +15,6 @@
  */
 function pickUpNode(event) {
     event.dataTransfer.setData("text", event.target.id);
-
-    console.log(event.parentNode.classList);
-    if (event.parentNode.classList.contains("panel")) {
-
-    }
 }
 
 /**
@@ -30,13 +25,17 @@ function dropNode(event) {
     event.preventDefault();
     const id = event.dataTransfer.getData("text");
     const node = document.getElementById(id);
+    const clone = node.cloneNode(true);
+
+    if (node.parentNode.classList.contains("node-container")) {
+        node.parentNode.removeChild(node);
+    }
 
     // Handles dropping root and child Nodes differently
     if (event.target.parentNode.classList.contains("node")) {
         // Ensures that the parent is a Node
         if (event.target.classList.contains("node-container") &&
             event.target.childElementCount === 0) {
-            const clone = node.cloneNode(true);
             clone.id = NodeFactory.createNode(clone.classList, true);
             event.target.appendChild(clone);
         }
@@ -44,7 +43,6 @@ function dropNode(event) {
     else if (!node.classList.contains("number")) {
         // Create a clone of the Node if dragged from the selection list. Else just move it
         if (node.parentNode.classList.contains("panel")) {
-            const clone = node.cloneNode(true);
             clone.id = NodeFactory.createNode(clone.classList, true);
             clone.style.position = "fixed";
             clone.style.top = `${event.pageY}px`;
@@ -56,9 +54,9 @@ function dropNode(event) {
             node.style.top = `${event.pageY}px`;
             node.style.left = `${event.pageX}px`;
         }
+    }
 
-        Calculator.updateResult();
-    // }
+    Calculator.updateResult();
 }
 
 /**
