@@ -21,13 +21,13 @@ function pickUpNode(event) {
  * Places the Number Node within another Node and adds it to it's parent's tree.
  * @param event
  */
-function dropNumberNode(event) {
+function dropInnerNode(event) {
     event.preventDefault();
     const id = event.dataTransfer.getData("text");
     const node = document.getElementById(id);
 
     // Ensures that the parent is a Node
-    if (event.target.parentNode.classList.contains("node")) {
+    if (event.target.classList.contains("node-container") && event.target.childElementCount === 0) {
         const clone = node.cloneNode(true);
         clone.id = NodeFactory.createNode(clone.classList, true);
         event.target.appendChild(clone);
@@ -44,12 +44,12 @@ function dropNode(event) {
     const node = document.getElementById(id);
 
     // Handles Number Nodes separately than term Nodes
-    if (node.classList.contains("number")) {
-        dropNumberNode(event);
+    if (event.target.parentNode.classList.contains("node")) {
+        dropInnerNode(event);
     }
     else {
         // Create a clone of the Node if dragged from the selection list. Else just move it
-        if (event.target.id !== "editorPane") {
+        if (node.parentNode.classList.contains("panel")) {
             const clone = node.cloneNode(true);
             clone.id = NodeFactory.createNode(clone.classList, true);
             clone.style.position = "fixed";
@@ -73,8 +73,10 @@ function dropNode(event) {
  */
 function deleteNode(event) {
     event.preventDefault();
-    if (event.target.parentNode.classList.contains("panel")) {
-        const id = event.dataTransfer.getData("text");
+    const id = event.dataTransfer.getData("text");
+    const node = document.getElementById(id);
+
+    if (!node.parentNode.classList.contains("panel")) {
         document.getElementById(id).remove();
         NodeForest.deleteRootNode(id);
     }

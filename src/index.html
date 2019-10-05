@@ -56,7 +56,7 @@
                 <label for="search-all">Search All</label>
             </span>
         </div>
-        <div id="search-results">
+        <div id="search-results" ondrop="deleteNode(event)" ondragover="allowDroppingNode(event)">
             <button class="accordion">Numbers</button>
             <div class="panel">
                 <div id="number" class="node number" draggable="true" ondragstart="pickUpNode(event)">
@@ -67,9 +67,9 @@
             <button class="accordion">Arithmetic</button>
             <div class="panel">
                 <div id="addition" class="node arithmetic addition" draggable="true" ondragstart="pickUpNode(event)">
-                    <div ondrop="dropNode(event)" ondragover="allowDroppingNode(event)"></div>
+                    <div id="addLeft" class="node-container" ondrop="dropNode(event)" ondragover="allowDroppingNode(event)"></div>
                     <p></p>
-                    <div ondrop="dropNode(event)" ondragover="allowDroppingNode(event)"></div>
+                    <div id="addRight" class="node-container" ondrop="dropNode(event)" ondragover="allowDroppingNode(event)"></div>
                 </div>
                 <div id="subtraction" class="node arithmetic subtraction" draggable="true" ondragstart="pickUpNode(event)">
                     <input type="number">
