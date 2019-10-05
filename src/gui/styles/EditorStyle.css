@@ -84,10 +84,31 @@
     display: inline-block;
 }
 
-.arithmetic input {
+.arithmetic div {
     margin-top: 13px !important;
     display: inline-block;
-    width: 20px;
+    min-width: 20px;
+    min-height: 20px;
+    height: max-content;
+    width: max-content;
+    background-color: whitesmoke;
+    padding: 5px;
+}
+
+.number {
+    background-color: limegreen !important;
+    width: 50px;
+}
+
+.number:hover {
+    cursor: pointer;
+    border: lime solid 3px;
+}
+
+.number input {
+    margin-top: 13px !important;
+    display: inline-block;
+    width: 40px;
 }
 
 .addition p::before {
