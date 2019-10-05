@@ -2,6 +2,7 @@
  * Handles processing of drag and drop events for the mathematical Nodes
  */
 
+// Global imports
 /* global document */
 /* global NodeForest */
 /* global Calculator */
@@ -17,24 +18,6 @@ function pickUpNode(event) {
 }
 
 /**
- * Handles the dropping of a Number Node.
- * Places the Number Node within another Node and adds it to it's parent's tree.
- * @param event
- */
-function dropInnerNode(event) {
-    event.preventDefault();
-    const id = event.dataTransfer.getData("text");
-    const node = document.getElementById(id);
-
-    // Ensures that the parent is a Node
-    if (event.target.classList.contains("node-container") && event.target.childElementCount === 0) {
-        const clone = node.cloneNode(true);
-        clone.id = NodeFactory.createNode(clone.classList, true);
-        event.target.appendChild(clone);
-    }
-}
-
-/**
  * Determines how to handle the dropping of each Node that is dragged into the editor space.
  * @param event
  */
@@ -43,9 +26,15 @@ function dropNode(event) {
     const id = event.dataTransfer.getData("text");
     const node = document.getElementById(id);
 
-    // Handles Number Nodes separately than term Nodes
+    // Handles dropping root and child Nodes differently
     if (event.target.parentNode.classList.contains("node")) {
-        dropInnerNode(event);
+        // Ensures that the parent is a Node
+        if (event.target.classList.contains("node-container") &&
+            event.target.childElementCount === 0) {
+            const clone = node.cloneNode(true);
+            clone.id = NodeFactory.createNode(clone.classList, true);
+            event.target.appendChild(clone);
+        }
     }
     else if (!node.classList.contains("number")) {
         // Create a clone of the Node if dragged from the selection list. Else just move it
@@ -64,7 +53,7 @@ function dropNode(event) {
         }
 
         Calculator.updateResult();
-    }
+    // }
 }
 
 /**
