@@ -15,6 +15,11 @@
  */
 function pickUpNode(event) {
     event.dataTransfer.setData("text", event.target.id);
+
+    console.log(event.parentNode.classList);
+    if (event.parentNode.classList.contains("panel")) {
+
+    }
 }
 
 /**
