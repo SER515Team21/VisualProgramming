@@ -31,9 +31,9 @@ class UserDb {
         let doc = [];
         if (this.userExists(username)) {
             doc = await this.programDb.update({ username: username, role: role});
-            return doc.length !==0;
+            return doc.length !== 0;
         } else {
-            return doc.length = 0;
+            return false;
         }
     }
 }
