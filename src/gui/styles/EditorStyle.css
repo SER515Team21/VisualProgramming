@@ -92,7 +92,7 @@
     height: max-content;
     width: max-content;
     background-color: whitesmoke;
-    padding: 5px;
+    padding: 0;
 }
 
 .number {
@@ -106,7 +106,7 @@
 }
 
 .number input {
-    margin-top: 13px !important;
+    margin: 5px;
     display: inline-block;
     width: 40px;
 }

@@ -47,7 +47,7 @@ function dropNode(event) {
     if (event.target.parentNode.classList.contains("node")) {
         dropInnerNode(event);
     }
-    else {
+    else if (!node.classList.contains("number")) {
         // Create a clone of the Node if dragged from the selection list. Else just move it
         if (node.parentNode.classList.contains("panel")) {
             const clone = node.cloneNode(true);
