@@ -28,10 +28,9 @@ class UserDb {
     }
 
     async updateRole(username, role = "student") {
-        let doc = [];
         if (this.userExists(username)) {
-            doc = await this.programDb.update({ username: username, role: role});
-            return doc.length !== 0;
+            const doc = await this.programDb.update({ username: username, role: role});
+            return true;
         } else {
             return false;
         }
