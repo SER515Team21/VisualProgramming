@@ -29,39 +29,30 @@ ArithmeticListener.prototype.exitInteger = function(ctx) {
 };
 
 
-// Enter a parse tree produced by ArithmeticParser#Multiplication.
-ArithmeticListener.prototype.enterMultiplication = function(ctx) {
+// Enter a parse tree produced by ArithmeticParser#Multiplicative.
+ArithmeticListener.prototype.enterMultiplicative = function(ctx) {
 };
 
-// Exit a parse tree produced by ArithmeticParser#Multiplication.
-ArithmeticListener.prototype.exitMultiplication = function(ctx) {
-};
-
-
-// Enter a parse tree produced by ArithmeticParser#Addition.
-ArithmeticListener.prototype.enterAddition = function(ctx) {
-};
-
-// Exit a parse tree produced by ArithmeticParser#Addition.
-ArithmeticListener.prototype.exitAddition = function(ctx) {
+// Exit a parse tree produced by ArithmeticParser#Multiplicative.
+ArithmeticListener.prototype.exitMultiplicative = function(ctx) {
 };
 
 
-// Enter a parse tree produced by ArithmeticParser#Subtraction.
-ArithmeticListener.prototype.enterSubtraction = function(ctx) {
+// Enter a parse tree produced by ArithmeticParser#Additive.
+ArithmeticListener.prototype.enterAdditive = function(ctx) {
 };
 
-// Exit a parse tree produced by ArithmeticParser#Subtraction.
-ArithmeticListener.prototype.exitSubtraction = function(ctx) {
+// Exit a parse tree produced by ArithmeticParser#Additive.
+ArithmeticListener.prototype.exitAdditive = function(ctx) {
 };
 
 
-// Enter a parse tree produced by ArithmeticParser#Division.
-ArithmeticListener.prototype.enterDivision = function(ctx) {
+// Enter a parse tree produced by ArithmeticParser#NegativeInteger.
+ArithmeticListener.prototype.enterNegativeInteger = function(ctx) {
 };
 
-// Exit a parse tree produced by ArithmeticParser#Division.
-ArithmeticListener.prototype.exitDivision = function(ctx) {
+// Exit a parse tree produced by ArithmeticParser#NegativeInteger.
+ArithmeticListener.prototype.exitNegativeInteger = function(ctx) {
 };
 
 
@@ -71,6 +62,15 @@ ArithmeticListener.prototype.enterDouble = function(ctx) {
 
 // Exit a parse tree produced by ArithmeticParser#Double.
 ArithmeticListener.prototype.exitDouble = function(ctx) {
+};
+
+
+// Enter a parse tree produced by ArithmeticParser#NegativeDouble.
+ArithmeticListener.prototype.enterNegativeDouble = function(ctx) {
+};
+
+// Exit a parse tree produced by ArithmeticParser#NegativeDouble.
+ArithmeticListener.prototype.exitNegativeDouble = function(ctx) {
 };
 
 

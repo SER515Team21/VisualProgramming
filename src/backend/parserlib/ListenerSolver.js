@@ -4,48 +4,72 @@ class ListenerSolver extends ArithmeticListener {
     constructor() {
         super();
         this._stack = [];
+        this.DEBUG = true;
     }
 
     exitInteger(ctx) {
         const number = parseInt(ctx.INT(), 10);
         this._stack.push(number);
+        if (this.DEBUG) {
+            console.log("Parsed integer", number);
+        }
+    }
+
+    exitNegativeInteger(ctx) {
+        const number = -1 * parseInt(ctx.INT(), 10);
+        this._stack.push(number);
+        if (this.DEBUG) {
+            console.log("Parsed integer", number);
+        }
     }
 
     exitDouble(ctx) {
         const number = parseFloat(ctx.DOUBLE());
         this._stack.push(number);
+        if (this.DEBUG) {
+            console.log("Parsed double", number);
+        }
     }
 
-    exitMultiplication(ctx) {
-        const right = this._stack.pop();
-        const left = this._stack.pop();
-        const result = left * right;
-
-        this._stack.push(result);
+    exitNegativeDouble(ctx) {
+        const number = -1 * parseFloat(ctx.DOUBLE());
+        this._stack.push(number);
+        if (this.DEBUG) {
+            console.log("Parsed double", number);
+        }
     }
 
-    exitDivision(ctx) {
+    exitMultiplicative(ctx) {
         const right = this._stack.pop();
         const left = this._stack.pop();
-        const result = left / right;
-
+        let result;
+        if (ctx.getChild(1).getText() === "*") {
+            result = left * right;
+        }
+        else {
+            result = left / right;
+        }
         this._stack.push(result);
+        if (this.DEBUG) {
+            console.log(left, ctx.getChild(1).getText(), right);
+        }
     }
 
-    exitAddition(ctx) {
+    exitAdditive(ctx) {
         const right = this._stack.pop();
         const left = this._stack.pop();
-        const result = left + right;
+        let result;
+        if (ctx.getChild(1).getText() === "+") {
+            result = left + right;
+        }
+        else {
+            result = left - right;
+        }
 
         this._stack.push(result);
-    }
-
-    exitSubtraction(ctx) {
-        const right = this._stack.pop();
-        const left = this._stack.pop();
-        const result = left - right;
-
-        this._stack.push(result);
+        if (this.DEBUG) {
+            console.log(left, ctx.getChild(1).getText(), right);
+        }
     }
 
     get solution() {

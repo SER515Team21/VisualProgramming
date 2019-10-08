@@ -6,32 +6,32 @@ var grammarFileName = "Arithmetic.g4";
 
 
 var serializedATN = ["\u0003\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964",
-    "\u0003\f&\u0004\u0002\t\u0002\u0004\u0003\t\u0003\u0003\u0002\u0003",
+    "\u0003\f$\u0004\u0002\t\u0002\u0004\u0003\t\u0003\u0003\u0002\u0003",
     "\u0002\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003",
-    "\u0003\u0003\u0003\u0005\u0003\u0010\n\u0003\u0003\u0003\u0003\u0003",
-    "\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003",
-    "\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003",
-    "\u0003\u0003\u0007\u0003!\n\u0003\f\u0003\u000e\u0003$\u000b\u0003\u0003",
-    "\u0003\u0002\u0003\u0004\u0004\u0002\u0004\u0002\u0002\u0002*\u0002",
-    "\u0006\u0003\u0002\u0002\u0002\u0004\u000f\u0003\u0002\u0002\u0002\u0006",
-    "\u0007\u0005\u0004\u0003\u0002\u0007\u0003\u0003\u0002\u0002\u0002\b",
-    "\t\b\u0003\u0001\u0002\t\u0010\u0007\n\u0002\u0002\n\u0010\u0007\u000b",
-    "\u0002\u0002\u000b\f\u0007\u0003\u0002\u0002\f\r\u0005\u0004\u0003\u0002",
-    "\r\u000e\u0007\u0004\u0002\u0002\u000e\u0010\u0003\u0002\u0002\u0002",
-    "\u000f\b\u0003\u0002\u0002\u0002\u000f\n\u0003\u0002\u0002\u0002\u000f",
-    "\u000b\u0003\u0002\u0002\u0002\u0010\"\u0003\u0002\u0002\u0002\u0011",
-    "\u0012\f\u0007\u0002\u0002\u0012\u0013\u0007\u0005\u0002\u0002\u0013",
-    "!\u0005\u0004\u0003\b\u0014\u0015\f\u0006\u0002\u0002\u0015\u0016\u0007",
-    "\u0006\u0002\u0002\u0016!\u0005\u0004\u0003\u0007\u0017\u0018\f\u0005",
-    "\u0002\u0002\u0018\u0019\u0007\u0007\u0002\u0002\u0019!\u0005\u0004",
-    "\u0003\u0006\u001a\u001b\f\u0004\u0002\u0002\u001b\u001c\u0007\b\u0002",
-    "\u0002\u001c!\u0005\u0004\u0003\u0005\u001d\u001e\f\u0003\u0002\u0002",
-    "\u001e\u001f\u0007\t\u0002\u0002\u001f!\u0005\u0004\u0003\u0004 \u0011",
-    "\u0003\u0002\u0002\u0002 \u0014\u0003\u0002\u0002\u0002 \u0017\u0003",
-    "\u0002\u0002\u0002 \u001a\u0003\u0002\u0002\u0002 \u001d\u0003\u0002",
-    "\u0002\u0002!$\u0003\u0002\u0002\u0002\" \u0003\u0002\u0002\u0002\"",
-    "#\u0003\u0002\u0002\u0002#\u0005\u0003\u0002\u0002\u0002$\"\u0003\u0002",
-    "\u0002\u0002\u0005\u000f \""].join("");
+    "\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0005",
+    "\u0003\u0014\n\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003",
+    "\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0007\u0003",
+    "\u001f\n\u0003\f\u0003\u000e\u0003\"\u000b\u0003\u0003\u0003\u0002\u0003",
+    "\u0004\u0004\u0002\u0004\u0002\u0004\u0003\u0002\u0006\u0007\u0003\u0002",
+    "\b\t\u0002(\u0002\u0006\u0003\u0002\u0002\u0002\u0004\u0013\u0003\u0002",
+    "\u0002\u0002\u0006\u0007\u0005\u0004\u0003\u0002\u0007\u0003\u0003\u0002",
+    "\u0002\u0002\b\t\b\u0003\u0001\u0002\t\u0014\u0007\n\u0002\u0002\n\u000b",
+    "\u0007\t\u0002\u0002\u000b\u0014\u0007\n\u0002\u0002\f\u0014\u0007\u000b",
+    "\u0002\u0002\r\u000e\u0007\t\u0002\u0002\u000e\u0014\u0007\u000b\u0002",
+    "\u0002\u000f\u0010\u0007\u0003\u0002\u0002\u0010\u0011\u0005\u0004\u0003",
+    "\u0002\u0011\u0012\u0007\u0004\u0002\u0002\u0012\u0014\u0003\u0002\u0002",
+    "\u0002\u0013\b\u0003\u0002\u0002\u0002\u0013\n\u0003\u0002\u0002\u0002",
+    "\u0013\f\u0003\u0002\u0002\u0002\u0013\r\u0003\u0002\u0002\u0002\u0013",
+    "\u000f\u0003\u0002\u0002\u0002\u0014 \u0003\u0002\u0002\u0002\u0015",
+    "\u0016\f\u0005\u0002\u0002\u0016\u0017\u0007\u0005\u0002\u0002\u0017",
+    "\u001f\u0005\u0004\u0003\u0006\u0018\u0019\f\u0004\u0002\u0002\u0019",
+    "\u001a\t\u0002\u0002\u0002\u001a\u001f\u0005\u0004\u0003\u0005\u001b",
+    "\u001c\f\u0003\u0002\u0002\u001c\u001d\t\u0003\u0002\u0002\u001d\u001f",
+    "\u0005\u0004\u0003\u0004\u001e\u0015\u0003\u0002\u0002\u0002\u001e\u0018",
+    "\u0003\u0002\u0002\u0002\u001e\u001b\u0003\u0002\u0002\u0002\u001f\"",
+    "\u0003\u0002\u0002\u0002 \u001e\u0003\u0002\u0002\u0002 !\u0003\u0002",
+    "\u0002\u0002!\u0005\u0003\u0002\u0002\u0002\" \u0003\u0002\u0002\u0002",
+    "\u0005\u0013\u001e "].join("");
 
 
 var atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
@@ -190,7 +190,7 @@ IntegerContext.prototype.exitRule = function(listener) {
 };
 
 
-function MultiplicationContext(parser, ctx) {
+function MultiplicativeContext(parser, ctx) {
 	ExpressionContext.call(this, parser);
     this.left = null; // ExpressionContext;
     this.operator = null; // Token;
@@ -199,12 +199,12 @@ function MultiplicationContext(parser, ctx) {
     return this;
 }
 
-MultiplicationContext.prototype = Object.create(ExpressionContext.prototype);
-MultiplicationContext.prototype.constructor = MultiplicationContext;
+MultiplicativeContext.prototype = Object.create(ExpressionContext.prototype);
+MultiplicativeContext.prototype.constructor = MultiplicativeContext;
 
-ArithmeticParser.MultiplicationContext = MultiplicationContext;
+ArithmeticParser.MultiplicativeContext = MultiplicativeContext;
 
-MultiplicationContext.prototype.expression = function(i) {
+MultiplicativeContext.prototype.expression = function(i) {
     if(i===undefined) {
         i = null;
     }
@@ -215,141 +215,98 @@ MultiplicationContext.prototype.expression = function(i) {
     }
 };
 
-MultiplicationContext.prototype.MUL = function() {
+MultiplicativeContext.prototype.MUL = function() {
     return this.getToken(ArithmeticParser.MUL, 0);
 };
-MultiplicationContext.prototype.enterRule = function(listener) {
-    if(listener instanceof ArithmeticListener ) {
-        listener.enterMultiplication(this);
-	}
-};
 
-MultiplicationContext.prototype.exitRule = function(listener) {
-    if(listener instanceof ArithmeticListener ) {
-        listener.exitMultiplication(this);
-	}
-};
-
-
-function AdditionContext(parser, ctx) {
-	ExpressionContext.call(this, parser);
-    this.left = null; // ExpressionContext;
-    this.operator = null; // Token;
-    this.right = null; // ExpressionContext;
-    ExpressionContext.prototype.copyFrom.call(this, ctx);
-    return this;
-}
-
-AdditionContext.prototype = Object.create(ExpressionContext.prototype);
-AdditionContext.prototype.constructor = AdditionContext;
-
-ArithmeticParser.AdditionContext = AdditionContext;
-
-AdditionContext.prototype.expression = function(i) {
-    if(i===undefined) {
-        i = null;
-    }
-    if(i===null) {
-        return this.getTypedRuleContexts(ExpressionContext);
-    } else {
-        return this.getTypedRuleContext(ExpressionContext,i);
-    }
-};
-
-AdditionContext.prototype.ADD = function() {
-    return this.getToken(ArithmeticParser.ADD, 0);
-};
-AdditionContext.prototype.enterRule = function(listener) {
-    if(listener instanceof ArithmeticListener ) {
-        listener.enterAddition(this);
-	}
-};
-
-AdditionContext.prototype.exitRule = function(listener) {
-    if(listener instanceof ArithmeticListener ) {
-        listener.exitAddition(this);
-	}
-};
-
-
-function SubtractionContext(parser, ctx) {
-	ExpressionContext.call(this, parser);
-    this.left = null; // ExpressionContext;
-    this.operator = null; // Token;
-    this.right = null; // ExpressionContext;
-    ExpressionContext.prototype.copyFrom.call(this, ctx);
-    return this;
-}
-
-SubtractionContext.prototype = Object.create(ExpressionContext.prototype);
-SubtractionContext.prototype.constructor = SubtractionContext;
-
-ArithmeticParser.SubtractionContext = SubtractionContext;
-
-SubtractionContext.prototype.expression = function(i) {
-    if(i===undefined) {
-        i = null;
-    }
-    if(i===null) {
-        return this.getTypedRuleContexts(ExpressionContext);
-    } else {
-        return this.getTypedRuleContext(ExpressionContext,i);
-    }
-};
-
-SubtractionContext.prototype.SUB = function() {
-    return this.getToken(ArithmeticParser.SUB, 0);
-};
-SubtractionContext.prototype.enterRule = function(listener) {
-    if(listener instanceof ArithmeticListener ) {
-        listener.enterSubtraction(this);
-	}
-};
-
-SubtractionContext.prototype.exitRule = function(listener) {
-    if(listener instanceof ArithmeticListener ) {
-        listener.exitSubtraction(this);
-	}
-};
-
-
-function DivisionContext(parser, ctx) {
-	ExpressionContext.call(this, parser);
-    this.left = null; // ExpressionContext;
-    this.operator = null; // Token;
-    this.right = null; // ExpressionContext;
-    ExpressionContext.prototype.copyFrom.call(this, ctx);
-    return this;
-}
-
-DivisionContext.prototype = Object.create(ExpressionContext.prototype);
-DivisionContext.prototype.constructor = DivisionContext;
-
-ArithmeticParser.DivisionContext = DivisionContext;
-
-DivisionContext.prototype.expression = function(i) {
-    if(i===undefined) {
-        i = null;
-    }
-    if(i===null) {
-        return this.getTypedRuleContexts(ExpressionContext);
-    } else {
-        return this.getTypedRuleContext(ExpressionContext,i);
-    }
-};
-
-DivisionContext.prototype.DIV = function() {
+MultiplicativeContext.prototype.DIV = function() {
     return this.getToken(ArithmeticParser.DIV, 0);
 };
-DivisionContext.prototype.enterRule = function(listener) {
+MultiplicativeContext.prototype.enterRule = function(listener) {
     if(listener instanceof ArithmeticListener ) {
-        listener.enterDivision(this);
+        listener.enterMultiplicative(this);
 	}
 };
 
-DivisionContext.prototype.exitRule = function(listener) {
+MultiplicativeContext.prototype.exitRule = function(listener) {
     if(listener instanceof ArithmeticListener ) {
-        listener.exitDivision(this);
+        listener.exitMultiplicative(this);
+	}
+};
+
+
+function AdditiveContext(parser, ctx) {
+	ExpressionContext.call(this, parser);
+    this.left = null; // ExpressionContext;
+    this.operator = null; // Token;
+    this.right = null; // ExpressionContext;
+    ExpressionContext.prototype.copyFrom.call(this, ctx);
+    return this;
+}
+
+AdditiveContext.prototype = Object.create(ExpressionContext.prototype);
+AdditiveContext.prototype.constructor = AdditiveContext;
+
+ArithmeticParser.AdditiveContext = AdditiveContext;
+
+AdditiveContext.prototype.expression = function(i) {
+    if(i===undefined) {
+        i = null;
+    }
+    if(i===null) {
+        return this.getTypedRuleContexts(ExpressionContext);
+    } else {
+        return this.getTypedRuleContext(ExpressionContext,i);
+    }
+};
+
+AdditiveContext.prototype.ADD = function() {
+    return this.getToken(ArithmeticParser.ADD, 0);
+};
+
+AdditiveContext.prototype.SUB = function() {
+    return this.getToken(ArithmeticParser.SUB, 0);
+};
+AdditiveContext.prototype.enterRule = function(listener) {
+    if(listener instanceof ArithmeticListener ) {
+        listener.enterAdditive(this);
+	}
+};
+
+AdditiveContext.prototype.exitRule = function(listener) {
+    if(listener instanceof ArithmeticListener ) {
+        listener.exitAdditive(this);
+	}
+};
+
+
+function NegativeIntegerContext(parser, ctx) {
+	ExpressionContext.call(this, parser);
+    ExpressionContext.prototype.copyFrom.call(this, ctx);
+    return this;
+}
+
+NegativeIntegerContext.prototype = Object.create(ExpressionContext.prototype);
+NegativeIntegerContext.prototype.constructor = NegativeIntegerContext;
+
+ArithmeticParser.NegativeIntegerContext = NegativeIntegerContext;
+
+NegativeIntegerContext.prototype.SUB = function() {
+    return this.getToken(ArithmeticParser.SUB, 0);
+};
+
+NegativeIntegerContext.prototype.INT = function() {
+    return this.getToken(ArithmeticParser.INT, 0);
+};
+NegativeIntegerContext.prototype.enterRule = function(listener) {
+    if(listener instanceof ArithmeticListener ) {
+        listener.enterNegativeInteger(this);
+	}
+};
+
+NegativeIntegerContext.prototype.exitRule = function(listener) {
+    if(listener instanceof ArithmeticListener ) {
+        listener.exitNegativeInteger(this);
 	}
 };
 
@@ -377,6 +334,37 @@ DoubleContext.prototype.enterRule = function(listener) {
 DoubleContext.prototype.exitRule = function(listener) {
     if(listener instanceof ArithmeticListener ) {
         listener.exitDouble(this);
+	}
+};
+
+
+function NegativeDoubleContext(parser, ctx) {
+	ExpressionContext.call(this, parser);
+    ExpressionContext.prototype.copyFrom.call(this, ctx);
+    return this;
+}
+
+NegativeDoubleContext.prototype = Object.create(ExpressionContext.prototype);
+NegativeDoubleContext.prototype.constructor = NegativeDoubleContext;
+
+ArithmeticParser.NegativeDoubleContext = NegativeDoubleContext;
+
+NegativeDoubleContext.prototype.SUB = function() {
+    return this.getToken(ArithmeticParser.SUB, 0);
+};
+
+NegativeDoubleContext.prototype.DOUBLE = function() {
+    return this.getToken(ArithmeticParser.DOUBLE, 0);
+};
+NegativeDoubleContext.prototype.enterRule = function(listener) {
+    if(listener instanceof ArithmeticListener ) {
+        listener.enterNegativeDouble(this);
+	}
+};
+
+NegativeDoubleContext.prototype.exitRule = function(listener) {
+    if(listener instanceof ArithmeticListener ) {
+        listener.exitNegativeDouble(this);
 	}
 };
 
@@ -461,12 +449,14 @@ ArithmeticParser.prototype.expression = function(_p) {
     var _prevctx = localctx;
     var _startState = 2;
     this.enterRecursionRule(localctx, 2, ArithmeticParser.RULE_expression, _p);
+    var _la = 0; // Token type
     try {
         this.enterOuterAlt(localctx, 1);
-        this.state = 13;
+        this.state = 17;
         this._errHandler.sync(this);
-        switch(this._input.LA(1)) {
-        case ArithmeticParser.INT:
+        var la_ = this._interp.adaptivePredict(this._input,0,this._ctx);
+        switch(la_) {
+        case 1:
             localctx = new IntegerContext(this, localctx);
             this._ctx = localctx;
             _prevctx = localctx;
@@ -474,29 +464,50 @@ ArithmeticParser.prototype.expression = function(_p) {
             this.state = 7;
             this.match(ArithmeticParser.INT);
             break;
-        case ArithmeticParser.DOUBLE:
-            localctx = new DoubleContext(this, localctx);
+
+        case 2:
+            localctx = new NegativeIntegerContext(this, localctx);
             this._ctx = localctx;
             _prevctx = localctx;
             this.state = 8;
+            this.match(ArithmeticParser.SUB);
+            this.state = 9;
+            this.match(ArithmeticParser.INT);
+            break;
+
+        case 3:
+            localctx = new DoubleContext(this, localctx);
+            this._ctx = localctx;
+            _prevctx = localctx;
+            this.state = 10;
             this.match(ArithmeticParser.DOUBLE);
             break;
-        case ArithmeticParser.T__0:
+
+        case 4:
+            localctx = new NegativeDoubleContext(this, localctx);
+            this._ctx = localctx;
+            _prevctx = localctx;
+            this.state = 11;
+            this.match(ArithmeticParser.SUB);
+            this.state = 12;
+            this.match(ArithmeticParser.DOUBLE);
+            break;
+
+        case 5:
             localctx = new ParenthesesContext(this, localctx);
             this._ctx = localctx;
             _prevctx = localctx;
-            this.state = 9;
+            this.state = 13;
             this.match(ArithmeticParser.T__0);
-            this.state = 10;
+            this.state = 14;
             localctx.inner = this.expression(0);
-            this.state = 11;
+            this.state = 15;
             this.match(ArithmeticParser.T__1);
             break;
-        default:
-            throw new antlr4.error.NoViableAltException(this);
+
         }
         this._ctx.stop = this._input.LT(-1);
-        this.state = 32;
+        this.state = 30;
         this._errHandler.sync(this);
         var _alt = this._interp.adaptivePredict(this._input,2,this._ctx)
         while(_alt!=2 && _alt!=antlr4.atn.ATN.INVALID_ALT_NUMBER) {
@@ -505,7 +516,7 @@ ArithmeticParser.prototype.expression = function(_p) {
                     this.triggerExitRuleEvent();
                 }
                 _prevctx = localctx;
-                this.state = 30;
+                this.state = 28;
                 this._errHandler.sync(this);
                 var la_ = this._interp.adaptivePredict(this._input,1,this._ctx);
                 switch(la_) {
@@ -513,75 +524,63 @@ ArithmeticParser.prototype.expression = function(_p) {
                     localctx = new PowerContext(this, new ExpressionContext(this, _parentctx, _parentState));
                     localctx.left = _prevctx;
                     this.pushNewRecursionContext(localctx, _startState, ArithmeticParser.RULE_expression);
-                    this.state = 15;
-                    if (!( this.precpred(this._ctx, 5))) {
-                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 5)");
-                    }
-                    this.state = 16;
-                    localctx.operator = this.match(ArithmeticParser.POW);
-                    this.state = 17;
-                    localctx.right = this.expression(6);
-                    break;
-
-                case 2:
-                    localctx = new MultiplicationContext(this, new ExpressionContext(this, _parentctx, _parentState));
-                    localctx.left = _prevctx;
-                    this.pushNewRecursionContext(localctx, _startState, ArithmeticParser.RULE_expression);
-                    this.state = 18;
-                    if (!( this.precpred(this._ctx, 4))) {
-                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 4)");
-                    }
                     this.state = 19;
-                    localctx.operator = this.match(ArithmeticParser.MUL);
-                    this.state = 20;
-                    localctx.right = this.expression(5);
-                    break;
-
-                case 3:
-                    localctx = new DivisionContext(this, new ExpressionContext(this, _parentctx, _parentState));
-                    localctx.left = _prevctx;
-                    this.pushNewRecursionContext(localctx, _startState, ArithmeticParser.RULE_expression);
-                    this.state = 21;
                     if (!( this.precpred(this._ctx, 3))) {
                         throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 3)");
                     }
-                    this.state = 22;
-                    localctx.operator = this.match(ArithmeticParser.DIV);
-                    this.state = 23;
+                    this.state = 20;
+                    localctx.operator = this.match(ArithmeticParser.POW);
+                    this.state = 21;
                     localctx.right = this.expression(4);
                     break;
 
-                case 4:
-                    localctx = new AdditionContext(this, new ExpressionContext(this, _parentctx, _parentState));
+                case 2:
+                    localctx = new MultiplicativeContext(this, new ExpressionContext(this, _parentctx, _parentState));
                     localctx.left = _prevctx;
                     this.pushNewRecursionContext(localctx, _startState, ArithmeticParser.RULE_expression);
-                    this.state = 24;
+                    this.state = 22;
                     if (!( this.precpred(this._ctx, 2))) {
                         throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 2)");
                     }
-                    this.state = 25;
-                    localctx.operator = this.match(ArithmeticParser.ADD);
-                    this.state = 26;
+                    this.state = 23;
+                    localctx.operator = this._input.LT(1);
+                    _la = this._input.LA(1);
+                    if(!(_la===ArithmeticParser.MUL || _la===ArithmeticParser.DIV)) {
+                        localctx.operator = this._errHandler.recoverInline(this);
+                    }
+                    else {
+                    	this._errHandler.reportMatch(this);
+                        this.consume();
+                    }
+                    this.state = 24;
                     localctx.right = this.expression(3);
                     break;
 
-                case 5:
-                    localctx = new SubtractionContext(this, new ExpressionContext(this, _parentctx, _parentState));
+                case 3:
+                    localctx = new AdditiveContext(this, new ExpressionContext(this, _parentctx, _parentState));
                     localctx.left = _prevctx;
                     this.pushNewRecursionContext(localctx, _startState, ArithmeticParser.RULE_expression);
-                    this.state = 27;
+                    this.state = 25;
                     if (!( this.precpred(this._ctx, 1))) {
                         throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 1)");
                     }
-                    this.state = 28;
-                    localctx.operator = this.match(ArithmeticParser.SUB);
-                    this.state = 29;
+                    this.state = 26;
+                    localctx.operator = this._input.LT(1);
+                    _la = this._input.LA(1);
+                    if(!(_la===ArithmeticParser.ADD || _la===ArithmeticParser.SUB)) {
+                        localctx.operator = this._errHandler.recoverInline(this);
+                    }
+                    else {
+                    	this._errHandler.reportMatch(this);
+                        this.consume();
+                    }
+                    this.state = 27;
                     localctx.right = this.expression(2);
                     break;
 
                 } 
             }
-            this.state = 34;
+            this.state = 32;
             this._errHandler.sync(this);
             _alt = this._interp.adaptivePredict(this._input,2,this._ctx);
         }
@@ -613,14 +612,10 @@ ArithmeticParser.prototype.sempred = function(localctx, ruleIndex, predIndex) {
 ArithmeticParser.prototype.expression_sempred = function(localctx, predIndex) {
 	switch(predIndex) {
 		case 0:
-			return this.precpred(this._ctx, 5);
-		case 1:
-			return this.precpred(this._ctx, 4);
-		case 2:
 			return this.precpred(this._ctx, 3);
-		case 3:
+		case 1:
 			return this.precpred(this._ctx, 2);
-		case 4:
+		case 2:
 			return this.precpred(this._ctx, 1);
 		default:
 			throw "No predicate with index:" + predIndex;

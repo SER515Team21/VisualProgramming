@@ -14,13 +14,12 @@ input
     ;
 
 expression
-   : INT                                            # Integer
-   | DOUBLE                                         # Double
-   | '(' inner=expression ')'                       # Parentheses
-   | left=expression operator=POW right=expression  # Power
-   | left=expression operator=MUL right=expression  # Multiplication
-   | left=expression operator=DIV right=expression  # Division
-   | left=expression operator=ADD right=expression  # Addition
-   | left=expression operator=SUB right=expression  # Subtraction
+   : INT                                                    # Integer
+   | '-' INT                                                # NegativeInteger
+   | DOUBLE                                                 # Double
+   | '-' DOUBLE                                             # NegativeDouble
+   | '(' inner=expression ')'                               # Parentheses
+   | left=expression operator=POW right=expression          # Power
+   | left=expression operator=(MUL | DIV) right=expression  # Multiplicative
+   | left=expression operator=(ADD | SUB) right=expression  # Additive
    ;
-
