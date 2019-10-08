@@ -49,6 +49,7 @@
   "dependencies": {
     "electron-compile": "^6.4.4",
     "electron-squirrel-startup": "^1.0.0",
+    "mkdirp": "^0.5.1",
     "nedb": "^1.8.0",
     "nedb-promise": "^2.0.1"
   },
@@ -63,6 +64,8 @@
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jsx-a11y": "^5.1.1",
     "eslint-plugin-react": "^7.14.3",
-    "jasmine": "^3.5.0"
+    "jasmine": "^3.5.0",
+    "pug": "^2.0.4",
+    "pug-cli": "^1.0.0-alpha6"
   }
 }
