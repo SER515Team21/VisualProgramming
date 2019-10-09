@@ -4,6 +4,12 @@ const ArithmeticLexer = require("./ArithmeticLexer").ArithmeticLexer;
 const ArithmeticParser = require("./ArithmeticParser").ArithmeticParser;
 const ListenerSolver = require("./ListenerSolver");
 
+/**
+ * @class ParserFacade
+ *
+ * @description Wraps the parser generate by antlr to reduce to only needing
+ * to pass a string in to construct it and simply getting the solution attribute.
+ */
 class ParserFacade {
     constructor(expressionString) {
         this._expressionString = expressionString;
