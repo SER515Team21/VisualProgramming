@@ -38,6 +38,13 @@
                                                                                                   value="Search in all modules"/><label
                 for="search-all">Search All</label></span></div>
         <div id="search-results">
+            <button class="accordion">Numbers</button>
+            <div class="panel">
+                <div id="number" class="node number" draggable="true" ondragstart="pickUpNode(event)">
+                    <input type="number">
+                </div>
+            </div>
+            
             <button class="accordion">Arithmetic</button>
             <div class="panel">
                 <div id="addition" class="node arithmetic addition" draggable="true" ondragstart="pickUpNode(event)">
