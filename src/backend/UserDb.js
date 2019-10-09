@@ -18,13 +18,22 @@ class UserDb {
         return doc.length !== 0;
     }
 
-    async addUser(un, pw) {
+    async addUser(un, pw, role = "student") {
         let exists = await this.userExists(un);
         if(exists){
             return false;
         }
-        await this.programDb.insert({ username: un, password: pw });
+        await this.programDb.insert({ username: un, password: pw, role: role });
         return true;
+    }
+
+    async updateRole(username, role = "student") {
+        if (this.userExists(username)) {
+            const doc = await this.programDb.update({ username: username, role: role});
+            return true;
+        } else {
+            return false;
+        }
     }
 }
 

@@ -40,6 +40,9 @@ describe("Usser DB", () => {
         let result3 = await UserDb.addUser("jebush1", "1234");
         let result3p2 = await UserDb.userLogin("jebush1", "1234");
         expect(result3 && result3p2).toBe(true);
+    });
 
+    afterAll(() => {
+        UserDb.remove({}, { multi: true });
     });
 });
