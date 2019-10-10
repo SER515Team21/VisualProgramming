@@ -1,0 +1,10 @@
+mixin arithmetic_node(name)
+    div(id=name,
+        class=`node arithmetic ${name}`,
+        draggable='true',
+        ondragstart='pickUpNode(event)'
+    )
+        input(type='number')
+        p
+        input(type='number')
+

@@ -1,3 +1,5 @@
+include nodes.pug
+
 #studentView(hidden='')
     header
         #date
@@ -18,22 +20,10 @@
         #search-results
             button.accordion Arithmetic
             .panel
-                #addition.node.arithmetic.addition(draggable='true' ondragstart='pickUpNode(event)')
-                    input(type='number')
-                    p
-                    input(type='number')
-                #subtraction.node.arithmetic.subtraction(draggable='true' ondragstart='pickUpNode(event)')
-                    input(type='number')
-                    p
-                    input(type='number')
-                #multiplication.node.arithmetic.multiplication(draggable='true' ondragstart='pickUpNode(event)')
-                    input(type='number')
-                    p
-                    input(type='number')
-                #division.node.arithmetic.division(draggable='true' ondragstart='pickUpNode(event)')
-                    input(type='number')
-                    p
-                    input(type='number')
+                +arithmetic_node('addition')
+                +arithmetic_node('subtraction')
+                +arithmetic_node('multiplication')
+                +arithmetic_node('division')
             button.accordion Algebraic Equations
             .panel
             button.accordion Graphing
