@@ -28,6 +28,21 @@ class NodeForest {
         // console.log(`added node of type "${typeof newNode}" with ID ${newNode.nodeId}`);
     }
 
+    static insertIntoBinaryNodeLeft(newNode, parentNodeId, rootNodeId){
+        let parentNode = this.getNodeFromRoot(rootNodeId, parentNodeId);
+        parentNode.setLeftOperand(newNode);
+    }
+
+    static insertIntoBinaryNodeRight(newNode, parentNodeId, rootNodeId){
+        let parentNode = this.getNodeFromRoot(rootNodeId, parentNodeId);
+        parentNode.setRightOperand(newNode);
+    }
+
+    static insertIntoUnaryNode(newNode, parentNodeId, rootNodeId){
+        let parentNode = this.getNodeFromRoot(rootNodeId, parentNodeId);
+        parentNode.setOperand(newNode);
+    }
+
     static updateRootNode(newNode, oldId) {
         NodeForest.nodeForest[oldId] = newNode;
         return oldId;
