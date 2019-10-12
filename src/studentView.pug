@@ -19,25 +19,25 @@
             button.accordion Numbers
             .panel
                 #number.node.number(draggable='true' ondragstart='pickUpNode(event)')
-                    input(type=number)
+                    input(type='number')
             button.accordion Arithmetic
             .panel
                 #addition.node.arithmetic.addition(draggable='true' ondragstart='pickUpNode(event)')
-                    #addLeft(ondrop='dropNode(event)', ondragover='allowDroppingNode(event)')
+                    #addLeft.node-container(ondrop='dropNode(event)', ondragover='allowDroppingNode(event)')
                     p
-                    #addRight(ondrop='dropNode(event)', ondragover='allowDroppingNode(event)')
+                    #addRight.node-container(ondrop='dropNode(event)', ondragover='allowDroppingNode(event)')
                 #subtraction.node.arithmetic.subtraction(draggable='true' ondragstart='pickUpNode(event)')
-                    #subLeft(ondrop='dropNode(event)', ondragover='allowDroppingNode(event)')
+                    #subLeft.node-container(ondrop='dropNode(event)', ondragover='allowDroppingNode(event)')
                     p
-                    #subRight(ondrop='dropNode(event)', ondragover='allowDroppingNode(event)')
+                    #subRight.node-container(ondrop='dropNode(event)', ondragover='allowDroppingNode(event)')
                 #multiplication.node.arithmetic.multiplication(draggable='true' ondragstart='pickUpNode(event)')
-                    #multiplyLeft(ondrop='dropNode(event)', ondragover='allowDroppingNode(event)')
+                    #multiplyLeft.node-container(ondrop='dropNode(event)', ondragover='allowDroppingNode(event)')
                     p
-                    #multiplyRight(ondrop='dropNode(event)', ondragover='allowDroppingNode(event)')
+                    #multiplyRight.node-container(ondrop='dropNode(event)', ondragover='allowDroppingNode(event)')
                 #division.node.arithmetic.division(draggable='true' ondragstart='pickUpNode(event)')
-                    #divideLeft(ondrop='dropNode(event)', ondragover='allowDroppingNode(event)')
+                    #divideLeft.node-container(ondrop='dropNode(event)', ondragover='allowDroppingNode(event)')
                     p
-                    #divideRight(ondrop='dropNode(event)', ondragover='allowDroppingNode(event)')
+                    #divideRight.node-container(ondrop='dropNode(event)', ondragover='allowDroppingNode(event)')
             button.accordion Algebraic Equations
             .panel
             button.accordion Graphing
