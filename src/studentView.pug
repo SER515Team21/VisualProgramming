@@ -16,24 +16,28 @@
                 input#search-all(type='radio' name='search-where' value='Search in all modules')
                 label(for='search-all') Search All
         #search-results
+            button.accordion Numbers
+            .panel
+                #number.node.number(draggable='true' ondragstart='pickUpNode(event)')
+                    input(type=number)
             button.accordion Arithmetic
             .panel
                 #addition.node.arithmetic.addition(draggable='true' ondragstart='pickUpNode(event)')
-                    input(type='number')
+                    #addLeft(ondrop='dropNode(event)', ondragover='allowDroppingNode(event)')
                     p
-                    input(type='number')
+                    #addRight(ondrop='dropNode(event)', ondragover='allowDroppingNode(event)')
                 #subtraction.node.arithmetic.subtraction(draggable='true' ondragstart='pickUpNode(event)')
-                    input(type='number')
+                    #subLeft(ondrop='dropNode(event)', ondragover='allowDroppingNode(event)')
                     p
-                    input(type='number')
+                    #subRight(ondrop='dropNode(event)', ondragover='allowDroppingNode(event)')
                 #multiplication.node.arithmetic.multiplication(draggable='true' ondragstart='pickUpNode(event)')
-                    input(type='number')
+                    #multiplyLeft(ondrop='dropNode(event)', ondragover='allowDroppingNode(event)')
                     p
-                    input(type='number')
+                    #multiplyRight(ondrop='dropNode(event)', ondragover='allowDroppingNode(event)')
                 #division.node.arithmetic.division(draggable='true' ondragstart='pickUpNode(event)')
-                    input(type='number')
+                    #divideLeft(ondrop='dropNode(event)', ondragover='allowDroppingNode(event)')
                     p
-                    input(type='number')
+                    #divideRight(ondrop='dropNode(event)', ondragover='allowDroppingNode(event)')
             button.accordion Algebraic Equations
             .panel
             button.accordion Graphing
