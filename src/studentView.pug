@@ -1,27 +1,9 @@
 include nodes.pug
+include NodeSearch.pug
 
 #studentView(hidden='')
     include header.pug
-    .node-search(ondragover='allowDroppingNode(event)' ondrop='deleteNode(event)')
-        #search-settings
-            input(type='search')
-            span.radioGroup
-                input#search-current(type='radio' name='search-where' value='Search in current module')
-                label(for='search-current') Search Current
-            span.radioGroup
-                input#search-all(type='radio' name='search-where' value='Search in all modules')
-                label(for='search-all') Search All
-        #search-results
-            button.accordion Arithmetic
-            .panel
-                +arithmetic_node('addition')
-                +arithmetic_node('subtraction')
-                +arithmetic_node('multiplication')
-                +arithmetic_node('division')
-            button.accordion Algebraic Equations
-            .panel
-            button.accordion Graphing
-            .panel
+    +node-search
     .tab-switcher
         ul
             li.tab
