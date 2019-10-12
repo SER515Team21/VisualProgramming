@@ -36,7 +36,14 @@ function dropNode(event) {
         // Ensures that the parent is a Node
         if (event.target.classList.contains("node-container") &&
             event.target.childElementCount === 0) {
-            clone.id = NodeFactory.createNode(clone.classList, true);
+            clone.id = NodeFactory.createNode(clone.classList, false);
+            // Insert into a binary node
+            if (event.target.id.toString().endsWith("Left")) {
+                // NodeForest.insertIntoBinaryNodeLeft(NodeForest.getNode(clone.id));
+            }
+            else {
+                // NodeForest.insertIntoBinaryNodeRight(NodeForest.getNode(clone.id));
+            }
             event.target.appendChild(clone);
         }
     }
@@ -56,6 +63,7 @@ function dropNode(event) {
         }
     }
 
+    console.log(NodeForest.nodeForest);
     Calculator.updateResult();
 }
 
