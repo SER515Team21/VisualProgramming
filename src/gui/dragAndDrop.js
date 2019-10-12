@@ -63,7 +63,6 @@ function dropNode(event) {
         }
     }
 
-    console.log(NodeForest.nodeForest);
     Calculator.updateResult();
 }
 
