@@ -6,7 +6,6 @@
  */
 class Node {
     constructor() {
-        console.log("Node constructor called");
         if (this.constructor === Node) {
             throw new TypeError("Abstract class 'Node' cannot be instantiated");
         }

@@ -26,7 +26,19 @@ describe("Usser DB", () => {
     });
 
     /* A specification */
-    it("shall be able to add a user with a new username and fail at adding a user with an existing username", async function() {
+    it("shall be able to add a user with a new username", async function() {
+        let result1 = await UserDb.addUser("zlmonroe", "1234");
+        let result1p2 = await UserDb.userLogin("zlmonroe", "1234");
+
+        expect(result1 && result1p2).toBe(true);
+
+        let result3 = await UserDb.addUser("zlmonroe1", "1234");
+        let result3p2 = await UserDb.userLogin("zlmonroe1", "1234");
+        expect(result3 && result3p2).toBe(true);
+    });
+
+    /* A specification */
+    it("shall fail at adding a user with an existing username", async function() {
         let result1 = await UserDb.addUser("jebush", "1234");
         let result1p2 = await UserDb.userLogin("jebush", "1234");
 
