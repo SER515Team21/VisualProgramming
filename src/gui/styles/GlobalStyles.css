@@ -2,8 +2,12 @@ html, body {
     height: 100%;
 }
 
-[hidden] {
+[hidden] * {
     display: none;
+}
+
+.inputWithLabel {
+    margin: 5px auto;
 }
 
 .tab-switcher ul {
