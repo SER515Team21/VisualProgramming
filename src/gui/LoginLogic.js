@@ -7,7 +7,8 @@ async function sendLoginRequest() {
 
     if (!username || !password) {
         document.getElementById("loginFail").hidden = false;
-    } else {
+    }
+    else {
         const loginSuccess = await UserDb.userExists(username, password);
         if (!loginSuccess) {
             document.getElementById("loginFail").hidden = false;
@@ -20,12 +21,45 @@ async function sendLoginRequest() {
     }
 }
 
-async function sendNewAccountRequest() {
-    const username = document.getElementById("username").value;
-    const password = document.getElementById("password").value;
+function switchSignUp() {
+    document.getElementById("login").hidden = true;
+    document.getElementById("signup").hidden = false;
+}
 
-    //TODO Add element for role
-    //const role = document.getElementById("role").value;
+function returnToLogin() {
+    document.getElementById("login").hidden = false;
+    document.getElementById("signup").hidden = true;
+}
 
-    await UserDb.addUser(username, password);
+async function sendSignUpRequest() {
+    const username = document.getElementById("signupUserName").value;
+    const password = document.getElementById("signupPassword").value;
+    const password2 = document.getElementById("signupPassword2").value;
+
+    if (username === "" || password === "" || password2 === "") {
+        document.getElementById("enterAllValues").hidden = false;
+        document.getElementById("pwMatch").hidden = true;
+        document.getElementById("usTaken").hidden = true;
+    }
+    else if (password !== password2) {
+        document.getElementById("enterAllValues").hidden = true;
+        document.getElementById("pwMatch").hidden = false;
+        document.getElementById("usTaken").hidden = true;
+    }
+    else {
+        const success = await UserDb.addUser(username, password);
+
+        if (success) {
+            document.getElementById("enterAllValues").hidden = true;
+            document.getElementById("pwMatch").hidden = true;
+            document.getElementById("usTaken").hidden = true;
+
+            document.getElementById("signUpSuccess").hidden = false;
+        }
+        else {
+            document.getElementById("enterAllValues").hidden = true;
+            document.getElementById("pwMatch").hidden = true;
+            document.getElementById("usTaken").hidden = false;
+        }
+    }
 }
