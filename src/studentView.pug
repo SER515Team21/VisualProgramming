@@ -1,13 +1,7 @@
 include nodes.pug
 
 #studentView(hidden='')
-    header
-        #date
-        #account-icon
-            img(src='./gui/img/User.png' alt='User Icon')
-            span#account-username-display Welcome, User
-            #logout
-                span Logout
+    include header.pug
     .node-search(ondragover='allowDroppingNode(event)' ondrop='deleteNode(event)')
         #search-settings
             input(type='search')
