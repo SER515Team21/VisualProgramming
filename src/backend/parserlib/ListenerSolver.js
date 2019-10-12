@@ -22,6 +22,7 @@ class ListenerSolver extends ArithmeticListener {
         const number = parseInt(ctx.INT(), 10);
         this._stack.push(number);
         if (this.DEBUG) {
+            // eslint-disable-next-line no-console
             console.log("Parsed integer", number);
         }
     }
@@ -34,6 +35,7 @@ class ListenerSolver extends ArithmeticListener {
         const number = -1 * parseInt(ctx.INT(), 10);
         this._stack.push(number);
         if (this.DEBUG) {
+            // eslint-disable-next-line no-console
             console.log("Parsed integer", number);
         }
     }
@@ -46,6 +48,7 @@ class ListenerSolver extends ArithmeticListener {
         const number = parseFloat(ctx.DOUBLE());
         this._stack.push(number);
         if (this.DEBUG) {
+            // eslint-disable-next-line no-console
             console.log("Parsed double", number);
         }
     }
@@ -58,6 +61,7 @@ class ListenerSolver extends ArithmeticListener {
         const number = -1 * parseFloat(ctx.DOUBLE());
         this._stack.push(number);
         if (this.DEBUG) {
+            // eslint-disable-next-line no-console
             console.log("Parsed double", number);
         }
     }
@@ -79,6 +83,7 @@ class ListenerSolver extends ArithmeticListener {
         }
         this._stack.push(result);
         if (this.DEBUG) {
+            // eslint-disable-next-line no-console
             console.log(left, ctx.getChild(1).getText(), right);
         }
     }
@@ -101,6 +106,7 @@ class ListenerSolver extends ArithmeticListener {
 
         this._stack.push(result);
         if (this.DEBUG) {
+            // eslint-disable-next-line no-console
             console.log(left, ctx.getChild(1).getText(), right);
         }
     }
