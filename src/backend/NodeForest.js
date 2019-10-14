@@ -22,9 +22,10 @@ class NodeForest {
         let rootNodeId = 0;
         let treeCount = NodeForest.treeCount();
         do{
-            NodeForest.getNodeFromRoot(NodeForest.nodeForest[rootNodeId], nodeId);
+            newNode = NodeForest.getNodeFromRoot(NodeForest.nodeForest[rootNodeId], nodeId);
             rootNodeId++;
         }while(rootNodeId < treeCount && newNode == null);
+        return newNode;
     }
 
     static insertRootNode(newNode) {
