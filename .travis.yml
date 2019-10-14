@@ -13,4 +13,4 @@ before_script:
   - npm install -g electron-forge
   - npm install
 script:
-  - npm travis
+  - npm run travis
