@@ -16,24 +16,28 @@
                 input#search-all(type='radio' name='search-where' value='Search in all modules')
                 label(for='search-all') Search All
         #search-results
+            button.accordion Numbers
+            .panel
+                #number.node.number(draggable='true' ondragstart='pickUpNode(event)')
+                    input(type='number')
             button.accordion Arithmetic
             .panel
                 #addition.node.arithmetic.addition(draggable='true' ondragstart='pickUpNode(event)')
-                    input(type='number')
+                    #addLeft.node-container(ondrop='dropNode(event)', ondragover='allowDroppingNode(event)')
                     p
-                    input(type='number')
+                    #addRight.node-container(ondrop='dropNode(event)', ondragover='allowDroppingNode(event)')
                 #subtraction.node.arithmetic.subtraction(draggable='true' ondragstart='pickUpNode(event)')
-                    input(type='number')
+                    #subLeft.node-container(ondrop='dropNode(event)', ondragover='allowDroppingNode(event)')
                     p
-                    input(type='number')
+                    #subRight.node-container(ondrop='dropNode(event)', ondragover='allowDroppingNode(event)')
                 #multiplication.node.arithmetic.multiplication(draggable='true' ondragstart='pickUpNode(event)')
-                    input(type='number')
+                    #multiplyLeft.node-container(ondrop='dropNode(event)', ondragover='allowDroppingNode(event)')
                     p
-                    input(type='number')
+                    #multiplyRight.node-container(ondrop='dropNode(event)', ondragover='allowDroppingNode(event)')
                 #division.node.arithmetic.division(draggable='true' ondragstart='pickUpNode(event)')
-                    input(type='number')
+                    #divideLeft.node-container(ondrop='dropNode(event)', ondragover='allowDroppingNode(event)')
                     p
-                    input(type='number')
+                    #divideRight.node-container(ondrop='dropNode(event)', ondragover='allowDroppingNode(event)')
             button.accordion Algebraic Equations
             .panel
             button.accordion Graphing
