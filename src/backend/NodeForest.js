@@ -17,8 +17,14 @@ class NodeForest {
         return null;
     }
 
-    static getNode(nodeId, nodeRootId) {
-        return NodeForest.getNodeFromRoot(NodeForest.nodeForest[nodeRootId], nodeId);
+    static getNode(nodeId) {
+        let newNode = null;
+        let rootNodeId = 0;
+        let treeCount = NodeForest.treeCount();
+        do{
+            NodeForest.getNodeFromRoot(NodeForest.nodeForest[rootNodeId], nodeId);
+            rootNodeId++;
+        }while(rootNodeId < treeCount && newNode == null);
     }
 
     static insertRootNode(newNode) {
@@ -28,18 +34,18 @@ class NodeForest {
         // console.log(`added node of type "${typeof newNode}" with ID ${newNode.nodeId}`);
     }
 
-    static insertIntoBinaryNodeLeft(newNode, parentNodeId, rootNodeId){
-        let parentNode = this.getNodeFromRoot(rootNodeId, parentNodeId);
+    static insertIntoBinaryNodeLeft(newNode, parentNodeId){
+        let parentNode = this.getNode(parentNodeId);
         parentNode.setLeftOperand(newNode);
     }
 
-    static insertIntoBinaryNodeRight(newNode, parentNodeId, rootNodeId){
-        let parentNode = this.getNodeFromRoot(rootNodeId, parentNodeId);
+    static insertIntoBinaryNodeRight(newNode, parentNodeId){
+        let parentNode = this.getNode(parentNodeId);
         parentNode.setRightOperand(newNode);
     }
 
-    static insertIntoUnaryNode(newNode, parentNodeId, rootNodeId){
-        let parentNode = this.getNodeFromRoot(rootNodeId, parentNodeId);
+    static insertIntoUnaryNode(newNode, parentNodeId){
+        let parentNode = this.getNode(parentNodeId);
         parentNode.setOperand(newNode);
     }
 
