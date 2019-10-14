@@ -1,19 +1,25 @@
 include nodes.pug
 include NodeSearch.pug
+include TabSwitcher.pug
 
 #studentView(hidden='')
     include header.pug
     +node-search
+    //-
+        .tab-switcher
+            ul
+                li.tab
+                    button Upcoming Assignments
+                li.tab
+                    button Practice Equations
+                li.tab
+                    button View Grades
     .tab-switcher
-        ul
-            li.tab
-                button Upcoming Assignments
-            li.tab
-                button Practice Equations
-            li.tab
-                button View Grades
-        #Assignments.view
+        +tabbedFrame(['Upcoming Assignments','Practice Equations', 'View Grades'], [practice, grades])
         .view.active(id='Practice Equations')
             #editorPane.paper(ondrop='dropNode(event)' ondragover='allowDroppingNode(event)')
             #resultPane(hidden='')
         .view(id='View Grades')
+
+    #Assignments.view
+
