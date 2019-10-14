@@ -13,7 +13,8 @@ notifications:
   slack: ser515team:yyeZIHSbcSTRNfwPcMnjigHz
 
 before_script:
+  - npm install -g npm
   - npm install
 
 script:
-  - xvfb-run npm travis
+  - npm travis
