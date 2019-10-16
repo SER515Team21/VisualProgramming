@@ -1,11 +1,11 @@
 const NedDb = require("nedb-promise");
 const Path = require("path");
-const fs = require("fs")
+const fs = require("fs");
 
 class UserDb {
     constructor() {
         const programDbPath = Path.relative(process.cwd(), "./data/ProgramDb.db");
-        this.programDb = NedDb({filename: programDbPath, autoload: true});
+        this.programDb = NedDb({ filename: programDbPath, autoload: true });
         UserDb.instance = this;
         return UserDb.instance;
     }
@@ -36,7 +36,8 @@ class UserDb {
         return false;
     }
 
-    async removeAll(){
+    // eslint-disable-next-line class-methods-use-this
+    async removeAll() {
         const programDbPath = Path.relative(process.cwd(), "./data/ProgramDb.db");
         fs.unlinkSync(programDbPath);
     }
