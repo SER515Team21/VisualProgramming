@@ -25,10 +25,19 @@ class NodeFactory {
                 if (isRoot) {
                     NodeForest.insertRootNode(newNode);
                 }
+                else {
+                    NodeForest.insertNode(newNode);
+                }
                 return newNode.nodeId;
             }
         }
         return null;
+    }
+
+    static setChild(parentId, childId, operandKey) {
+        const parent = NodeForest.getNode(parentId);
+        const child = NodeForest.getNode(childId);
+        parent.setOperand(operandKey, child);
     }
 }
 
