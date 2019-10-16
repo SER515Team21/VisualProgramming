@@ -5,12 +5,14 @@
 
 const Operators = require("./Operators.js");
 const NodeForest = require("./NodeForest.js");
+const NumberNode = require("./NumberNode.js");
 
 const operatorMap = {
     addition: Operators.Addition,
     subtraction: Operators.Subtraction,
     multiplication: Operators.Multiplication,
-    division: Operators.Division
+    division: Operators.Division,
+    number: NumberNode
 };
 
 class NodeFactory {

@@ -8,6 +8,7 @@
 /* global Calculator */
 /* global Operators */
 /* global NodeFactory */
+/* global NumberNode */
 
 /**
  * Sets data attribute to hold the id of the picked up HTML Node
@@ -37,12 +38,18 @@ function dropNode(event) {
         if (event.target.classList.contains("node-container") &&
             event.target.childElementCount === 0) {
             clone.id = NodeFactory.createNode(clone.classList, false);
+            // Set the number to 0 on initial drop if number node
+            if (node.classList.contains("number")) {
+                NodeForest.getNode(clone.id).number = 0;
+            }
             // Insert into a binary node
             if (event.target.id.toString().endsWith("Left")) {
-                // NodeForest.insertIntoBinaryNodeLeft(NodeForest.getNode(clone.id));
+                NodeForest.getNode(event.target.parentNode.id)
+                    .setLeftOperand(NodeForest.getNode(clone.id));
             }
-            else {
-                // NodeForest.insertIntoBinaryNodeRight(NodeForest.getNode(clone.id));
+            else if (event.target.id.toString().endsWith("Right")) {
+                NodeForest.getNode(event.target.parentNode.id)
+                    .setRightOperand(NodeForest.getNode(clone.id));
             }
             event.target.appendChild(clone);
         }
@@ -87,4 +94,13 @@ function deleteNode(event) {
  */
 function allowDroppingNode(event) {
     event.preventDefault();
+}
+
+/**
+ * Handles change of number inputs
+ * @param input
+ */
+function numberListener(input) {
+    NodeForest.getNode(input.parentNode.id).number = input.value;
+    Calculator.updateResult();
 }
