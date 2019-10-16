@@ -2,6 +2,7 @@ data/
 
 .idea/
 *.db
+package-lock.json
 # Logs
 logs
 *.log

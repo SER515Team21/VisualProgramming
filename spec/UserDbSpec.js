@@ -55,6 +55,6 @@ describe("Usser DB", () => {
     });
 
     afterAll(() => {
-        UserDb.remove({}, { multi: true });
+        UserDb.removeAll();
     });
 });
