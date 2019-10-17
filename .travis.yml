@@ -1,0 +1,13 @@
+language: node_js
+
+node_js:
+  - 10
+
+notifications:
+  slack: ser515team:yyeZIHSbcSTRNfwPcMnjigHz
+
+before_script:
+  - npm install -g electron-forge
+  - npm install
+script:
+  - npm run travis

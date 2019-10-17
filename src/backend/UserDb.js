@@ -1,5 +1,6 @@
 const NedDb = require("nedb-promise");
 const Path = require("path");
+const fs = require("fs");
 
 class UserDb {
     constructor() {
@@ -33,6 +34,12 @@ class UserDb {
             return true;
         }
         return false;
+    }
+
+    // eslint-disable-next-line class-methods-use-this
+    async removeAll() {
+        const programDbPath = Path.relative(process.cwd(), "./data/ProgramDb.db");
+        fs.unlinkSync(programDbPath);
     }
 }
 
