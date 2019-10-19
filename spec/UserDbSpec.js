@@ -6,7 +6,7 @@
 const UserDb = require("../src/backend/UserDb.js");
 
 /* Write the test suite */
-describe("Usser DB", () => {
+describe("User DB", () => {
     /* A setup function
     beforeEach(() => {
     });
@@ -55,6 +55,6 @@ describe("Usser DB", () => {
     });
 
     afterAll(() => {
-        UserDb.remove({}, { multi: true });
+        UserDb.removeAll();
     });
 });
