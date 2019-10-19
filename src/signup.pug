@@ -1,0 +1,23 @@
+div(id='signup' class="signlog" hidden)
+    h1 Sign Up for Visual Mathematics!
+    h2 Sign Up
+    div(class='inputWithLabel')
+        label(for='signupUserName') Username:
+        input(type='text' id='signupUserName')
+    div(class='inputWithLabel')
+        label(for='signupPassword') Password:
+        input(type='password' id='signupPassword')
+    div(class='inputWithLabel')
+        label(for='signupPassword2') Verify Password:
+        input(type='password' id='signupPassword2')
+    div(id="signUpSuccess" hidden)
+        p Success!
+        button(onclick="returnToLogin()") Return to Login
+    div(id="usTaken" hidden)
+        p Username already taken.
+    div(id="pwMatch" hidden)
+        p Passwords do not match.
+    div(id="enterAllValues" hidden)
+        p Please enter something in each text field.
+    button(onclick='sendSignUpRequest()') Sign Up
+

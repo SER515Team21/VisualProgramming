@@ -1,4 +1,4 @@
-div(id='login')
+div(id='login' class="signlog")
     h1 Welcome to Visual Mathematics!
     h2 Login
     div(class='inputWithLabel')
@@ -7,9 +7,10 @@ div(id='login')
     div(class='inputWithLabel')
         label(for='password') Password:
         input(type='password' id='password')
-    p(id='loginFail' hidden) Incorrect username or password
+    div(id="loginFail" hidden)
+        p Incorrect username or password
     button(onclick='sendLoginRequest()') Login
     div(id='extra')
-        button(onclick="sendNewAccountRequest()") Make Account!
+        button(onclick="switchSignUp()") Make Account!
         button(onclick='sendLoginRequest') Forgot Login?
 
