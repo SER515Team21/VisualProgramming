@@ -2,5 +2,5 @@ mixin tabbedFrame(tabs)
     ul
         each val in tabs
             li.tab
-                button= val
+                button(onclick="tabSwitcher(this)" data-for=val)= val
 

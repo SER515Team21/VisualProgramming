@@ -15,11 +15,12 @@ include TabSwitcher.pug
                 li.tab
                     button View Grades
     .tab-switcher
-        +tabbedFrame(['Upcoming Assignments','Practice Equations', 'View Grades'], [practice, grades])
-        .view.active(id='Practice Equations')
+        +tabbedFrame(['UpcomingAssignments','PracticeEquations', 'ViewGrades'], [practice, grades])
+        .view.active(id='PracticeEquations')
             #editorPane.paper(ondrop='dropNode(event)' ondragover='allowDroppingNode(event)')
             #resultPane(hidden='')
-        .view(id='View Grades')
+        .view(id='ViewGrades')
+        .view(id='UpcomingAssignments')
 
     #Assignments.view
 
