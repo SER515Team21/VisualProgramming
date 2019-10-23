@@ -16,11 +16,11 @@ include AssignmentsList
                 li.tab
                     button View Grades
     .tab-switcher
-        +tabbedFrame(['UpcomingAssignments','PracticeEquations', 'ViewGrades'], [practice, grades])
-        .view.active(id='PracticeEquations')
+        +tabbedFrame(['Assignments','Practice', 'Grades'])
+        .view.active(id='Practice')
             #editorPane.paper(ondrop='dropNode(event)' ondragover='allowDroppingNode(event)')
             #resultPane(hidden='')
-        .view(id='ViewGrades')
-        .view(id='UpcomingAssignments')
+        .view(id='Grades')
+        .view(id='Assignments')
             +AssignmentsList()
 
