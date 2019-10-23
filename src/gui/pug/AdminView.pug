@@ -1,7 +1,7 @@
-include TabSwitcher.pug
+include TabSwitcher
 
 #AdminView(hidden='')
-    include header.pug
+    include header
     .tab-switcher
         +tabbedFrame(['Courses','Teachers', 'Students'])
         .view.active(id='Courses')
