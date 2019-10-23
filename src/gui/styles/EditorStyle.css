@@ -24,26 +24,6 @@
     width: calc(100% - 160px);
 }
 
-#studentView .view {
-    height: 100%;
-    display: none;
-}
-
-#studentView .view.active {
-    display: block;
-}
-
-#date {
-    width: max-content;
-    height: 50px;
-    display: inline-block;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    font-family: "Baskerville Old Face", serif;
-    font-size: 36px;
-}
-
 .node {
     width: 100px;
     height: 50px;
