@@ -1,0 +1,7 @@
+include TabSwitcher
+
+#AdminView(hidden='')
+    include header
+    .tab-switcher
+        +tabbedFrame(['Courses','Teachers', 'Students'])
+        .view.active(id='Courses')

@@ -1,0 +1,29 @@
+.assignmentsList {
+    background: #f5f5f5;
+    margin: 10px;
+    height: calc(100% - 10px);
+    padding: 10px;
+    font-weight: bold;
+}
+
+.assignment {
+    background: #FFFFFF;
+    padding: 12px 6px 12px 10px;
+    font: 16px robotico, sans-serif;
+    color: #2D3B45;
+}
+
+.assignTitle {
+    font-size: 22px;
+    font-weight: bold;
+    display: inline-block;
+}
+
+.assignDate {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.assignDescription {
+    margin-top: 10px;
+}

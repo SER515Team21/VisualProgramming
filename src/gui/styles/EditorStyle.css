@@ -3,11 +3,6 @@
     height: 100%
 }
 
-#studentView header {
-    height: 50px;
-    width: 100%;
-}
-
 #studentView .node-search {
     height: 100%;
     width: 160px;

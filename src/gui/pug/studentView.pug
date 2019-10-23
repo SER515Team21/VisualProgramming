@@ -1,9 +1,10 @@
-include nodes.pug
-include NodeSearch.pug
-include TabSwitcher.pug
+include nodes
+include NodeSearch
+include TabSwitcher
+include AssignmentsList
 
 #studentView(hidden='')
-    include header.pug
+    include header
     +node-search
     //-
         .tab-switcher
@@ -21,6 +22,5 @@ include TabSwitcher.pug
             #resultPane(hidden='')
         .view(id='ViewGrades')
         .view(id='UpcomingAssignments')
-
-    #Assignments.view
+            +AssignmentsList()
 
