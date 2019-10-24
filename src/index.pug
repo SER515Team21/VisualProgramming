@@ -6,12 +6,13 @@ head
     script(src='./gui/dragAndDrop.js')
     link(rel='stylesheet' type='text/css' href='gui/styles/CSSReset.css')
     link(rel='stylesheet' type='text/css' href='./gui/styles/GlobalStyles.css')
+    link(rel='stylesheet' type='text/css' href='./gui/styles/GenericDashboardStyle.css')
     link(rel='stylesheet' type='text/css' href='gui/styles/EditorStyle.css')
     link(rel='stylesheet' type='text/css' href='./gui/styles/LoginStyle.css')
     title()
 
 body
-    include gui/styles/login
+    include gui/pug/login
     include gui/pug/signup
     include gui/pug/studentView
     include gui/pug/AdminView
