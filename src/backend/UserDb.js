@@ -41,6 +41,11 @@ class UserDb {
         const programDbPath = Path.relative(process.cwd(), "./data/ProgramDb.db");
         fs.unlinkSync(programDbPath);
     }
+
+    async getUserCount(role = "student") {
+        const doc = await this.programDb.count({ role });
+        return doc;
+    }
 }
 
 module.exports = new UserDb();
