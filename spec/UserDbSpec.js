@@ -54,6 +54,34 @@ describe("User DB", () => {
         expect(result3 && result3p2).toBe(true);
     });
 
+    /* A specification */
+    it("shall return count of all students in the db", async function() {
+        await UserDb.addUser("test1", "test1");
+        await UserDb.addUser("test2", "test2", "student");
+        await UserDb.addUser("test3", "test3", "teacher");
+
+        let result1 = await UserDb.getUserCount();
+        let result2 = await UserDb.getUserCount("student");
+
+        expect(result1).toBe(2);
+        expect(result1).toBe(result2);
+    });
+
+    /* A specification */
+    it("shall return selected student in the db", async function() {
+        await UserDb.addUser("test1", "test1");
+        await UserDb.addUser("test2", "test2", "student");
+        await UserDb.addUser("test3", "test3", "teacher");
+
+        const expectedList = {"test1"};
+        let list = getUser()
+
+        const result2 = await UserDb.getUser("student");
+
+        expect(result1).toBe(2);
+        expect(result1).toBe(result2);
+    });
+
     afterAll(() => {
         UserDb.removeAll();
     });
