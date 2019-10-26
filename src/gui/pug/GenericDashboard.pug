@@ -1,0 +1,12 @@
+mixin LeftPane
+    if block
+        block
+
+mixin MainPane
+    if block
+        block
+
+.GenericDashboard
+    include header
+    +LeftPane
+    +MainPane

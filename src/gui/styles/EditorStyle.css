@@ -44,18 +44,6 @@
     font-size: 36px;
 }
 
-#account-icon {
-    width: 200px;
-    height: 50px;
-    display: inline-block;
-    float: right;
-}
-
-#account-icon img {
-    width: 25px;
-    height: 25px;
-}
-
 .node {
     width: 100px;
     height: 50px;
@@ -133,20 +121,4 @@
     bottom: 0;
     border: 1px solid;
     border-color: transparent #efe4e4;
-}
-
-#logout {
-    display: none;
-    overflow: hidden;
-}
-
-#account-icon:hover #logout {
-    display: block;
-    position: relative;
-    top: 5px;
-    left: 0;
-    width: max-content;
-    height: 30px;
-    background-color: gray;
-    padding: 10px;
 }
