@@ -1,6 +1,8 @@
+include GenericDashboard
+
 #AdminView(hidden='')
-    include GenericDashboard
-    +LeftPane
-        p it work
-    +MainPane
-        p it work too
+    +GenericDashboard()
+        +LeftPane()
+            p place holder
+        +MainPane()
+            p place holder 2
