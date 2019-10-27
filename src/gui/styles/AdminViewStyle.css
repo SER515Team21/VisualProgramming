@@ -24,10 +24,78 @@
 }
 #AdminView * .tab-switcher .view.active {
     display: inline-block;
-    width: auto;
+    width: 100%;
 }
 #AdminView * .tab-switcher {
     display: inline-block;
-    width: auto;
+    width: 100%;
     height: auto;
+}
+
+#AdminView .MainPane * h1{
+    margin: 10px;
+}
+
+#AdminView .MainPane * h2{
+    margin: 10px;
+}
+
+#AdminView .MainPane * #teacherNameAdmin{
+    border-style: solid;
+    border-width: medium;
+}
+
+#AdminView .MainPane * h3{
+    margin: 10px;
+}
+
+#AdminView #CourseEditorTeacher{
+    display: block;
+}
+
+#AdminView #CourseEditorTeacher button{
+    margin: 10px;
+}
+
+#AdminView #CourseEditorStudents{
+    display: block;
+    margin: 10px;
+}
+
+#AdminView #CourseEditorStudentsBox{
+    height: 350px;
+    width: 100%;
+    overflow: auto;
+    display: inline-block;
+    border: solid;
+    border-width: medium;
+}
+
+#AdminView #CourseEditorStudents #CourseEditorStudentsBox table{
+    border: solid;
+    width: 100%;
+    border-width: medium;
+}
+
+#AdminView #CourseEditorStudents table{
+    border: solid;
+    width: calc(100% - 14px);
+    border-width: medium;
+}
+
+#AdminView #CourseEditorStudents * tr {
+    border-bottom-style: dashed;
+    border-width: medium;
+}
+
+#AdminView #CourseEditorStudents * th {
+    border-left-style: solid;
+    border-width: medium;
+    padding: 10px;
+}
+
+#AdminView #CourseEditorStudents * td {
+    border-left-style: solid;
+    border-width: medium;
+    padding: 10px;
 }
