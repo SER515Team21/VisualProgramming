@@ -1,0 +1,17 @@
+include GenericDashboard
+include TabSwitcher
+include studentSearch
+
+#TeacherView(hidden='')
+    +GenericDashboard()
+        +LeftPane()
+            .tab-switcher
+                +tabbedFrame(['Courses', 'Students'], [courses, students])
+            +student-search
+        +MainPane()
+            .tab-switcher
+                +tabbedFrame(['Students', 'Assignments'], [courseStudents, assignments])
+                .view.active(id='View Students')
+
+                .view(id='View Assignments')
+

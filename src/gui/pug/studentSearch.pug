@@ -1,0 +1,23 @@
+mixin student-search
+    .student-search
+        #search-settings
+            input(type='search')
+            span.radioGroup
+                input#search-current(type='radio' name='search-where' value='Search courses')
+                label(for='search-current') Search Courses
+            span.radioGroup
+                input#search-all(type='radio' name='search-where' value='Search students')
+                label(for='search-all') Search Students
+        #search-results
+            button.accordion Period 1
+            .panel
+            button.accordion Period 2
+            .panel
+            button.accordion Period 3
+            .panel
+            button.accordion Period 4
+            .panel
+            button.accordion Period 5
+            .panel
+            button.accordion Period 6
+            .panel
