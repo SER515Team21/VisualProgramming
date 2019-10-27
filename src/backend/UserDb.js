@@ -38,7 +38,7 @@ class UserDb {
     async updateRole(username, role = "student") {
         const exists = await this.userExists(username);
         if (exists) {
-            const doc = await this.programDb.update({ username }, { role });
+            await this.programDb.update({ username }, { role });
             return true;
         }
         return false;
@@ -68,7 +68,7 @@ class UserDb {
     async disableUser(username) {
         const exists = await this.userExists(username);
         if (exists) {
-            const doc = await this.programDb.update({ username }, { enabled: 0 });
+            await this.programDb.update({ username }, { enabled: 0 });
             return true;
         }
         return false;
