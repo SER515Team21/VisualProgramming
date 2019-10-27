@@ -47,12 +47,6 @@
     display: inline-block;
 }
 
-.arithmetic input {
-    margin-top: 13px !important;
-    display: inline-block;
-    width: 20px;
-}
-
 .addition p::before {
     content: "+";
 }

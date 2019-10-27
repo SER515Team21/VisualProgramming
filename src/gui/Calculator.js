@@ -16,12 +16,29 @@ class Calculator {
         return "Invalid expression, please update and try again!";
     }
 
+    static async solve() {
+        const numTrees = await NodeForest.treeCount();
+        if (numTrees === 1) {
+            const root = await NodeForest.getFirstTree();
+            if (root !== null) {
+                try {
+                    return root.reduce();
+                }
+                catch (e) {
+                    return "Not Solvable";
+                }
+            }
+        }
+        return "Multiple Expressions";
+    }
+
 
     static async updateResult() {
         const text = await Calculator.getTreeText();
         const resultPane = document.getElementById("resultPane");
+        const equals = await Calculator.solve();
         resultPane.hidden = false;
-        resultPane.innerHTML = `<a>${text}</a>`;
+        resultPane.innerHTML = `<span>${text} = ${equals}</span>`;
     }
 
 }

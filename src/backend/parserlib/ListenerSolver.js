@@ -11,7 +11,7 @@ class ListenerSolver extends ArithmeticListener {
     constructor() {
         super();
         this._stack = [];
-        this.DEBUG = true;
+        this.DEBUG = false;
     }
 
     /**

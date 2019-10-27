@@ -5,15 +5,6 @@ include TabSwitcher
 #studentView(hidden='')
     include header
     +node-search
-    //-
-        .tab-switcher
-            ul
-                li.tab
-                    button Upcoming Assignments
-                li.tab
-                    button Practice Equations
-                li.tab
-                    button View Grades
     .tab-switcher
         +tabbedFrame(['Upcoming Assignments','Practice Equations', 'View Grades'], [practice, grades])
         .view.active(id='Practice Equations')
