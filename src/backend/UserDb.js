@@ -46,6 +46,16 @@ class UserDb {
         const doc = await this.programDb.count({ role });
         return doc;
     }
+
+    async getUser(username) {
+        const doc = await this.programDb.find({ username });
+        return doc;
+    }
+
+    async getUsers(role = "student") {
+        const doc = await this.programDb.find({ role });
+        return doc;
+    }
 }
 
 module.exports = new UserDb();
