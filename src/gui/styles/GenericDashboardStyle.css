@@ -1,0 +1,53 @@
+header {
+    height: 50px;
+    width: 100%;
+}
+
+#account-icon {
+    width: 200px;
+    height: 50px;
+    display: inline-block;
+    float: right;
+}
+
+#account-icon img {
+    width: 25px;
+    height: 25px;
+}
+
+#logout {
+    display: none;
+    overflow: hidden;
+}
+
+#account-icon:hover #logout {
+    display: block;
+    position: relative;
+    top: 5px;
+    left: 0;
+    width: max-content;
+    height: 30px;
+    background-color: gray;
+    padding: 10px;
+}
+
+.GenericDashboard .LeftPane {
+    height: 100%;
+    width: 160px;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+.GenericDashboard .LeftPane *{
+    margin: 2px;
+}
+
+.GenericDashboard .MainPane {
+    margin-left: 160px;
+    height: calc(100% - 80px);
+    width: calc(100% - 160px);
+}
