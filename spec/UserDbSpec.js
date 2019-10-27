@@ -92,7 +92,7 @@ describe("User DB", () => {
     /* A specification */
     it("shall return all students in the db", async function () {
         const result = await UserDb.getUsers();
-        
+
         expect(result.every(item => item.role === "student"))
             .toBe(true);
     });

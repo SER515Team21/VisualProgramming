@@ -1,4 +1,5 @@
 /* global document */
+
 /* global UserDb */
 
 async function sendLoginRequest() {
@@ -14,9 +15,18 @@ async function sendLoginRequest() {
             document.getElementById("loginFail").hidden = false;
         }
         else {
+            const user = await UserDb.getUser(username);
             document.getElementById("loginFail").hidden = true;
             document.getElementById("login").hidden = true;
-            document.getElementById("AdminView").hidden = false;
+            if (user.some(item => item.role === "admin")) {
+                document.getElementById("AdminView").hidden = false;
+            }
+            else if (user.some(item => item.role === "teacher")) {
+                document.getElementById("teacherView").hidden = false;
+            }
+            else {
+                document.getElementById("studentView").hidden = false;
+            }
         }
     }
 }

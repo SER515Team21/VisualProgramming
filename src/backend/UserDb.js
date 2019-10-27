@@ -12,11 +12,18 @@ class UserDb {
 
     async userLogin(un, pw) {
         const doc = await this.programDb.find({ username: un, password: pw });
-        return doc.length !== 0;
+        if (doc.some(item => item.enabled === 1)) {
+            return true;
+        }
+        return false;
     }
+
     async userExists(un) {
         const doc = await this.programDb.find({ username: un });
-        return doc.length !== 0;
+        if (doc.some(item => item.enabled === 1)) {
+            return true;
+        }
+        return false;
     }
 
     async addUser(username, password, role = "student") {
@@ -24,7 +31,7 @@ class UserDb {
         if (exists) {
             return false;
         }
-        await this.programDb.insert({ username, password, role });
+        await this.programDb.insert({ username, password, role, enabled: 1 });
         return true;
     }
 
