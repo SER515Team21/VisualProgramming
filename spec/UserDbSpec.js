@@ -97,6 +97,15 @@ describe("User DB", () => {
             .toBe(true);
     });
 
+    /* A specification */
+    it("shall disable a user", async function () {
+        await UserDb.addUser("test5", "test5");
+
+        const disable = await UserDb.disableUser("test5");
+
+        expect(disable).toBe(true);
+    });
+
     afterAll(() => {
         UserDb.removeAll();
     });
