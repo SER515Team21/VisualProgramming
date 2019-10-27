@@ -18,57 +18,143 @@ function pickUpNode(event) {
     event.dataTransfer.setData("text", event.target.id);
 }
 
+function handlePanelNode(node, target, event) {
+    const clone = node.cloneNode(true);
+    clone.id = NodeFactory.createNode(clone.classList, false);
+    const backendNode = NodeForest.getNode(clone.id);
+
+    // Set the number to 0 on initial drop if number node
+    if (node.classList.contains("number")) {
+        NodeForest.getNode(clone.id).number = 0;
+    }
+
+    // Insert into a binary node
+    if (target.id.toString().endsWith("Left")) {
+        NodeForest.getNode(target.parentNode.id).setLeftOperand(backendNode);
+    }
+    else if (target.id.toString().endsWith("Right")) {
+        NodeForest.getNode(target.parentNode.id).setRightOperand(backendNode);
+    }
+    target.appendChild(clone);
+}
+
+function handlePanelEquationPane(node, target, event) {
+    const clone = node.cloneNode(true);
+    clone.id = NodeFactory.createNode(clone.classList, false);
+
+    target.appendChild(clone);
+    clone.style.position = "fixed";
+    clone.style.top = `${event.pageY}px`;
+    clone.style.left = `${event.pageX}px`;
+}
+
+function handleRootNodeNode(node, target, event) {
+    node.style.position = "relative";
+    node.style.top = "0px";
+    node.style.left = "0px";
+
+    const backendNode = NodeForest.getNode(node.id);
+    node.parentNode.removeChild(node);
+
+    // Insert into a binary node
+    if (target.id.toString().endsWith("Left")) {
+        NodeForest.getNode(target.parentNode.id).setLeftOperand(backendNode);
+    }
+    else if (target.id.toString().endsWith("Right")) {
+        NodeForest.getNode(target.parentNode.id).setRightOperand(backendNode);
+    }
+    target.appendChild(node);
+}
+
+function handleRootNodeEquationPane(node, target, event) {
+    node.style.top = `${event.pageY}px`;
+    node.style.left = `${event.pageX}px`;
+}
+
+function handleChildNodeNode(node, target, event) {
+    // Remove from binary operator
+    if (target.id.toString().endsWith("Left")) {
+        NodeForest.getNode(node.parentNode.parentNode.id).setLeftOperand(undefined);
+    }
+    else if (target.id.toString().endsWith("Right")) {
+        NodeForest.getNode(node.parentNode.parentNode.id).setLeftOperand(undefined);
+    }
+    node.parentNode.removeChild(node);
+
+    const backendNode = NodeForest.getNode(node.id);
+    // Insert into a binary node
+    if (target.id.toString().endsWith("Left")) {
+        NodeForest.getNode(target.parentNode.id).setLeftOperand(backendNode);
+    }
+    else if (target.id.toString().endsWith("Right")) {
+        NodeForest.getNode(target.parentNode.id).setRightOperand(backendNode);
+    }
+    target.appendChild(node);
+}
+
+function handleChildNodeEquationPane(node, target, event) {
+    // Remove from binary operator
+    if (target.id.toString().endsWith("Left")) {
+        NodeForest.getNode(node.parentNode.parentNode.id).setLeftOperand(undefined);
+    }
+    else if (target.id.toString().endsWith("Right")) {
+        NodeForest.getNode(node.parentNode.parentNode.id).setLeftOperand(undefined);
+    }
+    node.parentNode.removeChild(node);
+
+    target.appendChild(node);
+    node.style.position = "fixed";
+    node.style.top = `${event.pageY}px`;
+    node.style.left = `${event.pageX}px`;
+}
+
 /**
  * Determines how to handle the dropping of each Node that is dragged into the editor space.
  * @param event
  */
 function dropNode(event) {
     event.preventDefault();
+    event.stopPropagation();
     const id = event.dataTransfer.getData("text");
     const node = document.getElementById(id);
-    const clone = node.cloneNode(true);
+    const target = event.target;
+    let origin;
+    let destination;
+    const handlers = {
+        panel: {
+            node: handlePanelNode,
+            equationPane: handlePanelEquationPane
+        },
+        rootNode: {
+            node: handleRootNodeNode,
+            equationPane: handleRootNodeEquationPane
+        },
+        childNode: {
+            node: handleChildNodeNode,
+            equationPane: handleChildNodeEquationPane
+        }
+    };
 
-    if (node.parentNode.classList.contains("node-container")) {
-        node.parentNode.removeChild(node);
+    // determine origin
+    if (node.parentNode.classList.contains("panel")) {
+        origin = "panel";
+    }
+    else if (node.parentNode.classList.contains("node-container")) {
+        origin = "childNode";
+    }
+    else {
+        origin = "rootNode";
     }
 
-    // Handles dropping root and child Nodes differently
-    if (event.target.parentNode.classList.contains("node")) {
-        // Ensures that the parent is a Node
-        if (event.target.classList.contains("node-container") &&
-            event.target.childElementCount === 0) {
-            clone.id = NodeFactory.createNode(clone.classList, false);
-            // Set the number to 0 on initial drop if number node
-            if (node.classList.contains("number")) {
-                NodeForest.getNode(clone.id).number = 0;
-            }
-            // Insert into a binary node
-            if (event.target.id.toString().endsWith("Left")) {
-                NodeForest.getNode(event.target.parentNode.id)
-                    .setLeftOperand(NodeForest.getNode(clone.id));
-            }
-            else if (event.target.id.toString().endsWith("Right")) {
-                NodeForest.getNode(event.target.parentNode.id)
-                    .setRightOperand(NodeForest.getNode(clone.id));
-            }
-            event.target.appendChild(clone);
-        }
+    // determine destination
+    if (target.classList.contains("node-container")) {
+        destination = "node";
     }
-    else if (!node.classList.contains("number")) {
-        // Create a clone of the Node if dragged from the selection list. Else just move it
-        if (node.parentNode.classList.contains("panel")) {
-            clone.id = NodeFactory.createNode(clone.classList, true);
-            clone.style.position = "fixed";
-            clone.style.top = `${event.pageY}px`;
-            clone.style.left = `${event.pageX}px`;
-            event.target.appendChild(clone);
-        }
-        else {
-            node.style.position = "fixed";
-            node.style.top = `${event.pageY}px`;
-            node.style.left = `${event.pageX}px`;
-        }
+    else {
+        destination = "equationPane";
     }
+
+    handlers[origin][destination](node, target, event);
 
     Calculator.updateResult();
 }
