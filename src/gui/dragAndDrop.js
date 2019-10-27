@@ -40,7 +40,7 @@ function handlePanelNode(node, target, event) {
 
 function handlePanelEquationPane(node, target, event) {
     const clone = node.cloneNode(true);
-    clone.id = NodeFactory.createNode(clone.classList, false);
+    clone.id = NodeFactory.createNode(clone.classList, true);
 
     target.appendChild(clone);
     clone.style.position = "fixed";
@@ -54,6 +54,8 @@ function handleRootNodeNode(node, target, event) {
     node.style.left = "0px";
 
     const backendNode = NodeForest.getNode(node.id);
+    NodeForest.deleteRootNode(node.id);
+
     node.parentNode.removeChild(node);
 
     // Insert into a binary node
@@ -93,6 +95,8 @@ function handleChildNodeNode(node, target, event) {
 }
 
 function handleChildNodeEquationPane(node, target, event) {
+    const backendNode = NodeForest.getNode(node.id);
+
     // Remove from binary operator
     if (target.id.toString().endsWith("Left")) {
         NodeForest.getNode(node.parentNode.parentNode.id).setLeftOperand(undefined);
@@ -101,6 +105,8 @@ function handleChildNodeEquationPane(node, target, event) {
         NodeForest.getNode(node.parentNode.parentNode.id).setLeftOperand(undefined);
     }
     node.parentNode.removeChild(node);
+
+    NodeForest.insertRootNode(backendNode);
 
     target.appendChild(node);
     node.style.position = "fixed";
