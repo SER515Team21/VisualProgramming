@@ -17,6 +17,8 @@ class ParserFacade {
         this._lexer = new ArithmeticLexer(this._chars);
         this._tokens = new antlr4.CommonTokenStream(this._lexer);
         this._parser = new ArithmeticParser(this._tokens);
+        this._parser.removeErrorListeners();
+        this._lexer.removeErrorListeners();
         this._tree = this._parser.input();
     }
 

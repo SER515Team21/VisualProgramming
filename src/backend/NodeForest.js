@@ -17,15 +17,39 @@ class NodeForest {
         return null;
     }
 
-    static getNode(nodeId, nodeRootId) {
-        return NodeForest.getNodeFromRoot(NodeForest.nodeForest[nodeRootId], nodeId);
+    static getNode(nodeId) {
+        let newNode = NodeForest.allNodes[nodeId];
+        if (newNode === undefined) {
+            newNode = null;
+        }
+        return newNode;
+    }
+
+    static insertNode(newNode) {
+        NodeForest.allNodes[newNode.nodeId] = newNode;
     }
 
     static insertRootNode(newNode) {
         // To insert node into a tree, please use
         // Get function to get the node, then set the operand correctly.
+        NodeForest.insertNode(newNode);
         NodeForest.nodeForest[newNode.nodeId] = newNode;
         // console.log(`added node of type "${typeof newNode}" with ID ${newNode.nodeId}`);
+    }
+
+    static insertIntoBinaryNodeLeft(newNode, parentNodeId) {
+        const parentNode = this.getNode(parentNodeId);
+        parentNode.setLeftOperand(newNode);
+    }
+
+    static insertIntoBinaryNodeRight(newNode, parentNodeId) {
+        const parentNode = this.getNode(parentNodeId);
+        parentNode.setRightOperand(newNode);
+    }
+
+    static insertIntoUnaryNode(newNode, parentNodeId) {
+        const parentNode = this.getNode(parentNodeId);
+        parentNode.setOperand(newNode);
     }
 
     static updateRootNode(newNode, oldId) {
@@ -63,6 +87,8 @@ class NodeForest {
         return null;
     }
 }
+
 NodeForest.nodeForest = {};
+NodeForest.allNodes = {};
 
 module.exports = NodeForest;

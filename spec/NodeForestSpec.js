@@ -35,8 +35,8 @@ describe("Node Forest", () => {
         const rootId = rootNode.nodeId;
 
         NodeForest.insertRootNode(rootNode);
-        const foundNode = NodeForest.getNode(addId, rootId);
+        const foundNode = NodeForest.getNode(rootId);
 
-        expect(foundNode.nodeId).toBe(addId);
+        expect(foundNode.nodeId).toBe(rootId);
     });
 });
