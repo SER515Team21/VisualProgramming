@@ -1,6 +1,8 @@
 mixin tabbedFrame(tabs)
-    ul
-        each val in tabs
-            li.tab
-                button= val
-
+    .tab-switcher
+        ul
+            each val in tabs
+                li.tab
+                    button= val
+        if block
+            block

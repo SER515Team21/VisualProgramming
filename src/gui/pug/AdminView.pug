@@ -1,8 +1,22 @@
 include GenericDashboard
+include TabSwitcher
 
 #AdminView(hidden='')
     +GenericDashboard()
         +LeftPane()
-            p place holder
+            +tabbedFrame(['Courses', 'Teachers', 'Students'])
+                .view.active(id=Courses)
+                    ul(id=globalCourseList)
+                        li Empty
         +MainPane()
-            p place holder 2
+            +tabbedFrame([])
+            .view.active(id=CourseEditor)
+                h1 Course Editor
+                h2(id=courseName) Course Name
+                h3 Teacher
+                p(id=teacherName) Teacher Name
+                button(id=teacherNameEdit) Edit
+                h3 Students
+                ul(id=adminCourseStudentList)
+                    li Empty
+                button(id=studentsEdit) Edit

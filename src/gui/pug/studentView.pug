@@ -14,8 +14,7 @@ include TabSwitcher
                     button Practice Equations
                 li.tab
                     button View Grades
-    .tab-switcher
-        +tabbedFrame(['Upcoming Assignments','Practice Equations', 'View Grades'], [practice, grades])
+    +tabbedFrame(['Upcoming Assignments','Practice Equations', 'View Grades'], [practice, grades])
         .view.active(id='Practice Equations')
             #editorPane.paper(ondrop='dropNode(event)' ondragover='allowDroppingNode(event)')
             #resultPane(hidden='')
