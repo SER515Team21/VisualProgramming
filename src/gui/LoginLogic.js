@@ -27,7 +27,6 @@ async function sendLoginRequest() {
             else {
                 document.getElementById("studentView").hidden = false;
             }
-
         }
     }
 }
