@@ -15,6 +15,7 @@ include TabSwitcher
                 li.tab
                     button View Grades
     +tabbedFrame(['Upcoming Assignments','Practice Equations', 'View Grades'], [practice, grades])
+    .tab-switcher
         .view.active(id='Practice Equations')
             #editorPane.paper(ondrop='dropNode(event)' ondragover='allowDroppingNode(event)')
             #resultPane(hidden='')
