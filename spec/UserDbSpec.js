@@ -12,7 +12,6 @@ describe("User DB", () => {
     });
     */
 
-    /* A specification */
     it("shall be able to retrieve a user with a correct username and password", async function () {
         let res = await UserDb.addUser("vcedgar", "1234");
         expect(res)
@@ -29,7 +28,6 @@ describe("User DB", () => {
             .toBe(false);
     });
 
-    /* A specification */
     it("shall be able to add a user with a new username", async function () {
         let result1 = await UserDb.addUser("zlmonroe", "1234");
         let result1p2 = await UserDb.userLogin("zlmonroe", "1234");
@@ -43,7 +41,6 @@ describe("User DB", () => {
             .toBe(true);
     });
 
-    /* A specification */
     it("shall fail at adding a user with an existing username", async function () {
         let result1 = await UserDb.addUser("jebush", "1234");
         let result1p2 = await UserDb.userLogin("jebush", "1234");
@@ -64,7 +61,6 @@ describe("User DB", () => {
             .toBe(true);
     });
 
-    /* A specification */
     it("shall return count of all students in the db", async function () {
         await UserDb.addUser("test1", "test1");
         await UserDb.addUser("test2", "test2", "student");
@@ -78,7 +74,6 @@ describe("User DB", () => {
             .toBe(result2);
     });
 
-    /* A specification */
     it("shall return selected student in the db", async function () {
         await UserDb.addUser("test1", "test1");
         await UserDb.addUser("test2", "test2", "student");
@@ -89,7 +84,6 @@ describe("User DB", () => {
             .toBe(true);
     });
 
-    /* A specification */
     it("shall return all students in the db", async function () {
         const result = await UserDb.getUsers();
 
@@ -97,7 +91,6 @@ describe("User DB", () => {
             .toBe(true);
     });
 
-    /* A specification */
     it("shall disable a user", async function () {
         await UserDb.addUser("test5", "test5");
 
