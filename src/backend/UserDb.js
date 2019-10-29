@@ -3,11 +3,19 @@ const Path = require("path");
 const fs = require("fs");
 
 class UserDb {
-    constructor() {
-        const programDbPath = Path.relative(process.cwd(), "./data/ProgramDb.db");
-        this.programDb = NedDb({ filename: programDbPath, autoload: true });
-        UserDb.instance = this;
-        return UserDb.instance;
+    constructor(env) {
+        if (env === null) {
+            const programDbPath = Path.relative(process.cwd(), "./data/ProgramDb.db");
+            this.programDb = NedDb({ filename: programDbPath, autoload: true });
+            UserDb.instance = this;
+            return UserDb.instance;
+        }
+        else {
+            const programDbPath = Path.relative(process.cwd(), "./data/TesDb.db");
+            this.programDb = NedDb({ filename: programDbPath, autoload: true });
+            UserDb.instance = this;
+            return UserDb.instance;
+        }
     }
 
     async userLogin(un, pw) {

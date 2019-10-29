@@ -1,16 +1,27 @@
 /* global describe */
 /* global it */
 /* global expect */
+/* global beforeAll */
+/* global afterEach */
+/* global afterAll */
 
 /* Imports for test */
 const UserDb = require("../src/backend/UserDb.js");
 
 /* Write the test suite */
 describe("User DB", () => {
-    /* A setup function
-    beforeEach(() => {
+
+
+    beforeAll(() => {
+        //TODO
+        // it says this is not a constructor
+        //const db = new UserDb("test");
     });
-    */
+
+    afterEach(() => async function () {
+        await UserDb.removeAll();
+    });
+
 
     it("shall be able to retrieve a user with a correct username and password", async function () {
         let res = await UserDb.addUser("vcedgar", "1234");
@@ -70,6 +81,7 @@ describe("User DB", () => {
         const result2 = await UserDb.getUserCount("student");
 
 
+        expect(result1).toBe(2);
         expect(result1)
             .toBe(result2);
     });
@@ -85,8 +97,14 @@ describe("User DB", () => {
     });
 
     it("shall return all students in the db", async function () {
-        const result = await UserDb.getUsers();
+        await UserDb.addUser("test1", "test2", "student");
+        await UserDb.addUser("test2", "test2", "student");
+        await UserDb.addUser("test3", "test2", "student");
 
+
+        const result = await UserDb.getUsers("student");
+
+        expect(result.length()).toBe(3);
         expect(result.every(item => item.role === "student"))
             .toBe(true);
     });
