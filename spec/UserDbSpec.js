@@ -10,8 +10,6 @@ const UserDb = require("../src/backend/UserDb.js");
 
 /* Write the test suite */
 describe("User DB", () => {
-
-
     beforeAll(() => {
         //TODO
         // it says this is not a constructor
