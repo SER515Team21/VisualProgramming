@@ -12,6 +12,13 @@ include studentSearch
             .tab-switcher
                 +tabbedFrame(['Students', 'Assignments'], [courseStudents, assignments])
                 .view.active(id='View Students')
-
+                    table(id='studentList')
+                        thead
+                            tr
+                                th Last
+                                th First
+                        tbody
+                            tr
+                                td Musk
+                                td Elon
                 .view(id='View Assignments')
-

@@ -1,0 +1,14 @@
+#studentList {
+    width: 160px;
+    border-right: 1px #444444;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: absolute;
+}
+
+td, th {
+    height: max-content;
+    padding: 10px;
+    text-align: center;
+}
