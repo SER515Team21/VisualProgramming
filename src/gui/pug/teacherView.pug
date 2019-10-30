@@ -13,12 +13,13 @@ include studentSearch
                 +tabbedFrame(['Students', 'Assignments'], [courseStudents, assignments])
                 .view.active(id='View Students')
                     table(id='studentList')
-                        thead
-                            tr
-                                th Last
-                                th First
-                        tbody
-                            tr
-                                td Musk
-                                td Elon
+                        tr
+                            th Last
+                            th First
+                        tr.selected
+                            td Musk
+                            td Elon
+                        tr
+                            td Jones
+                            td Alex
                 .view(id='View Assignments')
