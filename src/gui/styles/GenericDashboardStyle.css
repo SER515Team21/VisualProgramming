@@ -31,7 +31,7 @@ header {
     padding: 10px;
 }
 
-#GenericDashboard #LeftPane {
+.GenericDashboard .LeftPane {
     height: 100%;
     width: 160px;
     position: absolute;
@@ -42,11 +42,11 @@ header {
     padding-top: 20px;
 }
 
-#GenericDashboard #LeftPane {
+.GenericDashboard .LeftPane *{
     margin: 2px;
 }
 
-#GenericDashboard #MainPane {
+.GenericDashboard .MainPane {
     margin-left: 160px;
     height: calc(100% - 80px);
     width: calc(100% - 160px);

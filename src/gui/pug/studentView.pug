@@ -4,25 +4,14 @@ include TabSwitcher
 include AssignmentsList
 
 #studentView(hidden='')
-    include GenericDashboard
-        +LeftPane
-            +node-search
-            //-
-                .tab-switcher
-                    ul
-                        li.tab
-                            button Upcoming Assignments
-                        li.tab
-                            button Practice Equations
-                        li.tab
-                            button View Grades
-        +MainPane
-            .tab-switcher
-                +tabbedFrame(['Assignments','Practice', 'Grades'])
-                .view.active(id='Practice')
-                    #editorPane.paper(ondrop='dropNode(event)' ondragover='allowDroppingNode(event)')
-                    #resultPane(hidden='')
-                .view(id='Grades')
-                .view(id='Assignments')
-                    +AssignmentsList()
+    include header
+    +node-search
+    .tab-switcher
+        +tabbedFrame(['Upcoming Assignments','Practice Equations', 'View Grades'], [practice, grades])
+        .view.active(id='Practice Equations')
+            #editorPane.paper(ondrop='dropNode(event)' ondragover='allowDroppingNode(event)')
+            #resultPane(hidden='')
+        .view(id='View Grades')
+
+    #Assignments.view
 
