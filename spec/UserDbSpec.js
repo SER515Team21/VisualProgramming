@@ -13,7 +13,7 @@ describe("User DB", () => {
     beforeAll(() => {
         //TODO
         // it says this is not a constructor
-        //const db = new UserDb("test");
+        const db = new UserDb("test");
     });
 
     afterEach(() => async function () {

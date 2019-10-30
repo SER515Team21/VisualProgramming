@@ -52,7 +52,7 @@ class UserDb {
     }
 
     // eslint-disable-next-line class-methods-use-this
-    async removeAll() {
+    removeAll() {
         const programDbPath = Path.relative(process.cwd(), "./data/ProgramDb.db");
         fs.unlinkSync(programDbPath);
     }
