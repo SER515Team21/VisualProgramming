@@ -1,23 +1,12 @@
-mixin student-search
-    .student-search
-        #search-settings
-            input(type='search')
-            span.radioGroup
-                input#search-current(type='radio' name='search-where' value='Search courses')
-                label(for='search-current') Search Courses
-            span.radioGroup
-                input#search-all(type='radio' name='search-where' value='Search students')
-                label(for='search-all') Search Students
-        #search-results
-            button.accordion Period 1 Students: 25
-            .panel
-            button.accordion Period 2 Students: 22
-            .panel
-            button.accordion Period 3 Students: 24
-            .panel
-            button.accordion Period 4 Students: 26
-            .panel
-            button.accordion Period 5 Students: 24
-            .panel
-            button.accordion Period 6 Students: 23
-            .panel
+mixin student-search(hide)
+    #search-results(hidden=hide)
+        button.accordion Elon, Musk
+        .panel
+        button.accordion Jones, Alex
+        .panel
+        button.accordion Gates, Bill
+        .panel
+        button.accordion Tron, Jon
+        .panel
+        button.accordion Gary, Kevin
+        .panel
