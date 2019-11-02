@@ -1,4 +1,3 @@
-
 mixin ScrolledTableBox(title, editButtonId, columnNames, rows)
     .ScrolledTableBox
         h3= title
@@ -9,7 +8,9 @@ mixin ScrolledTableBox(title, editButtonId, columnNames, rows)
                     th= name
         .ScrollingBox
             table
-                each row in rows
-                    tr
-                        each val in row
-                            td= val
+                if(rows != null)
+                    each row in rows
+                        tr
+                        if(row != null)
+                            each val in row
+                                td= val

@@ -12,6 +12,12 @@
     border-width: medium;
 }
 
+.ScrolledTableBox .ScrollingBox{
+    width: 100%;
+    overflow: auto;
+    display: block;
+}
+
 .ScrolledTableBox .ScrollingBox table{
     border: solid;
     width: 100%;

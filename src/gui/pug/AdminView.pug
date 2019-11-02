@@ -29,8 +29,5 @@ include ScrolledTable
                         h3 Teacher:
                         h3(id='teacherNameAdmin') Teacher Name
                         button(id='teacherNameEdit') Edit
-                    +ScrolledTableBox('Students', 'adminStudentsEdit', ['Last Name', 'First Name', 'Student ID'],
-                            [['Empty', 'Empty', 'Empty'], ['Empty', 'Empty', 'Empty'], ['Empty', 'Empty', 'Empty'],
-                            ['Empty', 'Empty', 'Empty'], ['Empty', 'Empty', 'Empty'], ['Empty', 'Empty', 'Empty'],
-                            ['Empty', 'Empty', 'Empty'], ['Empty', 'Empty', 'Empty'], ['Empty', 'Empty', 'Empty'],
-                            ['Empty', 'Empty', 'Empty']])
+                    #CourseEditorStudents
+                        include AdminViewStudentsScrollTable
