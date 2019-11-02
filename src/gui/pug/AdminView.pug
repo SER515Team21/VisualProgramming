@@ -1,5 +1,6 @@
 include GenericDashboard
 include TabSwitcher
+include ScrolledTable
 
 #AdminView(hidden='')
     +GenericDashboard()
@@ -28,57 +29,8 @@ include TabSwitcher
                         h3 Teacher:
                         h3(id='teacherNameAdmin') Teacher Name
                         button(id='teacherNameEdit') Edit
-                    #CourseEditorStudents
-                        h3 Students
-                        button(id='adminStudentsEdit') Edit
-                        table
-                            tr
-                                th Last Name
-                                th First Name
-                                th Student ID
-                        #CourseEditorStudentsBox
-                            table
-                                tr
-                                    td Empty
-                                    td Empty
-                                    td Empty
-                                tr
-                                    td Empty
-                                    td Empty
-                                    td Empty
-                                tr
-                                    td Empty
-                                    td Empty
-                                    td Empty
-                                tr
-                                    td Empty
-                                    td Empty
-                                    td Empty
-                                tr
-                                    td Empty
-                                    td Empty
-                                    td Empty
-                                tr
-                                    td Empty
-                                    td Empty
-                                    td Empty
-                                tr
-                                    td Empty
-                                    td Empty
-                                    td Empty
-                                tr
-                                    td Empty
-                                    td Empty
-                                    td Empty
-                                tr
-                                    td Empty
-                                    td Empty
-                                    td Empty
-                                tr
-                                    td Empty
-                                    td Empty
-                                    td Empty
-                                tr
-                                    td Empty
-                                    td Empty
-                                    td Empty
+                    +ScrolledTableBox('Students', 'adminStudentsEdit', ['Last Name', 'First Name', 'Student ID'],
+                            [['Empty', 'Empty', 'Empty'], ['Empty', 'Empty', 'Empty'], ['Empty', 'Empty', 'Empty'],
+                            ['Empty', 'Empty', 'Empty'], ['Empty', 'Empty', 'Empty'], ['Empty', 'Empty', 'Empty'],
+                            ['Empty', 'Empty', 'Empty'], ['Empty', 'Empty', 'Empty'], ['Empty', 'Empty', 'Empty'],
+                            ['Empty', 'Empty', 'Empty']])

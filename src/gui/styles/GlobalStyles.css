@@ -112,3 +112,7 @@ h4{
     font-family: "Baskerville Old Face", serif;
     font-size: 36px;
 }
+
+.selected {
+    border: 3px solid blue;
+}
