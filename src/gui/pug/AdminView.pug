@@ -1,7 +1,8 @@
-include TabSwitcher
+include GenericDashboard
 
 #AdminView(hidden='')
-    include header
-    .tab-switcher
-        +tabbedFrame(['Courses','Teachers', 'Students'], ['Courses','Teachers', 'Students'])
-        .view.active(id='Courses')
+    +GenericDashboard()
+        +LeftPane()
+            p place holder
+        +MainPane()
+            p place holder 2

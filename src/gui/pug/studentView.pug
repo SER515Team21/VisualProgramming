@@ -5,11 +5,8 @@ include TabSwitcher
 #studentView(hidden='')
     include header
     +node-search
-
     .tab-switcher
-        +tabbedFrame(
-            ['Upcoming Assignments','Practice Equations', 'View Grades'],
-            ['upcoming','practice', 'grades'])
+        +tabbedFrame(['Upcoming Assignments','Practice Equations', 'View Grades'], [practice, grades])
         .view.active(id='Practice Equations')
             #editorPane.paper(ondrop='dropNode(event)' ondragover='allowDroppingNode(event)')
             #resultPane(hidden='')

@@ -24,38 +24,6 @@
     width: calc(100% - 160px);
 }
 
-#studentView .view {
-    height: 100%;
-    display: none;
-}
-
-#studentView .view.active {
-    display: block;
-}
-
-#date {
-    width: max-content;
-    height: 50px;
-    display: inline-block;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    font-family: "Baskerville Old Face", serif;
-    font-size: 36px;
-}
-
-#account-icon {
-    width: 200px;
-    height: 50px;
-    display: inline-block;
-    float: right;
-}
-
-#account-icon img {
-    width: 25px;
-    height: 25px;
-}
-
 .node {
     width: 100px;
     height: 50px;
@@ -77,12 +45,6 @@
     text-align: center;
     color: black;
     display: inline-block;
-}
-
-.arithmetic input {
-    margin-top: 13px !important;
-    display: inline-block;
-    width: 20px;
 }
 
 .addition p::before {
@@ -133,20 +95,4 @@
     bottom: 0;
     border: 1px solid;
     border-color: transparent #efe4e4;
-}
-
-#logout {
-    display: none;
-    overflow: hidden;
-}
-
-#account-icon:hover #logout {
-    display: block;
-    position: relative;
-    top: 5px;
-    left: 0;
-    width: max-content;
-    height: 30px;
-    background-color: gray;
-    padding: 10px;
 }

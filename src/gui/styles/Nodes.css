@@ -1,0 +1,69 @@
+
+.node {
+    width: max-content;
+    height: max-content;
+    border-radius: 5px;
+    text-align: center;
+    align-content: center;
+    padding: 8px;
+}
+
+.arithmetic {
+    background-color: aqua;
+}
+
+.arithmetic:hover {
+    cursor: pointer;
+    border: aquamarine solid 3px;
+}
+
+.arithmetic p {
+    text-align: center;
+    color: black;
+    display: inline-block;
+}
+
+.arithmetic .node-container {
+    display: inline-grid;
+    min-width: 20px;
+    min-height: 20px;
+    height: max-content;
+    width: max-content;
+    background-color: whitesmoke;
+    padding: 2px;
+    border-radius: 5px;
+    vertical-align: middle;
+}
+
+.number {
+    background-color: limegreen !important;
+    width: 50px;
+    height: 30px;
+}
+
+.number:hover {
+    cursor: pointer;
+    border: lime solid 3px;
+}
+
+.number input {
+    margin: 5px;
+    display: inline-block;
+    width: 40px;
+}
+
+.addition p::before {
+    content: "+";
+}
+
+.subtraction p::before {
+    content: "-";
+}
+
+.multiplication p::before {
+    content: "x";
+}
+
+.division p::before {
+    content: "\00F7";
+}

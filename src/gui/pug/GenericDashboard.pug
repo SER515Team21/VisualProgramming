@@ -1,0 +1,21 @@
+mixin LeftPane()
+    .LeftPane
+        if block
+            block
+        else
+            p no content
+
+mixin MainPane()
+    .MainPane
+        if block
+            block
+        else
+            p no content
+
+mixin GenericDashboard
+    .GenericDashboard
+        include header
+        if block
+            block
+        else
+            p no content

@@ -11,12 +11,15 @@ mixin node-search
                 input#search-all(type='radio' name='search-where' value='Search in all modules')
                 label(for='search-all') Search All
         #search-results
+            button.accordion Numbers
+            .panel
+                +number_node().template
             button.accordion Arithmetic
             .panel
-                +arithmetic_node('addition')
-                +arithmetic_node('subtraction')
-                +arithmetic_node('multiplication')
-                +arithmetic_node('division')
+                +binary_node('arithmetic', 'addition').template
+                +binary_node('arithmetic', 'subtraction').template
+                +binary_node('arithmetic', 'multiplication').template
+                +binary_node('arithmetic', 'division').template
             button.accordion Algebraic Equations
             .panel
             button.accordion Graphing

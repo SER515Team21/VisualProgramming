@@ -2,11 +2,6 @@ html, body {
     height: 100%;
 }
 
-header {
-    height: 50px;
-    width: 100%;
-}
-
 [hidden] * {
     display: none;
 }
@@ -82,4 +77,24 @@ header {
 
 .radioGroup {
     display: inline-block;
+}
+
+.view {
+    height: 100%;
+    display: none;
+}
+
+.view.active {
+    display: block;
+}
+
+#date {
+    width: max-content;
+    height: 50px;
+    display: inline-block;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: "Baskerville Old Face", serif;
+    font-size: 36px;
 }
