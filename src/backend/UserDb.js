@@ -1,19 +1,11 @@
 const NedDb = require("nedb-promise");
 const Path = require("path");
-const fs = require("fs");
 
 class UserDb {
-    constructor(env) {
-        if (env === null) {
-            const programDbPath = Path.relative(process.cwd(), "./data/ProgramDb.db");
-            this.programDb = NedDb({ filename: programDbPath, autoload: true });
-            UserDb.instance = this;
-        }
-        else {
-            const programDbPath = Path.relative(process.cwd(), "./data/TesDb.db");
-            this.programDb = NedDb({ filename: programDbPath, autoload: true });
-            UserDb.instance = this;
-        }
+    constructor() {
+        const programDbPath = Path.relative(process.cwd(), "./data/ProgramDb.db");
+        this.programDb = NedDb({ filename: programDbPath, autoload: true });
+        UserDb.instance = this;
         return UserDb.instance;
     }
 
@@ -52,9 +44,8 @@ class UserDb {
     }
 
     // eslint-disable-next-line class-methods-use-this
-    removeAll() {
-        const programDbPath = Path.relative(process.cwd(), "./data/ProgramDb.db");
-        fs.unlinkSync(programDbPath);
+    async removeAll() {
+        await this.programDb.remove({}, { multi: true });
     }
 
     async getUserCount(role = "student") {
@@ -81,5 +72,6 @@ class UserDb {
         return false;
     }
 }
+
 
 module.exports = new UserDb();
