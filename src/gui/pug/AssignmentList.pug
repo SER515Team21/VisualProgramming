@@ -9,3 +9,6 @@ mixin assignmentBlock(name, dueDate)
     include header
     .tab-switcher
         +tabbedFrame(['Past Due', 'Upcoming'], ['past_due_tab', 'upcoming_tab'])
+        .view.active(id='past_due_tab')
+
+        .view(id='upcoming_tab')
