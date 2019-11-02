@@ -19,7 +19,13 @@ function accordianListener() {
 }
 
 function setDate() {
-    document.getElementById("date").textContent = new Date().toDateString();
+    // document.getElementById("date").textContent = new Date().toDateString();
+
+    // Changed to update all dates in DOM
+    const dates = document.getElementsByClassName("date");
+    for (let i = 0; i < dates.length; i++) {
+        dates[i].textContent = new Date().toDateString();
+    }
 }
 
 
