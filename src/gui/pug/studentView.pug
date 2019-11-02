@@ -10,11 +10,11 @@ include GenericDashboard
             +node-search
         +MainPane
             .tab-switcher
-                +tabbedFrame(['Upcoming Assignments','Practice Equations', 'View Grades'], [practice, grades])
-                .view.active(id='Practice Equations')
+                +tabbedFrame(['Assignments', 'Practice', 'Grades'])
+                .view.active(id='Practice')
                     #editorPane.paper(ondrop='dropNode(event)' ondragover='allowDroppingNode(event)')
                     #resultPane(hidden='')
-                .view(id='View Grades')
-
-            #Assignments.view
+                .view(id='Grades')
+                .view(id='Assignments')
+                    +AssignmentsList()
 

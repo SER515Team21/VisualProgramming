@@ -1,6 +1,5 @@
 const NedDb = require("nedb-promise");
 const Path = require("path");
-const fs = require("fs");
 
 class AssignmentDb {
     constructor() {
@@ -12,13 +11,18 @@ class AssignmentDb {
         return AssignmentDb.instance;
     }
 
+    async loadCurrentAssignments() {
+        const doc = await this.programDb.find({ role: "Assignment" });
+        return doc; // doc.filter(assign => assign.dueDate > new Date());
+    }
+
     async loadAssignment(id) {
         const doc = await this.programDb.find({ role: "Assignment", _id: id });
         return doc;
     }
 
-    async saveAssignment(name, description, course, assignment) {
-        const doc = await this.programDb.insert({ name, description, course, assignment, role: "Assignment" });
+    async saveAssignment(name, description, course, assignment, dueDate) {
+        const doc = await this.programDb.insert({ name, description, course, assignment, dueDate, role: "Assignment" });
         return doc._id;
     }
 
@@ -27,16 +31,17 @@ class AssignmentDb {
         return doc.length !== 0;
     }
 
-    async updateAssignment(name, description, course, assignemnt, id) {
+    async updateAssignment(name, description, course, assignment, dueDate, id) {
         if (this.assignmentExists(id)) {
-            await this.programDb.update({ role: "Assignment", _id: id }, { name, description, course, assignemnt });
+            await this.programDb.update({ role: "Assignment", _id: id }, { name, description, course, assignment });
             return true;
         }
         return false;
     }
 
-    // eslint-disable-next-line class-methods-use-this
     async removeAll() {
+        // THIS CODE IS WRONG. It will remove the users as well. This is only test code for testing
+        // the UI. It is NOTE DONE and NOT TESTED.
         await this.programDb.remove({}, { multi: true });
     }
 }
