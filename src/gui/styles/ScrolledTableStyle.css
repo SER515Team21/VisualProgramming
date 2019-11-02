@@ -6,14 +6,14 @@
 .ScrolledTableBox{
     height: 60%;
     width: auto;
-    display: block;
     border: solid;
     border-width: medium;
 }
 
 .ScrolledTableBox .ScrollingBox{
-    width: 100%;
-    overflow: auto;
+    height: 80%;
+    width: auto;
+    overflow-y: scroll;
     display: block;
 }
 
