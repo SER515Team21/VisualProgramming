@@ -19,14 +19,10 @@ const assignments = [
 /*
  Takes an array of assignment objects
  */
-function populateAssignments() {
-    console.log("called populateAssignments");
-    const alist = document.getElementById("assignment_list");
 function populateGrades() {
-    const alist = document.getElementById("grades_list");
+    const alist = document.getElementById("assignment_grades");
     assignments.sort((a, b) => a.dueDate.getTime() - b.dueDate.getTime());
     for (let i = 0; i < assignments.length; ++i) {
-        console.log(`assignment ${i}`);
         const asgn = assignments[i];
         const date = asgn.dueDate;
         alist.insertAdjacentHTML("beforeend", `
