@@ -19,7 +19,7 @@ const assignments = [
 /*
  Takes an array of assignment objects
  */
-function populateGrades() {
+async function populateGrades() {
     const alist = document.getElementById("assignment_grades");
     assignments.sort((a, b) => a.dueDate.getTime() - b.dueDate.getTime());
     for (let i = 0; i < assignments.length; ++i) {
