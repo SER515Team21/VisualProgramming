@@ -1,6 +1,7 @@
 /* global document */
 /* global window */
 /* global AssignDb */
+/* global populateGrades */
 
 function accordianListener() {
     const acc = document.getElementsByClassName("accordion");
@@ -66,6 +67,7 @@ async function updateAssignments() {
 async function onLoad() {
     accordianListener();
     setDate();
+    await populateGrades();
     await updateAssignments();
     setInterval(updateAssignments, 300000);
 }

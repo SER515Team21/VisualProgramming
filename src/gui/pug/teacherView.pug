@@ -7,7 +7,7 @@ include courseSearch
     +GenericDashboard()
         +LeftPane()
             .tab-switcher
-                +tabbedFrame(['Courses', 'Students'], [courses, students])
+                +tabbedFrame(['Courses', 'Students'], ['courses', 'students'])
             #search-settings
                 input(type='search')
                 span.radioGroup
@@ -20,7 +20,7 @@ include courseSearch
                 +student-search(true)
         +MainPane()
             .tab-switcher
-                +tabbedFrame(['Students', 'Assignments'], [courseStudents, assignments])
+                +tabbedFrame(['Students', 'Assignments'], ['courseStudents', 'assignments'])
                 .view.active(id='View Students')
                     table(id='studentList')
                         tr
