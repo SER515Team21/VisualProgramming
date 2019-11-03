@@ -16,7 +16,7 @@ async function sendLoginRequest() {
         else {
             document.getElementById("loginFail").hidden = true;
             document.getElementById("login").hidden = true;
-            document.getElementById("TeacherView").hidden = false;
+            document.getElementById("studentView").hidden = false;
         }
     }
 }

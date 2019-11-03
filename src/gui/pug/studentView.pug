@@ -1,16 +1,20 @@
 include nodes
 include NodeSearch
 include TabSwitcher
+include AssignmentList
 
 #studentView(hidden='')
     include header
     +node-search
     .tab-switcher
-        +tabbedFrame(['Upcoming Assignments','Practice Equations', 'View Grades'], [practice, grades])
-        .view.active(id='Practice Equations')
+        +tabbedFrame(['Assignments','Practice Equations', 'View Grades'], ['assignment_tab', 'practice', 'grades'])
+        .view(id='practice')
             #editorPane.paper(ondrop='dropNode(event)' ondragover='allowDroppingNode(event)')
             #resultPane(hidden='')
-        .view(id='View Grades')
+        .view(id='grades')
 
-    #Assignments.view
-
+        .view.active(id="assignment_tab")
+            #AssignmentList()
+                script populateAssignments();
+                +tabbedFrame(['Past Due', 'Upcoming'], ['past_due_tab', 'upcoming_tab'])
+                div(id="assignment_list")
