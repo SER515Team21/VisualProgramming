@@ -67,7 +67,7 @@ async function onLoad() {
     accordianListener();
     setDate();
     await updateAssignments();
-    setInterval(updateAssignments, 60000);
+    setInterval(updateAssignments, 300000);
 }
 
 window.onload = onLoad;
