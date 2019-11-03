@@ -2,6 +2,7 @@
 /* global UserDb */
 /* global pug */
 
+
 async function sendLoginRequest() {
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
@@ -18,16 +19,9 @@ async function sendLoginRequest() {
             document.getElementById("loginFail").hidden = true;
             document.getElementById("login").hidden = true;
             document.getElementById("AdminView").hidden = false;
-            const pugPath = Path.relative(process.cwd(), "./src/gui/pug/AdminViewStudentsScrollTable.pug");
-            const compiledFunction = pug.compileFile(pugPath);
-            const students = [['asd', 'asad', 'asd'], ['Empty', 'Empty', 'Empty'], ['Empty', 'Empty', 'Empty'],
-                ['123', '123', '123'], ['Empty', 'Empty', 'Empty'], ['Empty', 'Empty', 'Empty'],
-                ['Empty', 'Empty', 'Empty'], ['Empty', 'Empty', 'Empty'], ['Empty', 'Empty', 'Empty'],
-                ['Empty', 'Empty', 'Empty']];
-            const scrolledTable = compiledFunction({
-                students: students
-            });
-            document.getElementById("CourseEditorStudents").innerHTML = scrolledTable;
+
+            loadAllCoursesList();
+            loadCourseStudentList();
         }
     }
 }
