@@ -39,6 +39,10 @@ h4{
     padding: 0 2px;
 }
 
+.tab-switcher .tab {
+    display: inline-block;
+}
+
 .tab-switcher .tab button {
     height: 30px;
     width: 100%;
