@@ -1,7 +1,7 @@
 /* global document */
 /* global UserDb */
-/* global pug */
-
+/* global loadAllCoursesList */
+/* global loadCourseStudentList */
 
 async function sendLoginRequest() {
     const username = document.getElementById("username").value;
