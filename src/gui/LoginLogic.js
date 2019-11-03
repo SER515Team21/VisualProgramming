@@ -14,9 +14,18 @@ async function sendLoginRequest() {
             document.getElementById("loginFail").hidden = false;
         }
         else {
+            const user = await UserDb.getUser(username);
             document.getElementById("loginFail").hidden = true;
             document.getElementById("login").hidden = true;
-            document.getElementById("studentView").hidden = false;
+            if (user.role === "admin") {
+                document.getElementById("AdminView").hidden = false;
+            }
+            else if (user.role === "teacher") {
+                document.getElementById("teacherView").hidden = false;
+            }
+            else {
+                document.getElementById("studentView").hidden = false;
+            }
         }
     }
 }

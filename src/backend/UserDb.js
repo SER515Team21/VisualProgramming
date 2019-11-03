@@ -1,6 +1,5 @@
 const NedDb = require("nedb-promise");
 const Path = require("path");
-const fs = require("fs");
 
 class UserDb {
     constructor() {
@@ -10,27 +9,35 @@ class UserDb {
         return UserDb.instance;
     }
 
-    async userLogin(un, pw) {
-        const doc = await this.programDb.find({ username: un, password: pw });
-        return doc.length !== 0;
-    }
-    async userExists(un) {
-        const doc = await this.programDb.find({ username: un });
-        return doc.length !== 0;
+    async userLogin(username, password) {
+        const doc = await this.programDb.find({ username, password });
+        if (doc.find(item => item.enabled === 1)) {
+            return true;
+        }
+        return false;
     }
 
-    async addUser(username, password, role = "student") {
+    async userExists(un) {
+        const doc = await this.programDb.find({ username: un });
+        if (doc.find(item => item.enabled === 1)) {
+            return true;
+        }
+        return false;
+    }
+
+    async addUser(username, password, role = "student", enabled = 1) {
         const exists = await this.userExists(username);
         if (exists) {
             return false;
         }
-        await this.programDb.insert({ username, password, role });
+        await this.programDb.insert({ username, password, role, enabled });
         return true;
     }
 
     async updateRole(username, role = "student") {
-        if (this.userExists(username)) {
-            const doc = await this.programDb.update({ username, role });
+        const exists = await this.userExists(username);
+        if (exists) {
+            await this.programDb.update({ username }, { role });
             return true;
         }
         return false;
@@ -38,9 +45,34 @@ class UserDb {
 
     // eslint-disable-next-line class-methods-use-this
     async removeAll() {
-        const programDbPath = Path.relative(process.cwd(), "./data/ProgramDb.db");
-        fs.unlinkSync(programDbPath);
+        await this.programDb.remove({}, { multi: true });
+    }
+
+    async getUserCount(role = "student") {
+        const doc = await this.programDb.count({ role });
+        return doc;
+    }
+
+    async getUser(username) {
+        let doc = await this.programDb.find({ username });
+        doc = doc.find(item => item.username === username);
+        return doc;
+    }
+
+    async getUsers(role = "student") {
+        const doc = await this.programDb.find({ role });
+        return doc;
+    }
+
+    async disableUser(username) {
+        const exists = await this.userExists(username);
+        if (exists) {
+            await this.programDb.update({ username }, { enabled: 0 });
+            return true;
+        }
+        return false;
     }
 }
+
 
 module.exports = new UserDb();
