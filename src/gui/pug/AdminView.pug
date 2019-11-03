@@ -18,6 +18,11 @@ include ScrolledTable
                     #CourseEditorTeacher
                         h3 Teacher:
                         h3(id='teacherNameAdmin') Teacher Name
+                        label User Role:
+                        select.change-role
+                            option(value='teacher' selected='') Teacher
+                            option(value='admin') Admin
+                            option(value='student') Student
                         button(id='teacherNameEdit') Edit
                     #CourseEditorStudents
                         include AdminViewStudentsScrollTable

@@ -1,5 +1,6 @@
 /* global document */
 /* global window */
+/* global UserDb */
 
 function accordianListener() {
     const acc = document.getElementsByClassName("accordion");
@@ -18,13 +19,26 @@ function accordianListener() {
     }
 }
 
+function roleSelectListener() {
+    const selects = document.getElementsByClassName("change-role");
+
+    for (let i = 0; i < selects.length; i++) {
+        selects[i].addEventListener("change", function () {
+            // TODO get actual username
+            const username = "";
+            const option = this.value;
+            // UserDb.updateRole(username, option);
+        });
+    }
+}
+
 function setDate() {
     document.getElementById("date").textContent = new Date().toDateString();
 }
 
-
 function onLoad() {
     accordianListener();
+    roleSelectListener();
     setDate();
 }
 
