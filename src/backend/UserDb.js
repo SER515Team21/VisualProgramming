@@ -9,9 +9,10 @@ class UserDb {
         return UserDb.instance;
     }
 
-    async userLogin(un, pw) {
-        const doc = await this.programDb.find({ username: un, password: pw });
-        if (doc.some(item => item.enabled === 1)) {
+    async userLogin(username, password) {
+        let doc = await this.programDb.find({ username, password });
+        doc = doc.find(item => item.username === username);
+        if (doc.enabled === 1) {
             return true;
         }
         return false;
