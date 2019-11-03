@@ -44,9 +44,6 @@ function setDate() {
     }
 }
 
-<<<<<<< HEAD
-function onLoad() {
-=======
 async function updateAssignments() {
     const elems = document.getElementsByClassName("assignmentsList");
     const assigns = await AssignDb.loadCurrentAssignments();
@@ -82,7 +79,6 @@ async function updateAssignments() {
 }
 
 async function onLoad() {
->>>>>>> dev
     accordianListener();
     roleSelectListener();
     setDate();
