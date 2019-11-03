@@ -11,7 +11,7 @@
 #AdminView .MainPane * h1{
     margin: 10px;
 }
-
+co
 #AdminView .MainPane * h2{
     margin: 10px;
 }
@@ -31,5 +31,9 @@
 
 #AdminView #CourseEditorTeacher button{
     margin: 10px;
+}
+
+.role-cell {
+    width: 10%;
 }
 
