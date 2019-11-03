@@ -22,6 +22,6 @@ function loadAllCoursesList(){
     const listView = compiledFunction({
         rows: courses
     });
-    console.log(listView);
+    console.log(courses);
     document.getElementById("AdminCoursesList").innerHTML = listView;
 }
