@@ -24,6 +24,7 @@ async function sendLoginRequest() {
 
                 loadAllCoursesList();
                 loadCourseStudentList();
+                loadAllTeachersList();
             }
             else if (user.role === "teacher") {
                 document.getElementById("teacherView").hidden = false;

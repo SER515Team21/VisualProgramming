@@ -33,5 +33,5 @@ function loadAllTeachersList() {
     const listView = compiledFunction({
         rows: courses
     });
-    document.getElementById("AdminCoursesList").innerHTML = listView;
+    document.getElementById("AdminTeachersList").innerHTML = listView;
 }
