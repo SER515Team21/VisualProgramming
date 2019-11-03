@@ -27,6 +27,7 @@ describe("User DB", () => {
         const result1 = await UserDb.userLogin("vcedgar", "1234");
         const result2 = await UserDb.userLogin("vcedgar", "12345");
         const result3 = await UserDb.userLogin("vcedgar6", "1234");
+        
         expect(result1)
             .toBe(true);
         expect(result2)
@@ -39,33 +40,34 @@ describe("User DB", () => {
         const result1 = await UserDb.addUser("zlmonroe", "1234");
         const result1p2 = await UserDb.userLogin("zlmonroe", "1234");
 
-        expect(result1 && result1p2)
-            .toBe(true);
+        expect(result1).toBe(true);
+        expect(result1p2).toBe(true);
 
         const result3 = await UserDb.addUser("zlmonroe1", "1234");
         const result3p2 = await UserDb.userLogin("zlmonroe1", "1234");
-        expect(result3 && result3p2)
-            .toBe(true);
+
+        expect(result3).toBe(true);
+        expect(result3p2).toBe(true);
     });
 
     it("shall fail at adding a user with an existing username", async () => {
         const result1 = await UserDb.addUser("jebush", "1234");
         const result1p2 = await UserDb.userLogin("jebush", "1234");
 
-        expect(result1 && result1p2)
-            .toBe(true);
+        expect(result1).toBe(true);
+        expect(result1p2).toBe(true);
 
         const result2 = await UserDb.addUser("jebush", "12345");
         const result2p2 = await UserDb.userLogin("jebush", "12345");
-        expect(result2)
-            .toBe(false);
-        expect(result2p2)
-            .toBe(false);
+
+        expect(result2).toBe(false);
+        expect(result2p2).toBe(false);
 
         const result3 = await UserDb.addUser("jebush1", "1234");
         const result3p2 = await UserDb.userLogin("jebush1", "1234");
-        expect(result3 && result3p2)
-            .toBe(true);
+
+        expect(result3).toBe(true);
+        expect(result3p2).toBe(true);
     });
 
     it("shall return count of all students in the db", async () => {
@@ -77,8 +79,7 @@ describe("User DB", () => {
         const result2 = await UserDb.getUserCount("student");
 
         expect(result1).toBe(2);
-        expect(result1)
-            .toBe(result2);
+        expect(result1).toBe(result2);
     });
 
     it("shall return selected student in the db", async () => {
@@ -87,8 +88,7 @@ describe("User DB", () => {
         await UserDb.addUser("test3", "test3", "teacher");
 
         const result = await UserDb.getUser("test1");
-        expect(result.some(item => item.username === "test1"))
-            .toBe(true);
+        expect(result.some(item => item.username === "test1")).toBe(true);
     });
 
     it("shall return all students in the db", async () => {
