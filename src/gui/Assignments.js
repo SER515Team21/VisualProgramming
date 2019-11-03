@@ -8,7 +8,6 @@ class Assignment {
         this.aLink = link;
         this.dueDate = dueDate;
     }
-
 }
 
 const assignments = [
@@ -23,6 +22,8 @@ const assignments = [
 function populateAssignments() {
     console.log("called populateAssignments");
     const alist = document.getElementById("assignment_list");
+function populateGrades() {
+    const alist = document.getElementById("grades_list");
     assignments.sort((a, b) => a.dueDate.getTime() - b.dueDate.getTime());
     for (let i = 0; i < assignments.length; ++i) {
         console.log(`assignment ${i}`);

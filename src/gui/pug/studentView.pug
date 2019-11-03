@@ -5,18 +5,22 @@ include AssignmentsList
 include GenericDashboard
 
 #studentView(hidden='')
-    include header
-    +node-search
-    .tab-switcher
-        +tabbedFrame(['Assignments','Practice Equations', 'View Grades'], ['assignment_tab', 'practice', 'grades'])
-        .view.active(id='practice')
-            #editorPane.paper(ondrop='dropNode(event)' ondragover='allowDroppingNode(event)')
-            #resultPane(hidden='')
-        .view(id='grades')
-
-        .view(id="assignment_tab")
-            +AssignmentsList()
-            #AssignmentList()
-                script populateAssignments();
-                +tabbedFrame(['Past Due', 'Upcoming'], ['past_due_tab', 'upcoming_tab'])
-                div(id="assignment_list")
+    +GenericDashboard
+        +LeftPane
+            +node-search
+        +MainPane
+            .tab-switcher
+                +tabbedFrame(['Assignments','Practice Equations', 'View Grades'], ['assignment_tab', 'practice', 'grades'])
+                .view.active(id='practice')
+                    #editorPane.paper(ondrop='dropNode(event)' ondragover='allowDroppingNode(event)')
+                    #resultPane(hidden='')
+                .view(id='grades')
+                    div(id="assignment_grades")
+                .view(id="assignment_tab")
+                    +AssignmentsList()
+                    //-
+                        #AssignmentList()
+                            script populateAssignments();
+                            +tabbedFrame(['Past Due', 'Upcoming'], ['past_due_tab', 'upcoming_tab'])
+                            div(id="assignment_list")
+                    //

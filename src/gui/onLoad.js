@@ -68,6 +68,7 @@ async function onLoad() {
     setDate();
     await updateAssignments();
     setInterval(updateAssignments, 60000);
+    populateGrades();
 }
 
 window.onload = onLoad;
