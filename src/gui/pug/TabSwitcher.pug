@@ -1,5 +1,5 @@
-mixin tabbedFrame(tabs)
+mixin tabbedFrame(tabs, ids)
     ul
-        each val in tabs
+        each val, index in tabs
             li.tab
-                button= val
+                button(onclick="tabSwitcher(this)" data-for=ids[index])= val

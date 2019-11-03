@@ -2,9 +2,11 @@ head
     meta(charset='utf-8')
     script(src='./requirements.js')
     script(src='./gui/LoginLogic.js')
+    script(src='./gui/Assignments.js')
     script(src='./gui/onLoad.js')
     script(src='./gui/dragAndDrop.js')
     script(src='./gui/pugLoading/LoadAdminDash.js')
+    script(src='./gui/tabSwitcher.js')
     link(rel='stylesheet' type='text/css' href='gui/styles/CSSReset.css')
     link(rel='stylesheet' type='text/css' href='./gui/styles/GlobalStyles.css')
     link(rel='stylesheet' type='text/css' href='./gui/styles/GenericDashboardStyle.css')
@@ -14,10 +16,14 @@ head
     link(rel='stylesheet' type='text/css' href='./gui/styles/ScrolledTableStyle.css')
     link(rel='stylesheet' type='text/css' href='./gui/styles/Nodes.css')
     link(rel='stylesheet' type='text/css' href='./gui/styles/ListViewStyle.css')
+    link(rel='stylesheet' type='text/css' href='./gui/styles/Assignments.css')
+    link(rel='stylesheet' type='text/css' href='./gui/styles/Nodes.css')
+    link(rel='stylesheet' type='text/css' href='./gui/styles/TeacherStyles.css')
     title()
 
 body
     include gui/pug/login
     include gui/pug/signup
-    include gui/pug/studentView
+    include gui/pug/StudentView
     include gui/pug/AdminView
+    include gui/pug/teacherView

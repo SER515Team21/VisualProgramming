@@ -16,12 +16,22 @@ async function sendLoginRequest() {
             document.getElementById("loginFail").hidden = false;
         }
         else {
+            const user = await UserDb.getUser(username);
             document.getElementById("loginFail").hidden = true;
             document.getElementById("login").hidden = true;
             document.getElementById("AdminView").hidden = false;
+            if (user.role === "admin") {
+                document.getElementById("AdminView").hidden = false;
 
-            loadAllCoursesList();
-            loadCourseStudentList();
+                loadAllCoursesList();
+                loadCourseStudentList();
+            }
+            else if (user.role === "teacher") {
+                document.getElementById("teacherView").hidden = false;
+            }
+            else {
+                document.getElementById("studentView").hidden = false;
+            }
         }
     }
 }
