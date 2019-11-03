@@ -27,8 +27,9 @@ async function populateGrades() {
         const date = asgn.dueDate;
         alist.insertAdjacentHTML("beforeend", `
             <div>
-                <a href="${asgn.aLink}">${asgn.aName}</a>
+                <p data-for="${asgn.aLink}">${asgn.aName}</p>
                 <p>Due date: ${date.getMonth()}/${date.getDate()}/${date.getFullYear()}</p>
+                <hr />
             </div>
          `);
 //        alist.appendChild(assignmentText);
