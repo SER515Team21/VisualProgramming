@@ -27,7 +27,7 @@ describe("User DB", () => {
         const result1 = await UserDb.userLogin("vcedgar", "1234");
         const result2 = await UserDb.userLogin("vcedgar", "12345");
         const result3 = await UserDb.userLogin("vcedgar6", "1234");
-        
+
         expect(result1)
             .toBe(true);
         expect(result2)
@@ -99,6 +99,7 @@ describe("User DB", () => {
 
         const result = await UserDb.getUsers("student");
 
+        expect(result.length).toBe(3);
         expect(result.every(item => item.role === "student"))
             .toBe(true);
     });
