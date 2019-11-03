@@ -11,7 +11,6 @@ class UserDb {
         return UserDb.instance;
     }
 
-<<<<<<< HEAD
     createInitialAdmin() {
         this.programDb.find({ role: "admin" }).then((doc) => {
             if (doc.length === 0) {
@@ -20,17 +19,12 @@ class UserDb {
         });
     }
 
-    async userLogin(un, pw) {
-        const doc = await this.programDb.find({ username: un, password: pw });
-        return doc.length !== 0;
-=======
     async userLogin(username, password) {
         const doc = await this.programDb.find({ username, password });
         if (doc.find(item => item.enabled === 1)) {
             return true;
         }
         return false;
->>>>>>> dev
     }
 
     async userExists(un) {
@@ -90,11 +84,6 @@ class UserDb {
     }
 }
 
-<<<<<<< HEAD
 const UserDbInstance = new UserDb();
 UserDbInstance.createInitialAdmin();
 module.exports = UserDbInstance;
-=======
-
-module.exports = new UserDb();
->>>>>>> dev
