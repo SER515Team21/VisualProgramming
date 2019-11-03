@@ -5,9 +5,11 @@ include ScrolledTable
 #AdminView(hidden='')
     +GenericDashboard()
         +LeftPane()
-            +tabbedFrame(['Courses', 'Teachers', 'Students'])
+            +tabbedFrame(['Courses', 'Teachers', 'Students'], ['AdminCoursesList', 'AdminTeachersList', 'AdminStudentsList'])
             .tab-switcher
                 .view.active(id='AdminCoursesList')
+                    include ListView
+                .view(id='TeachersCoursesList')
                     include ListView
         +MainPane()
             +tabbedFrame([])

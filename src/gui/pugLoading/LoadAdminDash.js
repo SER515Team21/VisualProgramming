@@ -24,3 +24,14 @@ function loadAllCoursesList() {
     });
     document.getElementById("AdminCoursesList").innerHTML = listView;
 }
+
+function loadAllTeachersList() {
+    // TODO: FINISH
+    const pugPath = Path.relative(process.cwd(), "./src/gui/pug/ListView.pug");
+    const compiledFunction = pug.compileFile(pugPath);
+    const courses = ["Test", "test2","Test", "test2","Test", "test2","Test", "test2","Test", "test2","Test", "test2","Test", "test2","Test", "test2","Test", "test2","Test", "test2","Test", "test2","Test", "test2","Test", "test2",];
+    const listView = compiledFunction({
+        rows: courses
+    });
+    document.getElementById("AdminCoursesList").innerHTML = listView;
+}
