@@ -54,7 +54,8 @@ class UserDb {
     }
 
     async getUser(username) {
-        const doc = await this.programDb.find({ username });
+        let doc = await this.programDb.find({ username });
+        doc = doc.find(item => item.username === username);
         return doc;
     }
 

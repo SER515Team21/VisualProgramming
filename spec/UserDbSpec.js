@@ -88,7 +88,7 @@ describe("User DB", () => {
         await UserDb.addUser("test3", "test3", "teacher");
 
         const result = await UserDb.getUser("test1");
-        expect(result.some(item => item.username === "test1")).toBe(true);
+        expect(result.username === "test1").toBe(true);
     });
 
     it("shall return all students in the db", async () => {

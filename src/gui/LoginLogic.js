@@ -1,5 +1,4 @@
 /* global document */
-
 /* global UserDb */
 
 async function sendLoginRequest() {
@@ -18,10 +17,10 @@ async function sendLoginRequest() {
             const user = await UserDb.getUser(username);
             document.getElementById("loginFail").hidden = true;
             document.getElementById("login").hidden = true;
-            if (user.some(item => item.role === "admin")) {
+            if (user.role === "admin") {
                 document.getElementById("AdminView").hidden = false;
             }
-            else if (user.some(item => item.role === "teacher")) {
+            else if (user.role === "teacher") {
                 document.getElementById("teacherView").hidden = false;
             }
             else {
