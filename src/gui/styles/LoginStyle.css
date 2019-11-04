@@ -1,4 +1,4 @@
-#login{
+.signlog{
     position: absolute;
     top: 50%;
     left: 50%;
@@ -6,34 +6,29 @@
     margin: auto;
     width: fit-content;
     height: fit-content;
-    font-family: "Arial", sans-serif;
 }
-#login *{
+.signlog *{
     width: fit-content;
     margin: 0 auto;
 }
 
-#login > *{
+.signlog > *{
     display: block;
 }
 
-#login h1 {
+.signlog h1 {
     margin: 50px auto;
 }
 
-#login h2 {
+.signlog h2 {
     margin: 10px auto;
 }
 
-#login .inputWithLabel {
-    margin: 5px auto;
-}
-
-#login input{
+.signlog input{
     margin: 5px 10px;
     border:thin solid;
 }
 
-#login #extra *{
+.signlog #extra *{
     margin: 50px 50px;
 }

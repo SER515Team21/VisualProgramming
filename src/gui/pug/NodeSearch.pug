@@ -1,0 +1,26 @@
+include nodes
+
+mixin node-search
+    .node-search(ondragover='allowDroppingNode(event)' ondrop='deleteNode(event)')
+        #search-settings
+            input(type='search')
+            span.radioGroup
+                input#search-current(type='radio' name='search-where' value='Search in current module')
+                label(for='search-current') Search Current
+            span.radioGroup
+                input#search-all(type='radio' name='search-where' value='Search in all modules')
+                label(for='search-all') Search All
+        #search-results
+            button.accordion Numbers
+            .panel
+                +number_node().template
+            button.accordion Arithmetic
+            .panel
+                +binary_node('arithmetic', 'addition').template
+                +binary_node('arithmetic', 'subtraction').template
+                +binary_node('arithmetic', 'multiplication').template
+                +binary_node('arithmetic', 'division').template
+            button.accordion Algebraic Equations
+            .panel
+            button.accordion Graphing
+            .panel

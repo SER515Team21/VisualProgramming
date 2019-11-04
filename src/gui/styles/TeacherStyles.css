@@ -1,0 +1,28 @@
+#studentList {
+    width: 160px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: absolute;
+    border-collapse: collapse;
+    border: 1px solid black;
+}
+
+td, th {
+    height: max-content;
+    padding: 10px;
+    text-align: center;
+    border: 1px solid black;
+}
+
+th {
+    background-color: #cccccc;
+}
+
+.selected {
+    border: 3px solid blue;
+}
+
+tr:hover {
+    border: 3px solid blue;
+    cursor: pointer;
+}

@@ -1,3 +1,5 @@
+const ParserFacade = require("./parserlib/ParserFacade");
+
 /**
  * This is a basic representation of a Node object to represent each of the draggable nodes in the
  * visual programmer
@@ -6,7 +8,6 @@
  */
 class Node {
     constructor() {
-        console.log("Node constructor called");
         if (this.constructor === Node) {
             throw new TypeError("Abstract class 'Node' cannot be instantiated");
         }
@@ -17,6 +18,10 @@ class Node {
 
         // gets timestamp for use as ID
         this.nodeId = (new Date()).getTime();
+    }
+
+    reduce() {
+        return new ParserFacade(this.getText()).solution;
     }
 }
 

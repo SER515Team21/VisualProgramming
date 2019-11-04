@@ -1,0 +1,16 @@
+div(id='login' class="signlog")
+    h1 Welcome to Visual Mathematics!
+    h2 Login
+    div(class='inputWithLabel')
+        label(for='username') Username:
+        input(type='text' id='username')
+    div(class='inputWithLabel')
+        label(for='password') Password:
+        input(type='password' id='password')
+    div(id="loginFail" hidden)
+        p Incorrect username or password
+    button(onclick='sendLoginRequest()') Login
+    div(id='extra')
+        button(onclick="switchSignUp()") Make Account!
+        button(onclick='sendLoginRequest') Forgot Login?
+

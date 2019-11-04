@@ -1,0 +1,32 @@
+include GenericDashboard
+include TabSwitcher
+include ScrolledTable
+
+#AdminView(hidden='')
+    +GenericDashboard()
+        +LeftPane()
+            .tab-switcher
+                +tabbedFrame(['Courses', 'Teachers', 'Students'], ['AdminCoursesList', 'AdminTeachersList', 'AdminStudentsList'])
+                .view.active(id="AdminCoursesList")
+                    include ListView
+                .view(id="AdminTeachersList")
+                    include ListView
+                .view(id="AdminStudentsList")
+                    include ListView
+        +MainPane()
+            +tabbedFrame([])
+            .tab-switcher
+                .view.active(id='CourseEditor')
+                    h1 Course Editor
+                    h2(id='courseName') Course Name
+                    #CourseEditorTeacher
+                        h3 Teacher:
+                        h3(id='teacherNameAdmin') Teacher Name
+                        label User Role:
+                        select.change-role
+                            option(value='teacher' selected='') Teacher
+                            option(value='admin') Admin
+                            option(value='student') Student
+                        button(id='teacherNameEdit') Edit
+                    #CourseEditorStudents
+                        include AdminViewStudentsScrollTable

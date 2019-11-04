@@ -18,6 +18,8 @@
     "no-console": "warn",
     "comma-dangle": "off",
     "no-unused-vars": "off",
-    "no-trailing-spaces": "off"
+    "no-trailing-spaces": "off",
+    "no-underscore-dangle": "off",
+    "no-param-reassign": "off"
   }
 }

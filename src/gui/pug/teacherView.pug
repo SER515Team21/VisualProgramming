@@ -1,0 +1,45 @@
+include GenericDashboard
+include TabSwitcher
+include studentSearch
+include courseSearch
+
+#TeacherView(hidden='')
+    +GenericDashboard()
+        +LeftPane()
+            .tab-switcher
+                +tabbedFrame(['Courses', 'Students'], ['courses', 'students'])
+            #search-settings
+                input(type='search')
+                span.radioGroup
+                    input#search-current(type='radio' name='search-where' value='Search courses')
+                    label(for='search-current') Search Courses
+                span.radioGroup
+                    input#search-all(type='radio' name='search-where' value='Search students')
+                    label(for='search-all') Search Students
+                +course-search(false)
+                +student-search(true)
+        +MainPane()
+            .tab-switcher
+                +tabbedFrame(['Students', 'Assignments'], ['courseStudents', 'courseAssignments'])
+                .view.active(id='courseStudents')
+                    table(id='studentList')
+                        tr
+                            th Last
+                            th First
+                        tr.selected
+                            td Musk
+                            td Elon
+                        tr
+                            td Jones
+                            td Alex
+                .view(id='courseAssignments')
+                    table(id='assignmentList')
+                        tr
+                            th Name
+                            th Due Date
+                        tr.selected
+                            td Assign 1
+                            td 10/31/2019
+                        tr
+                            td Assign 2
+                            td 11/15/2019

@@ -1,0 +1,27 @@
+mixin number_node()
+    div(id='number',
+        class=`node numbers number`,
+        draggable='true',
+        ondragstart='pickUpNode(event)'
+    )
+        input(type='number' onchange='numberListener(this)' value=0)
+
+mixin unary_node(group, name)
+    div(id=`${name}`,
+        class=`node ${group} ${name}`,
+        draggable='true',
+        ondragstart='pickUpNode(event)'
+    )
+        p
+        #addRight.node-container(ondrop='dropNode(event)', ondragover='allowDroppingNode(event)')
+
+mixin binary_node(group, name)
+    div(id=`${name}`,
+        class=`node ${group} ${name}`,
+        draggable='true',
+        ondragstart='pickUpNode(event)'
+    )
+        #addLeft.node-container(ondrop='dropNode(event)', ondragover='allowDroppingNode(event)')
+        p
+        #addRight.node-container(ondrop='dropNode(event)', ondragover='allowDroppingNode(event)')
+
