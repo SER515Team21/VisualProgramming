@@ -4,7 +4,7 @@ const Path = require("path");
 class AssignmentDb {
     constructor() {
         if (AssignmentDb.instance === undefined) {
-            const programDbPath = Path.relative(process.cwd(), "./data/ProgramDb.db");
+            const programDbPath = Path.relative(process.cwd(), "./data/AssignDb.db");
             this.programDb = NedDb({ filename: programDbPath, autoload: true });
             AssignmentDb.instance = this;
         }
