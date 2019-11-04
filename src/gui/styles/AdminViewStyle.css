@@ -1,0 +1,39 @@
+#AdminView * .tab-switcher .view.active {
+    display: inline-block;
+    width: 100%;
+}
+#AdminView * .tab-switcher {
+    display: inline-block;
+    width: 100%;
+    height: auto;
+}
+
+#AdminView .MainPane * h1{
+    margin: 10px;
+}
+co
+#AdminView .MainPane * h2{
+    margin: 10px;
+}
+
+#AdminView .MainPane * #teacherNameAdmin{
+    border-style: solid;
+    border-width: medium;
+}
+
+#AdminView .MainPane * h3{
+    margin: 10px;
+}
+
+#AdminView #CourseEditorTeacher{
+    display: block;
+}
+
+#AdminView #CourseEditorTeacher button{
+    margin: 10px;
+}
+
+.role-cell {
+    width: 10%;
+}
+

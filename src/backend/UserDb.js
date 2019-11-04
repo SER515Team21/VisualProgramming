@@ -3,10 +3,20 @@ const Path = require("path");
 
 class UserDb {
     constructor() {
-        const programDbPath = Path.relative(process.cwd(), "./data/ProgramDb.db");
-        this.programDb = NedDb({ filename: programDbPath, autoload: true });
-        UserDb.instance = this;
+        if (UserDb.instance === undefined) {
+            const programDbPath = Path.relative(process.cwd(), "./data/ProgramDb.db");
+            this.programDb = NedDb({ filename: programDbPath, autoload: true });
+            UserDb.instance = this;
+        }
         return UserDb.instance;
+    }
+
+    createInitialAdmin() {
+        this.programDb.find({ role: "admin" }).then((doc) => {
+            if (doc.length === 0) {
+                this.addUser("admin", "password", "admin");
+            }
+        });
     }
 
     async userLogin(username, password) {
@@ -74,5 +84,6 @@ class UserDb {
     }
 }
 
-
-module.exports = new UserDb();
+const UserDbInstance = new UserDb();
+UserDbInstance.createInitialAdmin();
+module.exports = UserDbInstance;

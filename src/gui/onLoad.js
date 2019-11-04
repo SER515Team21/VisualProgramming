@@ -1,5 +1,6 @@
 /* global document */
 /* global window */
+/* global UserDb */
 /* global AssignDb */
 /* global populateGrades */
 
@@ -16,6 +17,19 @@ function accordianListener() {
             else {
                 panel.style.display = "block";
             }
+        });
+    }
+}
+
+function roleSelectListener() {
+    const selects = document.getElementsByClassName("change-role");
+
+    for (let i = 0; i < selects.length; i++) {
+        selects[i].addEventListener("change", function () {
+            // TODO get actual username
+            const username = "";
+            const option = this.value;
+            // UserDb.updateRole(username, option);
         });
     }
 }
@@ -66,6 +80,7 @@ async function updateAssignments() {
 
 async function onLoad() {
     accordianListener();
+    roleSelectListener();
     setDate();
     await populateGrades();
     await updateAssignments();
