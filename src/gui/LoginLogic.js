@@ -3,6 +3,7 @@
 /* global loadAllCoursesList */
 /* global loadCourseStudentList */
 /* global loadAllTeachersList */
+/* global loadAllStudentsList */
 
 async function sendLoginRequest() {
     const username = document.getElementById("username").value;
@@ -26,6 +27,7 @@ async function sendLoginRequest() {
                 loadAllCoursesList();
                 loadCourseStudentList();
                 loadAllTeachersList();
+                loadAllStudentsList();
             }
             else if (user.role === "teacher") {
                 document.getElementById("teacherView").hidden = false;
