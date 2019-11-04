@@ -20,8 +20,8 @@ include courseSearch
                 +student-search(true)
         +MainPane()
             .tab-switcher
-                +tabbedFrame(['Students', 'Assignments'], ['courseStudents', 'assignments'])
-                .view.active(id='View Students')
+                +tabbedFrame(['Students', 'Assignments'], ['courseStudents', 'courseAssignments'])
+                .view.active(id='courseStudents')
                     table(id='studentList')
                         tr
                             th Last
@@ -32,7 +32,7 @@ include courseSearch
                         tr
                             td Jones
                             td Alex
-                .view(id='View Assignments')
+                .view(id='courseAssignments')
                     table(id='assignmentList')
                         tr
                             th Name
