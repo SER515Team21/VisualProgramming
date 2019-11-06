@@ -7,8 +7,10 @@ include ScrolledTable
         +LeftPane()
             .tab-switcher
                 +tabbedFrame(['Courses', 'Teachers', 'Students'], ['AdminCoursesList', 'AdminTeachersList', 'AdminStudentsList'])
-                .view.active(id="AdminCoursesList")
-                    include ListView
+                .view.active(id="AdminCoursesListView")
+                    button(onclick="addNewCourse") Add New Course!
+                    #AdminCoursesList
+                        include ListView
                 .view(id="AdminTeachersList")
                     include ListView
                 .view(id="AdminStudentsList")
