@@ -12,8 +12,3 @@ mixin ScrolledTableBox(title, editButtonId, columnNames, rows)
                     tr
                         each val in row ? row : []
                             td= val
-                        td.role-cell
-                            select.change-role
-                                option(value='teacher') Teacher
-                                option(value='admin') Admin
-                                option(value='student' selected='') Student
