@@ -19,7 +19,7 @@ class CourseDb {
         return false;
     }
 
-    async createCourse(course, description, teacherId, students) {
+    async createCourse(course, description, teacherId, students = []) {
         const exists = await this.courseExists(course);
         if (exists) {
             return false;
@@ -35,28 +35,41 @@ class CourseDb {
     }
 
     async addStudent(courseId, studentId) {
-        const students = await this.getStudents(courseId);
-
-        if (students.includes(studentId)) {
+        const existingStudents = await this.getStudents(courseId);
+        if (existingStudents.includes(studentId)) {
             return false;
         }
-        const doc = await this.programDb.update({ _id: courseId }, { students: studentId });
+
+        existingStudents.push(studentId);
+        const doc = await this.programDb.update({ _id: courseId }, {
+            $set: { students: existingStudents }
+        }, { multi: false });
         return true;
     }
 
     async addStudents(courseId, newStudents = []) {
-        const students = await this.getStudents(courseId);
+        const existingStudents = await this.getStudents(courseId);
 
-        if (students.includes(newStudents)) {
+        if (existingStudents.includes(newStudents)) {
             return false;
         }
-        const doc = await this.programDb.update({ _id: courseId }, { students: newStudents });
+
+        newStudents.forEach((student) => {
+            existingStudents.push(student);
+        });
+
+        const doc = await this.programDb.update({ _id: courseId }, {
+            $set: { students: existingStudents }
+        }, { multi: false });
         return true;
     }
 
     async getStudents(courseId) {
         let doc = await this.programDb.find({ _id: courseId });
         doc = doc.find(item => item._id !== null);
+        if (doc.students === "") {
+            doc.students = [];
+        }
         return doc.students;
     }
 
