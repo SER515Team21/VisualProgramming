@@ -1,6 +1,7 @@
 .ScrolledTableBox{
     display: block;
     margin: 10px;
+    overflow: hidden;
 }
 
 .ScrolledTableBox{
@@ -34,7 +35,7 @@
     border-width: medium;
 }
 
-.ScrolledTableBox* th {
+.ScrolledTableBox * th {
     border-left-style: solid;
     border-width: medium;
     padding: 10px;

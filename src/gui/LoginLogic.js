@@ -30,7 +30,7 @@ async function sendLoginRequest() {
                 loadAllStudentsList();
             }
             else if (user.role === "teacher") {
-                document.getElementById("teacherView").hidden = false;
+                document.getElementById("TeacherView").hidden = false;
             }
             else {
                 document.getElementById("studentView").hidden = false;
