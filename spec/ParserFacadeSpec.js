@@ -45,4 +45,24 @@ describe("Parser Facade", () => {
         this.parser = new ParserFacade("1 * (2.1 + 3) - 4 / 5");
         expect(this.parser.solution).toBe(4.3);
     });
+
+    it("shall support long division", () => {
+        this.parser = new ParserFacade("longDiv(1, 2)");
+        expect(this.parser.solution).toBe(0.5);
+    });
+
+    it("shall support long multiplication", () => {
+        this.parser = new ParserFacade("longMul(3, 2)");
+        expect(this.parser.solution).toBe(6);
+    });
+
+    it("shall support long proper fractions", () => {
+        this.parser = new ParserFacade("fraction(4, 1, 2)");
+        expect(this.parser.solution).toBe(4.5);
+    });
+
+    it("shall support improper fractions", () => {
+        this.parser = new ParserFacade("fraction(5, 2)");
+        expect(this.parser.solution).toBe(2.5);
+    });
 });
