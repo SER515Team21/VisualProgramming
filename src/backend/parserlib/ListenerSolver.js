@@ -88,6 +88,46 @@ class ListenerSolver extends ArithmeticListener {
         }
     }
 
+    exitLongMultiplicative(ctx) {
+        const right = this._stack.pop();
+        const left = this._stack.pop();
+        let result;
+        if (ctx.getChild(1).getText() === "Mul") {
+            result = left * right;
+        }
+        else {
+            result = left / right;
+        }
+        this._stack.push(result);
+        if (this.DEBUG) {
+            // eslint-disable-next-line no-console
+            console.log("Long", ctx.getChild(1).getText(), left, right);
+        }
+    }
+
+    exitImproperFraction(ctx) {
+        const bottom = this._stack.pop();
+        const top = this._stack.pop();
+        const result = top / bottom;
+        this._stack.push(result);
+        if (this.DEBUG) {
+            // eslint-disable-next-line no-console
+            console.log("fraction", top, "/", bottom);
+        }
+    }
+
+    exitProperFraction(ctx) {
+        const bottom = this._stack.pop();
+        const top = this._stack.pop();
+        const left = this._stack.pop();
+        const result = ((left * bottom) + top) / bottom;
+        this._stack.push(result);
+        if (this.DEBUG) {
+            // eslint-disable-next-line no-console
+            console.log("fraction", left, "&", top, "/", bottom);
+        }
+    }
+
     /**
      * When an additive expression finishes parsing check the operator
      * and then apply it the left and right operands (top two from the stack)
