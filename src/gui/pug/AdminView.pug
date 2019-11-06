@@ -6,7 +6,7 @@ include ScrolledTable
     +GenericDashboard()
         +LeftPane()
             .tab-switcher
-                +tabbedFrame(['Courses', 'Teachers', 'Students'], ['AdminCoursesList', 'AdminTeachersList', 'AdminStudentsList'])
+                +tabbedFrame(['Courses', 'Teachers', 'Students'], ['AdminCoursesListView', 'AdminTeachersList', 'AdminStudentsList'])
                 .view.active(id="AdminCoursesListView")
                     button(onclick="addNewCourse") Add New Course!
                     #AdminCoursesList
