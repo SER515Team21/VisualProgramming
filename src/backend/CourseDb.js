@@ -19,12 +19,15 @@ class CourseDb {
         return false;
     }
 
-    async createCourse(course, description, teacherId, students = []) {
+    async createCourse(course, gradeLevel, teacherId, students = []) {
+        if (course === undefined || gradeLevel === undefined || teacherId === undefined) {
+            return false;
+        }
         const exists = await this.courseExists(course);
         if (exists) {
             return false;
         }
-        await this.programDb.insert({ course, description, teacherId, students });
+        await this.programDb.insert({ course, gradeLevel, teacherId, students });
         return true;
     }
 

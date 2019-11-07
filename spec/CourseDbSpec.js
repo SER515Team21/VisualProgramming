@@ -22,16 +22,16 @@ describe("Course DB", () => {
     });
 
     it("shall be able to create a course with a correct name and description", async () => {
-        const course = await CourseDb.createCourse("SER515", "Foundations of SE",
+        const course = await CourseDb.createCourse("SER515", 5,
             "");
         expect(course)
             .toBe(true);
     });
 
     it("shall not be able to create a course with the same name as another", async () => {
-        await CourseDb.createCourse("SER515", "Foundations of SE",
+        await CourseDb.createCourse("SER515", 5,
             "");
-        const course = await CourseDb.createCourse("SER515", "Foundations of SE",
+        const course = await CourseDb.createCourse("SER515", 5,
             "");
 
         expect(course)
@@ -39,7 +39,7 @@ describe("Course DB", () => {
     });
 
     it("shall be able to return a course id based on course name", async () => {
-        const course = await CourseDb.createCourse("SER515", "Foundations of SE",
+        const course = await CourseDb.createCourse("SER515", 5,
             "");
 
         const result = await CourseDb.getCourseId("SER515");
@@ -55,7 +55,7 @@ describe("Course DB", () => {
         const students = await UserDb.getUsers();
         const studentIds = students.map(student => student._id);
 
-        await CourseDb.createCourse("SER515", "Foundations of SE",
+        await CourseDb.createCourse("SER515", 5,
             "", studentIds);
 
         const courseId = await CourseDb.getCourseId("SER515");
@@ -66,7 +66,7 @@ describe("Course DB", () => {
     });
 
     it("shall be able to add a student to an existing course", async () => {
-        await CourseDb.createCourse("SER515", "Foundations of SE",
+        await CourseDb.createCourse("SER515", 5,
             "");
         const courseId = await CourseDb.getCourseId("SER515");
         let student = {};
@@ -86,7 +86,7 @@ describe("Course DB", () => {
     });
 
     it("shall be able to add an array of students to an existing course", async () => {
-        await CourseDb.createCourse("SER515", "Foundations of SE",
+        await CourseDb.createCourse("SER515", 5,
             "");
         await UserDb.addUser("test", "test");
         await UserDb.addUser("test2", "test2");
