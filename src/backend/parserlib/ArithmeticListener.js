@@ -29,6 +29,15 @@ ArithmeticListener.prototype.exitInteger = function(ctx) {
 };
 
 
+// Enter a parse tree produced by ArithmeticParser#LongMultiplicative.
+ArithmeticListener.prototype.enterLongMultiplicative = function(ctx) {
+};
+
+// Exit a parse tree produced by ArithmeticParser#LongMultiplicative.
+ArithmeticListener.prototype.exitLongMultiplicative = function(ctx) {
+};
+
+
 // Enter a parse tree produced by ArithmeticParser#Multiplicative.
 ArithmeticListener.prototype.enterMultiplicative = function(ctx) {
 };
@@ -44,6 +53,24 @@ ArithmeticListener.prototype.enterAdditive = function(ctx) {
 
 // Exit a parse tree produced by ArithmeticParser#Additive.
 ArithmeticListener.prototype.exitAdditive = function(ctx) {
+};
+
+
+// Enter a parse tree produced by ArithmeticParser#ImproperFraction.
+ArithmeticListener.prototype.enterImproperFraction = function(ctx) {
+};
+
+// Exit a parse tree produced by ArithmeticParser#ImproperFraction.
+ArithmeticListener.prototype.exitImproperFraction = function(ctx) {
+};
+
+
+// Enter a parse tree produced by ArithmeticParser#ProperFraction.
+ArithmeticListener.prototype.enterProperFraction = function(ctx) {
+};
+
+// Exit a parse tree produced by ArithmeticParser#ProperFraction.
+ArithmeticListener.prototype.exitProperFraction = function(ctx) {
 };
 
 
