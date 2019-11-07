@@ -1,4 +1,5 @@
 const BinaryOperator = require("./BinaryOperator");
+const TertiaryOperator = require("./TertiaryOperator");
 
 class Addition extends BinaryOperator {
 
@@ -76,11 +77,31 @@ class LongDivision extends BinaryOperator {
     }
 }
 
+class MixedFraction extends TertiaryOperator {
+
+    constructor(firstOperand = null, secondOperand = null, thirdOperand = null) {
+        super("fraction", firstOperand, secondOperand, thirdOperand);
+    }
+
+    getText() {
+        return `fraction${super.getText()}`;
+    }
+}
+
+class ImproperFraction extends BinaryOperator {
+
+    constructor(leftOperand = null, rightOperand = null) {
+        super("/", leftOperand, rightOperand);
+    }
+}
+
 module.exports = {
     Addition,
     Subtraction,
     Multiplication,
     Division,
     LongMultiplication,
-    LongDivision
+    LongDivision,
+    MixedFraction,
+    ImproperFraction
 };

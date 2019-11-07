@@ -30,10 +30,10 @@ function handlePanelNode(node, target, event) {
 
     // Insert into a binary node
     if (target.id.toString().endsWith("Left")) {
-        NodeForest.getNode(target.parentNode.id).setLeftOperand(backendNode);
+        NodeForest.getNode(target.parentNode.id).setFirstOperand(backendNode);
     }
     else if (target.id.toString().endsWith("Right")) {
-        NodeForest.getNode(target.parentNode.id).setRightOperand(backendNode);
+        NodeForest.getNode(target.parentNode.id).setSecondOperand(backendNode);
     }
     target.appendChild(clone);
 }
@@ -60,10 +60,10 @@ function handleRootNodeNode(node, target, event) {
 
     // Insert into a binary node
     if (target.id.toString().endsWith("Left")) {
-        NodeForest.getNode(target.parentNode.id).setLeftOperand(backendNode);
+        NodeForest.getNode(target.parentNode.id).setFirstOperand(backendNode);
     }
     else if (target.id.toString().endsWith("Right")) {
-        NodeForest.getNode(target.parentNode.id).setRightOperand(backendNode);
+        NodeForest.getNode(target.parentNode.id).setSecondOperand(backendNode);
     }
     target.appendChild(node);
 }
@@ -76,20 +76,20 @@ function handleRootNodeEquationPane(node, target, event) {
 function handleChildNodeNode(node, target, event) {
     // Remove from binary operator
     if (target.id.toString().endsWith("Left")) {
-        NodeForest.getNode(node.parentNode.parentNode.id).setLeftOperand(undefined);
+        NodeForest.getNode(node.parentNode.parentNode.id).setFirstOperand(undefined);
     }
     else if (target.id.toString().endsWith("Right")) {
-        NodeForest.getNode(node.parentNode.parentNode.id).setLeftOperand(undefined);
+        NodeForest.getNode(node.parentNode.parentNode.id).setFirstOperand(undefined);
     }
     node.parentNode.removeChild(node);
 
     const backendNode = NodeForest.getNode(node.id);
     // Insert into a binary node
     if (target.id.toString().endsWith("Left")) {
-        NodeForest.getNode(target.parentNode.id).setLeftOperand(backendNode);
+        NodeForest.getNode(target.parentNode.id).setFirstOperand(backendNode);
     }
     else if (target.id.toString().endsWith("Right")) {
-        NodeForest.getNode(target.parentNode.id).setRightOperand(backendNode);
+        NodeForest.getNode(target.parentNode.id).setSecondOperand(backendNode);
     }
     target.appendChild(node);
 }
@@ -99,10 +99,10 @@ function handleChildNodeEquationPane(node, target, event) {
 
     // Remove from binary operator
     if (target.id.toString().endsWith("Left")) {
-        NodeForest.getNode(node.parentNode.parentNode.id).setLeftOperand(undefined);
+        NodeForest.getNode(node.parentNode.parentNode.id).setFirstOperand(undefined);
     }
     else if (target.id.toString().endsWith("Right")) {
-        NodeForest.getNode(node.parentNode.parentNode.id).setLeftOperand(undefined);
+        NodeForest.getNode(node.parentNode.parentNode.id).setFirstOperand(undefined);
     }
     node.parentNode.removeChild(node);
 
