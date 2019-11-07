@@ -76,6 +76,19 @@ class CourseDb {
         return doc.students;
     }
 
+    async getCourses(teacherId) {
+        let courses = [];
+        if (teacherId === undefined) {
+            const doc = await this.programDb.find({});
+            courses = doc.map(course => course.course);
+
+            return courses;
+        }
+        const doc = await this.programDb.find({ teacherId });
+        courses = doc.map(course => course.course);
+        return courses;
+    }
+
     async removeAll() {
         await this.programDb.remove({}, { multi: true });
     }

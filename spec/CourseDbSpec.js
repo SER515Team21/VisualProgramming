@@ -39,7 +39,7 @@ describe("Course DB", () => {
     });
 
     it("shall be able to return a course id based on course name", async () => {
-        const course = await CourseDb.createCourse("SER515", 5,
+        await CourseDb.createCourse("SER515", 5,
             "");
 
         const result = await CourseDb.getCourseId("SER515");
@@ -103,5 +103,26 @@ describe("Course DB", () => {
 
         expect(result)
             .toBe(true);
+    });
+
+    it("shall be able to return all course names", async () => {
+        await CourseDb.createCourse("SER515", 5,
+            "");
+        await CourseDb.createCourse("SER500", 5,
+            "");
+
+        const result = await CourseDb.getCourses();
+        expect(result)
+            .toEqual(["SER515", "SER500"]);
+    });
+
+    it("shall be able to return course names based on teacher id", async () => {
+        await CourseDb.createCourse("SER515", 5,
+            "123");
+
+        const result = await CourseDb.getCourses("123");
+
+        expect(result)
+            .toEqual(["SER515"]);
     });
 });
