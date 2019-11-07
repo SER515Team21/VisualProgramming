@@ -32,9 +32,55 @@ class Division extends BinaryOperator {
 
 }
 
+class LongMultiplication extends BinaryOperator {
+
+    constructor(leftOperand = null, rightOperand = null) {
+        super("*", leftOperand, rightOperand);
+    }
+
+    getText() {
+        let leftText = "?";
+        let rightText = "?";
+
+        if (this.leftOperand != null) {
+            leftText = this.leftOperand.getText();
+        }
+
+        if (this.rightOperand != null) {
+            rightText = this.rightOperand.getText();
+        }
+
+        return `longMul(${leftText}, ${rightText})`;
+    }
+}
+
+class LongDivision extends BinaryOperator {
+
+    constructor(leftOperand = null, rightOperand = null) {
+        super("/", leftOperand, rightOperand);
+    }
+
+    getText() {
+        let leftText = "?";
+        let rightText = "?";
+
+        if (this.leftOperand != null) {
+            leftText = this.leftOperand.getText();
+        }
+
+        if (this.rightOperand != null) {
+            rightText = this.rightOperand.getText();
+        }
+
+        return `longDiv(${rightText}, ${leftText})`;
+    }
+}
+
 module.exports = {
     Addition,
     Subtraction,
     Multiplication,
-    Division
+    Division,
+    LongMultiplication,
+    LongDivision
 };
