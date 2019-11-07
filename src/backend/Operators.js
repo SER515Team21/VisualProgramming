@@ -93,6 +93,21 @@ class ImproperFraction extends BinaryOperator {
     constructor(leftOperand = null, rightOperand = null) {
         super("/", leftOperand, rightOperand);
     }
+
+    getText() {
+        let leftText = "?";
+        let rightText = "?";
+
+        if (this.leftOperand != null) {
+            leftText = this.leftOperand.getText();
+        }
+
+        if (this.rightOperand != null) {
+            rightText = this.rightOperand.getText();
+        }
+
+        return `fraction(${leftText},${rightText})`;
+    }
 }
 
 module.exports = {
