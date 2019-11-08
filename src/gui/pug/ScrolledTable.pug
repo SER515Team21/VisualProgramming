@@ -1,7 +1,6 @@
-mixin ScrolledTableBox(title, editButtonId, columnNames, rows)
+mixin ScrolledTableBox(title, columnNames, rows)
     .ScrolledTableBox
         h3= title
-        button(id= editButtonId) Edit
         table
             tr(class="ScrolledTableColumns")
                 each name in columnNames
@@ -12,8 +11,3 @@ mixin ScrolledTableBox(title, editButtonId, columnNames, rows)
                     tr
                         each val in row ? row : []
                             td= val
-                        td.role-cell
-                            select.change-role
-                                option(value='teacher') Teacher
-                                option(value='admin') Admin
-                                option(value='student' selected='') Student
