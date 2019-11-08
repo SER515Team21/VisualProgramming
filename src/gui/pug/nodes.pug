@@ -6,18 +6,18 @@ mixin number_node()
     )
         input(type='number' onchange='numberListener(this)' value=0)
 
-mixin unary_node(group, name)
+mixin unary_node(group, name, level)
     div(id=`${name}`,
-        class=`node ${group} ${name}`,
+        class=`node ${group} ${name} ${level}`,
         draggable='true',
         ondragstart='pickUpNode(event)'
     )
         p
         #addRight.node-container(ondrop='dropNode(event)', ondragover='allowDroppingNode(event)')
 
-mixin binary_node(group, name)
+mixin binary_node(group, name, level)
     div(id=`${name}`,
-        class=`node ${group} ${name}`,
+        class=`node ${group} ${name} ${level}`,
         draggable='true',
         ondragstart='pickUpNode(event)'
     )
