@@ -1,7 +1,6 @@
-mixin ScrolledTableBox(title, editButtonId, columnNames, rows)
+mixin ScrolledTableBox(title, columnNames, rows)
     .ScrolledTableBox
         h3= title
-        button(id= editButtonId) Edit
         table
             tr(class="ScrolledTableColumns")
                 each name in columnNames

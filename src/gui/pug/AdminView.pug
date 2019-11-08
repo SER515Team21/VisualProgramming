@@ -8,7 +8,6 @@ include ScrolledTable
             .tab-switcher
                 +tabbedFrame(['Courses', 'Teachers', 'Students'], ['AdminCoursesListView', 'AdminTeachersList', 'AdminStudentsList'])
                 .view.active(id="AdminCoursesListView")
-                    button(onclick="addNewCourse") Add New Course!
                     #AdminCoursesList
                         include ListView
                 .view(id="AdminTeachersList")
@@ -16,19 +15,44 @@ include ScrolledTable
                 .view(id="AdminStudentsList")
                     include ListView
         +MainPane()
-            +tabbedFrame([])
             .tab-switcher
-                .view.active(id='CourseEditor')
+                +tabbedFrame(['Course View', 'New Course', 'Edit Course'], ['CourseView', "NewCoursePage", "CourseEditorPage"])
+                .view.active(id='CourseView')
+                    h1 View Course
+                    h2 Course Name
+                    h3 Grade
+                    h4 Undefined
+                    #CourseViewTeacher
+                        h3 Teacher:
+                        h4 Teacher Name
+                    #CourseViewStudents
+                        include AdminViewStudentsScrollTable
+                .view(id='NewCoursePage')
+                    h1 New Course
+                    input(type='text' id='newCourseName' value="Course Name")
+                    button(id='adminSaveNewCourseName') Save
+                    h3 Grade
+                    input(type='number' id='newCourseGrade' value="Course Grade")
+                    button(id='adminSaveNewCourseGrade') Save
+                    #NewCourseTeacher
+                        h3 Teacher:
+                        input(type='text' id='newCourseTeacherName' value="Teacher Name")
+                        button(id='adminSaveNewCourseTeacherName') Save
+                    #NewCourseStudents
+                        include AdminViewStudentsScrollTable
+                        button(id='adminAddStudent') Add Student
+                .view(id='CourseEditorPage')
                     h1 Course Editor
-                    h2(id='courseName') Course Name
+                    input(type='text' id='editCourseName' value="Course Name")
+                    button(id='adminSaveCourseName') Save
+                    h3 Grade
+                    input(type='number' id='editCourseGrade' value="Course Grade")
+                    button(id='adminSaveCourseGrade') Save
                     #CourseEditorTeacher
                         h3 Teacher:
-                        h3(id='teacherNameAdmin') Teacher Name
-                        label User Role:
-                        select.change-role
-                            option(value='teacher' selected='') Teacher
-                            option(value='admin') Admin
-                            option(value='student') Student
-                        button(id='teacherNameEdit') Edit
+                        input(type='text' id='editCourseTeacherName' value="Teacher Name")
+                        button(id='adminSaveCourseTeacherName') Save
                     #CourseEditorStudents
                         include AdminViewStudentsScrollTable
+                        button(id='adminAddStudentEditCourse') Add Student
+
