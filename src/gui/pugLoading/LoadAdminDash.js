@@ -2,6 +2,7 @@
 /* global UserDb */
 /* global pug */
 /* global Path */
+/* global CourseDb */
 
 function loadCourseStudentList() {
     // TODO: FINISH
@@ -14,11 +15,11 @@ function loadCourseStudentList() {
     document.getElementById("CourseViewStudents").innerHTML = scrolledTable;
 }
 
-function loadAllCoursesList() {
+async function loadAllCoursesList() {
     // TODO: FINISH
     const pugPath = Path.relative(process.cwd(), "./src/gui/pug/ListView.pug");
     const compiledFunction = pug.compileFile(pugPath);
-    const courses = ["Course", "ccours", "coursese", "test2", "Test", "test2", "Test", "test2", "Test", "test2", "Test", "test2", "Test", "test2", "Test", "test2", "Test", "test2", "Test", "test2", "Test", "test2", "Test", "test2", "Test", "test2"];
+    const courses = await CourseDb.getCourses();
     const listView = compiledFunction({
         rows: courses
     });
