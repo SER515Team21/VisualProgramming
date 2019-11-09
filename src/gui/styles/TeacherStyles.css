@@ -26,3 +26,32 @@ tr:hover {
     border: 3px solid blue;
     cursor: pointer;
 }
+
+#createAssignment {
+    padding: 25px;
+}
+
+#createAssignment * {
+    margin: 2px;
+}
+
+.createAssignMenu {
+    height: 25px;
+    padding: 25px;
+}
+
+.question {
+    padding: 20px;
+    border: 1px solid;
+}
+
+.question label {
+    vertical-align: top;
+    border: solid 1px;
+    padding: 4px;
+}
+
+.question textarea {
+    height: 100px;
+    width: 650px;
+}
