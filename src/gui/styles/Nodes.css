@@ -23,7 +23,7 @@
     display: inline-block;
 }
 
-.arithmetic .node-container {
+.node-container {
     display: inline-grid;
     min-width: 20px;
     min-height: 20px;
@@ -64,6 +64,40 @@
     content: "x";
 }
 
+.longMultiplication {
+
+}
+
 .division p::before {
     content: "\00F7";
+}
+
+.longDivision {
+
+}
+
+.fraction {
+    background-color: mediumpurple !important;
+}
+
+.fraction p {
+    height: 0px !important;
+    border: black solid 1px;
+    background-color: black;
+    margin: 5px;
+}
+
+.fraction:hover {
+    cursor: pointer;
+    border: purple solid 3px;
+}
+
+.fraction.improper {
+    width: 50px;
+    height: 60px;
+}
+
+.fraction.mixed {
+    width: 80px;
+    height: 60px;
 }

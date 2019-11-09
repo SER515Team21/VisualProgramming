@@ -14,7 +14,6 @@ class TertiaryOperator extends Node {
         this.firstOperand = firstOperand;
         this.secondOperand = secondOperand;
         this.thirdOperand = thirdOperand;
-        this.operatorText = operatorText;
         if (this.constructor === TertiaryOperator) {
             throw new TypeError("Abstract class 'TertiaryOperator' cannot be instantiated");
         }

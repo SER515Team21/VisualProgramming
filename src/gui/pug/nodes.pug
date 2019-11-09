@@ -1,6 +1,6 @@
 mixin number_node()
     div(id='number',
-        class=`node numbers number`,
+        class='node numbers number',
         draggable='true',
         ondragstart='pickUpNode(event)'
     )
@@ -25,3 +25,13 @@ mixin binary_node(group, name)
         p
         #addRight.node-container(ondrop='dropNode(event)', ondragover='allowDroppingNode(event)')
 
+mixin mixed_fraction_node()
+    div(id='mixed',
+        class='node fraction mixed',
+        draggable='true',
+        ondragstart='pickUpNode(event)'
+    )
+        #addFirst.node-container(ondrop='dropNode(event)', ondragover='allowDroppingNode(event)')
+        #addSecond.node-container(ondrop='dropNode(event)', ondragover='allowDroppingNode(event)')
+        p
+        #addThird.node-container(ondrop='dropNode(event)', ondragover='allowDroppingNode(event)')
