@@ -68,12 +68,21 @@
 
 }
 
+.longMultiplication p {
+    height: 0px !important;
+    border: black solid 1px;
+    background-color: black;
+    margin: 5px;
+}
+
 .division p::before {
     content: "\00F7";
 }
 
-.longDivision {
-
+.longDivision p::before {
+    content: "\27CC";
+    font-size: x-large;
+    margin-right: -5px;
 }
 
 .fraction {
