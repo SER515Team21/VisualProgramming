@@ -17,13 +17,14 @@ class AssignmentDb {
     }
 
     async loadAssignment(id) {
-        const doc = await this.programDb.find({_id: id });
+        const doc = await this.programDb.find({ _id: id });
         return doc;
     }
 
     async saveAssignment(name, description, course, teacher, assignment, dueDate, points) {
-        if(!this.assignmentNameExists(name,course, teacher)) {
-            const doc = await this.programDb.insert({name, description, course, teacher, assignment, dueDate, points});
+        if (!this.assignmentNameExists(name, course, teacher)) {
+            const doc = await this.programDb.insert({
+                name, description, course, teacher, assignment, dueDate, points });
             return doc._id;
         }
         return null;
@@ -35,13 +36,13 @@ class AssignmentDb {
     }
 
     async assignmentNameExists(name, course, teacher) {
-        const doc = await this.programDb.find({name, course, teacher});
+        const doc = await this.programDb.find({ name, course, teacher });
         return doc.length !== 0;
     }
 
     async updateAssignment(name, description, course, assignment, dueDate, id) {
         if (this.assignmentExists(id)) {
-            await this.programDb.update({ role: "Assignment", _id: id }, { name, description, course, assignment });
+            await this.programDb.update({ _id: id }, { name, description, course, assignment });
             return true;
         }
         return false;
