@@ -4,6 +4,10 @@
 /* global loadCourseStudentList */
 /* global loadAllTeachersList */
 /* global loadAllStudentsList */
+/* global loadCourseStudentListTeacher */
+/* global loadCourseAssignmentListTeacher */
+/* global loadAllTeachersCoursesList */
+/* global loadAllTeachersStudentsList */
 
 async function sendLoginRequest() {
     const username = document.getElementById("username").value;
@@ -31,6 +35,11 @@ async function sendLoginRequest() {
             }
             else if (user.role === "teacher") {
                 document.getElementById("TeacherView").hidden = false;
+
+                loadCourseStudentListTeacher();
+                loadCourseAssignmentListTeacher();
+                loadAllTeachersCoursesList();
+                loadAllTeachersStudentsList();
             }
             else {
                 document.getElementById("studentView").hidden = false;

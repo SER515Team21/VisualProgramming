@@ -26,7 +26,7 @@ include ScrolledTable
                         h3 Teacher:
                         h4 Teacher Name
                     #CourseViewStudents
-                        include AdminViewStudentsScrollTable
+                        include ViewStudentsScrollTable
                 .view(id='NewCoursePage')
                     h1 New Course
                     input(type='text' id='newCourseName' value="Course Name")
@@ -39,7 +39,7 @@ include ScrolledTable
                         input(type='text' id='newCourseTeacherName' value="Teacher Name")
                         button(id='adminSaveNewCourseTeacherName') Save
                     #NewCourseStudents
-                        include AdminViewStudentsScrollTable
+                        include ViewStudentsScrollTable
                         button(id='adminAddStudent') Add Student
                 .view(id='CourseEditorPage')
                     h1 Course Editor
@@ -53,6 +53,6 @@ include ScrolledTable
                         input(type='text' id='editCourseTeacherName' value="Teacher Name")
                         button(id='adminSaveCourseTeacherName') Save
                     #CourseEditorStudents
-                        include AdminViewStudentsScrollTable
+                        include ViewStudentsScrollTable
                         button(id='adminAddStudentEditCourse') Add Student
 
