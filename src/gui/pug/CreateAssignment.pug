@@ -1,10 +1,11 @@
 .createAssignMenu
     label(for="createAssignName") Assignment Name:
     input(id="createAssignName")
-    select(id="createAssignCourseSelect")
-    button(id="createAssignAddQuestion") Add Question
+    select(id="createAssignCourseSelect" onclick='updateCourses(this)')
+    button(id="createAssignAddQuestion" data-for="createAssignmentQuestionList" onclick="addQuestion(this)") Add Question
     button(id="createAssignSubmit") Create Assignment
-ul(class="questionList")
+ul(class="questionList" id="createAssignmentQuestionList")
     li(class="question")
+        label(class="XButton" onclick="deleteQuestion(this)") X
         label Q
         textarea
