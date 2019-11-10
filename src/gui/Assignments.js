@@ -35,3 +35,17 @@ async function populateGrades() {
 //        alist.appendChild(assignmentText);
     }
 }
+
+function filterOperators(level) {
+    console.log("filtering operators");
+    const gradeLevels = ["first", "second", "third", "fourth", "fifth"];
+    const nodeTemplates = document.getElementsByClassName("node");
+    for (let i = 0; i < nodeTemplates.length; ++i) {
+        nodeTemplates[i].style.visibility = "hidden";
+        for (let j = 0; j < level; ++j) {
+            if (nodeTemplates[i].classList.contains(gradeLevels[j])) {
+                nodeTemplates[i].style.visibility = "visible";
+            }
+        }
+    }
+}
