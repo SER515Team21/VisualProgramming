@@ -65,15 +65,23 @@
 }
 
 .longMultiplication {
-
+    width: 50px;
+    height: 60px;
+    position: relative;
 }
 
 .longMultiplication p {
     height: 0px !important;
     border: black solid 1px;
     background-color: black;
-    margin: 5px;
-    float: bottom;
+    bottom: 5px;
+    width: inherit;
+    position: absolute;
+    left: 5px;
+}
+
+.longMultiplication .node-container {
+    margin-bottom: 3px;
 }
 
 .division p::before {
@@ -82,8 +90,10 @@
 
 .longDivision p::before {
     content: "\27CC";
-    font-size: x-large;
-    margin-right: -5px;
+    font-size: large;
+    transform: scale(1,1.75);
+    display: inline-block;
+    margin-top: 5px;
 }
 
 .fraction {
