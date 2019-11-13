@@ -80,6 +80,15 @@
     left: 5px;
 }
 
+.longMultiplication p#operator {
+    position: relative;
+    left: -50px;
+    width: 0;
+    top: 35px;
+    border: none;
+    margin: 0;
+}
+
 .longMultiplication .node-container {
     margin-bottom: 3px;
 }

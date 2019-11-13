@@ -24,6 +24,8 @@ mixin binary_node(group, name)
         #addLeft.node-container(ondrop='dropNode(event)', ondragover='allowDroppingNode(event)')
         p
         #addRight.node-container(ondrop='dropNode(event)', ondragover='allowDroppingNode(event)')
+        if block
+            block
 
 mixin mixed_fraction_node()
     div(id='mixed',
