@@ -41,11 +41,15 @@ function filterOperators(level) {
     const gradeLevels = ["first", "second", "third", "fourth", "fifth"];
     const nodeTemplates = document.getElementsByClassName("node");
     for (let i = 0; i < nodeTemplates.length; ++i) {
-        nodeTemplates[i].style.visibility = "hidden";
+        let shown = false;
         for (let j = 0; j < level; ++j) {
             if (nodeTemplates[i].classList.contains(gradeLevels[j])) {
-                nodeTemplates[i].style.visibility = "visible";
+                shown = true;
+                break;
             }
+        }
+        if (!shown) {
+            nodeTemplates[i].style.display = "none";
         }
     }
 }
