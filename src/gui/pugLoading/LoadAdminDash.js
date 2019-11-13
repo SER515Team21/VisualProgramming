@@ -11,7 +11,7 @@ function loadCourseStudentList() {
     const scrolledTable = compiledFunction({
         students
     });
-    document.getElementById("CourseEditorStudents").innerHTML = scrolledTable;
+    document.getElementById("CourseViewStudents").innerHTML = scrolledTable;
 }
 
 function loadAllCoursesList() {
