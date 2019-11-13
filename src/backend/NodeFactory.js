@@ -12,7 +12,11 @@ const operatorMap = {
     subtraction: Operators.Subtraction,
     multiplication: Operators.Multiplication,
     division: Operators.Division,
-    number: NumberNode
+    number: NumberNode,
+    longMultiplication: Operators.LongMultiplication,
+    longDivision: Operators.LongDivision,
+    improper: Operators.ImproperFraction,
+    mixed: Operators.MixedFraction
 };
 
 class NodeFactory {

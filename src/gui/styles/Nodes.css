@@ -84,6 +84,20 @@
     margin-bottom: 3px;
 }
 
+.longMultiplication #addLeft {
+    position: relative;
+    top: 0;
+    left: 19px;
+    margin: 0;
+}
+
+.longMultiplication #addRight {
+    position: relative;
+    top: 30px;
+    left: -5px;
+    margin: 0;
+}
+
 .division p::before {
     content: "\00F7";
 }
