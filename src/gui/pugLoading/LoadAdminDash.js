@@ -82,6 +82,6 @@ async function loadInfo(info) {
         loadCourseStudentList(info);
     }
     else if (await UserDb.userExists(info)) {
-        //TODO
+        // TODO
     }
 }
