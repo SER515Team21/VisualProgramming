@@ -22,7 +22,8 @@ class AssignmentDb {
     }
 
     async saveAssignment(name, description, course, teacher, assignment, dueDate, points) {
-        if (!this.assignmentNameExists(name, course, teacher)) {
+        const exists = await this.assignmentNameExists(name, course, teacher);
+        if (!exists) {
             const doc = await this.programDb.insert({
                 name, description, course, teacher, assignment, dueDate, points });
             return doc._id;
@@ -37,6 +38,8 @@ class AssignmentDb {
 
     async assignmentNameExists(name, course, teacher) {
         const doc = await this.programDb.find({ name, course, teacher });
+        console.log(doc)
+        console.log(doc.length !== 0)
         return doc.length !== 0;
     }
 
