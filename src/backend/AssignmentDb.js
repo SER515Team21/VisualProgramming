@@ -38,8 +38,6 @@ class AssignmentDb {
 
     async assignmentNameExists(name, course, teacher) {
         const doc = await this.programDb.find({ name, course, teacher });
-        console.log(doc)
-        console.log(doc.length !== 0)
         return doc.length !== 0;
     }
 
