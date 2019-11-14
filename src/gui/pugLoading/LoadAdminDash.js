@@ -5,14 +5,22 @@
 /* global CourseDb */
 /* global UserDb */
 
-async function loadCourseStudentList() {
+async function loadCourseStudentList(course) {
     const pugPath = Path.relative(process.cwd(), "./src/gui/pug/AdminViewStudentsScrollTable.pug");
     const compiledFunction = pug.compileFile(pugPath);
-    const courses = await CourseDb.getCourses();
+
     let courseId = "";
-    if (courses[0] !== undefined) {
-        courseId = await CourseDb.getCourseId(courses[0]);
+
+    if (course === undefined) {
+        const courses = await CourseDb.getCourses();
+        if (courses[0] !== undefined) {
+            courseId = await CourseDb.getCourseId(courses[0]);
+        }
     }
+    else {
+        courseId = await CourseDb.getCourseId(course);
+    }
+
     const students = await CourseDb.getStudents(courseId);
     const studentTable = [];
     for (let i = 0; i < students.length; i++) {
@@ -30,8 +38,7 @@ async function loadCourseStudentList() {
 }
 
 async function loadAllCoursesList() {
-    // TODO: FINISH
-    const pugPath = Path.relative(process.cwd(), "./src/gui/pug/ListView.pug");
+    const pugPath = Path.relative(process.cwd(), "./src/gui/pug/ListViewSelect.pug");
     const compiledFunction = pug.compileFile(pugPath);
     const courses = await CourseDb.getCourses();
     const listView = compiledFunction({
@@ -68,4 +75,13 @@ async function loadAllStudentsList() {
         rows: studentTable
     });
     document.getElementById("AdminStudentsList").innerHTML = listView;
+}
+
+async function loadInfo(info) {
+    if (await CourseDb.courseExists(info)) {
+        loadCourseStudentList(info);
+    }
+    else if (await UserDb.userExists(info)) {
+        //TODO
+    }
 }

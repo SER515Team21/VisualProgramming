@@ -1,0 +1,23 @@
+.ListViewSelect ul li {
+    display: inline-block;
+    border-bottom-style: dashed;
+    border-top-style: dashed;
+    border-left-style: solid;
+    border-right-style: solid;
+    border-width: medium;
+    border-color: black;
+    margin: 0px;
+    padding: 10px;
+    width: 80%;
+}
+.ListViewSelect ul li:last-child {
+    border-bottom-style: solid;
+}
+.ListViewSelect ul li:first-child {
+    border-top-style: solid;
+}
+
+.ListViewSelect ul li:hover {
+    border: 3px solid blue;
+    cursor: pointer;
+}
