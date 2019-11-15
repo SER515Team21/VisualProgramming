@@ -26,7 +26,7 @@ function handlePanelNode(node, target, event) {
 
     // Set the number to 0 on initial drop if number node
     if (node.classList.contains("number")) {
-        NodeForest.getNode(clone.id).number = 0;
+        NodeForest.getNode(clone.id).number = parseInt(node.getAttribute("number"), 10);
     }
 
     // Insert into a binary node
