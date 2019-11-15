@@ -33,16 +33,16 @@ class TertiaryOperator extends Node {
             this.secondOperand = secondOperand;
         }
         else {
-            this.secondOperand = secondOperand;
+            this.secondOperand = null;
         }
     }
 
     setThirdOperand(thirdOperand) {
         if (thirdOperand instanceof Node) {
-            this.secondOperand = thirdOperand;
+            this.thirdOperand = thirdOperand;
         }
         else {
-            this.secondOperand = thirdOperand;
+            this.thirdOperand = null;
         }
     }
 

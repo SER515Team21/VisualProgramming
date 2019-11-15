@@ -106,7 +106,7 @@ class ImproperFraction extends BinaryOperator {
             rightText = this.rightOperand.getText();
         }
 
-        return `fraction(${leftText},${rightText})`;
+        return `fraction(${leftText}, ${rightText})`;
     }
 }
 
