@@ -17,7 +17,7 @@ mixin node-search
                 - var i = 0
                 while i <= 20
                     +number_node(i).template
-                    i++
+                    - i++
                 +binary_node('fraction', 'improper').template
                 +mixed_fraction_node().template
             button.accordion Arithmetic
