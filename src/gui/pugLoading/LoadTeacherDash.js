@@ -3,7 +3,7 @@
 /* global pug */
 /* global Path */
 
-function loadCourseStudentList() {
+function loadCourseStudentListTeacher() {
     // TODO: FINISH
     const pugPath = Path.relative(process.cwd(), "./src/gui/pug/ViewStudentsScrollTable.pug");
     const compiledFunction = pug.compileFile(pugPath);
@@ -11,10 +11,21 @@ function loadCourseStudentList() {
     const scrolledTable = compiledFunction({
         students
     });
-    document.getElementById("CourseViewStudents").innerHTML = scrolledTable;
+    document.getElementById("courseStudents").innerHTML = scrolledTable;
 }
 
-function loadAllCoursesList() {
+function loadCourseAssignmentListTeacher() {
+    // TODO: FINISH
+    const pugPath = Path.relative(process.cwd(), "./src/gui/pug/ViewStudentsScrollTable.pug");
+    const compiledFunction = pug.compileFile(pugPath);
+    const students = [["Test", "Name", "And Id"], ["Test", "Name", "And Id"], ["Test", "Name", "And Id"], ["Test", "Name", "And Id"], ["Test", "Name", "And Id"], ["Test", "Name", "And Id"], ["Test", "Name", "And Id"], ["Test", "Name", "And Id"], ["Test", "Name", "And Id"], ["Test", "Name", "And Id"]];
+    const scrolledTable = compiledFunction({
+        students
+    });
+    document.getElementById("courseAssignments").innerHTML = scrolledTable;
+}
+
+function loadAllTeachersCoursesList() {
     // TODO: FINISH
     const pugPath = Path.relative(process.cwd(), "./src/gui/pug/ListView.pug");
     const compiledFunction = pug.compileFile(pugPath);
@@ -22,21 +33,10 @@ function loadAllCoursesList() {
     const listView = compiledFunction({
         rows: courses
     });
-    document.getElementById("AdminCoursesList").innerHTML = listView;
+    document.getElementById("teacherCourses").innerHTML = listView;
 }
 
-function loadAllTeachersList() {
-    // TODO: FINISH
-    const pugPath = Path.relative(process.cwd(), "./src/gui/pug/ListView.pug");
-    const compiledFunction = pug.compileFile(pugPath);
-    const courses = ["Teacher", "teacher2", "Test", "test2", "Test", "test2", "Test", "test2", "Test", "test2", "Test", "test2", "Test", "test2", "Test", "test2", "Test", "test2", "Test", "test2", "Test", "test2", "Test", "test2", "Test", "test2"];
-    const listView = compiledFunction({
-        rows: courses
-    });
-    document.getElementById("AdminTeachersList").innerHTML = listView;
-}
-
-function loadAllStudentsList() {
+function loadAllTeachersStudentsList() {
     // TODO: FINISH
     const pugPath = Path.relative(process.cwd(), "./src/gui/pug/ListView.pug");
     const compiledFunction = pug.compileFile(pugPath);
@@ -44,5 +44,5 @@ function loadAllStudentsList() {
     const listView = compiledFunction({
         rows: courses
     });
-    document.getElementById("AdminStudentsList").innerHTML = listView;
+    document.getElementById("teacherStudents").innerHTML = listView;
 }

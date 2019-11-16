@@ -6,7 +6,7 @@ function updateCourses(elem) {
         return;
     }
     const userID = window.localStorage.getItem("userID");
-    const courses = ["SER334", "SER101", userID]; // CourseDb.getCourseNamesForTeacher(userID);
+    const courses = CourseDb.getCourseNamesForTeacher(userID);
     for (let i = 0; i < courses.length; i++) {
         const option = document.createElement("option");
         option.textContent = courses[i];
