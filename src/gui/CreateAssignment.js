@@ -1,12 +1,13 @@
 /* global window */
 /* global document */
+/* global CourseDb */
 
-function updateCourses(elem) {
+async function updateCourses(elem) {
     if (elem.innerHTML !== "") {
         return;
     }
     const userID = window.localStorage.getItem("userID");
-    const courses = CourseDb.getCourseNamesForTeacher(userID);
+    const courses = await CourseDb.getCourses(userID);
     for (let i = 0; i < courses.length; i++) {
         const option = document.createElement("option");
         option.textContent = courses[i];
