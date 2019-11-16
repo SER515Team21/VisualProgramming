@@ -1,0 +1,4 @@
+.ListViewSelect
+    ul
+        each val in rows ? rows : []
+            li(onclick='loadInfo("' + val + '")')= val

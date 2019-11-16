@@ -4,7 +4,7 @@ const Path = require("path");
 class UserDb {
     constructor() {
         if (UserDb.instance === undefined) {
-            const programDbPath = Path.relative(process.cwd(), "./data/ProgramDb.db");
+            const programDbPath = Path.relative(process.cwd(), "./data/UserDB.db");
             this.programDb = NedDb({ filename: programDbPath, autoload: true });
             UserDb.instance = this;
         }
@@ -66,6 +66,11 @@ class UserDb {
     async getUser(username) {
         let doc = await this.programDb.find({ username });
         doc = doc.find(item => item.username === username);
+        return doc;
+    }
+
+    async getUserWithId(id) {
+        const doc = await this.programDb.find({ _id: id });
         return doc;
     }
 

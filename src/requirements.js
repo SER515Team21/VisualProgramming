@@ -1,5 +1,6 @@
 const UserDb = require("./backend/UserDb.js");
-const AssignDb = require("./backend/AssignmentDb");
+const AssignDb = require("./backend/AssignmentDb.js");
+const CourseDb = require("./backend/CourseDb.js");
 const NodeForest = require("./backend/NodeForest.js");
 const Operators = require("./backend/Operators.js");
 const NumberNode = require("./backend/NumberNode.js");

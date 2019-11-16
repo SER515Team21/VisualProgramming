@@ -1,10 +1,10 @@
 const NedDb = require("nedb-promise");
-const Path = require("path");
+const pathLib = require("path");
 
 class CourseDb {
     constructor() {
         if (CourseDb.instance === undefined) {
-            const programDbPath = Path.relative(process.cwd(), "./data/CourseDb.db");
+            const programDbPath = pathLib.relative(process.cwd(), "./data/CourseDb.db");
             this.programDb = NedDb({ filename: programDbPath, autoload: true });
             CourseDb.instance = this;
         }
@@ -74,6 +74,19 @@ class CourseDb {
             doc.students = [];
         }
         return doc.students;
+    }
+
+    async getCourses(teacherId = undefined) {
+        let courses = [];
+        if (teacherId === undefined) {
+            const doc = await this.programDb.find({});
+            courses = doc.map(course => course.course);
+
+            return courses;
+        }
+        const doc = await this.programDb.find({ teacherId });
+        courses = doc.map(course => course.course);
+        return courses;
     }
 
     async removeAll() {

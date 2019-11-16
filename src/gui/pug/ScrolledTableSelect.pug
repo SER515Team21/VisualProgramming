@@ -1,4 +1,4 @@
-mixin ScrolledTableBox(title, columnNames, rows)
+mixin ScrolledTableBoxSelect(title, columnNames, rows)
     .ScrolledTableBox
         h3= title
         table
@@ -10,4 +10,4 @@ mixin ScrolledTableBox(title, columnNames, rows)
                 each row in rows? rows : []
                     tr
                         each val in row ? row : []
-                            td= val
+                            td(onclick='loadInfo("' + val + '")')= val
