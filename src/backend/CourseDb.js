@@ -76,7 +76,7 @@ class CourseDb {
         return doc.students;
     }
 
-    async getCourses(teacherId) {
+    async getCourses(teacherId = undefined) {
         let courses = [];
         if (teacherId === undefined) {
             const doc = await this.programDb.find({});

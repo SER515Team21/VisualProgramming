@@ -112,8 +112,9 @@ describe("Course DB", () => {
             "");
 
         const result = await CourseDb.getCourses();
-        expect(result)
-            .toEqual(["SER515", "SER500"]);
+        expect(result.contains("SER515")).toBe(true);
+        expect(result.contains("SER500")).toBe(true);
+        expect(result.length).toBe(2);
     });
 
     it("shall be able to return course names based on teacher id", async () => {
