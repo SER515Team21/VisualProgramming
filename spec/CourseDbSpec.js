@@ -112,8 +112,8 @@ describe("Course DB", () => {
             "");
 
         const result = await CourseDb.getCourses();
-        expect(result.contains("SER515")).toBe(true);
-        expect(result.contains("SER500")).toBe(true);
+        expect(result.includes("SER515")).toBe(true);
+        expect(result.includes("SER500")).toBe(true);
         expect(result.length).toBe(2);
     });
 
