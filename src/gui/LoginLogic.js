@@ -51,6 +51,11 @@ async function sendLoginRequest() {
     }
 }
 
+function getUserId() {
+    return window.localStorage.getItem("username");
+}
+
+
 function switchSignUp() {
     document.getElementById("login").hidden = true;
     document.getElementById("signup").hidden = false;
