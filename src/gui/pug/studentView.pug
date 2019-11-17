@@ -1,7 +1,6 @@
 include nodes
 include NodeSearch
 include TabSwitcher
-include AssignmentsList
 include GenericDashboard
 
 #studentView(hidden='')
@@ -17,10 +16,5 @@ include GenericDashboard
                 .view(id='grades')
                     div(id="assignment_grades")
                 .view(id="assignment_tab")
-                    +AssignmentsList()
-                    //-
-                        #AssignmentList()
-                            script populateAssignments();
-                            +tabbedFrame(['Past Due', 'Upcoming'], ['past_due_tab', 'upcoming_tab'])
-                            div(id="assignment_list")
-                    //
+                    .assignmentsList
+                        ul

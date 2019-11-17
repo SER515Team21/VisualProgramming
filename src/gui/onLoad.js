@@ -3,6 +3,7 @@
 /* global UserDb */
 /* global AssignDb */
 /* global populateGrades */
+/* global startAssignment */
 
 function accordianListener() {
     const acc = document.getElementsByClassName("accordion");
@@ -67,6 +68,10 @@ async function updateAssignments() {
             title.classList.add("assignTitle");
             date.classList.add("assignDate");
             description.classList.add("assignDescription");
+
+            title.onclick = function () {
+                startAssignment(title);
+            };
 
             assignElem.appendChild(title);
             assignElem.appendChild(date);

@@ -35,3 +35,7 @@ async function populateGrades() {
 //        alist.appendChild(assignmentText);
     }
 }
+
+function startAssignment(elem) {
+    document.getElementById("studentView").getElementsByClassName("MainPane")[0].hidden = true;
+}
