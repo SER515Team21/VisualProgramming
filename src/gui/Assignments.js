@@ -38,11 +38,15 @@ async function populateGrades() {
 
     async function saveAssignment(){
         const teacherId = "";
+        const courseName = document.getElementById("createAssignCourseSelect").value;
         const courseId = "";
-        const assignName = "";
+        const assignName = document.getElementById("createAssignName").value;
         const description = "";
         const dueDate = "";
-        const questions = "";
+        const points = 0
+        let questions = [];
+
+        //for
 
 
     }
