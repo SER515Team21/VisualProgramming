@@ -121,13 +121,14 @@ describe("Course DB", () => {
         await UserDb.addUser("test1", "test2", "student");
         const students = await UserDb.getUsers();
 
-        const studentId = UserDb.getUser("test1")._id;
-        await CourseDb.createCourse("SER515", 5, "", [studentId]);
+        const studentIds = students.map(student => student._id);
 
-        const studentCourses = await CourseDb.getStudentCourses(studentId);
+        await CourseDb.createCourse("Course1", 5, "", studentIds);
 
-        expect(studentCourses.includes("SER515")).toBe(true);
-        expect(studentCourses.length).toBe(2);
+        const studentCourses = await CourseDb.getStudentCourses(studentIds[0]);
+
+        expect(studentCourses.includes("Course1")).toBe(true);
+        expect(studentCourses.length).toBe(1);
     });
 
     it("shall be able to return course names based on teacher id", async () => {

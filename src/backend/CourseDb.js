@@ -97,7 +97,8 @@ class CourseDb {
         //         studentCourses.push(courses[i]);
         //     }
         // }
-        const studentCourses = this.courseDb.find({ students: studentId });
+        const doc = await this.courseDb.find({ students: studentId });
+        const studentCourses = doc.map(course => course.course);
         return studentCourses;
     }
 
