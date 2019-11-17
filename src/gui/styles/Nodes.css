@@ -124,7 +124,7 @@
     background-color: mediumpurple !important;
 }
 
-.fraction p {
+.fraction > p {
     height: 0px !important;
     border: black solid 1px;
     background-color: black;
@@ -148,19 +148,19 @@
     height: 60px;
 }
 
-.mixed.fraction p {
+.mixed.fraction > p {
     width: 30px;
     position: relative;
     left: 34px;
 }
 
-.mixed div#addFirst {
+.mixed > div#addFirst {
     position: relative;
     top: 17px;
     left: -10px;
 }
 
-.mixed div#addThird {
+.mixed > div#addThird {
     position: relative;
     right: -13px;
 }
