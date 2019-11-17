@@ -25,7 +25,7 @@ class AssignmentDb {
         const exists = await this.assignmentNameExists(name, course, teacher);
         if (!exists) {
             const doc = await this.programDb.insert({
-                name, description, course, teacher, assignment, dueDate, points });
+                name, description, course, teacher, questions, dueDate, points });
             return doc._id;
         }
         return null;

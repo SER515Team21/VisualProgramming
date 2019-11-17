@@ -1,5 +1,6 @@
 
 /* global document */
+/* global AssignDb */
 
 class Assignment {
 
@@ -33,5 +34,16 @@ async function populateGrades() {
             </div>
          `);
 //        alist.appendChild(assignmentText);
+    }
+
+    async function saveAssignment(){
+        const teacherId = "";
+        const courseId = "";
+        const assignName = "";
+        const description = "";
+        const dueDate = "";
+        const questions = "";
+
+
     }
 }
