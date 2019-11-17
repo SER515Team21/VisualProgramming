@@ -68,6 +68,8 @@
     width: 50px;
     height: 60px;
     position: relative;
+    min-width: min-content;
+    min-height: max-content;
 }
 
 .longMultiplication p {
@@ -75,18 +77,18 @@
     border: black solid 1px;
     background-color: black;
     bottom: 5px;
-    width: inherit;
+    width: 82%;
     position: absolute;
     left: 5px;
 }
 
 .longMultiplication p#operator {
-    position: relative;
-    left: -50px;
+    position: absolute;
+    left: 7px;
     width: 0;
-    top: 35px;
+    bottom: 30px;
     border: none;
-    margin: 0;
+    margin: 0px;
 }
 
 .longMultiplication .node-container {
@@ -96,15 +98,14 @@
 .longMultiplication #addLeft {
     position: relative;
     top: 0;
-    left: 19px;
-    margin: 0;
+    left: 8px;
+    margin: 2px;
 }
 
 .longMultiplication #addRight {
     position: relative;
-    top: 30px;
-    left: -5px;
-    margin: 0;
+    left: 8px;
+    margin: 4px;
 }
 
 .division p::before {
