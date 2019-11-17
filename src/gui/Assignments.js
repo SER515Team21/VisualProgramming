@@ -1,5 +1,7 @@
-
+/* global Path */
 /* global document */
+/* global pug */
+/* global AssignDb */
 
 class Assignment {
 
@@ -36,6 +38,12 @@ async function populateGrades() {
     }
 }
 
-function startAssignment(elem) {
+async function startAssignment(elem) {
     document.getElementById("studentView").getElementsByClassName("MainPane")[0].hidden = true;
+    const pugPath = Path.relative(process.cwd(), "./src/gui/pug/ViewStudentsScrollTable.pug");
+    const compiledFunction = pug.compileFile(pugPath);
+    const assignment = await AssignDb.loadAssignment(elem.getAttribute("data-for"));
+    const questions = assignment[0].assignment;
+    console.log(assignment);
+    console.log(questions);
 }

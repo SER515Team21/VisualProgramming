@@ -63,6 +63,7 @@ async function updateAssignments() {
             title.textContent = assign.name;
             date.textContent = assign.dueDate;
             description.textContent = assign.description;
+            title.setAttribute("data-for", assign._id);
 
             assignElem.classList.add("assignment");
             title.classList.add("assignTitle");
