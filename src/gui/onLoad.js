@@ -83,7 +83,6 @@ async function onLoad() {
     accordianListener();
     roleSelectListener();
     setDate();
-    filterOperators(1);
     await populateGrades();
     await updateAssignments();
     setInterval(updateAssignments, 300000);

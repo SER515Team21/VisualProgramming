@@ -40,7 +40,7 @@ class UserDb {
         if (exists) {
             return false;
         }
-        await this.programDb.insert({ username, password, role, enabled });
+        await this.programDb.insert({ username, password, role, grade, enabled });
         return true;
     }
 

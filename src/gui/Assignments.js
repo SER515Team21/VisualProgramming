@@ -51,5 +51,8 @@ function filterOperators(level) {
         if (!shown) {
             nodeTemplates[i].style.display = "none";
         }
+        else {
+            nodeTemplates[i].style.display = "inline";
+        }
     }
 }

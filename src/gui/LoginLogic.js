@@ -9,6 +9,7 @@
 /* global loadCourseAssignmentListTeacher */
 /* global loadAllTeachersCoursesList */
 /* global loadAllTeachersStudentsList */
+/* global filterOperators */
 
 async function sendLoginRequest() {
     const username = document.getElementById("username").value;
@@ -26,6 +27,7 @@ async function sendLoginRequest() {
             const user = await UserDb.getUser(username);
             window.localStorage.setItem("username", user.username);
             window.localStorage.setItem("userID", user._id);
+            window.localStorage.setItem("userGrade", user.grade);
             document.getElementById("loginFail").hidden = true;
             document.getElementById("login").hidden = true;
             if (user.role === "admin") {
@@ -46,6 +48,7 @@ async function sendLoginRequest() {
             }
             else {
                 document.getElementById("studentView").hidden = false;
+                filterOperators(window.localStorage.getItem("userGrade"));
             }
         }
     }
