@@ -19,7 +19,9 @@ async function updateCourses(elem) {
 function addQuestion(button) {
     const forID = button.getAttribute("data-for");
     const forElem = document.getElementById(forID);
-    forElem.innerHTML += "<li class='question'><label class='XButton' onclick='deleteQuestion(this)'>X</label><label>Q</label><textarea></textarea></li>";
+    const template = document.createElement("template");
+    template.innerHTML = "<li class='question'><label class='XButton' onclick='deleteQuestion(this)'>X</label><label>Q</label><textarea></textarea></li>";
+    forElem.appendChild(template.content.firstChild);
 }
 
 function deleteQuestion(elem) {
