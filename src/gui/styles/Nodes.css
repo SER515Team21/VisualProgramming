@@ -108,11 +108,11 @@
     margin: 4px;
 }
 
-.division p::before {
+.division > p::before {
     content: "\00F7";
 }
 
-.longDivision p::before {
+.longDivision > p::before {
     content: "\27CC";
     font-size: large;
     transform: scale(1,1.75);
