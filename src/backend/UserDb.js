@@ -35,7 +35,7 @@ class UserDb {
         return false;
     }
 
-    async addUser(username, password, role = "student", enabled = 1) {
+    async addUser(username, password, role = "student", grade = 1, enabled = 1) {
         const exists = await this.userExists(username);
         if (exists) {
             return false;
@@ -66,6 +66,11 @@ class UserDb {
     async getUser(username) {
         let doc = await this.programDb.find({ username });
         doc = doc.find(item => item.username === username);
+        return doc;
+    }
+
+    async getUserWithId(id) {
+        const doc = await this.programDb.find({ _id: id });
         return doc;
     }
 

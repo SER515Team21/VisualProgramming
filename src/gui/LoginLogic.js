@@ -1,9 +1,14 @@
 /* global document */
+/* global window */
 /* global UserDb */
 /* global loadAllCoursesList */
 /* global loadCourseStudentList */
 /* global loadAllTeachersList */
 /* global loadAllStudentsList */
+/* global loadCourseStudentListTeacher */
+/* global loadCourseAssignmentListTeacher */
+/* global loadAllTeachersCoursesList */
+/* global loadAllTeachersStudentsList */
 
 async function sendLoginRequest() {
     const username = document.getElementById("username").value;
@@ -19,6 +24,8 @@ async function sendLoginRequest() {
         }
         else {
             const user = await UserDb.getUser(username);
+            window.localStorage.setItem("username", user.username);
+            window.localStorage.setItem("userID", user._id);
             document.getElementById("loginFail").hidden = true;
             document.getElementById("login").hidden = true;
             if (user.role === "admin") {
@@ -31,6 +38,11 @@ async function sendLoginRequest() {
             }
             else if (user.role === "teacher") {
                 document.getElementById("TeacherView").hidden = false;
+
+                loadCourseStudentListTeacher();
+                loadCourseAssignmentListTeacher();
+                loadAllTeachersCoursesList();
+                loadAllTeachersStudentsList();
             }
             else {
                 document.getElementById("studentView").hidden = false;
@@ -38,6 +50,11 @@ async function sendLoginRequest() {
         }
     }
 }
+
+function getUserId() {
+    return window.localStorage.getItem("username");
+}
+
 
 function switchSignUp() {
     document.getElementById("login").hidden = true;
