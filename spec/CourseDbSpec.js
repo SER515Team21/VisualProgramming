@@ -117,6 +117,19 @@ describe("Course DB", () => {
         expect(result.length).toBe(2);
     });
 
+    it("shall return all courses with the given student id in the db", async () => {
+        await UserDb.addUser("test1", "test2", "student");
+        const students = await UserDb.getUsers();
+
+        const studentId = UserDb.getUser("test1")._id;
+        await CourseDb.createCourse("SER515", 5, "", [studentId]);
+
+        const studentCourses = await CourseDb.getStudentCourses(studentId);
+
+        expect(studentCourses.includes("SER515")).toBe(true);
+        expect(studentCourses.length).toBe(2);
+    });
+
     it("shall be able to return course names based on teacher id", async () => {
         await CourseDb.createCourse("SER515", 5,
             "123");
