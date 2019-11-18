@@ -90,13 +90,6 @@ class CourseDb {
     }
 
     async getStudentCourses(studentId) {
-        // const courses = await this.getCourses();
-        // const studentCourses = [];
-        // for (let i = 0; i < courses.length; ++i) {
-        //     if (courses[i].students.contains(studentId)) {
-        //         studentCourses.push(courses[i]);
-        //     }
-        // }
         const doc = await this.courseDb.find({ students: studentId });
         const studentCourses = doc.map(course => course.course);
         return studentCourses;

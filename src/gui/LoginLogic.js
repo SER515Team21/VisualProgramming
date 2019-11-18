@@ -11,6 +11,29 @@
 /* global loadAllTeachersStudentsList */
 /* global filterOperators */
 
+function loadStudentView() {
+    document.getElementById("studentView").hidden = false;
+    filterOperators(0); // should get grade level here and pass that instead
+}
+
+function loadTeacherView() {
+    document.getElementById("TeacherView").hidden = false;
+
+    loadCourseStudentListTeacher();
+    loadCourseAssignmentListTeacher();
+    loadAllTeachersCoursesList();
+    loadAllTeachersStudentsList();
+}
+
+function loadAdminView() {
+    document.getElementById("AdminView").hidden = false;
+
+    loadAllCoursesList();
+    loadCourseStudentList();
+    loadAllTeachersList();
+    loadAllStudentsList();
+}
+
 async function sendLoginRequest() {
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
@@ -27,28 +50,17 @@ async function sendLoginRequest() {
             const user = await UserDb.getUser(username);
             window.localStorage.setItem("username", user.username);
             window.localStorage.setItem("userID", user._id);
-            window.localStorage.setItem("userGrade", user.grade);
+            document.getElementById("account-username-display").textContent = `Welcome, ${user.username}`;
             document.getElementById("loginFail").hidden = true;
             document.getElementById("login").hidden = true;
             if (user.role === "admin") {
-                document.getElementById("AdminView").hidden = false;
-
-                loadAllCoursesList();
-                loadCourseStudentList();
-                loadAllTeachersList();
-                loadAllStudentsList();
+                loadAdminView();
             }
             else if (user.role === "teacher") {
-                document.getElementById("TeacherView").hidden = false;
-
-                loadCourseStudentListTeacher();
-                loadCourseAssignmentListTeacher();
-                loadAllTeachersCoursesList();
-                loadAllTeachersStudentsList();
+                loadTeacherView();
             }
             else {
-                document.getElementById("studentView").hidden = false;
-                filterOperators(window.localStorage.getItem("userGrade"));
+                loadStudentView();
             }
         }
     }
@@ -57,7 +69,6 @@ async function sendLoginRequest() {
 function getUserId() {
     return window.localStorage.getItem("username");
 }
-
 
 function switchSignUp() {
     document.getElementById("login").hidden = true;
