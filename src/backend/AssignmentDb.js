@@ -21,16 +21,14 @@ class AssignmentDb {
         return doc;
     }
 
-    async saveAssignment(name, description, course, teacher, assignment, dueDate, points) {
+    async saveAssignment(name, description, course, teacher, questions, dueDate, points) {
         const exists = await this.assignmentNameExists(name, course, teacher);
         if (!exists) {
             const doc = await this.programDb.insert({
                 name, description, course, teacher, questions, dueDate, points });
-            console.log("saving this");
 
             return doc._id;
         }
-        console.log("aint saving this");
         return null;
     }
 

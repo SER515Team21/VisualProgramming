@@ -35,24 +35,30 @@ async function populateGrades() {
          `);
 //        alist.appendChild(assignmentText);
     }
+}
 
-    async function saveAssignment(){
-        const teacherId = window.localStorage.getItem("userID");
-        const courseName = document.getElementById("createAssignCourseSelect").value;
-        const courseId = CourseDb.getCourseId(courseName);
-        const assignName = document.getElementById("createAssignName").value;
-        const description = document.getElementById("createAssignDescription").value;
-        const dueDate = document.getElementById("createAssignDueDate").value;;
-        const points = 10;
-        let questions = [];
+async function saveAssignment(){
+    const teacherId = window.localStorage.getItem("userID");
+    const courseName = document.getElementById("createAssignCourseSelect").value;
+    const courseId = CourseDb.getCourseId(courseName);
+    const assignName = document.getElementById("createAssignName").value;
+    const description = document.getElementById("createAssignDescription").value;
+    const dueDate = document.getElementById("createAssignDueDate").value;;
+    const points = 10;
+    let questions = [];
 
-        const questionElements = document.getElementById("createAssignmentQuestionList")
-            .getElementsByTagName("textarea");
+    const questionElements = document.getElementById("createAssignmentQuestionList")
+        .getElementsByTagName("textarea");
 
-        for(let questionElem in questionElements){
-            questions.push(questionElem.value)
-        }
-
-        await AssignDb.saveAssignment(assignName, description,courseId, teacherId, questions, dueDate, points);
+    for(let questionElem in questionElements){
+        questions.push(questionElem.value)
     }
+
+    const assignment = await AssignDb.saveAssignment(assignName, description,courseId, teacherId, questions, dueDate, points);
+    // if(assignment === null){
+    //     document.getElementById("teacherAssignmentFail").hidden = false;
+    // }
+    // else{
+    //     document.getElementById("teacherAssignmentFail").hidden = true;
+    // }
 }
