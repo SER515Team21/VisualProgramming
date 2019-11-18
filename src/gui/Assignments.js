@@ -36,7 +36,6 @@ async function populateGrades(assignments = []) {
 }
 
 function filterOperators(level) {
-    console.log("filtering operators");
     const gradeLevels = ["first", "second", "third", "fourth", "fifth"];
     const nodeTemplates = document.getElementsByClassName("node");
     if (level < 1 || level > gradeLevels.length) {
