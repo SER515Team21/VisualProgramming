@@ -26,8 +26,11 @@ class AssignmentDb {
         if (!exists) {
             const doc = await this.programDb.insert({
                 name, description, course, teacher, questions, dueDate, points });
+            console.log("saving this");
+
             return doc._id;
         }
+        console.log("aint saving this");
         return null;
     }
 

@@ -41,6 +41,7 @@ tr:hover {
 }
 
 .question {
+    position: relative;
     padding: 20px;
     border: 1px solid;
 }
@@ -49,6 +50,12 @@ tr:hover {
     vertical-align: top;
     border: solid 1px;
     padding: 4px;
+}
+
+.XButton {
+    position: absolute;
+    top: 5px;
+    right: 5px;
 }
 
 .question textarea {

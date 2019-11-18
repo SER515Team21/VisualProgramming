@@ -1,4 +1,5 @@
 /* global document */
+/* global window */
 /* global UserDb */
 /* global loadAllCoursesList */
 /* global loadCourseStudentList */
@@ -23,6 +24,8 @@ async function sendLoginRequest() {
         }
         else {
             const user = await UserDb.getUser(username);
+            window.localStorage.setItem("username", user.username);
+            window.localStorage.setItem("userID", user._id);
             document.getElementById("loginFail").hidden = true;
             document.getElementById("login").hidden = true;
             if (user.role === "admin") {

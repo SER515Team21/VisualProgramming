@@ -1,6 +1,6 @@
-
 /* global document */
 /* global AssignDb */
+/* global window */
 
 class Assignment {
 
@@ -37,17 +37,22 @@ async function populateGrades() {
     }
 
     async function saveAssignment(){
-        const teacherId = "";
+        const teacherId = window.localStorage.getItem("userID");
         const courseName = document.getElementById("createAssignCourseSelect").value;
-        const courseId = "";
+        const courseId = CourseDb.getCourseId(courseName);
         const assignName = document.getElementById("createAssignName").value;
-        const description = "";
-        const dueDate = "";
-        const points = 0
+        const description = document.getElementById("createAssignDescription").value;
+        const dueDate = document.getElementById("createAssignDueDate").value;;
+        const points = 10;
         let questions = [];
 
-        //for
+        const questionElements = document.getElementById("createAssignmentQuestionList")
+            .getElementsByTagName("textarea");
 
+        for(let questionElem in questionElements){
+            questions.push(questionElem.value)
+        }
 
+        await AssignDb.saveAssignment(assignName, description,courseId, teacherId, questions, dueDate, points);
     }
 }

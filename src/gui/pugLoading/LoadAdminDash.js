@@ -5,8 +5,7 @@
 /* global CourseDb */
 /* global UserDb */
 
-async function loadCourseStudentList() {
-    // TODO: FINISH
+async function loadCourseStudentList(course) {
     const pugPath = Path.relative(process.cwd(), "./src/gui/pug/ViewStudentsScrollTable.pug");
     const compiledFunction = pug.compileFile(pugPath);
 

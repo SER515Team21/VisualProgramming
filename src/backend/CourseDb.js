@@ -1,10 +1,10 @@
 const NedDb = require("nedb-promise");
-const Path = require("path");
+const pathLib = require("path");
 
 class CourseDb {
     constructor() {
         if (CourseDb.instance === undefined) {
-            const programDbPath = Path.relative(process.cwd(), "./data/CourseDb.db");
+            const programDbPath = pathLib.relative(process.cwd(), "./data/CourseDb.db");
             this.programDb = NedDb({ filename: programDbPath, autoload: true });
             CourseDb.instance = this;
         }
