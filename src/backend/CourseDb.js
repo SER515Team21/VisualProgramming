@@ -5,14 +5,14 @@ class CourseDb {
     constructor() {
         if (CourseDb.instance === undefined) {
             const programDbPath = pathLib.relative(process.cwd(), "./data/CourseDb.db");
-            this.programDb = NedDb({ filename: programDbPath, autoload: true });
+            this.courseDb = NedDb({ filename: programDbPath, autoload: true });
             CourseDb.instance = this;
         }
         return CourseDb.instance;
     }
 
     async courseExists(name) {
-        const doc = await this.programDb.find({ course: name });
+        const doc = await this.courseDb.find({ course: name });
         if (doc.find(item => item._id !== null)) {
             return true;
         }
@@ -27,14 +27,20 @@ class CourseDb {
         if (exists) {
             return false;
         }
-        await this.programDb.insert({ course, gradeLevel, teacherId, students });
+        await this.courseDb.insert({ course, gradeLevel, teacherId, students });
         return true;
     }
 
     async getCourseId(course) {
-        let doc = await this.programDb.find({ course });
+        let doc = await this.courseDb.find({ course });
         doc = doc.find(item => item._id !== null);
         return doc._id;
+    }
+
+    async getCourseGrade(course) {
+        let doc = await this.courseDb.find({ course });
+        doc = doc.find(item => item.gradeLevel !== null);
+        return doc.gradeLevel;
     }
 
     async addStudent(courseId, studentId) {
@@ -44,7 +50,7 @@ class CourseDb {
         }
 
         existingStudents.push(studentId);
-        const doc = await this.programDb.update({ _id: courseId }, {
+        const doc = await this.courseDb.update({ _id: courseId }, {
             $set: { students: existingStudents }
         }, { multi: false });
         return true;
@@ -61,14 +67,14 @@ class CourseDb {
             existingStudents.push(student);
         });
 
-        const doc = await this.programDb.update({ _id: courseId }, {
+        const doc = await this.courseDb.update({ _id: courseId }, {
             $set: { students: existingStudents }
         }, { multi: false });
         return true;
     }
 
     async getStudents(courseId) {
-        let doc = await this.programDb.find({ _id: courseId });
+        let doc = await this.courseDb.find({ _id: courseId });
         doc = doc.find(item => item._id !== null);
         if (doc.students === "") {
             doc.students = [];
@@ -79,19 +85,26 @@ class CourseDb {
     async getCourses(teacherId = undefined) {
         let courses = [];
         if (teacherId === undefined) {
-            const doc = await this.programDb.find({});
+            const doc = await this.courseDb.find({});
             courses = doc.map(course => course.course);
 
             return courses;
         }
-        const doc = await this.programDb.find({ teacherId });
+        const doc = await this.courseDb.find({ teacherId });
         courses = doc.map(course => course.course);
         return courses;
     }
 
+    async getStudentCourses(studentId) {
+        const doc = await this.courseDb.find({ students: studentId });
+        const studentCourses = doc.map(course => course.course);
+        return studentCourses;
+    }
+
     async removeAll() {
-        await this.programDb.remove({}, { multi: true });
+        await this.courseDb.remove({}, { multi: true });
     }
 }
 
-module.exports = new CourseDb();
+const CourseDbInstance = new CourseDb();
+module.exports = CourseDbInstance;
