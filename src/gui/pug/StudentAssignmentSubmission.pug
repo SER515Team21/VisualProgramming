@@ -1,0 +1,7 @@
+.studentSubmissionPane
+    each question in questions
+        .problem
+            .submissionQuestion
+                span= question
+            .solution
+                #editorPane.paper(ondrop='dropNode(event)' ondragover='allowDroppingNode(event)')

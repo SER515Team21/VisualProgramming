@@ -37,3 +37,11 @@
 .assignDescription {
     margin-top: 10px;
 }
+
+.studentSubmissionPane {
+    margin-top: 50px;
+    margin-left: 160px;
+    height: calc(100% - 80px);
+    width: calc(100% - 160px);
+    overflow: scroll;
+}

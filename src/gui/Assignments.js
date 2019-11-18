@@ -40,10 +40,17 @@ async function populateGrades() {
 
 async function startAssignment(elem) {
     document.getElementById("studentView").getElementsByClassName("MainPane")[0].hidden = true;
-    const pugPath = Path.relative(process.cwd(), "./src/gui/pug/ViewStudentsScrollTable.pug");
+    const pugPath = Path.relative(process.cwd(), "./src/gui/pug/StudentAssignmentSubmission.pug");
     const compiledFunction = pug.compileFile(pugPath);
     const assignment = await AssignDb.loadAssignment(elem.getAttribute("data-for"));
     const questions = assignment[0].assignment;
-    console.log(assignment);
-    console.log(questions);
+    const submissionPane = compiledFunction({
+        questions
+    });
+    const template = document.createElement("template");
+    template.innerHTML = submissionPane;
+    console.log(template.content.firstChild);
+    document.getElementById("studentView")
+        .getElementsByClassName("GenericDashboard")[0]
+        .appendChild(template.content.firstChild);
 }
