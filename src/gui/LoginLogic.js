@@ -1,6 +1,7 @@
 /* global document */
 /* global window */
 /* global UserDb */
+/* global CourseDb */
 /* global loadAllCoursesList */
 /* global loadCourseStudentList */
 /* global loadAllTeachersList */
@@ -11,9 +12,15 @@
 /* global loadAllTeachersStudentsList */
 /* global filterOperators */
 
-function loadStudentView() {
+
+async function loadStudentView() {
     document.getElementById("studentView").hidden = false;
-    filterOperators(0); // should get grade level here and pass that instead
+    const studentCourses = await CourseDb.getStudentCourses(window.localStorage.getItem("userID"));
+    const gradeLevels =
+        await Promise.all(studentCourses.map(course => CourseDb.getCourseGrade(course)));
+    const highestGrade = Math.max(gradeLevels);
+
+    filterOperators(highestGrade);
 }
 
 function loadTeacherView() {

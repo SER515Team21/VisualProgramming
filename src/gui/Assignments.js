@@ -19,7 +19,7 @@ class Assignment {
 /*
  Takes an array of assignment objects
  */
-async function populateGrades(assignments) {
+async function populateGrades(assignments = []) {
     const alist = document.getElementById("assignment_grades");
     assignments.sort((a, b) => a.dueDate.getTime() - b.dueDate.getTime());
     for (let i = 0; i < assignments.length; ++i) {
@@ -54,7 +54,7 @@ function filterOperators(level) {
             nodeTemplates[i].style.display = "none";
         }
         else {
-            nodeTemplates[i].style.display = "inline";
+            nodeTemplates[i].style.display = "block";
         }
     }
 }

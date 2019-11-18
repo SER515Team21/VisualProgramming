@@ -37,6 +37,12 @@ class CourseDb {
         return doc._id;
     }
 
+    async getCourseGrade(course) {
+        let doc = await this.courseDb.find({ course });
+        doc = doc.find(item => item.gradeLevel !== null);
+        return doc.gradeLevel;
+    }
+
     async addStudent(courseId, studentId) {
         const existingStudents = await this.getStudents(courseId);
         if (existingStudents.includes(studentId)) {
@@ -100,4 +106,5 @@ class CourseDb {
     }
 }
 
-module.exports = new CourseDb();
+const CourseDbInstance = new CourseDb();
+module.exports = CourseDbInstance;
