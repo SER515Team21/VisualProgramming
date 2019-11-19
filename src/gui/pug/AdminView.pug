@@ -45,12 +45,11 @@ include helpers/ScrolledTable
                         | Teacher
                         sup(style='color: red') *
                         | :
-                    input(type='text' id='newCourseTeacherName' placeholder="Teacher Name" oninput='validateInput('+
+                    input(type='text' id='newCourseTeacherUserName' placeholder="Teacher Name" oninput='validateInput('+
                     'newCourseName.value, newCourseGrade.value, newCourseTeacherName.value)')
                     br
                     br
-                    button(onclick='CourseDb.createCourse(newCourseName.value, newCourseGrade.value, ' +
-                    'newCourseTeacherName.value)' id='adminSaveNewCourse' disabled) Save
+                    button(id='adminSaveNewCourse' onclick='saveNewCourse' disabled) Save Course
                     #NewCourseStudents
                         include ViewStudentsScrollTable
                         button(id='adminAddStudent') Add Student
