@@ -34,22 +34,25 @@ include helpers/ScrolledTable
                         sup(style='color: red') *
                         | :
                     input(type='text' id='newCourseName' placeholder="Course Name" oninput='validateInput(' +
-                    'newCourseName.value, newCourseGrade.value, newCourseTeacherName.value)')
+                    'newCourseName.value, newCourseGrade.value, newCourseTeacherUserName.value)')
                     h3
                         | Grade
                         sup(style='color: red') *
                         | :
                     input(type='number' id='newCourseGrade' placeholder="1" oninput='validateInput(' +
-                    'newCourseName.value, newCourseGrade.value, newCourseTeacherName.value)')
+                    'newCourseName.value, newCourseGrade.value, newCourseTeacherUserName.value)')
                     h3
                         | Teacher
                         sup(style='color: red') *
                         | :
                     input(type='text' id='newCourseTeacherUserName' placeholder="Teacher Name" oninput='validateInput('+
-                    'newCourseName.value, newCourseGrade.value, newCourseTeacherName.value)')
+                    'newCourseName.value, newCourseGrade.value, newCourseTeacherUserName.value)')
                     br
                     br
-                    button(id='adminSaveNewCourse' onclick='saveNewCourse' disabled) Save Course
+                    button(id='adminSaveNewCourse' onclick='saveNewCourse()' disabled) Save Course
+                    br
+                    h4(id='teacherError' style='color: red' hidden=true) Error: Teacher not found!
+                    h4(id='newCourseError' style='color: red' hidden=true) Error: Course already exists!
                     #NewCourseStudents
                         include ViewStudentsScrollTable
                         button(id='adminAddStudent') Add Student

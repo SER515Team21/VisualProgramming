@@ -3,17 +3,24 @@
 /* global CourseDb */
 /* global loadAllCoursesList */
 
-async function saveNewCourse(){
+async function saveNewCourse() {
     const courseName = document.getElementById("newCourseName").value;
     const grade = document.getElementById("newCourseGrade").value;
     const teacherName = document.getElementById("newCourseTeacherUserName").value;
     const teacher = await UserDb.getUser(teacherName);
-
     //TODO: Add Students
     const students = [];
     const teacherId = teacher._id;
 
-    await CourseDb.createCourse(courseName, grade, teacherId, students);
+    const result = await CourseDb.createCourse(courseName, grade, teacherId, students);
+
+    if (result) {
+        document.getElementById("newCourseError").hidden = true;
+        await loadAllCoursesList();
+    }
+    else {
+        document.getElementById("newCourseError").hidden = false;
+    }
 
     await loadAllCoursesList();
 }
