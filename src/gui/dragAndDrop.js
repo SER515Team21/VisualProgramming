@@ -236,6 +236,8 @@ function deleteNode(event) {
         document.getElementById(id).remove();
         NodeForest.deleteRootNode(id);
     }
+
+    Calculator.updateResult();
 }
 
 /**

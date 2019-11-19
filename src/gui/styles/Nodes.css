@@ -144,8 +144,10 @@
 }
 
 .fraction.mixed {
-    width: 80px;
-    height: 60px;
+    min-width: 80px;
+    min-height: 60px;
+    width: max-content;
+    height: fit-content;
 }
 
 .mixed.fraction > p {
@@ -158,6 +160,11 @@
     position: relative;
     top: 17px;
     left: -10px;
+}
+
+.mixed > div#addSecond {
+    position: relative;
+    /*right: -13px;*/
 }
 
 .mixed > div#addThird {
