@@ -1,6 +1,6 @@
-include GenericDashboard
-include TabSwitcher
-include ScrolledTable
+include helpers/GenericDashboard
+include helpers/TabSwitcher
+include helpers/ScrolledTable
 
 #AdminView(hidden='')
     +GenericDashboard()
@@ -9,11 +9,11 @@ include ScrolledTable
                 +tabbedFrame(['Courses', 'Teachers', 'Students'], ['AdminCoursesListView', 'AdminTeachersList', 'AdminStudentsList'])
                 .view.active(id="AdminCoursesListView")
                     #AdminCoursesList
-                        include ListView
+                        include helpers/ListView
                 .view(id="AdminTeachersList")
-                    include ListView
+                    include helpers/ListView
                 .view(id="AdminStudentsList")
-                    include ListView
+                    include helpers/ListView
         +MainPane()
             .tab-switcher
                 +tabbedFrame(['Course View', 'New Course', 'Edit Course'], ['CourseView', "NewCoursePage", "CourseEditorPage"])
@@ -26,18 +26,18 @@ include ScrolledTable
                         h3 Teacher:
                         h4 Teacher Name
                     #CourseViewStudents
-                        include AdminViewStudentsScrollTable
+                        include ViewStudentsScrollTable
                 .view(id='NewCoursePage')
                     h1 New Course
-                    input(type='text' id='newCourseName' value="Course Name")
+                    input(type='text' id='newCourseName' placeholder="Course Name" required=true)
                     h3 Grade
-                    input(type='number' id='newCourseGrade' value="Course Grade")
+                    input(type='number' id='newCourseGrade' placeholder="1" required=true)
                     #NewCourseTeacher
                         h3 Teacher User Name:
                         input(type='text' id='newCourseTeacherUserName' value="Teacher Name")
-                    button(id='adminSaveNewCourse') Save Course
+                    button(id='adminSaveNewCourse' onclick='saveNewCourse') Save Course
                     #NewCourseStudents
-                        include AdminViewStudentsScrollTable
+                        include ViewStudentsScrollTable
                         button(id='adminAddStudent') Add Student
                 .view(id='CourseEditorPage')
                     h1 Course Editor
@@ -51,6 +51,6 @@ include ScrolledTable
                         input(type='text' id='editCourseTeacherName' value="Teacher Name")
                         button(id='adminSaveCourseTeacherName') Save
                     #CourseEditorStudents
-                        include AdminViewStudentsScrollTable
+                        include ViewStudentsScrollTable
                         button(id='adminAddStudentEditCourse') Add Student
 

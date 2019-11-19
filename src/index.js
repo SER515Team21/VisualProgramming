@@ -19,6 +19,9 @@ const createWindow = () => {
         }
     });
 
+    // maximize the main window to fill the screen
+    mainWindow.maximize();
+
     // and load the index.html of the app.
     mainWindow.loadURL(`file://${__dirname}/index.html`);
 
