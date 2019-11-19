@@ -9,7 +9,7 @@
 const AssignmentDb = require("../src/backend/AssignmentDb.js");
 
 /* Write the test suite */
-describe("User DB", () => {
+describe("Assignment DB", () => {
     beforeAll(async () => {
         await AssignmentDb.removeAll();
     });
