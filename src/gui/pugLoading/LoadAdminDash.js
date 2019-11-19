@@ -38,7 +38,7 @@ async function loadCourseStudentList(course) {
 }
 
 async function loadAllCoursesList() {
-    const pugPath = Path.relative(process.cwd(), "./src/gui/pug/ListViewSelect.pug");
+    const pugPath = Path.relative(process.cwd(), "./src/gui/pug/helpers/ListViewSelect.pug");
     const compiledFunction = pug.compileFile(pugPath);
     const courses = await CourseDb.getCourses();
     const listView = compiledFunction({
@@ -49,7 +49,7 @@ async function loadAllCoursesList() {
 
 function loadAllTeachersList() {
     // TODO: FINISH
-    const pugPath = Path.relative(process.cwd(), "./src/gui/pug/ListView.pug");
+    const pugPath = Path.relative(process.cwd(), "./src/gui/pug/helpers/ListView.pug");
     const compiledFunction = pug.compileFile(pugPath);
     const courses = ["Teacher", "teacher2", "Test", "test2", "Test", "test2", "Test", "test2", "Test", "test2", "Test", "test2", "Test", "test2", "Test", "test2", "Test", "test2", "Test", "test2", "Test", "test2", "Test", "test2", "Test", "test2"];
     const listView = compiledFunction({
@@ -59,7 +59,7 @@ function loadAllTeachersList() {
 }
 
 async function loadAllStudentsList() {
-    const pugPath = Path.relative(process.cwd(), "./src/gui/pug/ListView.pug");
+    const pugPath = Path.relative(process.cwd(), "./src/gui/pug/helpers/ListView.pug");
     const compiledFunction = pug.compileFile(pugPath);
     const courses = await CourseDb.getCourses();
     const courseId = await CourseDb.getCourseId(courses[0]);
