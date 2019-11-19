@@ -30,14 +30,12 @@ include ScrolledTable
                 .view(id='NewCoursePage')
                     h1 New Course
                     input(type='text' id='newCourseName' value="Course Name")
-                    button(id='adminSaveNewCourseName') Save
                     h3 Grade
                     input(type='number' id='newCourseGrade' value="Course Grade")
-                    button(id='adminSaveNewCourseGrade') Save
                     #NewCourseTeacher
                         h3 Teacher:
                         input(type='text' id='newCourseTeacherName' value="Teacher Name")
-                        button(id='adminSaveNewCourseTeacherName') Save
+                    button(id='adminSaveNew') Save Course
                     #NewCourseStudents
                         include AdminViewStudentsScrollTable
                         button(id='adminAddStudent') Add Student
