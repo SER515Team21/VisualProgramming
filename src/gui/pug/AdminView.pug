@@ -35,7 +35,7 @@ include helpers/ScrolledTable
                     #NewCourseTeacher
                         h3 Teacher User Name:
                         input(type='text' id='newCourseTeacherUserName' value="Teacher Name")
-                    button(id='adminSaveNewCourse' onclick='saveNewCourse') Save Course
+                    button(id='adminSaveNewCourse' onclick='saveNewCourse()') Save Course
                     #NewCourseStudents
                         include ViewStudentsScrollTable
                         button(id='adminAddStudent') Add Student
