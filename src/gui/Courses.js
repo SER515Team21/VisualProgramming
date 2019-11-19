@@ -8,19 +8,27 @@ async function saveNewCourse() {
     const grade = document.getElementById("newCourseGrade").value;
     const teacherName = document.getElementById("newCourseTeacherUserName").value;
     const teacher = await UserDb.getUser(teacherName);
-    //TODO: Add Students
-    const students = [];
-    const teacherId = teacher._id;
 
-    const result = await CourseDb.createCourse(courseName, grade, teacherId, students);
-
-    if (result) {
-        document.getElementById("newCourseError").hidden = true;
-        await loadAllCoursesList();
+    if (teacher === undefined) {
+        document.getElementById("teacherError").hidden = false;
     }
     else {
-        document.getElementById("newCourseError").hidden = false;
-    }
+        document.getElementById("teacherError").hidden = true;
 
-    await loadAllCoursesList();
+        //TODO: Add Students
+        const students = [];
+        const teacherId = teacher._id;
+
+        const result = await CourseDb.createCourse(courseName, grade, teacherId, students);
+
+        if (result) {
+            document.getElementById("newCourseError").hidden = true;
+            await loadAllCoursesList();
+        }
+        else {
+            document.getElementById("newCourseError").hidden = false;
+        }
+
+        await loadAllCoursesList();
+    }
 }
