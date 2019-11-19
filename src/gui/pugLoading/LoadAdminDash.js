@@ -49,7 +49,7 @@ async function loadAllCoursesList() {
 
 function loadAllTeachersList() {
     // TODO: FINISH
-    const pugPath = Path.relative(process.cwd(), "./src/gui/pug/ListView.pug");
+    const pugPath = Path.relative(process.cwd(), "./src/gui/pug/helpers/ListView.pug");
     const compiledFunction = pug.compileFile(pugPath);
     const courses = ["Teacher", "teacher2", "Test", "test2", "Test", "test2", "Test", "test2", "Test", "test2", "Test", "test2", "Test", "test2", "Test", "test2", "Test", "test2", "Test", "test2", "Test", "test2", "Test", "test2", "Test", "test2"];
     const listView = compiledFunction({
@@ -59,7 +59,7 @@ function loadAllTeachersList() {
 }
 
 async function loadAllStudentsList() {
-    const pugPath = Path.relative(process.cwd(), "./src/gui/pug/ListView.pug");
+    const pugPath = Path.relative(process.cwd(), "./src/gui/pug/helpers/ListView.pug");
     const compiledFunction = pug.compileFile(pugPath);
     const courses = await CourseDb.getCourses();
     const courseId = await CourseDb.getCourseId(courses[0]);
@@ -79,9 +79,13 @@ async function loadAllStudentsList() {
 
 async function loadInfo(info) {
     if (await CourseDb.courseExists(info)) {
-        loadCourseStudentList(info);
+        await loadCourseStudentList(info);
     }
     else if (await UserDb.userExists(info)) {
         // TODO
     }
+}
+
+async function validateInput(course, grade, teacher) {
+    document.getElementById("adminSaveNewCourse").disabled = !(course && grade && teacher);
 }

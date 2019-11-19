@@ -20,7 +20,7 @@ class CourseDb {
     }
 
     async createCourse(course, gradeLevel, teacherId, students = []) {
-        if (course === undefined || gradeLevel === undefined || teacherId === undefined) {
+        if (!(course && gradeLevel && teacherId)) {
             return false;
         }
         const exists = await this.courseExists(course);
