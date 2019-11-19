@@ -1,0 +1,18 @@
+.createAssignMenu
+    label(for="createAssignName") Assignment Name:
+    input(id="createAssignName")
+
+    label(for="createAssignCourseSelect") Course:
+    select(id="createAssignCourseSelect" onclick='updateCourses(this)')
+    button(id="createAssignAddQuestion" data-for="createAssignmentQuestionList" onclick="addQuestion(this)") Add Question
+    button(id="createAssignSubmit" onclick="saveAssignment()") Create Assignment
+    br
+    label(for="createAssignDescription") Description:
+    input(id="createAssignDescription")
+    label(for="createAssignDueDate") Due Date:
+    input(id="createAssignDueDate", type="date")
+ul(class="questionList" id="createAssignmentQuestionList")
+    li(class="question")
+        label(class="XButton" onclick="deleteQuestion(this)") X
+        label Q
+        textarea

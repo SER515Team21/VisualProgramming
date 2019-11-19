@@ -3,6 +3,7 @@
 /* global UserDb */
 /* global AssignDb */
 /* global populateGrades */
+/* global filterOperators */
 
 function accordianListener() {
     const acc = document.getElementsByClassName("accordion");

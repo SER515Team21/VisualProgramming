@@ -16,10 +16,10 @@ mixin node-search
                 +number_node().template
             button.accordion Arithmetic
             .panel
-                +binary_node('arithmetic', 'addition').template
-                +binary_node('arithmetic', 'subtraction').template
-                +binary_node('arithmetic', 'multiplication').template
-                +binary_node('arithmetic', 'division').template
+                +binary_node('arithmetic', 'addition', 'first').template
+                +binary_node('arithmetic', 'subtraction', 'first').template
+                +binary_node('arithmetic', 'multiplication', 'second').template
+                +binary_node('arithmetic', 'division', 'second').template
             button.accordion Algebraic Equations
             .panel
             button.accordion Graphing

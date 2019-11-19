@@ -69,6 +69,11 @@ class UserDb {
         return doc;
     }
 
+    async getUserWithId(id) {
+        const doc = await this.programDb.find({ _id: id });
+        return doc;
+    }
+
     async getUsers(role = "student") {
         const doc = await this.programDb.find({ role });
         return doc;
