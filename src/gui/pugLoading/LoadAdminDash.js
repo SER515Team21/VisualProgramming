@@ -21,7 +21,9 @@ async function loadCourseStudentList(course) {
         courseId = await CourseDb.getCourseId(course);
     }
 
-    const students = await CourseDb.getStudents(courseId);
+    let students = await CourseDb.getStudents(courseId);
+    students = students == undefined ? [] : students;
+
     const studentTable = [];
     for (let i = 0; i < students.length; i++) {
         // eslint-disable-next-line no-await-in-loop
@@ -63,7 +65,8 @@ async function loadAllStudentsList() {
     const compiledFunction = pug.compileFile(pugPath);
     const courses = await CourseDb.getCourses();
     const courseId = await CourseDb.getCourseId(courses[0]);
-    const students = await CourseDb.getStudents(courseId);
+    let students = await CourseDb.getStudents(courseId);
+    students = students == undefined ? [] : students;
     const studentTable = [];
     for (let i = 0; i < students.length; i++) {
         // eslint-disable-next-line no-await-in-loop

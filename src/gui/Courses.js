@@ -12,7 +12,7 @@ async function saveNewCourse(){
     const students = [];
     const teacherId = await UserDb.getUser(teacherName)._id;
 
-    CourseDb.createCourse(courseName, grade, teacherId, students);
+    await CourseDb.createCourse(courseName, grade, teacherId, students);
 
     loadAllCoursesList();
 }
