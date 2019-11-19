@@ -1,5 +1,5 @@
-include GenericDashboard
-include TabSwitcher
+include helpers/GenericDashboard
+include helpers/TabSwitcher
 include studentSearch
 include courseSearch
 
@@ -17,9 +17,9 @@ include courseSearch
             .tab-switcher
                 +tabbedFrame(['Courses', 'Students'], ['teacherCourses', 'teacherStudents'])
                 .view.active(id="teacherCourses")
-                    include ListView
+                    include helpers/ListView
                 .view(id="teacherStudents")
-                    include ListView
+                    include helpers/ListView
         +MainPane()
             .tab-switcher
                 +tabbedFrame(['Students', 'Assignments', 'Create Assignment'], ['courseStudents', 'courseAssignments', 'createAssignment'])

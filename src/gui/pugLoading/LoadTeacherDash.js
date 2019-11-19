@@ -27,7 +27,7 @@ function loadCourseAssignmentListTeacher() {
 
 function loadAllTeachersCoursesList() {
     // TODO: FINISH
-    const pugPath = Path.relative(process.cwd(), "./src/gui/pug/ListView.pug");
+    const pugPath = Path.relative(process.cwd(), "./src/gui/pug/helpers/ListView.pug");
     const compiledFunction = pug.compileFile(pugPath);
     const courses = ["Course", "ccours", "coursese", "test2", "Test", "test2", "Test", "test2", "Test", "test2", "Test", "test2", "Test", "test2", "Test", "test2", "Test", "test2", "Test", "test2", "Test", "test2", "Test", "test2", "Test", "test2"];
     const listView = compiledFunction({
@@ -38,7 +38,7 @@ function loadAllTeachersCoursesList() {
 
 function loadAllTeachersStudentsList() {
     // TODO: FINISH
-    const pugPath = Path.relative(process.cwd(), "./src/gui/pug/ListView.pug");
+    const pugPath = Path.relative(process.cwd(), "./src/gui/pug/helpers/ListView.pug");
     const compiledFunction = pug.compileFile(pugPath);
     const courses = ["Studdent", "student also", "weee student", "test2", "Test", "test2", "Test", "test2", "Test", "test2", "Test", "test2", "Test", "test2", "Test", "test2", "Test", "test2", "Test", "test2", "Test", "test2", "Test", "test2", "Test", "test2"];
     const listView = compiledFunction({

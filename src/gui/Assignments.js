@@ -1,5 +1,7 @@
-
 /* global document */
+/* global AssignDb */
+/* global CourseDb */
+/* global window */
 
 class Assignment {
 
@@ -56,4 +58,31 @@ function filterOperators(level) {
             nodeTemplates[i].style.display = "block";
         }
     }
+}
+
+async function saveAssignment() {
+    const teacherId = window.localStorage.getItem("userID");
+    const courseName = document.getElementById("createAssignCourseSelect").value;
+    const courseId = CourseDb.getCourseId(courseName);
+    const assignName = document.getElementById("createAssignName").value;
+    const description = document.getElementById("createAssignDescription").value;
+    const dueDate = document.getElementById("createAssignDueDate").value;
+    const points = 10;
+    const questions = [];
+
+    const questionElements = document.getElementById("createAssignmentQuestionList")
+        .getElementsByTagName("textarea");
+
+    for (let i = 0; i < questionElements.length; i++) {
+        questions.push(questionElements.item(i));
+    }
+
+    await AssignDb.saveAssignment(
+        assignName, description, courseId, teacherId, questions, dueDate, points);
+    // if(assignment === null){
+    //     document.getElementById("teacherAssignmentFail").hidden = false;
+    // }
+    // else{
+    //     document.getElementById("teacherAssignmentFail").hidden = true;
+    // }
 }
