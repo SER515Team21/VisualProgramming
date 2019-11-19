@@ -15,7 +15,7 @@ async function saveNewCourse() {
     else {
         document.getElementById("teacherError").hidden = true;
 
-        //TODO: Add Students
+        // TODO: Add Students
         const students = [];
         const teacherId = teacher._id;
 

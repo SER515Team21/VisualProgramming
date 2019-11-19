@@ -22,7 +22,7 @@ async function loadCourseStudentList(course) {
     }
 
     let students = await CourseDb.getStudents(courseId);
-    students = students == undefined ? [] : students;
+    students = students === undefined ? [] : students;
 
     const studentTable = [];
     for (let i = 0; i < students.length; i++) {
@@ -66,7 +66,7 @@ async function loadAllStudentsList() {
     const courses = await CourseDb.getCourses();
     const courseId = await CourseDb.getCourseId(courses[0]);
     let students = await CourseDb.getStudents(courseId);
-    students = students == undefined ? [] : students;
+    students = students === undefined ? [] : students;
     const studentTable = [];
     for (let i = 0; i < students.length; i++) {
         // eslint-disable-next-line no-await-in-loop
