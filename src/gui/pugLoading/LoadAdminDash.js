@@ -82,9 +82,13 @@ async function loadAllStudentsList() {
 
 async function loadInfo(info) {
     if (await CourseDb.courseExists(info)) {
-        loadCourseStudentList(info);
+        await loadCourseStudentList(info);
     }
     else if (await UserDb.userExists(info)) {
         // TODO
     }
+}
+
+async function validateInput(course, grade, teacher) {
+    document.getElementById("adminSaveNewCourse").disabled = !(course && grade && teacher);
 }

@@ -29,13 +29,27 @@ include helpers/ScrolledTable
                         include ViewStudentsScrollTable
                 .view(id='NewCoursePage')
                     h1 New Course
-                    input(type='text' id='newCourseName' placeholder="Course Name" required=true)
-                    h3 Grade
-                    input(type='number' id='newCourseGrade' placeholder="1" required=true)
-                    #NewCourseTeacher
-                        h3 Teacher User Name:
-                        input(type='text' id='newCourseTeacherUserName' value="Teacher Name")
-                    button(id='adminSaveNewCourse' onclick='saveNewCourse()') Save Course
+                    h3
+                        | Name
+                        sup(style='color: red') *
+                        | :
+                    input(type='text' id='newCourseName' placeholder="Course Name" oninput='validateInput(' +
+                    'newCourseName.value, newCourseGrade.value, newCourseTeacherName.value)')
+                    h3
+                        | Grade
+                        sup(style='color: red') *
+                        | :
+                    input(type='number' id='newCourseGrade' placeholder="1" oninput='validateInput(' +
+                    'newCourseName.value, newCourseGrade.value, newCourseTeacherName.value)')
+                    h3
+                        | Teacher
+                        sup(style='color: red') *
+                        | :
+                    input(type='text' id='newCourseTeacherUserName' placeholder="Teacher Name" oninput='validateInput('+
+                    'newCourseName.value, newCourseGrade.value, newCourseTeacherName.value)')
+                    br
+                    br
+                    button(id='adminSaveNewCourse' onclick='saveNewCourse' disabled) Save Course
                     #NewCourseStudents
                         include ViewStudentsScrollTable
                         button(id='adminAddStudent') Add Student
