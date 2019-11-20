@@ -44,17 +44,18 @@ function handlePanelEquationPane(node, target, event) {
     clone.id = NodeFactory.createNode(clone.classList, true);
 
     target.appendChild(clone);
-    clone.style.position = "relative";
-    const xPosParent = target.offsetLeft + parseInt(window.getComputedStyle(target, null)
-        .getPropertyValue("padding-left"), 10);
-    const yPosParent = target.offsetTop + parseInt(window.getComputedStyle(target, null)
-        .getPropertyValue("padding-top"), 10);
+    clone.style.position = "absolute";
+    const xPosParent = event.target.getBoundingClientRect().x +
+        parseInt(window.getComputedStyle(target, null).getPropertyValue("padding-left"), 10);
+    const yPosParent = event.target.getBoundingClientRect().y +
+        parseInt(window.getComputedStyle(target, null).getPropertyValue("padding-top"), 10);
+    console.log(event.pageY, yPosParent, event.pageY - yPosParent, "vs", event.target.getBoundingClientRect().y);
     clone.style.top = `${event.pageY - yPosParent}px`;
     clone.style.left = `${event.pageX - xPosParent}px`;
 }
 
 function handleRootNodeNode(node, target, event) {
-    node.style.position = "relative";
+    node.style.position = "absolute";
     node.style.top = "0px";
     node.style.left = "0px";
 
@@ -74,10 +75,10 @@ function handleRootNodeNode(node, target, event) {
 }
 
 function handleRootNodeEquationPane(node, target, event) {
-    const xPosParent = target.offsetLeft + parseInt(window.getComputedStyle(target, null)
-        .getPropertyValue("padding-left"), 10);
-    const yPosParent = target.offsetTop + parseInt(window.getComputedStyle(target, null)
-        .getPropertyValue("padding-top"), 10);
+    const xPosParent = event.target.getBoundingClientRect().x +
+        parseInt(window.getComputedStyle(target, null).getPropertyValue("padding-left"), 10);
+    const yPosParent = event.target.getBoundingClientRect().y +
+        parseInt(window.getComputedStyle(target, null).getPropertyValue("padding-top"), 10);
     node.style.top = `${event.pageY - yPosParent}px`;
     node.style.left = `${event.pageX - xPosParent}px`;
 }
@@ -118,9 +119,14 @@ function handleChildNodeEquationPane(node, target, event) {
     NodeForest.insertRootNode(backendNode);
 
     target.appendChild(node);
-    node.style.position = "fixed";
-    node.style.top = `${event.pageY}px`;
-    node.style.left = `${event.pageX}px`;
+
+    node.style.position = "absolute";
+    const xPosParent = event.target.getBoundingClientRect().x +
+        parseInt(window.getComputedStyle(target, null).getPropertyValue("padding-left"), 10);
+    const yPosParent = event.target.getBoundingClientRect().y +
+        parseInt(window.getComputedStyle(target, null).getPropertyValue("padding-top"), 10);
+    node.style.top = `${event.pageY - yPosParent}px`;
+    node.style.left = `${event.pageX - xPosParent}px`;
 }
 
 /**
@@ -133,6 +139,7 @@ function dropNode(event) {
     const id = event.dataTransfer.getData("text");
     const node = document.getElementById(id);
     const target = event.target;
+    console.log(event.target);
     let origin;
     let destination;
     const handlers = {
