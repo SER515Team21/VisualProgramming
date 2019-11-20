@@ -25,6 +25,7 @@ tr:hover {
 
 #createAssignment {
     padding: 25px;
+    height: calc(100% - 50px);
 }
 
 #createAssignment * {
