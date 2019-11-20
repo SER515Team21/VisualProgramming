@@ -4,7 +4,7 @@
 /* global Path */
 /* global CourseDb */
 /* global UserDb */
-/* global LoadTeacherDash */
+/* global loadCourseStudentListTeacher */
 
 async function loadCourseStudentList(course) {
     const pugPath = Path.relative(process.cwd(), "./src/gui/pug/ViewStudentsScrollTable.pug");
@@ -84,7 +84,6 @@ async function loadAllStudentsList() {
 async function loadInfo(info) {
     if (await CourseDb.courseExists(info)) {
         await loadCourseStudentList(info);
-        // eslint-disable-next-line no-undef
         await loadCourseStudentListTeacher(info);
     }
     else if (await UserDb.userExists(info)) {
