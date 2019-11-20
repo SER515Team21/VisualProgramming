@@ -39,12 +39,12 @@ class NodeForest {
 
     static insertIntoBinaryNodeLeft(newNode, parentNodeId) {
         const parentNode = this.getNode(parentNodeId);
-        parentNode.setLeftOperand(newNode);
+        parentNode.setFirstOperand(newNode);
     }
 
     static insertIntoBinaryNodeRight(newNode, parentNodeId) {
         const parentNode = this.getNode(parentNodeId);
-        parentNode.setRightOperand(newNode);
+        parentNode.setSecondOperand(newNode);
     }
 
     static insertIntoUnaryNode(newNode, parentNodeId) {
@@ -74,9 +74,9 @@ class NodeForest {
                 stack.push(currentNode.operand);
             }
             // Binary operator case
-            else if (currentNode.leftOperand != null || currentNode.rightOperand != null) {
-                stack.push(currentNode.rightOperand);
-                stack.push(currentNode.leftOperand);
+            else if (currentNode.firstOperand != null || currentNode.secondOperand != null) {
+                stack.push(currentNode.secondOperand);
+                stack.push(currentNode.firstOperand);
             }
             // Number node
             else if (currentNode.number != null) {

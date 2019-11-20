@@ -14,12 +14,21 @@ mixin node-search
             button.accordion Numbers
             .panel
                 +number_node().template
+                - var i = 0
+                while i <= 20
+                    +number_node(i).template
+                    - i++
+                +binary_node('fraction', 'improper', 'fourth').template
+                +mixed_fraction_node('fifth').template
             button.accordion Arithmetic
             .panel
                 +binary_node('arithmetic', 'addition', 'first').template
                 +binary_node('arithmetic', 'subtraction', 'first').template
                 +binary_node('arithmetic', 'multiplication', 'second').template
                 +binary_node('arithmetic', 'division', 'second').template
+                +binary_node('arithmetic', 'longMultiplication', 'fifth').template
+                    p(id='operator') X
+                +binary_node('arithmetic', 'longDivision', 'fifth').template
             button.accordion Algebraic Equations
             .panel
             button.accordion Graphing
