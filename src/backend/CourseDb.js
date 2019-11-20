@@ -33,6 +33,9 @@ class CourseDb {
     async getCourseId(course) {
         let doc = await this.courseDb.find({ course });
         doc = doc.find(item => item._id !== null);
+        if(doc === undefined){
+            return doc;
+        }
         return doc._id;
     }
 
@@ -75,10 +78,11 @@ class CourseDb {
     async getStudents(courseId) {
         let doc = await this.courseDb.find({ _id: courseId });
         doc = doc.find(item => item._id !== null);
-        if (doc.students === "") {
-            doc.students = [];
+        let students = []
+        if (doc !== undefined && doc !== null && doc.students !== "") {
+            students = doc.students;
         }
-        return doc.students;
+        return students;
     }
 
     async getCourses(teacherId = undefined) {
