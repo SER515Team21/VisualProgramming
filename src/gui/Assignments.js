@@ -136,7 +136,7 @@ async function saveAssignment() {
         .getElementsByTagName("textarea");
 
     for (let i = 0; i < questionElements.length; i++) {
-        questions.push(questionElements.item(i));
+        questions.push(questionElements.item(i).value);
     }
 
     await AssignDb.saveAssignment(
