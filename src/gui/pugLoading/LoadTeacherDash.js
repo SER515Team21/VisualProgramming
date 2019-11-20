@@ -51,7 +51,7 @@ function loadCourseAssignmentListTeacher() {
 
 async function loadAllTeachersCoursesList() {
     // TODO: FINISH
-    const pugPath = Path.relative(process.cwd(), "./src/gui/pug/helpers/ListView.pug");
+    const pugPath = Path.relative(process.cwd(), "./src/gui/pug/helpers/ListViewSelect.pug");
     const compiledFunction = pug.compileFile(pugPath);
     const teacherId = window.localStorage.getItem("userID");
     const courses = await CourseDb.getCourses(teacherId);

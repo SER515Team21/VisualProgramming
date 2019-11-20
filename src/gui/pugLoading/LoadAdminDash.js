@@ -84,7 +84,7 @@ async function loadAllStudentsList() {
 async function loadInfo(info) {
     if (await CourseDb.courseExists(info)) {
         await loadCourseStudentList(info);
-        LoadTeacherDash.loadCourseStudentListTeacher(info);
+        await loadCourseStudentListTeacher(info);
     }
     else if (await UserDb.userExists(info)) {
         // TODO
