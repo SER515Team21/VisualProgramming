@@ -84,6 +84,7 @@ async function loadAllStudentsList() {
 async function loadInfo(info) {
     if (await CourseDb.courseExists(info)) {
         await loadCourseStudentList(info);
+        // eslint-disable-next-line no-undef
         await loadCourseStudentListTeacher(info);
     }
     else if (await UserDb.userExists(info)) {
