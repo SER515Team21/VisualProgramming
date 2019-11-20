@@ -17,7 +17,7 @@
     border: aquamarine solid 3px;
 }
 
-.arithmetic p {
+.arithmetic > p {
     text-align: center;
     color: black;
     display: inline-block;
@@ -52,15 +52,15 @@
     width: 40px;
 }
 
-.addition p::before {
+.addition > p::before {
     content: "+";
 }
 
-.subtraction p::before {
+.subtraction > p::before {
     content: "-";
 }
 
-.multiplication p::before {
+.multiplication > p::before {
     content: "x";
 }
 
@@ -80,6 +80,10 @@
     width: 82%;
     position: absolute;
     left: 5px;
+}
+
+.longMultiplication > p::before {
+    content: '';
 }
 
 .longMultiplication p#operator {
@@ -125,10 +129,11 @@
 }
 
 .fraction > p {
-    height: 0px !important;
+    height: 0 !important;
     border: black solid 1px;
     background-color: black;
     margin: 5px;
+    width: -webkit-fill-available;
 }
 
 .fraction:hover {
@@ -141,6 +146,10 @@
     min-height: 60px;
     width: fit-content;
     height: fit-content;
+}
+
+.fraction.improper > p::before {
+    content: '';
 }
 
 .fraction.mixed {
