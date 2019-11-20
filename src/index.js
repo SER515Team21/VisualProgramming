@@ -21,12 +21,13 @@ const createWindow = () => {
 
     // maximize the main window to fill the screen
     mainWindow.maximize();
+    mainWindow.setTitle("Visual Mathematics");
 
     // and load the index.html of the app.
     mainWindow.loadURL(`file://${__dirname}/index.html`);
 
     // Open the DevTools.
-    mainWindow.webContents.openDevTools();
+    // mainWindow.webContents.openDevTools();
 
     // Emitted when the window is closed.
     mainWindow.on("closed", () => {

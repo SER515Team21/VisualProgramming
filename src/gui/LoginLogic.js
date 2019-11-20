@@ -57,7 +57,10 @@ async function sendLoginRequest() {
             const user = await UserDb.getUser(username);
             window.localStorage.setItem("username", user.username);
             window.localStorage.setItem("userID", user._id);
-            document.getElementById("account-username-display").textContent = `Welcome, ${user.username}`;
+            const usernameDisplays = document.getElementsByClassName("account-username-display");
+            for (let i = 0; i < usernameDisplays.length; ++i) {
+                usernameDisplays[i].textContent = `Welcome, ${user.username}`;
+            }
             document.getElementById("loginFail").hidden = true;
             document.getElementById("login").hidden = true;
             if (user.role === "admin") {

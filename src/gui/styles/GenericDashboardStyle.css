@@ -41,7 +41,7 @@ header {
     transition-delay: 0s, 0s, 0.3s;
 }
 
-#account-username-display {
+.account-username-display {
     position: absolute;
     bottom: 2px;
     left: 30px;
