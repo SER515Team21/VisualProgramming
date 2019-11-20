@@ -21,19 +21,21 @@ class CourseDb {
 
     async createCourse(course, gradeLevel, teacherId, students = []) {
         if (course === undefined || gradeLevel === undefined || teacherId === undefined) {
-            return false;
+            return undefined;
         }
         const exists = await this.courseExists(course);
         if (exists) {
-            return false;
+            return undefined;
         }
-        await this.courseDb.insert({ course, gradeLevel, teacherId, students });
-        return true;
+        return this.courseDb.insert({ course, gradeLevel, teacherId, students });
     }
 
     async getCourseId(course) {
         let doc = await this.courseDb.find({ course });
         doc = doc.find(item => item._id !== null);
+        if (doc === undefined) {
+            return doc;
+        }
         return doc._id;
     }
 
@@ -76,10 +78,11 @@ class CourseDb {
     async getStudents(courseId) {
         let doc = await this.courseDb.find({ _id: courseId });
         doc = doc.find(item => item._id !== null);
-        if (doc.students === "") {
-            doc.students = [];
+        let students = [];
+        if (doc !== undefined && doc !== null && doc.students !== "") {
+            students = doc.students;
         }
-        return doc.students;
+        return students;
     }
 
     async getCourses(teacherId = undefined) {
