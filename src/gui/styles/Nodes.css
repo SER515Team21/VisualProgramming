@@ -151,9 +151,9 @@
 }
 
 .mixed.fraction > p {
-    width: 30px;
+    width: 35%;
     position: relative;
-    left: 34px;
+    left: 50%;
 }
 
 .mixed > div#addFirst {
