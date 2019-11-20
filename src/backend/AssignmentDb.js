@@ -12,13 +12,19 @@ class AssignmentDb {
     }
 
     async loadCurrentAssignments() {
-        const doc = await this.programDb.find();
+        const doc = await this.programDb.find({});
         return doc; // doc.filter(assign => assign.dueDate > new Date());
     }
 
     async loadAssignment(id) {
         const doc = await this.programDb.find({ _id: id });
         return doc;
+    }
+
+    async submitAssignment(assignmentId, studentId, answers) {
+        const doc = await this.programDb.update({ _id: assignmentId },
+            { $push: { submissions: { studentId, answers } } });
+        return doc._id;
     }
 
     async saveAssignment(name, description, course, teacher, questions, dueDate, points) {

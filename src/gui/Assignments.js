@@ -1,7 +1,10 @@
+/* global Path */
 /* global document */
-/* global AssignDb */
-/* global CourseDb */
 /* global window */
+/* global pug */
+/* global AssignDb */
+/* global NodeForest */
+/* global CourseDb */
 
 class Assignment {
 
@@ -35,6 +38,65 @@ async function populateGrades(assignments = []) {
             </div>
          `);
     }
+}
+
+async function submitAssignment() {
+    const solutions = document.getElementsByClassName("solution");
+    const answers = [];
+    let doSave = true;
+
+    // Collect all student answers from all questions
+    for (let i = 0; i < solutions.length; i++) {
+        if (solutions[i].firstChild.firstChild) {
+            const test = solutions[i].firstChild.firstChild.getAttribute("id");
+            const answer = NodeForest.getNode(test).getText();
+
+            if (isNaN(answer)) {
+                answers.push(0);
+            }
+            else {
+                answers.push(answer);
+            }
+        }
+        else {
+            doSave = false;
+        }
+    }
+
+    // If all questions are answered, submit the assignment and return to the main panel
+    if (doSave) {
+        const assignmentId = window.localStorage.getItem("currentAssignment");
+        const studentId = window.localStorage.getItem("userID");
+        await AssignDb.submitAssignment(assignmentId, studentId, answers);
+
+        const studentSubmissionPane = document.getElementsByClassName("studentSubmissionPane")[0];
+        studentSubmissionPane.parentElement.removeChild(studentSubmissionPane);
+        const mainPanel = document.getElementsByClassName("MainPane")[0];
+        mainPanel.hidden = false;
+    }
+    else {
+        document.getElementById("couldNotSubmit").hidden = false;
+    }
+}
+
+async function startAssignment(elem) {
+    document.getElementById("studentView")
+        .getElementsByClassName("MainPane")[0].hidden = true;
+    const pugPath = Path.relative(process.cwd(), "./src/gui/pug/StudentAssignmentSubmission.pug");
+    const compiledFunction = pug.compileFile(pugPath);
+    const assignmentId = elem.getAttribute("data-for");
+    const assignment = await AssignDb.loadAssignment(assignmentId);
+    const questions = assignment[0].questions;
+    const submissionPane = compiledFunction({
+        questions
+    });
+    const template = document.createElement("template");
+    template.innerHTML = submissionPane;
+    document.getElementById("studentView")
+        .getElementsByClassName("GenericDashboard")[0]
+        .appendChild(template.content.firstChild);
+
+    window.localStorage.setItem("currentAssignment", assignmentId);
 }
 
 function filterOperators(level) {
@@ -74,7 +136,7 @@ async function saveAssignment() {
         .getElementsByTagName("textarea");
 
     for (let i = 0; i < questionElements.length; i++) {
-        questions.push(questionElements.item(i));
+        questions.push(questionElements.item(i).value);
     }
 
     await AssignDb.saveAssignment(

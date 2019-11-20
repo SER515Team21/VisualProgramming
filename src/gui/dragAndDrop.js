@@ -9,6 +9,7 @@
 /* global Operators */
 /* global NodeFactory */
 /* global NumberNode */
+/* global window */
 
 /**
  * Sets data attribute to hold the id of the picked up HTML Node
@@ -43,13 +44,17 @@ function handlePanelEquationPane(node, target, event) {
     clone.id = NodeFactory.createNode(clone.classList, true);
 
     target.appendChild(clone);
-    clone.style.position = "fixed";
-    clone.style.top = `${event.pageY}px`;
-    clone.style.left = `${event.pageX}px`;
+    clone.style.position = "absolute";
+    const xPosParent = event.target.getBoundingClientRect().x +
+        parseInt(window.getComputedStyle(target, null).getPropertyValue("padding-left"), 10);
+    const yPosParent = event.target.getBoundingClientRect().y +
+        parseInt(window.getComputedStyle(target, null).getPropertyValue("padding-top"), 10);
+    clone.style.top = `${event.pageY - yPosParent}px`;
+    clone.style.left = `${event.pageX - xPosParent}px`;
 }
 
 function handleRootNodeNode(node, target, event) {
-    node.style.position = "relative";
+    node.style.position = "absolute";
     node.style.top = "0px";
     node.style.left = "0px";
 
@@ -69,8 +74,12 @@ function handleRootNodeNode(node, target, event) {
 }
 
 function handleRootNodeEquationPane(node, target, event) {
-    node.style.top = `${event.pageY}px`;
-    node.style.left = `${event.pageX}px`;
+    const xPosParent = event.target.getBoundingClientRect().x +
+        parseInt(window.getComputedStyle(target, null).getPropertyValue("padding-left"), 10);
+    const yPosParent = event.target.getBoundingClientRect().y +
+        parseInt(window.getComputedStyle(target, null).getPropertyValue("padding-top"), 10);
+    node.style.top = `${event.pageY - yPosParent}px`;
+    node.style.left = `${event.pageX - xPosParent}px`;
 }
 
 function handleChildNodeNode(node, target, event) {
@@ -109,9 +118,14 @@ function handleChildNodeEquationPane(node, target, event) {
     NodeForest.insertRootNode(backendNode);
 
     target.appendChild(node);
-    node.style.position = "fixed";
-    node.style.top = `${event.pageY}px`;
-    node.style.left = `${event.pageX}px`;
+
+    node.style.position = "absolute";
+    const xPosParent = event.target.getBoundingClientRect().x +
+        parseInt(window.getComputedStyle(target, null).getPropertyValue("padding-left"), 10);
+    const yPosParent = event.target.getBoundingClientRect().y +
+        parseInt(window.getComputedStyle(target, null).getPropertyValue("padding-top"), 10);
+    node.style.top = `${event.pageY - yPosParent}px`;
+    node.style.left = `${event.pageX - xPosParent}px`;
 }
 
 /**

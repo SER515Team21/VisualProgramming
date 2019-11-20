@@ -22,7 +22,9 @@ async function loadCourseStudentList(course) {
         courseId = await CourseDb.getCourseId(course);
     }
 
-    const students = await CourseDb.getStudents(courseId);
+    let students = await CourseDb.getStudents(courseId);
+    students = students === undefined ? [] : students;
+
     const studentTable = [];
     for (let i = 0; i < students.length; i++) {
         // eslint-disable-next-line no-await-in-loop
@@ -39,7 +41,7 @@ async function loadCourseStudentList(course) {
 }
 
 async function loadAllCoursesList() {
-    const pugPath = Path.relative(process.cwd(), "./src/gui/pug/ListViewSelect.pug");
+    const pugPath = Path.relative(process.cwd(), "./src/gui/pug/helpers/ListViewSelect.pug");
     const compiledFunction = pug.compileFile(pugPath);
     const courses = await CourseDb.getCourses();
     const listView = compiledFunction({
@@ -64,7 +66,8 @@ async function loadAllStudentsList() {
     const compiledFunction = pug.compileFile(pugPath);
     const courses = await CourseDb.getCourses();
     const courseId = await CourseDb.getCourseId(courses[0]);
-    const students = await CourseDb.getStudents(courseId);
+    let students = await CourseDb.getStudents(courseId);
+    students = students === undefined ? [] : students;
     const studentTable = [];
     for (let i = 0; i < students.length; i++) {
         // eslint-disable-next-line no-await-in-loop
@@ -80,10 +83,14 @@ async function loadAllStudentsList() {
 
 async function loadInfo(info) {
     if (await CourseDb.courseExists(info)) {
-        loadCourseStudentList(info);
+        await loadCourseStudentList(info);
         LoadTeacherDash.loadCourseStudentListTeacher(info);
     }
     else if (await UserDb.userExists(info)) {
         // TODO
     }
+}
+
+async function validateInput(course, grade, teacher) {
+    document.getElementById("adminSaveNewCourse").disabled = !(course && grade && teacher);
 }
