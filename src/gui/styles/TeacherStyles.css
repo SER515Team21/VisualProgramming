@@ -18,17 +18,14 @@ th {
     background-color: #cccccc;
 }
 
-.selected {
-    border: 3px solid blue;
-}
-
 tr:hover {
-    border: 3px solid blue;
+    border: 1px solid #9abeff;
     cursor: pointer;
 }
 
 #createAssignment {
     padding: 25px;
+    height: calc(100% - 50px);
 }
 
 #createAssignment * {
@@ -36,8 +33,7 @@ tr:hover {
 }
 
 .createAssignMenu {
-    height: 25px;
-    padding: 25px;
+    height: 120px;
 }
 
 .question {
@@ -61,4 +57,8 @@ tr:hover {
 .question textarea {
     height: 100px;
     width: 650px;
+}
+
+div#teacherCourses {
+    background-color: rgba(0,0,0,0);
 }

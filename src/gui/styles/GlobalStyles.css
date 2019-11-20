@@ -3,6 +3,11 @@ html, body {
     font-family: "Arial", sans-serif;
 }
 
+body {
+    background: url("../../gui/img/background.jpg");
+    background-size: cover;
+}
+
 h1{
     font-size: 2em;
 }
@@ -28,7 +33,7 @@ h4{
 }
 
 .tab-switcher {
-    width: calc(100% - 160px);
+    width: calc(100% - 10px);
 }
 
 .tab-switcher ul {
@@ -45,6 +50,10 @@ h4{
 .tab-switcher .tab button {
     height: 30px;
     width: 100%;
+}
+
+.tab-switcher .tab button.active {
+    background-color: darkred;
 }
 
 .tab-switcher .view {
@@ -67,6 +76,7 @@ h4{
     outline: none;
     font-size: 15px;
     transition: 0.4s;
+    height: 60px;
 }
 
 .accordion.active, .accordion:hover {
@@ -99,6 +109,7 @@ h4{
 .view {
     height: 100%;
     display: none;
+    background-color: rgba(255, 255, 255, 0.7);
 }
 
 .view.active {
@@ -117,5 +128,27 @@ h4{
 }
 
 .selected {
-    border: 3px solid blue;
+    border: 1px solid #9abeff;
+}
+
+button {
+    height: 40px;
+    background: #ff656c;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #e15960;
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-family: Montserrat;
+    outline: none;
+    cursor: pointer;
+}
+
+
+input {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 3px;
 }

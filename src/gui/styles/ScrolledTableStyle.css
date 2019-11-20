@@ -5,7 +5,7 @@
 }
 
 .ScrolledTableBox{
-    height: 60%;
+    height: 44%;
     width: auto;
     border: solid;
     border-width: medium;
@@ -48,7 +48,7 @@
 }
 
 tr:hover {
-    border: 3px solid blue;
+    border: 1px solid #9abeff;
     cursor: pointer;
 }
 
