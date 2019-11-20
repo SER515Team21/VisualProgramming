@@ -7,15 +7,18 @@
 
 /* Imports for test */
 const AssignmentDb = require("../src/backend/AssignmentDb.js");
+const UserDb = require("../src/backend/UserDb.js");
 
 /* Write the test suite */
 describe("Assignment DB", () => {
     beforeAll(async () => {
         await AssignmentDb.removeAll();
+        await UserDb.removeAll();
     });
 
     afterEach(async () => {
         await AssignmentDb.removeAll();
+        await UserDb.removeAll();
     });
 
     it("shall be able to add an assignment with a new name in the same course with the same teacher", async () => {

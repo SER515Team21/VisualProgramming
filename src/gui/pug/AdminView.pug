@@ -29,18 +29,30 @@ include helpers/ScrolledTable
                         include ViewStudentsScrollTable
                 .view(id='NewCoursePage')
                     h1 New Course
-                    input(type='text' id='newCourseName' value="Course Name")
-                    button(onclick='CourseDb.createCourse(newCourseName.value, newCourseGrade.value, ' +
-                    'newCourseTeacherName.value)' id='adminSaveNewCourseName') Save
-                    h3 Grade
-                    input(type='number' id='newCourseGrade' value="1")
-                    button(onclick='CourseDb.createCourse(newCourseName.value, newCourseGrade.value, ' +
-                    'newCourseTeacherName.value)' id='adminSaveNewCourseGrade') Save
-                    #NewCourseTeacher
-                        h3 Teacher:
-                        input(type='text' id='newCourseTeacherName' value="Teacher Name")
-                        button(onclick='CourseDb.createCourse(newCourseName.value, newCourseGrade.value, ' +
-                        'newCourseTeacherName.value)' id='adminSaveNewCourseTeacherName') Save
+                    h3
+                        | Name
+                        sup(style='color: red') *
+                        | :
+                    input(type='text' id='newCourseName' placeholder="Course Name" oninput='validateInput(' +
+                    'newCourseName.value, newCourseGrade.value, newCourseTeacherUserName.value)')
+                    h3
+                        | Grade
+                        sup(style='color: red') *
+                        | :
+                    input(type='number' id='newCourseGrade' placeholder="1" oninput='validateInput(' +
+                    'newCourseName.value, newCourseGrade.value, newCourseTeacherUserName.value)')
+                    h3
+                        | Teacher
+                        sup(style='color: red') *
+                        | :
+                    input(type='text' id='newCourseTeacherUserName' placeholder="Teacher Name" oninput='validateInput('+
+                    'newCourseName.value, newCourseGrade.value, newCourseTeacherUserName.value)')
+                    br
+                    br
+                    button(id='adminSaveNewCourse' onclick='saveNewCourse()' disabled) Save Course
+                    br
+                    h4(id='teacherError' style='color: red' hidden=true) Error: Teacher not found!
+                    h4(id='newCourseError' style='color: red' hidden=true) Error: Course already exists!
                     #NewCourseStudents
                         include ViewStudentsScrollTable
                         button(id='adminAddStudent') Add Student

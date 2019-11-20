@@ -66,3 +66,4 @@ typings/
 
 # Jetbrains IDE files
 .idea
+src/index.html
