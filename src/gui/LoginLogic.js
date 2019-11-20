@@ -73,7 +73,7 @@ async function sendLoginRequest() {
     }
 }
 
-function getUserId() {
+function getUserName() {
     return window.localStorage.getItem("username");
 }
 
