@@ -3,6 +3,7 @@
 /* global UserDb */
 /* global AssignDb */
 /* global populateGrades */
+/* global startAssignment */
 /* global filterOperators */
 
 function accordianListener() {
@@ -63,11 +64,16 @@ async function updateAssignments() {
             title.textContent = assign.name;
             date.textContent = assign.dueDate;
             description.textContent = assign.description;
+            title.setAttribute("data-for", assign._id);
 
             assignElem.classList.add("assignment");
             title.classList.add("assignTitle");
             date.classList.add("assignDate");
             description.classList.add("assignDescription");
+
+            title.onclick = function () {
+                startAssignment(title);
+            };
 
             assignElem.appendChild(title);
             assignElem.appendChild(date);
