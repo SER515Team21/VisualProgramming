@@ -9,7 +9,7 @@ include helpers/GenericDashboard
             +node-search
         +MainPane
             .tab-switcher
-                +tabbedFrame(['Assignments','Practice Equations', 'View Grades'], ['assignment_tab', 'practice', 'grades'])
+                +tabbedFrame(['Practice Equations', 'Assignments', 'View Grades'], ['practice', 'assignment_tab', 'grades'])
                 .view.active(id='practice')
                     #editorPane.paper(ondrop='dropNode(event)' ondragover='allowDroppingNode(event)')
                     #resultPane(hidden='')

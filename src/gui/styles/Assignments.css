@@ -1,7 +1,5 @@
 .assignmentsList {
-    background: #f5f5f5;
-    margin: 10px;
-    height: calc(100% - 10px);
+    height: calc(100% - 20px);
     padding: 10px;
     font-weight: bold;
 }
@@ -44,4 +42,10 @@
     height: calc(100% - 80px);
     width: calc(100% - 160px);
     overflow: scroll;
+}
+
+.submissionQuestion {
+    background-color: rgba(0,0,0,.6);
+    color: white;
+    padding: 20px;
 }
