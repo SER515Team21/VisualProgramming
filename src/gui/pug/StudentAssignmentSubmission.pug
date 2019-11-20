@@ -1,4 +1,6 @@
 .studentSubmissionPane
+    button#submitAssignmentButton(onclick="submitAssignment()") Submit
+    p#couldNotSubmit(hidden) Please complete the assignment before submitting
     each question, index in questions
         .problem
             .submissionQuestion

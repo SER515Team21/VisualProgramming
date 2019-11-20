@@ -43,18 +43,34 @@ async function populateGrades() {
 async function submitAssignment() {
     const solutions = document.getElementsByClassName("solution");
     const answers = [];
+    let doSave = true;
 
+    // Collect all student answers from all questions
     for (let i = 0; i < solutions.length; i++) {
         if (solutions[i].firstChild.firstChild) {
             const test = solutions[i].firstChild.firstChild.getAttribute("id");
             const answer = NodeForest.getNode(test).getText();
             answers.push(answer);
         }
+        else {
+            doSave = false;
+        }
     }
 
-    const assignmentId = window.localStorage.getItem("currentAssignment");
-    const studentId = window.localStorage.getItem("userID");
-    AssignDb.submitAssignment(assignmentId, studentId, answers);
+    // If all questions are answered, submit the assignment and return to the main panel
+    if (doSave) {
+        const assignmentId = window.localStorage.getItem("currentAssignment");
+        const studentId = window.localStorage.getItem("userID");
+        await AssignDb.submitAssignment(assignmentId, studentId, answers);
+
+        const studentSubmissionPane = document.getElementsByClassName("studentSubmissionPane")[0];
+        studentSubmissionPane.parentElement.removeChild(studentSubmissionPane);
+        const mainPanel = document.getElementsByClassName("MainPane")[0];
+        mainPanel.hidden = false;
+    }
+    else {
+        document.getElementById("couldNotSubmit").hidden = false;
+    }
 }
 
 async function startAssignment(elem) {
