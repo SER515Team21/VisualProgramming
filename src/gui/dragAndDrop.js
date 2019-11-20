@@ -49,7 +49,6 @@ function handlePanelEquationPane(node, target, event) {
         parseInt(window.getComputedStyle(target, null).getPropertyValue("padding-left"), 10);
     const yPosParent = event.target.getBoundingClientRect().y +
         parseInt(window.getComputedStyle(target, null).getPropertyValue("padding-top"), 10);
-    console.log(event.pageY, yPosParent, event.pageY - yPosParent, "vs", event.target.getBoundingClientRect().y);
     clone.style.top = `${event.pageY - yPosParent}px`;
     clone.style.left = `${event.pageX - xPosParent}px`;
 }
@@ -139,7 +138,6 @@ function dropNode(event) {
     const id = event.dataTransfer.getData("text");
     const node = document.getElementById(id);
     const target = event.target;
-    console.log(event.target);
     let origin;
     let destination;
     const handlers = {

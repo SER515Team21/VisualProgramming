@@ -4,6 +4,7 @@
 /* global pug */
 /* global AssignDb */
 /* global NodeForest */
+/* global CourseDb */
 
 class Assignment {
 
@@ -23,7 +24,7 @@ const assignments = [
 /*
  Takes an array of assignment objects
  */
-async function populateGrades() {
+async function populateGrades(assignments = []) {
     const alist = document.getElementById("assignment_grades");
     assignments.sort((a, b) => a.dueDate.getTime() - b.dueDate.getTime());
     for (let i = 0; i < assignments.length; ++i) {
@@ -36,7 +37,6 @@ async function populateGrades() {
                 <hr />
             </div>
          `);
-//        alist.appendChild(assignmentText);
     }
 }
 
@@ -50,7 +50,13 @@ async function submitAssignment() {
         if (solutions[i].firstChild.firstChild) {
             const test = solutions[i].firstChild.firstChild.getAttribute("id");
             const answer = NodeForest.getNode(test).getText();
-            answers.push(answer);
+
+            if (isNaN(answer)) {
+                answers.push(0);
+            }
+            else {
+                answers.push(answer);
+            }
         }
         else {
             doSave = false;
@@ -74,7 +80,8 @@ async function submitAssignment() {
 }
 
 async function startAssignment(elem) {
-    document.getElementById("studentView").getElementsByClassName("MainPane")[0].hidden = true;
+    document.getElementById("studentView")
+        .getElementsByClassName("MainPane")[0].hidden = true;
     const pugPath = Path.relative(process.cwd(), "./src/gui/pug/StudentAssignmentSubmission.pug");
     const compiledFunction = pug.compileFile(pugPath);
     const assignmentId = elem.getAttribute("data-for");
@@ -85,10 +92,59 @@ async function startAssignment(elem) {
     });
     const template = document.createElement("template");
     template.innerHTML = submissionPane;
-    console.log(template.content.firstChild);
     document.getElementById("studentView")
         .getElementsByClassName("GenericDashboard")[0]
         .appendChild(template.content.firstChild);
 
     window.localStorage.setItem("currentAssignment", assignmentId);
+}
+
+function filterOperators(level) {
+    const gradeLevels = ["first", "second", "third", "fourth", "fifth"];
+    const nodeTemplates = document.getElementsByClassName("node");
+    if (level < 1 || level > gradeLevels.length) {
+        level = gradeLevels.length; // show everything if the level is invalid
+    }
+    for (let i = 0; i < nodeTemplates.length; ++i) {
+        let shown = false;
+        for (let j = 0; j < level; ++j) {
+            if (nodeTemplates[i].classList.contains(gradeLevels[j])) {
+                shown = true;
+                break;
+            }
+        }
+        if (!shown) {
+            nodeTemplates[i].style.display = "none";
+        }
+        else {
+            nodeTemplates[i].style.display = "block";
+        }
+    }
+}
+
+async function saveAssignment() {
+    const teacherId = window.localStorage.getItem("userID");
+    const courseName = document.getElementById("createAssignCourseSelect").value;
+    const courseId = CourseDb.getCourseId(courseName);
+    const assignName = document.getElementById("createAssignName").value;
+    const description = document.getElementById("createAssignDescription").value;
+    const dueDate = document.getElementById("createAssignDueDate").value;
+    const points = 10;
+    const questions = [];
+
+    const questionElements = document.getElementById("createAssignmentQuestionList")
+        .getElementsByTagName("textarea");
+
+    for (let i = 0; i < questionElements.length; i++) {
+        questions.push(questionElements.item(i));
+    }
+
+    await AssignDb.saveAssignment(
+        assignName, description, courseId, teacherId, questions, dueDate, points);
+    // if(assignment === null){
+    //     document.getElementById("teacherAssignmentFail").hidden = false;
+    // }
+    // else{
+    //     document.getElementById("teacherAssignmentFail").hidden = true;
+    // }
 }

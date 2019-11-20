@@ -4,6 +4,7 @@
 /* global AssignDb */
 /* global populateGrades */
 /* global startAssignment */
+/* global filterOperators */
 
 function accordianListener() {
     const acc = document.getElementsByClassName("accordion");

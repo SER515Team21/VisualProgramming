@@ -1,6 +1,6 @@
-include GenericDashboard
-include TabSwitcher
-include ScrolledTable
+include helpers/GenericDashboard
+include helpers/TabSwitcher
+include helpers/ScrolledTable
 
 #AdminView(hidden='')
     +GenericDashboard()
@@ -9,11 +9,11 @@ include ScrolledTable
                 +tabbedFrame(['Courses', 'Teachers', 'Students'], ['AdminCoursesListView', 'AdminTeachersList', 'AdminStudentsList'])
                 .view.active(id="AdminCoursesListView")
                     #AdminCoursesList
-                        include ListView
+                        include helpers/ListView
                 .view(id="AdminTeachersList")
-                    include ListView
+                    include helpers/ListView
                 .view(id="AdminStudentsList")
-                    include ListView
+                    include helpers/ListView
         +MainPane()
             .tab-switcher
                 +tabbedFrame(['Course View', 'New Course', 'Edit Course'], ['CourseView', "NewCoursePage", "CourseEditorPage"])

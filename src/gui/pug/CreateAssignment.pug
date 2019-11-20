@@ -1,10 +1,11 @@
 .createAssignMenu
     label(for="createAssignName") Assignment Name:
     input(id="createAssignName")
+
     label(for="createAssignCourseSelect") Course:
     select(id="createAssignCourseSelect" onclick='updateCourses(this)')
     button(id="createAssignAddQuestion" data-for="createAssignmentQuestionList" onclick="addQuestion(this)") Add Question
-    button(id="createAssignSubmit") Create Assignment
+    button(id="createAssignSubmit" onclick="saveAssignment()") Create Assignment
     br
     label(for="createAssignDescription") Description:
     input(id="createAssignDescription")
