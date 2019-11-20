@@ -22,7 +22,13 @@ class AssignmentDb {
     }
 
     async saveAssignment(name, description, course, assignment, dueDate) {
-        const doc = await this.programDb.insert({ name, description, course, assignment, dueDate, role: "Assignment" });
+        const doc = await this.programDb.insert({ name, description, course, assignment, dueDate, role: "Assignment", submissions: [] });
+        return doc._id;
+    }
+
+    async submitAssignment(assignmentId, studentId, answers) {
+        const doc = await this.programDb.update({ _id: assignmentId },
+            { $push: { submissions: { studentId, answers } } });
         return doc._id;
     }
 

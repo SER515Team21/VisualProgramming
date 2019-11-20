@@ -1,7 +1,9 @@
 /* global Path */
 /* global document */
+/* global window */
 /* global pug */
 /* global AssignDb */
+/* global NodeForest */
 
 class Assignment {
 
@@ -38,11 +40,29 @@ async function populateGrades() {
     }
 }
 
+async function submitAssignment() {
+    const solutions = document.getElementsByClassName("solution");
+    const answers = [];
+
+    for (let i = 0; i < solutions.length; i++) {
+        if (solutions[i].firstChild.firstChild) {
+            const test = solutions[i].firstChild.firstChild.getAttribute("id");
+            const answer = NodeForest.getNode(test).getText();
+            answers.push(answer);
+        }
+    }
+
+    const assignmentId = window.localStorage.getItem("currentAssignment");
+    const studentId = window.localStorage.getItem("userID");
+    AssignDb.submitAssignment(assignmentId, studentId, answers);
+}
+
 async function startAssignment(elem) {
     document.getElementById("studentView").getElementsByClassName("MainPane")[0].hidden = true;
     const pugPath = Path.relative(process.cwd(), "./src/gui/pug/StudentAssignmentSubmission.pug");
     const compiledFunction = pug.compileFile(pugPath);
-    const assignment = await AssignDb.loadAssignment(elem.getAttribute("data-for"));
+    const assignmentId = elem.getAttribute("data-for");
+    const assignment = await AssignDb.loadAssignment(assignmentId);
     const questions = assignment[0].assignment;
     const submissionPane = compiledFunction({
         questions
@@ -53,4 +73,6 @@ async function startAssignment(elem) {
     document.getElementById("studentView")
         .getElementsByClassName("GenericDashboard")[0]
         .appendChild(template.content.firstChild);
+
+    window.localStorage.setItem("currentAssignment", assignmentId);
 }
