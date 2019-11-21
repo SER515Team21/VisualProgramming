@@ -13,10 +13,10 @@ mixin node-search
         #search-results
             button.accordion Numbers
             .panel
-                +number_node().template
+                +number_node().template.second
                 - var i = 0
                 while i <= 20
-                    +number_node(i).template
+                    +number_node(i).template.first
                     - i++
                 +binary_node('fraction', 'improper', 'fourth').template
                 +mixed_fraction_node('fifth').template
