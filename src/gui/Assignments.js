@@ -107,10 +107,16 @@ function filterOperators(level) {
     }
     for (let i = 0; i < nodeTemplates.length; ++i) {
         let shown = false;
-        for (let j = 0; j < level; ++j) {
-            if (nodeTemplates[i].classList.contains(gradeLevels[j])) {
+        if (nodeTemplates[i].classList.contains("only")) {
+            if (nodeTemplates[i].classList.contains(gradeLevels[level - 1])) {
                 shown = true;
-                break;
+            }
+        } else {
+            for (let j = 0; j < level; ++j) {
+                if (nodeTemplates[i].classList.contains(gradeLevels[j])) {
+                    shown = true;
+                    break;
+                }
             }
         }
         if (!shown) {

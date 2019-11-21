@@ -1,7 +1,7 @@
 
 mixin number_node(value)
     div(id=`number${value}`
-        class=((value >= 0) ? 'node numbers number first' : 'node numbers number second')
+        class=((value >= 0) ? 'node numbers number first only' : 'node numbers number second')
         draggable='true'
         ondragstart='pickUpNode(event)'
         number=value
