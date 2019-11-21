@@ -1,9 +1,46 @@
 /* global document */
+/* global window */
 /* global UserDb */
+/* global CourseDb */
 /* global loadAllCoursesList */
 /* global loadCourseStudentList */
 /* global loadAllTeachersList */
 /* global loadAllStudentsList */
+/* global loadCourseStudentListTeacher */
+/* global loadCourseAssignmentListTeacher */
+/* global loadAllTeachersCoursesList */
+/* global loadAllTeachersStudentsList */
+/* global filterOperators */
+
+
+async function loadStudentView() {
+    document.getElementById("studentView").hidden = false;
+    const studentCourses = await CourseDb.getStudentCourses(window.localStorage.getItem("userID"));
+    const gradeLevelStrings =
+        await Promise.all(studentCourses.map(course => CourseDb.getCourseGrade(course)));
+    const gradeLevels = gradeLevelStrings.map(grade => parseInt(grade, 10));
+    const highestGrade = Math.max(...gradeLevels);
+
+    filterOperators(highestGrade);
+}
+
+function loadTeacherView() {
+    document.getElementById("TeacherView").hidden = false;
+
+    loadCourseStudentListTeacher();
+    loadCourseAssignmentListTeacher();
+    loadAllTeachersCoursesList();
+    loadAllTeachersStudentsList();
+}
+
+function loadAdminView() {
+    document.getElementById("AdminView").hidden = false;
+
+    loadAllCoursesList();
+    loadCourseStudentList();
+    loadAllTeachersList();
+    loadAllStudentsList();
+}
 
 async function sendLoginRequest() {
     const username = document.getElementById("username").value;
@@ -19,24 +56,29 @@ async function sendLoginRequest() {
         }
         else {
             const user = await UserDb.getUser(username);
+            window.localStorage.setItem("username", user.username);
+            window.localStorage.setItem("userID", user._id);
+            const usernameDisplays = document.getElementsByClassName("account-username-display");
+            for (let i = 0; i < usernameDisplays.length; ++i) {
+                usernameDisplays[i].textContent = `Welcome, ${user.username}`;
+            }
             document.getElementById("loginFail").hidden = true;
             document.getElementById("login").hidden = true;
             if (user.role === "admin") {
-                document.getElementById("AdminView").hidden = false;
-
-                loadAllCoursesList();
-                loadCourseStudentList();
-                loadAllTeachersList();
-                loadAllStudentsList();
+                loadAdminView();
             }
             else if (user.role === "teacher") {
-                document.getElementById("TeacherView").hidden = false;
+                loadTeacherView();
             }
             else {
-                document.getElementById("studentView").hidden = false;
+                loadStudentView();
             }
         }
     }
+}
+
+function getUserName() {
+    return window.localStorage.getItem("username");
 }
 
 function switchSignUp() {

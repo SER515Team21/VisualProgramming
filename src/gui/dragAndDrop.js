@@ -9,6 +9,7 @@
 /* global Operators */
 /* global NodeFactory */
 /* global NumberNode */
+/* global window */
 
 /**
  * Sets data attribute to hold the id of the picked up HTML Node
@@ -25,7 +26,12 @@ function handlePanelNode(node, target, event) {
 
     // Set the number to 0 on initial drop if number node
     if (node.classList.contains("number")) {
-        NodeForest.getNode(clone.id).number = 0;
+        if (node.getElementsByTagName("input").length > 0) {
+            NodeForest.getNode(clone.id).number = node.getElementsByTagName("input")[0].value;
+        }
+        else {
+            NodeForest.getNode(clone.id).number = parseInt(node.getAttribute("number"), 10);
+        }
     }
 
     // Insert into a binary node
@@ -35,21 +41,48 @@ function handlePanelNode(node, target, event) {
     else if (target.id.toString().endsWith("Right")) {
         NodeForest.getNode(target.parentNode.id).setRightOperand(backendNode);
     }
-    target.appendChild(clone);
+    // Insert into tertiary node
+    else if (target.id.toString().endsWith("First")) {
+        NodeForest.getNode(target.parentNode.id).setFirstOperand(backendNode);
+    }
+    else if (target.id.toString().endsWith("Second")) {
+        NodeForest.getNode(target.parentNode.id).setSecondOperand(backendNode);
+    }
+    else if (target.id.toString().endsWith("Third")) {
+        NodeForest.getNode(target.parentNode.id).setThirdOperand(backendNode);
+    }
+
+    if (target.children.length === 0) {
+        target.appendChild(clone);
+    }
 }
 
 function handlePanelEquationPane(node, target, event) {
     const clone = node.cloneNode(true);
     clone.id = NodeFactory.createNode(clone.classList, true);
 
+    // Set the number to 0 on initial drop if number node
+    if (node.classList.contains("number")) {
+        if (node.getElementsByTagName("input").length > 0) {
+            NodeForest.getNode(clone.id).number = node.getElementsByTagName("input")[0].value;
+        }
+        else {
+            NodeForest.getNode(clone.id).number = parseInt(node.getAttribute("number"), 10);
+        }
+    }
+
     target.appendChild(clone);
-    clone.style.position = "fixed";
-    clone.style.top = `${event.pageY}px`;
-    clone.style.left = `${event.pageX}px`;
+    clone.style.position = "absolute";
+    const xPosParent = event.target.getBoundingClientRect().x +
+        parseInt(window.getComputedStyle(target, null).getPropertyValue("padding-left"), 10);
+    const yPosParent = event.target.getBoundingClientRect().y +
+        parseInt(window.getComputedStyle(target, null).getPropertyValue("padding-top"), 10);
+    clone.style.top = `${event.pageY - yPosParent}px`;
+    clone.style.left = `${event.pageX - xPosParent}px`;
 }
 
 function handleRootNodeNode(node, target, event) {
-    node.style.position = "relative";
+    node.style.position = "initial";
     node.style.top = "0px";
     node.style.left = "0px";
 
@@ -65,12 +98,28 @@ function handleRootNodeNode(node, target, event) {
     else if (target.id.toString().endsWith("Right")) {
         NodeForest.getNode(target.parentNode.id).setRightOperand(backendNode);
     }
-    target.appendChild(node);
+    // Insert into tertiary node
+    else if (target.id.toString().endsWith("First")) {
+        NodeForest.getNode(target.parentNode.id).setFirstOperand(backendNode);
+    }
+    else if (target.id.toString().endsWith("Second")) {
+        NodeForest.getNode(target.parentNode.id).setSecondOperand(backendNode);
+    }
+    else if (target.id.toString().endsWith("Third")) {
+        NodeForest.getNode(target.parentNode.id).setThirdOperand(backendNode);
+    }
+    if (target.children.length === 0) {
+        target.appendChild(node);
+    }
 }
 
 function handleRootNodeEquationPane(node, target, event) {
-    node.style.top = `${event.pageY}px`;
-    node.style.left = `${event.pageX}px`;
+    const xPosParent = event.target.getBoundingClientRect().x +
+        parseInt(window.getComputedStyle(target, null).getPropertyValue("padding-left"), 10);
+    const yPosParent = event.target.getBoundingClientRect().y +
+        parseInt(window.getComputedStyle(target, null).getPropertyValue("padding-top"), 10);
+    node.style.top = `${event.pageY - yPosParent}px`;
+    node.style.left = `${event.pageX - xPosParent}px`;
 }
 
 function handleChildNodeNode(node, target, event) {
@@ -79,7 +128,17 @@ function handleChildNodeNode(node, target, event) {
         NodeForest.getNode(node.parentNode.parentNode.id).setLeftOperand(undefined);
     }
     else if (target.id.toString().endsWith("Right")) {
-        NodeForest.getNode(node.parentNode.parentNode.id).setLeftOperand(undefined);
+        NodeForest.getNode(node.parentNode.parentNode.id).setRightOperand(undefined);
+    }
+    // Remove from tertiary operator
+    else if (target.id.toString().endsWith("First")) {
+        NodeForest.getNode(node.parentNode.parentNode.id).setFirstOperand(undefined);
+    }
+    else if (target.id.toString().endsWith("Second")) {
+        NodeForest.getNode(node.parentNode.parentNode.id).setSecondOperand(undefined);
+    }
+    else if (target.id.toString().endsWith("Third")) {
+        NodeForest.getNode(node.parentNode.parentNode.id).setThirdOperand(undefined);
     }
     node.parentNode.removeChild(node);
 
@@ -91,7 +150,19 @@ function handleChildNodeNode(node, target, event) {
     else if (target.id.toString().endsWith("Right")) {
         NodeForest.getNode(target.parentNode.id).setRightOperand(backendNode);
     }
-    target.appendChild(node);
+    // Insert into tertiary node
+    else if (target.id.toString().endsWith("First")) {
+        NodeForest.getNode(target.parentNode.id).setFirstOperand(backendNode);
+    }
+    else if (target.id.toString().endsWith("Second")) {
+        NodeForest.getNode(target.parentNode.id).setSecondOperand(backendNode);
+    }
+    else if (target.id.toString().endsWith("Third")) {
+        NodeForest.getNode(target.parentNode.id).setThirdOperand(backendNode);
+    }
+    if (target.children.length === 0) {
+        target.appendChild(node);
+    }
 }
 
 function handleChildNodeEquationPane(node, target, event) {
@@ -102,16 +173,31 @@ function handleChildNodeEquationPane(node, target, event) {
         NodeForest.getNode(node.parentNode.parentNode.id).setLeftOperand(undefined);
     }
     else if (target.id.toString().endsWith("Right")) {
-        NodeForest.getNode(node.parentNode.parentNode.id).setLeftOperand(undefined);
+        NodeForest.getNode(node.parentNode.parentNode.id).setRightOperand(undefined);
+    }
+    // Remove from tertiary operator
+    else if (target.id.toString().endsWith("First")) {
+        NodeForest.getNode(node.parentNode.parentNode.id).setFirstOperand(undefined);
+    }
+    else if (target.id.toString().endsWith("Second")) {
+        NodeForest.getNode(node.parentNode.parentNode.id).setSecondOperand(undefined);
+    }
+    else if (target.id.toString().endsWith("Third")) {
+        NodeForest.getNode(node.parentNode.parentNode.id).setThirdOperand(undefined);
     }
     node.parentNode.removeChild(node);
 
     NodeForest.insertRootNode(backendNode);
 
     target.appendChild(node);
-    node.style.position = "fixed";
-    node.style.top = `${event.pageY}px`;
-    node.style.left = `${event.pageX}px`;
+
+    node.style.position = "absolute";
+    const xPosParent = event.target.getBoundingClientRect().x +
+        parseInt(window.getComputedStyle(target, null).getPropertyValue("padding-left"), 10);
+    const yPosParent = event.target.getBoundingClientRect().y +
+        parseInt(window.getComputedStyle(target, null).getPropertyValue("padding-top"), 10);
+    node.style.top = `${event.pageY - yPosParent}px`;
+    node.style.left = `${event.pageX - xPosParent}px`;
 }
 
 /**
@@ -178,6 +264,8 @@ function deleteNode(event) {
         document.getElementById(id).remove();
         NodeForest.deleteRootNode(id);
     }
+
+    Calculator.updateResult();
 }
 
 /**

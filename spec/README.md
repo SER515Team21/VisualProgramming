@@ -50,7 +50,7 @@ describe("Test Suite", () => {
 
 A single file can be run from the root using:
 
-> $ .\node_modules\.bin\jasmine .\spec\NodeForestSpec.js
+> $ .\node_modules\\.bin\jasmine .\spec\NodeForestSpec.js
 
 There is also support for globbing and regex. You can read about these
 from <a href="https://www.npmjs.com/package/jasmine">jasmine's npm page</a>

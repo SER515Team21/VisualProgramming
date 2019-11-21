@@ -1,27 +1,44 @@
-mixin number_node()
-    div(id='number',
-        class=`node numbers number`,
-        draggable='true',
-        ondragstart='pickUpNode(event)'
-    )
-        input(type='number' onchange='numberListener(this)' value=0)
 
-mixin unary_node(group, name)
+mixin number_node(value)
+    div(id=`number${value}`
+        class=((value >= 0) ? 'node numbers number first only' : 'node numbers number second')
+        draggable='true'
+        ondragstart='pickUpNode(event)'
+        number=value
+    )
+        if value >= 0
+            h3 #{value}
+        else
+            input(type='number' onchange='numberListener(this)' value=0)
+
+mixin unary_node(group, name, level)
     div(id=`${name}`,
-        class=`node ${group} ${name}`,
+        class=`node ${group} ${name} ${level}`,
         draggable='true',
         ondragstart='pickUpNode(event)'
     )
         p
         #addRight.node-container(ondrop='dropNode(event)', ondragover='allowDroppingNode(event)')
 
-mixin binary_node(group, name)
+mixin binary_node(group, name, level)
     div(id=`${name}`,
-        class=`node ${group} ${name}`,
+        class=`node ${group} ${name} ${level}`,
         draggable='true',
         ondragstart='pickUpNode(event)'
     )
         #addLeft.node-container(ondrop='dropNode(event)', ondragover='allowDroppingNode(event)')
         p
         #addRight.node-container(ondrop='dropNode(event)', ondragover='allowDroppingNode(event)')
+        if block
+            block
 
+mixin mixed_fraction_node(level)
+    div(id='mixed',
+        class=`node fraction mixed ${level}`,
+        draggable='true',
+        ondragstart='pickUpNode(event)'
+    )
+        #addFirst.node-container(ondrop='dropNode(event)', ondragover='allowDroppingNode(event)')
+        #addSecond.node-container(ondrop='dropNode(event)', ondragover='allowDroppingNode(event)')
+        p
+        #addThird.node-container(ondrop='dropNode(event)', ondragover='allowDroppingNode(event)')

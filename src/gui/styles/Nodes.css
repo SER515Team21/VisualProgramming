@@ -17,13 +17,13 @@
     border: aquamarine solid 3px;
 }
 
-.arithmetic p {
+.arithmetic > p {
     text-align: center;
     color: black;
     display: inline-block;
 }
 
-.arithmetic .node-container {
+.node-container {
     display: inline-grid;
     min-width: 20px;
     min-height: 20px;
@@ -52,18 +52,131 @@
     width: 40px;
 }
 
-.addition p::before {
+.addition > p::before {
     content: "+";
 }
 
-.subtraction p::before {
+.subtraction > p::before {
     content: "-";
 }
 
-.multiplication p::before {
+.multiplication > p::before {
     content: "x";
 }
 
-.division p::before {
+.longMultiplication {
+    width: 50px;
+    height: 60px;
+    position: relative;
+    min-width: min-content;
+    min-height: max-content;
+}
+
+.longMultiplication > p {
+    height: 0px !important;
+    border: black solid 1px;
+    background-color: black;
+    bottom: 5px;
+    width: 82%;
+    position: absolute;
+    left: 5px;
+}
+
+.longMultiplication > p::before {
+    content: '';
+}
+
+.longMultiplication p#operator {
+    position: absolute;
+    left: 7px;
+    width: 0;
+    bottom: 30px;
+    border: none;
+    margin: 0px;
+}
+
+.longMultiplication .node-container {
+    margin-bottom: 3px;
+}
+
+.longMultiplication > #addLeft {
+    position: relative;
+    top: 0;
+    left: 8px;
+    margin: 2px;
+}
+
+.longMultiplication > #addRight {
+    position: relative;
+    left: 8px;
+    margin: 4px;
+}
+
+.division > p::before {
     content: "\00F7";
+}
+
+.longDivision > p::before {
+    content: "\27CC";
+    font-size: large;
+    transform: scale(1,1.75);
+    display: inline-block;
+    margin-top: 5px;
+}
+
+.fraction {
+    background-color: mediumpurple !important;
+}
+
+.fraction > p {
+    height: 0 !important;
+    border: black solid 1px;
+    background-color: black;
+    margin: 5px;
+    width: -webkit-fill-available;
+}
+
+.fraction:hover {
+    cursor: pointer;
+    border: purple solid 3px;
+}
+
+.fraction.improper {
+    min-width: 50px;
+    min-height: 60px;
+    width: fit-content;
+    height: fit-content;
+}
+
+.fraction.improper > p::before {
+    content: '';
+}
+
+.fraction.mixed {
+    min-width: 80px;
+    min-height: 60px;
+    width: max-content;
+    height: fit-content;
+}
+
+.mixed.fraction > p {
+    width: 35%;
+    position: relative;
+    left: 50%;
+}
+
+.mixed > div#addFirst {
+    position: relative;
+    top: 17px;
+    left: -10px;
+}
+
+.mixed > div#addSecond {
+    position: relative;
+    /*right: -13px;*/
+}
+
+.mixed > div#addThird {
+    position: relative;
+    right: -13px;
 }

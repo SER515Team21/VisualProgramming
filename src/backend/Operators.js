@@ -1,4 +1,5 @@
 const BinaryOperator = require("./BinaryOperator");
+const TertiaryOperator = require("./TertiaryOperator");
 
 class Addition extends BinaryOperator {
 
@@ -32,9 +33,90 @@ class Division extends BinaryOperator {
 
 }
 
+class LongMultiplication extends BinaryOperator {
+
+    constructor(leftOperand = null, rightOperand = null) {
+        super("*", leftOperand, rightOperand);
+    }
+
+    getText() {
+        let leftText = "?";
+        let rightText = "?";
+
+        if (this.leftOperand != null) {
+            leftText = this.leftOperand.getText();
+        }
+
+        if (this.rightOperand != null) {
+            rightText = this.rightOperand.getText();
+        }
+
+        return `longMul(${leftText}, ${rightText})`;
+    }
+}
+
+class LongDivision extends BinaryOperator {
+
+    constructor(leftOperand = null, rightOperand = null) {
+        super("/", leftOperand, rightOperand);
+    }
+
+    getText() {
+        let leftText = "?";
+        let rightText = "?";
+
+        if (this.leftOperand != null) {
+            leftText = this.leftOperand.getText();
+        }
+
+        if (this.rightOperand != null) {
+            rightText = this.rightOperand.getText();
+        }
+
+        return `longDiv(${rightText}, ${leftText})`;
+    }
+}
+
+class MixedFraction extends TertiaryOperator {
+
+    constructor(firstOperand = null, secondOperand = null, thirdOperand = null) {
+        super("fraction", firstOperand, secondOperand, thirdOperand);
+    }
+
+    getText() {
+        return `fraction${super.getText()}`;
+    }
+}
+
+class ImproperFraction extends BinaryOperator {
+
+    constructor(leftOperand = null, rightOperand = null) {
+        super("/", leftOperand, rightOperand);
+    }
+
+    getText() {
+        let leftText = "?";
+        let rightText = "?";
+
+        if (this.leftOperand != null) {
+            leftText = this.leftOperand.getText();
+        }
+
+        if (this.rightOperand != null) {
+            rightText = this.rightOperand.getText();
+        }
+
+        return `fraction(${leftText}, ${rightText})`;
+    }
+}
+
 module.exports = {
     Addition,
     Subtraction,
     Multiplication,
-    Division
+    Division,
+    LongMultiplication,
+    LongDivision,
+    MixedFraction,
+    ImproperFraction
 };

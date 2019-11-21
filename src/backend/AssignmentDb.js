@@ -12,18 +12,30 @@ class AssignmentDb {
     }
 
     async loadCurrentAssignments() {
-        const doc = await this.programDb.find({ role: "Assignment" });
+        const doc = await this.programDb.find({});
         return doc; // doc.filter(assign => assign.dueDate > new Date());
     }
 
     async loadAssignment(id) {
-        const doc = await this.programDb.find({ role: "Assignment", _id: id });
+        const doc = await this.programDb.find({ _id: id });
         return doc;
     }
 
-    async saveAssignment(name, description, course, assignment, dueDate) {
-        const doc = await this.programDb.insert({ name, description, course, assignment, dueDate, role: "Assignment" });
+    async submitAssignment(assignmentId, studentId, answers) {
+        const doc = await this.programDb.update({ _id: assignmentId },
+            { $push: { submissions: { studentId, answers } } });
         return doc._id;
+    }
+
+    async saveAssignment(name, description, course, teacher, questions, dueDate, points) {
+        const exists = await this.assignmentNameExists(name, course, teacher);
+        if (!exists) {
+            const doc = await this.programDb.insert({
+                name, description, course, teacher, questions, dueDate, points });
+
+            return doc._id;
+        }
+        return null;
     }
 
     async assignmentExists(id) {
@@ -31,17 +43,20 @@ class AssignmentDb {
         return doc.length !== 0;
     }
 
+    async assignmentNameExists(name, course, teacher) {
+        const doc = await this.programDb.find({ name, course, teacher });
+        return doc.length !== 0;
+    }
+
     async updateAssignment(name, description, course, assignment, dueDate, id) {
         if (this.assignmentExists(id)) {
-            await this.programDb.update({ role: "Assignment", _id: id }, { name, description, course, assignment });
+            await this.programDb.update({ _id: id }, { name, description, course, assignment });
             return true;
         }
         return false;
     }
 
     async removeAll() {
-        // THIS CODE IS WRONG. It will remove the users as well. This is only test code for testing
-        // the UI. It is NOTE DONE and NOT TESTED.
         await this.programDb.remove({}, { multi: true });
     }
 }

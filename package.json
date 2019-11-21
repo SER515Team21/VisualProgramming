@@ -1,6 +1,6 @@
 {
-  "name": "visual-programming",
-  "productName": "visual-programming",
+  "name": "visual-mathematics",
+  "productName": "visual-mathematics",
   "version": "1.0.0",
   "description": "My Electron application description",
   "main": "src/index.js",

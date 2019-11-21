@@ -1,0 +1,13 @@
+mixin ScrolledTableBox(title, columnNames, rows)
+    .ScrolledTableBox
+        h3= title
+        table
+            tr(class="ScrolledTableColumns")
+                each name in columnNames
+                    th= name
+        .ScrollingBox
+            table
+                each row in rows? rows : []
+                    tr
+                        each val in row ? row : []
+                            td= val
