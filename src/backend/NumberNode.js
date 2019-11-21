@@ -15,7 +15,7 @@ class NumberNode extends Node {
     }
 
     getText() {
-        return this.number;
+        return `${this.number}`;
     }
 
 }
