@@ -56,6 +56,11 @@ function handlePanelEquationPane(node, target, event) {
     const clone = node.cloneNode(true);
     clone.id = NodeFactory.createNode(clone.classList, true);
 
+    // Set the number to 0 on initial drop if number node
+    if (node.classList.contains("number")) {
+        NodeForest.getNode(clone.id).number = parseInt(node.getAttribute("number"), 10);
+    }
+
     target.appendChild(clone);
     clone.style.position = "absolute";
     const xPosParent = event.target.getBoundingClientRect().x +
