@@ -26,7 +26,12 @@ function handlePanelNode(node, target, event) {
 
     // Set the number to 0 on initial drop if number node
     if (node.classList.contains("number")) {
-        NodeForest.getNode(clone.id).number = parseInt(node.getAttribute("number"), 10);
+        if (node.getElementsByTagName("input").length > 0) {
+            NodeForest.getNode(clone.id).number = node.getElementsByTagName("input")[0].value;
+        }
+        else {
+            NodeForest.getNode(clone.id).number = parseInt(node.getAttribute("number"), 10);
+        }
     }
 
     // Insert into a binary node
@@ -56,6 +61,16 @@ function handlePanelEquationPane(node, target, event) {
     const clone = node.cloneNode(true);
     clone.id = NodeFactory.createNode(clone.classList, true);
 
+    // Set the number to 0 on initial drop if number node
+    if (node.classList.contains("number")) {
+        if (node.getElementsByTagName("input").length > 0) {
+            NodeForest.getNode(clone.id).number = node.getElementsByTagName("input")[0].value;
+        }
+        else {
+            NodeForest.getNode(clone.id).number = parseInt(node.getAttribute("number"), 10);
+        }
+    }
+
     target.appendChild(clone);
     clone.style.position = "absolute";
     const xPosParent = event.target.getBoundingClientRect().x +
@@ -67,7 +82,7 @@ function handlePanelEquationPane(node, target, event) {
 }
 
 function handleRootNodeNode(node, target, event) {
-    node.style.position = "absolute";
+    node.style.position = "initial";
     node.style.top = "0px";
     node.style.left = "0px";
 

@@ -9,7 +9,7 @@ async function saveNewCourse() {
     const teacherName = document.getElementById("newCourseTeacherUserName").value;
     const teacher = await UserDb.getUser(teacherName);
 
-    if (teacher === undefined) {
+    if (teacher === undefined || teacher.role !== "teacher") {
         document.getElementById("teacherError").hidden = false;
     }
     else {
