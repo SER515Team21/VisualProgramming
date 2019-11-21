@@ -16,9 +16,10 @@
 async function loadStudentView() {
     document.getElementById("studentView").hidden = false;
     const studentCourses = await CourseDb.getStudentCourses(window.localStorage.getItem("userID"));
-    const gradeLevels =
+    const gradeLevelStrings =
         await Promise.all(studentCourses.map(course => CourseDb.getCourseGrade(course)));
-    const highestGrade = Math.max(gradeLevels);
+    const gradeLevels = gradeLevelStrings.map(grade => parseInt(grade, 10));
+    const highestGrade = Math.max(...gradeLevels);
 
     filterOperators(highestGrade);
 }
