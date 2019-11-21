@@ -67,7 +67,7 @@ function handlePanelEquationPane(node, target, event) {
 }
 
 function handleRootNodeNode(node, target, event) {
-    node.style.position = "absolute";
+    node.style.position = "initial";
     node.style.top = "0px";
     node.style.left = "0px";
 
