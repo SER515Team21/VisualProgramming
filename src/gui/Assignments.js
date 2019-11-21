@@ -111,7 +111,8 @@ function filterOperators(level) {
             if (nodeTemplates[i].classList.contains(gradeLevels[level - 1])) {
                 shown = true;
             }
-        } else {
+        }
+        else {
             for (let j = 0; j < level; ++j) {
                 if (nodeTemplates[i].classList.contains(gradeLevels[j])) {
                     shown = true;
