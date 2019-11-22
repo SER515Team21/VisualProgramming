@@ -51,13 +51,11 @@ async function loadAllCoursesList() {
 }
 
 async function loadAllTeachersList() {
-    // TODO: FINISH
     const pugPath = Path.relative(process.cwd(), "./src/gui/pug/helpers/ListView.pug");
     const compiledFunction = pug.compileFile(pugPath);
     const teachers = await UserDb.getUsers("teacher");
-    console.log(teachers);
     const teacherNames = [];
-    for(let i = 0; i < students.length; i++){
+    for (let i = 0; i < teachers.length; i++) {
         teacherNames.push(teachers[i].username);
     }
     const listView = compiledFunction({
@@ -71,9 +69,8 @@ async function loadAllStudentsList() {
     const compiledFunction = pug.compileFile(pugPath);
 
     const students = await UserDb.getUsers("student");
-    console.log(students);
     const studentNames = [];
-    for(let i = 0; i < students.length; i++){
+    for (let i = 0; i < students.length; i++) {
         studentNames.push(students[i].username);
     }
     const listView = compiledFunction({
