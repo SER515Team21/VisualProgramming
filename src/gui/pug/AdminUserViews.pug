@@ -1,8 +1,7 @@
 mixin userViewsMixin(userType, userSelected)
     .tab-switcher
-        +tabbedFrame([userType + ' View', 'New ' + userType, 'Edit ' + userType ], [userType + 'View',
-            "New" + userType + "Course" + userType + "Page", userType + "EditorPage"])
-        .view.active(id='CourseView')
+        +tabbedFrame([userType + ' View', 'Edit ' + userType ], [userType + 'View', userType + "EditorPage"])
+        .view.active(id=userType + 'View')
             h1 View User
             h2 First Name
             h3(value=userSelected.firstName)
@@ -12,7 +11,7 @@ mixin userViewsMixin(userType, userSelected)
             h3(value=userSelected.userName)
             h2 Role
             h3(value=userSelected.role)
-        .view(id='CourseEditorPage')
+        .view(id=userType + "EditorPage")
             h1 Edit User
             h2 First Name
             input(type='text' id='edit' + userType +'FirstName' value=userSelected.firstName)

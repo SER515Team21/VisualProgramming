@@ -1,6 +1,7 @@
 include helpers/GenericDashboard
 include helpers/TabSwitcher
 include helpers/ScrolledTable
+include AdminUserViews
 
 #AdminView(hidden='')
     +GenericDashboard()
@@ -15,10 +16,9 @@ include helpers/ScrolledTable
                 .view(id="AdminStudentsList")
                     include helpers/ListView
         +MainPane()
-            #AdminCourseViews(hidden)
+            #AdminCourseViews
                 include AdminCourseViews
             #AdminStudentViews(hidden)
-                include AdminCourseViews
+                +userViewsMixin("Student", {"username":"admin","password":"password","role":"admin","enabled":1,"_id":"DNMmw9pCKt5OnQHW"})
             #AdminTeacherViews(hidden)
-                include AdminCourseViews
-
+                +userViewsMixin("Teacher", {"username":"admin","password":"password","role":"admin","enabled":1,"_id":"DNMmw9pCKt5OnQHW"})
