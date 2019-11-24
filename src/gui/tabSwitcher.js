@@ -1,5 +1,23 @@
 /* global document */
 
+function adminCourseViewSwitch() {
+    document.getElementById("AdminCourseViews").hidden = false;
+    document.getElementById("AdminStudentViews").hidden = true;
+    document.getElementById("AdminTeacherViews").hidden = true;
+}
+
+function adminTeacherViewSwitch() {
+    document.getElementById("AdminCourseViews").hidden = true;
+    document.getElementById("AdminStudentViews").hidden = true;
+    document.getElementById("AdminTeacherViews").hidden = false;
+}
+
+function adminStudentViewSwitch() {
+    document.getElementById("AdminCourseViews").hidden = true;
+    document.getElementById("AdminStudentViews").hidden = false;
+    document.getElementById("AdminTeacherViews").hidden = true;
+}
+
 function tabSwitcher(elem) {
     const list = elem.parentElement.parentElement;
 
@@ -19,31 +37,13 @@ function tabSwitcher(elem) {
     document.getElementById(elemViewID).hidden = false;
     document.getElementById(elemViewID).classList.add("active");
 
-    if(elemViewID === "AdminCoursesListView"){
+    if (elemViewID === "AdminCoursesListView") {
         adminCourseViewSwitch();
     }
-    else if(elemViewID === "AdminTeachersList"){
+    else if (elemViewID === "AdminTeachersList") {
         adminTeacherViewSwitch();
     }
-    else if(elemViewID === "AdminStudentsList"){
+    else if (elemViewID === "AdminStudentsList") {
         adminStudentViewSwitch();
     }
-}
-
-function adminCourseViewSwitch(){
-    document.getElementById("AdminCourseViews").hidden = false;
-    document.getElementById("AdminStudentViews").hidden = true;
-    document.getElementById("AdminTeacherViews").hidden = true;
-}
-
-function adminTeacherViewSwitch(){
-    document.getElementById("AdminCourseViews").hidden = true;
-    document.getElementById("AdminStudentViews").hidden = true;
-    document.getElementById("AdminTeacherViews").hidden = false;
-}
-
-function adminStudentViewSwitch(){
-    document.getElementById("AdminCourseViews").hidden = true;
-    document.getElementById("AdminStudentViews").hidden = false;
-    document.getElementById("AdminTeacherViews").hidden = true;
 }
