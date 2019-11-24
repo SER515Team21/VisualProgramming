@@ -136,6 +136,10 @@
     vertical-align: middle;
 }
 
+.parentheses > p::before {
+    content: none;
+}
+
 .fraction {
     background-color: mediumpurple !important;
 }

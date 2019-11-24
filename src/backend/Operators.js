@@ -118,7 +118,8 @@ class Parentheses extends UnaryOperator {
     }
 
     getText() {
-        return `(${this.operand})`;
+        console.log(this.operand.getText());
+        return `(${this.operand.getText()})`;
     }
 }
 
