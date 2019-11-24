@@ -16,7 +16,8 @@ const operatorMap = {
     longMultiplication: Operators.LongMultiplication,
     longDivision: Operators.LongDivision,
     improper: Operators.ImproperFraction,
-    mixed: Operators.MixedFraction
+    mixed: Operators.MixedFraction,
+    parentheses: Operators.Parentheses
 };
 
 class NodeFactory {
