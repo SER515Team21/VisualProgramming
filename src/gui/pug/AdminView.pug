@@ -47,6 +47,12 @@ include helpers/ScrolledTable
                         | :
                     input(type='text' id='newCourseTeacherUserName' placeholder="Teacher Name" oninput='validateInput('+
                     'newCourseName.value, newCourseGrade.value, newCourseTeacherUserName.value)')
+                    h3
+                        | Add Student
+                        sup(style='color: red') *
+                        | :
+                    select(id='newCourseAddStudent', data-live-search=true)
+                    button(id='addToNewCourseStudents', onclick='') Add
                     br
                     br
                     button(id='adminSaveNewCourse' onclick='saveNewCourse()' disabled) Save Course
