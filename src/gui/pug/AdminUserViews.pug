@@ -11,6 +11,8 @@ mixin userViewsMixin(userType, userSelected)
             h3(value=userSelected.userName)
             h2 Role
             h3(value=userSelected.role)
+            h2 Enabled
+            h3(value=userSelected.enabled)
         .view(id=userType + "EditorPage")
             h1 Edit User
             h2 First Name
@@ -21,3 +23,5 @@ mixin userViewsMixin(userType, userSelected)
             input(type='text' id='edit'+ userType + 'UserName' value=userSelected.userName)
             h2 Role
             input(type='text' id='edit'+ userType +'Role' value=userSelected.role)
+            h2 Enabled
+            h3(value=userSelected.enabled)
