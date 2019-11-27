@@ -2,6 +2,14 @@
 /* global UserDb */
 /* global CourseDb */
 /* global loadAllCoursesList */
+/* global pug */
+/* global Path */
+
+let newCourseStudents = [];
+
+async function updateCourse(valueToUpdate) {
+    // TODO
+}
 
 async function saveNewCourse() {
     const courseName = document.getElementById("newCourseName").value;
@@ -15,8 +23,7 @@ async function saveNewCourse() {
     else {
         document.getElementById("teacherError").hidden = true;
 
-        // TODO: Add Students
-        const students = [];
+        const students = newCourseStudents;
         const teacherId = teacher._id;
 
         const result = await CourseDb.createCourse(courseName, grade, teacherId, students);
@@ -30,5 +37,30 @@ async function saveNewCourse() {
         }
 
         await loadAllCoursesList();
+
+        newCourseStudents = [];
+    }
+}
+
+async function addStudentToCourse() {
+    // TODO
+}
+
+async function addStudentToNewCourse() {
+    const newStudent = document.getElementById("newCourseStudentUserName").value;
+    const table = document.getElementById("NewCourseStudents").getElementsByClassName("ScrollingBox")[0].firstChild;
+
+    if (!newCourseStudents.includes(newStudent)) {
+        const row = table.insertRow(0);
+        const cell0 = row.insertCell(0);
+        const cell1 = row.insertCell(1);
+        const cell2 = row.insertCell(2);
+
+        const studentInfo = await UserDb.getUserWithId(newStudent);
+        cell0.innerHTML = studentInfo[0].username;
+        cell1.innerHTML = studentInfo[0].username;
+        cell2.innerHTML = newStudent;
+
+        newCourseStudents.push(newStudent);
     }
 }

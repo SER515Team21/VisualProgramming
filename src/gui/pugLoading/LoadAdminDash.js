@@ -33,11 +33,26 @@ async function loadCourseStudentList(course) {
         studentTable.push(students[i][0]);
     }
 
-
     const scrolledTable = compiledFunction({
         students
     });
     document.getElementById("CourseViewStudents").innerHTML = scrolledTable;
+
+    // Load all students into select option for
+    const allStudents = await UserDb.getUsers("student");
+    for (let i = 0; i < allStudents.length; i++) {
+        const newCourseSelect = document.getElementById("newCourseStudentUserName");
+        const existingCourseSelect = document.getElementById("existingCourseStudentUserName");
+        const newOption = document.createElement("option");
+        newOption.value = allStudents[i]._id;
+        newOption.text = allStudents[i].username;
+        const existingOption = document.createElement("option");
+        existingOption.value = allStudents[i]._id;
+        existingOption.text = allStudents[i].username;
+
+        newCourseSelect.add(newOption);
+        existingCourseSelect.add(existingOption);
+    }
 }
 
 async function loadAllCoursesList() {
