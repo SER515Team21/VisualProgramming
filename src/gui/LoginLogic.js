@@ -28,7 +28,6 @@ function loadTeacherView() {
     document.getElementById("TeacherView").hidden = false;
 
     loadCourseStudentListTeacher();
-    loadCourseAssignmentListTeacher();
     loadAllTeachersCoursesList();
     loadAllTeachersStudentsList();
 }

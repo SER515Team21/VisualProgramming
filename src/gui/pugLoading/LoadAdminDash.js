@@ -83,6 +83,7 @@ async function loadInfo(info) {
     if (await CourseDb.courseExists(info)) {
         await loadCourseStudentList(info);
         await loadCourseStudentListTeacher(info);
+        await loadCourseAssignmentListTeacher(info);
     }
     else if (await UserDb.userExists(info)) {
         // TODO
