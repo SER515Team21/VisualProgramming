@@ -5,6 +5,7 @@
 /* global CourseDb */
 /* global UserDb */
 /* global loadCourseStudentListTeacher */
+/* global loadCourseAssignmentListTeacher */
 
 async function loadCourseStudentList(course) {
     const pugPath = Path.relative(process.cwd(), "./src/gui/pug/ViewStudentsScrollTable.pug");
