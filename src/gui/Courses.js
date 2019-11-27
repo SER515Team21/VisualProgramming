@@ -5,7 +5,7 @@
 /* global pug */
 /* global Path */
 
-let newCourseStudents = [];
+let newCourseStudents = {};
 
 async function updateCourse(valueToUpdate) {
     // TODO
@@ -23,7 +23,7 @@ async function saveNewCourse() {
     else {
         document.getElementById("teacherError").hidden = true;
 
-        const students = newCourseStudents;
+        const students = Object.keys(newCourseStudents);
         const teacherId = teacher._id;
 
         const result = await CourseDb.createCourse(courseName, grade, teacherId, students);
@@ -47,20 +47,20 @@ async function addStudentToCourse() {
 }
 
 async function addStudentToNewCourse() {
-    const newStudent = document.getElementById("newCourseStudentUserName").value;
-    const table = document.getElementById("NewCourseStudents").getElementsByClassName("ScrollingBox")[0].firstChild;
+    const studentId = document.getElementById("newCourseStudentUserName").value;
+    const pugPath = Path.relative(process.cwd(), "./src/gui/pug/ViewStudentsScrollTable.pug");
+    const compiledFunction = pug.compileFile(pugPath);
+    const studentInfo = await UserDb.getUserWithId(studentId);
+    const row = [studentInfo[0].username, studentInfo[0].username, studentId];
 
-    if (!newCourseStudents.includes(newStudent)) {
-        const row = table.insertRow(0);
-        const cell0 = row.insertCell(0);
-        const cell1 = row.insertCell(1);
-        const cell2 = row.insertCell(2);
+    if (!(studentId in Object.keys(newCourseStudents))) {
+        newCourseStudents[studentId] = row;
 
-        const studentInfo = await UserDb.getUserWithId(newStudent);
-        cell0.innerHTML = studentInfo[0].username;
-        cell1.innerHTML = studentInfo[0].username;
-        cell2.innerHTML = newStudent;
+        const scrolledTable = compiledFunction({
+            students: newCourseStudents
+        });
 
-        newCourseStudents.push(newStudent);
+        document.getElementById("NewCourseStudents").innerHTML = scrolledTable;
+        document.getElementById(`addToNewCourse${studentId}`).disabled = true;
     }
 }
