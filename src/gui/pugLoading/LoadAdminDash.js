@@ -5,6 +5,7 @@
 /* global CourseDb */
 /* global UserDb */
 /* global loadCourseStudentListTeacher */
+/* global window */
 
 async function loadCourseStudentList(course) {
     const pugPath = Path.relative(process.cwd(), "./src/gui/pug/ViewStudentsScrollTable.pug");
@@ -37,23 +38,20 @@ async function loadCourseStudentList(course) {
         students
     });
     document.getElementById("CourseViewStudents").innerHTML = scrolledTable;
+    document.getElementById("CourseEditorStudents").innerHTML = scrolledTable;
 
-    // Load all students into select option for adding to courses
-    const allStudents = await UserDb.getUsers("student");
-    for (let i = 0; i < allStudents.length; i++) {
-        const newCourseSelect = document.getElementById("newCourseStudentUserName");
-        const existingCourseSelect = document.getElementById("existingCourseStudentUserName");
-        const newOption = document.createElement("option");
-        newOption.id = `addToNewCourse${allStudents[i]._id}`;
-        newOption.value = allStudents[i]._id;
-        newOption.text = allStudents[i].username;
-        const existingOption = document.createElement("option");
-        existingOption.id = `addToExistingCourse${allStudents[i]._id}`;
-        existingOption.value = allStudents[i]._id;
-        existingOption.text = allStudents[i].username;
+    if (course !== undefined) {
+        document.getElementById("editCourseName").value = course;
+        document.getElementById("editCourseGrade").value =
+            parseInt(await CourseDb.getCourseGrade(course), 10);
+        const teacherId = await CourseDb.getCourseTeacherId(course);
+        const teacher = await UserDb.getUserWithId(teacherId);
+        document.getElementById("editCourseTeacherName").value = teacher[0].username;
 
-        newCourseSelect.add(newOption);
-        existingCourseSelect.add(existingOption);
+        document.getElementById("CurrentCourseName").innerText = course;
+        document.getElementById("CurrentCourseTeacher").innerText = teacher[0].username;
+        document.getElementById("CurrentCourseGrade").innerText =
+            await CourseDb.getCourseGrade(course);
     }
 }
 
@@ -98,6 +96,7 @@ async function loadAllStudentsList() {
 
 async function loadInfo(info) {
     if (await CourseDb.courseExists(info)) {
+        window.localStorage.setItem("currentCourse", info);
         await loadCourseStudentList(info);
         await loadCourseStudentListTeacher(info);
     }

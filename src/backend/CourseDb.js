@@ -45,6 +45,27 @@ class CourseDb {
         return doc.gradeLevel;
     }
 
+    async getCourseTeacherId(course) {
+        let doc = await this.courseDb.find({ course });
+        doc = doc.find(item => item.teacherId !== null);
+        return doc.teacherId;
+    }
+
+    async editCourseGrade(course, newGrade) {
+        const doc = await this.courseDb.update({ course }, { $set: { gradeLevel: newGrade } });
+        return doc;
+    }
+
+    async editCourseTeacherId(course, newTeacherId) {
+        const doc = await this.courseDb.update({ course }, { $set: { teacherId: newTeacherId } });
+        return doc;
+    }
+
+    async editCourseName(course, newName) {
+        const doc = await this.courseDb.update({ course }, { $set: { course: newName } });
+        return doc;
+    }
+
     async addStudent(courseId, studentId) {
         const existingStudents = await this.getStudents(courseId);
         if (existingStudents.includes(studentId)) {

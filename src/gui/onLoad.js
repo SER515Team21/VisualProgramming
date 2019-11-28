@@ -37,8 +37,6 @@ function roleSelectListener() {
 }
 
 function setDate() {
-    // document.getElementById("date").textContent = new Date().toDateString();
-
     // Changed to update all dates in DOM
     const dates = document.getElementsByClassName("date");
     for (let i = 0; i < dates.length; i++) {
@@ -85,12 +83,33 @@ async function updateAssignments() {
     }
 }
 
+async function adminViewStudentSelects() {
+    // Load all students into select option for adding to courses
+    const allStudents = await UserDb.getUsers("student");
+    for (let i = 0; i < allStudents.length; i++) {
+        const newCourseSelect = document.getElementById("newCourseStudentUserName");
+        const existingCourseSelect = document.getElementById("existingCourseStudentUserName");
+        const newOption = document.createElement("option");
+        newOption.id = `addToNewCourse${allStudents[i]._id}`;
+        newOption.value = allStudents[i]._id;
+        newOption.text = allStudents[i].username;
+        const existingOption = document.createElement("option");
+        existingOption.id = `addToExistingCourse${allStudents[i]._id}`;
+        existingOption.value = allStudents[i]._id;
+        existingOption.text = allStudents[i].username;
+
+        newCourseSelect.add(newOption);
+        existingCourseSelect.add(existingOption);
+    }
+}
+
 async function onLoad() {
     accordianListener();
     roleSelectListener();
     setDate();
     await populateGrades();
     await updateAssignments();
+    await adminViewStudentSelects();
     setInterval(updateAssignments, 300000);
 }
 

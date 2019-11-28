@@ -2,13 +2,36 @@
 /* global UserDb */
 /* global CourseDb */
 /* global loadAllCoursesList */
+/* global loadCourseStudentList */
 /* global pug */
 /* global Path */
+/* global window */
 
 let newCourseStudents = {};
 
-async function updateCourse(valueToUpdate) {
-    // TODO
+async function updateCourse() {
+    const oldCourse = window.localStorage.getItem("currentCourse");
+    const newCourseName = document.getElementById("editCourseName").value;
+    const newCourseTeacherName = document.getElementById("editCourseTeacherName").value;
+    const newCourseGrade = document.getElementById("editCourseGrade").value;
+
+    const courseExists = await CourseDb.courseExists(oldCourse);
+    if (courseExists) {
+        if (newCourseName !== undefined && newCourseName !== null && newCourseName !== "") {
+            const newNameExists = await CourseDb.courseExists(newCourseName);
+            if (!newNameExists) {
+                await CourseDb.editCourseName(oldCourse, newCourseName);
+            }
+        }
+        if (newCourseTeacherName !== undefined && newCourseTeacherName !== null
+            && newCourseTeacherName !== "") {
+            const newCourseTeacherId = await UserDb.getUser(newCourseTeacherName);
+            await CourseDb.editCourseTeacherId(oldCourse, newCourseTeacherId._id);
+        }
+        if (newCourseGrade !== undefined && newCourseGrade !== null && newCourseGrade !== "") {
+            await CourseDb.editCourseGrade(oldCourse, newCourseGrade);
+        }
+    }
 }
 
 async function saveNewCourse() {
@@ -38,12 +61,20 @@ async function saveNewCourse() {
 
         await loadAllCoursesList();
 
-        newCourseStudents = [];
+        newCourseStudents = {};
     }
 }
 
 async function addStudentToCourse() {
-    // TODO
+    const newStudentId = document.getElementById("existingCourseStudentUserName").value;
+
+    if (newStudentId !== null && newStudentId !== undefined) {
+        const courseName = window.localStorage.getItem("currentCourse");
+        const courseId = await CourseDb.getCourseId(courseName);
+        await CourseDb.addStudent(courseId, newStudentId);
+
+        await loadCourseStudentList();
+    }
 }
 
 async function addStudentToNewCourse() {
