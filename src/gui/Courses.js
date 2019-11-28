@@ -73,7 +73,7 @@ async function addStudentToCourse() {
         const courseId = await CourseDb.getCourseId(courseName);
         await CourseDb.addStudent(courseId, newStudentId);
 
-        await loadCourseStudentList();
+        await loadCourseStudentList(courseName);
     }
 }
 
