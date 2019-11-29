@@ -23,10 +23,13 @@ include helpers/ScrolledTable
                     include helpers/ListView
         +MainPane()
             .tab-switcher
-                +tabbedFrame(['Students', 'Assignments', 'Create Assignment'], ['courseStudents', 'courseAssignments', 'createAssignment'])
+                +tabbedFrame(['Students', 'Assignments', 'Submissions', 'Create Assignment'], ['courseStudents', 'courseAssignments', 'teacherSubmissions', 'createAssignment'])
             .view.active(id='courseStudents')
               //  include ViewStudentsScrollTable
             .view(id='courseAssignments')
 
             .view(id="createAssignment")
                 include CreateAssignment
+
+            .view(id="teacherSubmissions")
+                include SubmissionList
