@@ -7,8 +7,7 @@
 .ScrolledTableBox{
     height: 44%;
     width: auto;
-    border: solid;
-    border-width: medium;
+    border: medium solid;
 }
 
 .ScrolledTableBox .ScrollingBox{
@@ -19,15 +18,15 @@
 }
 
 .ScrolledTableBox .ScrollingBox table{
-    border: solid;
+    table-layout: fixed;
     width: 100%;
-    border-width: medium;
+    border: medium solid;
 }
 
-.ScrolledTableBox table{
-    border: solid;
-    width: calc(100% - 14px);
-    border-width: medium;
+.ScrolledTableBox table {
+    width: calc(100% - 15px);
+    border: medium solid;
+    table-layout: fixed;
 }
 
 .ScrolledTableBox * tr {

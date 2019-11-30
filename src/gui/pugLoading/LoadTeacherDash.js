@@ -1,6 +1,7 @@
 /* global document */
 /* global window */
 /* global CourseDb */
+/* global AssignDb */
 /* global UserDb */
 /* global pug */
 /* global Path */
@@ -38,15 +39,25 @@ async function loadCourseStudentListTeacher(course) {
     document.getElementById("courseStudents").innerHTML = scrolledTable;
 }
 
-function loadCourseAssignmentListTeacher() {
-    // TODO: FINISH
+async function loadCourseAssignmentListTeacher(course) {
     const pugPath = Path.relative(process.cwd(), "./src/gui/pug/ViewAssignmentsScrollTable.pug");
     const compiledFunction = pug.compileFile(pugPath);
-    const assigns = [["Test", "Name", "And Id"], ["Test", "Name", "And Id"], ["Test", "Name", "And Id"], ["Test", "Name", "And Id"], ["Test", "Name", "And Id"], ["Test", "Name", "And Id"], ["Test", "Name", "And Id"], ["Test", "Name", "And Id"], ["Test", "Name", "And Id"], ["Test", "Name", "And Id"]];
+    const courseID = await CourseDb.getCourseId(course);
+    let assignments = await AssignDb.getAssignmentsByCourse(courseID);
+    const ids = assignments.map(assign => assign._id);
+    assignments = assignments.map(assign => [assign.name, assign.dueDate, assign.points]);
     const scrolledTable = compiledFunction({
-        assigns
+        assigns: assignments
     });
-    document.getElementById("courseAssignments").innerHTML = scrolledTable;
+    const courseAssignments = document.getElementById("courseAssignments");
+    courseAssignments.innerHTML = scrolledTable;
+
+    const rows = Array.from(courseAssignments.getElementsByTagName("tr"));
+    for (let i = 1; i < rows.length; i++) {
+        const td = document.createElement("td");
+        td.innerHTML = `<button onclick='(function(){AssignDb.deleteAssignment("${ids[i - 1]}"); loadCourseAssignmentListTeacher();})()'>X</button>`;
+        rows[i].appendChild(td);
+    }
 }
 
 async function loadAllTeachersCoursesList() {

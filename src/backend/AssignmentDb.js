@@ -11,6 +11,15 @@ class AssignmentDb {
         return AssignmentDb.instance;
     }
 
+    async deleteAssignment(id) {
+        this.programDb.remove({ _id: id });
+    }
+
+    async getAssignmentsByCourse(course) {
+        const doc = await this.programDb.find({ course });
+        return doc;
+    }
+
     async loadCurrentAssignments() {
         const doc = await this.programDb.find({});
         return doc; // doc.filter(assign => assign.dueDate > new Date());
