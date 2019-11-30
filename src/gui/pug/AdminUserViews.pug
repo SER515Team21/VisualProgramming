@@ -1,0 +1,27 @@
+mixin userViewsMixin(userType, userSelected)
+    .tab-switcher
+        +tabbedFrame(['View ' + userType, 'Edit ' + userType ], ['View' + userType + 'Page', userType + "EditorPage"])
+        .view.active(id='View' + userType + 'Page')
+            h1 View User
+            h2 First Name
+            h3(value=userSelected.firstName)
+            h2 Last Name
+            h3(value=userSelected.lastName)
+            h2 User Name
+            h3(value=userSelected.userName)
+            h2 Role
+            h3(value=userSelected.role)
+            h2 Enabled
+            h3(value=userSelected.enabled)
+        .view(id=userType + "EditorPage")
+            h1 Edit User
+            h2 First Name
+            input(type='text' id='edit' + userType +'FirstName' value=userSelected.firstName)
+            h2 Last Name
+            input(type='text' id='edit' + userType + 'LastName' value=userSelected.lastName)
+            h2 User Name
+            input(type='text' id='edit'+ userType + 'UserName' value=userSelected.userName)
+            h2 Role
+            input(type='text' id='edit'+ userType +'Role' value=userSelected.role)
+            h2 Enabled
+            h3(value=userSelected.enabled)

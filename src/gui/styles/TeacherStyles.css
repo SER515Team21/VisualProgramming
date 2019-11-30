@@ -62,3 +62,8 @@ tr:hover {
 div#teacherCourses {
     background-color: rgba(0,0,0,0);
 }
+
+#courseAssignments {
+    padding: 10px;
+    height: calc(100% - 20px);
+}
