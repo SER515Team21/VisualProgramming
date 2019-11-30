@@ -60,9 +60,17 @@ async function loadCourseAssignmentListTeacher(course) {
     }
 }
 
-async function loadAssignmentSubmissionsTeacher(assignment) {
+async function loadAssignmentSubmissionsTeacher(assignmentId) {
     const pugPath = Path.relative(process.cwd(), "./src/gui/pug/SubmissionList.pug");
-    const compiledFunction = pug.compileFile();
+    const compiledFunction = pug.compileFile(pugPath);
+    const assignment = await AssignDb.loadAssignment(assignmentId);
+    if (assignment !== undefined) {
+        const submissions =
+            assignment.submissions.map(sub => [assignment.name, sub.studentId, assignment.dueDate]);
+        const scrolledTable = compiledFunction({ submissions });
+        const assignmentSubmissions = document.getElementById("teacherSubmissions");
+        assignmentSubmissions.innerHTML = scrolledTable;
+    }
 }
 
 async function loadAllTeachersCoursesList() {
