@@ -86,7 +86,7 @@ async function startAssignment(elem) {
     const compiledFunction = pug.compileFile(pugPath);
     const assignmentId = elem.getAttribute("data-for");
     const assignment = await AssignDb.loadAssignment(assignmentId);
-    const questions = assignment[0].questions;
+    const questions = assignment.questions;
     const submissionPane = compiledFunction({
         questions
     });

@@ -5,6 +5,7 @@
 /* global UserDb */
 /* global pug */
 /* global Path */
+/* global tabSwitcher */
 
 async function loadCourseStudentListTeacher(course) {
     // TODO: FINISH
@@ -39,6 +40,21 @@ async function loadCourseStudentListTeacher(course) {
     document.getElementById("courseStudents").innerHTML = scrolledTable;
 }
 
+async function loadAssignmentSubmissionsTeacher(assignmentId) {
+    const pugPath = Path.relative(process.cwd(), "./src/gui/pug/SubmissionList.pug");
+    const compiledFunction = pug.compileFile(pugPath);
+    const assignment = await AssignDb.loadAssignment(assignmentId);
+    if (assignment !== undefined && assignment.submissions !== undefined) {
+        const submissions =
+            assignment.submissions.map(sub => [assignment.name, sub.studentId, assignment.dueDate]);
+        const scrolledTable = compiledFunction({ submissions });
+        const assignmentSubmissions = document.getElementById("teacherSubmissions");
+        assignmentSubmissions.innerHTML = scrolledTable;
+    }
+    const submitButton = document.querySelectorAll("[data-for='teacherSubmissions']")[0];
+    tabSwitcher(submitButton);
+}
+
 async function loadCourseAssignmentListTeacher(course) {
     const pugPath = Path.relative(process.cwd(), "./src/gui/pug/ViewAssignmentsScrollTable.pug");
     const compiledFunction = pug.compileFile(pugPath);
@@ -57,19 +73,13 @@ async function loadCourseAssignmentListTeacher(course) {
         const td = document.createElement("td");
         td.innerHTML = `<button onclick='(function(){AssignDb.deleteAssignment("${ids[i - 1]}"); loadCourseAssignmentListTeacher();})()'>X</button>`;
         rows[i].appendChild(td);
-    }
-}
-
-async function loadAssignmentSubmissionsTeacher(assignmentId) {
-    const pugPath = Path.relative(process.cwd(), "./src/gui/pug/SubmissionList.pug");
-    const compiledFunction = pug.compileFile(pugPath);
-    const assignment = await AssignDb.loadAssignment(assignmentId);
-    if (assignment !== undefined) {
-        const submissions =
-            assignment.submissions.map(sub => [assignment.name, sub.studentId, assignment.dueDate]);
-        const scrolledTable = compiledFunction({ submissions });
-        const assignmentSubmissions = document.getElementById("teacherSubmissions");
-        assignmentSubmissions.innerHTML = scrolledTable;
+        const clickHandler =
+            function (id) {
+                return function () {
+                    loadAssignmentSubmissionsTeacher(id);
+                };
+            };
+        rows[i].firstChild.onclick = clickHandler(ids[i - 1]);
     }
 }
 
