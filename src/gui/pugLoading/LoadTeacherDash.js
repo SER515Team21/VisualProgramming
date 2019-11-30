@@ -60,6 +60,11 @@ async function loadCourseAssignmentListTeacher(course) {
     }
 }
 
+async function loadAssignmentSubmissionsTeacher(assignment) {
+    const pugPath = Path.relative(process.cwd(), "./src/gui/pug/SubmissionList.pug");
+    const compiledFunction = pug.compileFile();
+}
+
 async function loadAllTeachersCoursesList() {
     // TODO: FINISH
     const pugPath = Path.relative(process.cwd(), "./src/gui/pug/helpers/ListViewSelect.pug");
