@@ -5,6 +5,7 @@
 /* global CourseDb */
 /* global UserDb */
 /* global loadCourseStudentListTeacher */
+/* global loadCourseAssignmentListTeacher */
 
 async function loadCourseStudentList(course) {
     const pugPath = Path.relative(process.cwd(), "./src/gui/pug/ViewStudentsScrollTable.pug");
@@ -83,6 +84,7 @@ async function loadInfo(info) {
     if (await CourseDb.courseExists(info)) {
         await loadCourseStudentList(info);
         await loadCourseStudentListTeacher(info);
+        await loadCourseAssignmentListTeacher(info);
     }
     else if (await UserDb.userExists(info)) {
         // TODO
