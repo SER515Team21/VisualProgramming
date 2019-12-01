@@ -142,7 +142,6 @@ function filterOperators(level) {
 async function saveAssignment() {
     const teacherId = window.localStorage.getItem("userID");
     const courseName = document.getElementById("createAssignCourseSelect").value;
-    const courseId = await CourseDb.getCourseId(courseName);
     const assignName = document.getElementById("createAssignName").value;
     const description = document.getElementById("createAssignDescription").value;
     const dueDate = document.getElementById("createAssignDueDate").value;
@@ -157,5 +156,5 @@ async function saveAssignment() {
     }
 
     await AssignDb.saveAssignment(
-        assignName, description, courseId, teacherId, questions, dueDate, points);
+        assignName, description, courseName, teacherId, questions, dueDate, points);
 }
