@@ -2,6 +2,7 @@
 /* global window */
 /* global UserDb */
 /* global AssignDb */
+/* global CourseDb */
 /* global populateGrades */
 /* global startAssignment */
 /* global filterOperators */
@@ -46,40 +47,44 @@ function setDate() {
 
 async function updateAssignments() {
     const elems = document.getElementsByClassName("assignmentsList");
-    const assigns = await AssignDb.loadCurrentAssignments();
+    const courses = await CourseDb.getStudentCourses(window.localStorage.getItem("userID"));
     for (let i = 0; i < elems.length; i++) {
         const elem = elems[i];
         elem.innerHTML = "";
-        const list = document.createElement("ul");
-        for (let j = 0; j < assigns.length; j++) {
-            const assign = assigns[j];
-            const item = document.createElement("li");
-            const assignElem = document.createElement("div");
-            const title = document.createElement("div");
-            const date = document.createElement("div");
-            const description = document.createElement("div");
+        for (let k = 0; k < courses.length; k++) {
+            // eslint-disable-next-line no-await-in-loop
+            const assigns = await AssignDb.getAssignmentsByCourse(courses[k]);
+            const list = document.createElement("ul");
+            for (let j = 0; j < assigns.length; j++) {
+                const assign = assigns[j];
+                const item = document.createElement("li");
+                const assignElem = document.createElement("div");
+                const title = document.createElement("div");
+                const date = document.createElement("div");
+                const description = document.createElement("div");
 
-            title.textContent = assign.name;
-            date.textContent = assign.dueDate;
-            description.textContent = assign.description;
-            title.setAttribute("data-for", assign._id);
+                title.textContent = assign.name;
+                date.textContent = assign.dueDate;
+                description.textContent = assign.description;
+                title.setAttribute("data-for", assign._id);
 
-            assignElem.classList.add("assignment");
-            title.classList.add("assignTitle");
-            date.classList.add("assignDate");
-            description.classList.add("assignDescription");
+                assignElem.classList.add("assignment");
+                title.classList.add("assignTitle");
+                date.classList.add("assignDate");
+                description.classList.add("assignDescription");
 
-            title.onclick = function () {
-                startAssignment(title);
-            };
+                title.onclick = function () {
+                    startAssignment(title);
+                };
 
-            assignElem.appendChild(title);
-            assignElem.appendChild(date);
-            assignElem.appendChild(description);
-            item.appendChild(assignElem);
-            list.appendChild(item);
+                assignElem.appendChild(title);
+                assignElem.appendChild(date);
+                assignElem.appendChild(description);
+                item.appendChild(assignElem);
+                list.appendChild(item);
+            }
+            elem.appendChild(list);
         }
-        elem.appendChild(list);
     }
 }
 
@@ -108,9 +113,7 @@ async function onLoad() {
     roleSelectListener();
     setDate();
     await populateGrades();
-    await updateAssignments();
     await adminViewStudentSelects();
-    setInterval(updateAssignments, 300000);
 }
 
 window.onload = onLoad;

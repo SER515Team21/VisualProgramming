@@ -11,6 +11,7 @@
 /* global loadAllTeachersCoursesList */
 /* global loadAllTeachersStudentsList */
 /* global filterOperators */
+/* global updateAssignments */
 
 
 async function loadStudentView() {
@@ -21,6 +22,8 @@ async function loadStudentView() {
     const gradeLevels = gradeLevelStrings.map(grade => parseInt(grade, 10));
     const highestGrade = Math.max(...gradeLevels);
 
+    updateAssignments();
+    setInterval(updateAssignments, 300000);
     filterOperators(highestGrade);
 }
 
