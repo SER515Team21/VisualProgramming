@@ -54,6 +54,18 @@ class ListenerSolver extends ArithmeticListener {
     }
 
     /**
+     * When a parentheses finishes parsing add the inside to the stack
+     * @param ctx
+     */
+    exitParentheses(ctx) {
+        // Do nothing for parentheses...
+        if (this.DEBUG) {
+            // eslint-disable-next-line no-console
+            console.log("Parsed parentheses");
+        }
+    }
+
+    /**
      * When a negative double finishes parsing add it to the stack
      * @param ctx
      */

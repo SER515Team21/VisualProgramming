@@ -18,7 +18,7 @@ mixin unary_node(group, name, level)
         ondragstart='pickUpNode(event)'
     )
         p
-        #addRight.node-container(ondrop='dropNode(event)', ondragover='allowDroppingNode(event)')
+        #addOperand.node-container(ondrop='dropNode(event)', ondragover='allowDroppingNode(event)')
 
 mixin binary_node(group, name, level)
     div(id=`${name}`,
