@@ -45,9 +45,19 @@ async function loadAssignmentSubmissionsTeacher(assignmentId) {
     const compiledFunction = pug.compileFile(pugPath);
     const assignment = await AssignDb.loadAssignment(assignmentId);
     if (assignment !== undefined && assignment.submissions !== undefined) {
-        const submissions =
-            assignment.submissions.map(sub => [assignment.name, sub.studentId, assignment.dueDate]);
-        const scrolledTable = compiledFunction({ submissions });
+        const users = await Promise.all(assignment.submissions.map(x =>
+                UserDb.getUserWithId(x.studentId)));
+        const usernames = users.map(x => x[0].username);
+        const submissions = [];
+        for (let i = 0; i < assignment.submissions.length; ++i) {
+            if (assignment.submissions[i].grade !== undefined) {
+                submissions.push([usernames[i], `${assignment.submissions[i].grade} / ${assignment.points}`]);
+            }
+            else {
+                submissions.push([usernames[i], `X / ${assignment.points}`]);
+            }
+        }
+        const scrolledTable = compiledFunction({ name: assignment.name, submissions });
         const assignmentSubmissions = document.getElementById("teacherSubmissions");
         assignmentSubmissions.innerHTML = scrolledTable;
     }

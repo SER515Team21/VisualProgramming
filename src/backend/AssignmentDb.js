@@ -70,6 +70,23 @@ class AssignmentDb {
         return false;
     }
 
+    async gradeSubmission(assignmentId, studentId, grade, comment = "") {
+        const assignments = await this.assignmentDb.find({ _id: assignmentId });
+        if (assignments !== undefined && assignments.length === 1) {
+            const subs = assignments[0].submissions;
+            for (let i = 0; i < subs.length; ++i) {
+                if (subs[i].studentId === studentId) {
+                    subs[i].grade = grade;
+                    subs[i].comment = comment;
+                    this.assignmentDb.update(
+                        { _id: assignmentId }, { $set: { submissions: subs } });
+                    break;
+                }
+            }
+        }
+
+    }
+
     async removeAll() {
         await this.assignmentDb.remove({}, { multi: true });
     }
