@@ -23,11 +23,11 @@ mixin userViewsMixin(userType, userSelected)
                 h2 Last Name
                 input(type='text' id='edit' + userType + 'LastName' value=userSelected.lastname)
                 h2 User Name
-                input(type='text' id='edit'+ userType + 'UserName' value=userSelected.userName)
+                input(type='text' id='edit'+ userType + 'UserName' value=userSelected.username)
                 h2 Role
                 input(type='text' id='edit'+ userType +'Role' value=userSelected.role)
                 h2 Enabled
-                h3(value=userSelected.enabled)
-                button(onclick="") Save
+                input(type='text' id='edit'+ userType +'Enabled' value=userSelected.enabled)
+                button(onclick="updateUser('" + userSelected._id + "', '" + userType + "')") Save
         else
             p Please Select {userType}

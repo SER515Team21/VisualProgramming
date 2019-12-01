@@ -35,7 +35,7 @@ class UserDb {
         return false;
     }
 
-    async addUser(username, password, role = "student", enabled = 1, firstname="NA", lastname="NA") {
+    async addUser(username, password, role = "student", enabled = 1, firstname = "NA", lastname = "NA") {
         const exists = await this.userExists(username);
         if (exists) {
             return false;
@@ -86,6 +86,13 @@ class UserDb {
             return true;
         }
         return false;
+    }
+
+    async updateUser(id, username, password, role, enabled, firstname, lastname) {
+        await this.programDb.update({ _id: id },
+            { username, password, role, enabled, firstname, lastname },
+            {});
+        return true;
     }
 }
 

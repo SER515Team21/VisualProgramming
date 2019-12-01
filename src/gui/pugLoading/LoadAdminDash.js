@@ -118,3 +118,27 @@ async function loadInfo(info) {
 async function validateInput(course, grade, teacher) {
     document.getElementById("adminSaveNewCourse").disabled = !(course && grade && teacher);
 }
+
+async function updateUser(id, userType) {
+    let user = await UserDb.getUserWithId(id);
+    user = user[0];
+
+    const username = document.getElementById("edit" + userType +"UserName").value;
+    const role = document.getElementById("edit" + userType +"Role").value;
+    const enabled = document.getElementById("edit" + userType +"Enabled").value;
+    const firstname = document.getElementById("edit" + userType +"FirstName").value;
+    const lastname = document.getElementById("edit" + userType +"LastName").value;
+
+    await UserDb.updateUser(id, username, user.password, role, enabled,
+        firstname, lastname);
+    if(role === "student") {
+        loadAStudentAdminPage(id);
+        loadATeacherAdminPage("");
+    }
+    else if(role === "student") {
+        loadATeacherAdminPage(id);
+        loadAStudentAdminPage("");
+    }
+    loadAllStudentsList();
+    loadAllTeachersList();
+}
