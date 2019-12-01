@@ -84,7 +84,6 @@ class AssignmentDb {
                 }
             }
         }
-
     }
 
     async removeAll() {
