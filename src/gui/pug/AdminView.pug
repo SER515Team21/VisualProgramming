@@ -19,6 +19,6 @@ include AdminUserViews
             #AdminCourseViews
                 include AdminCourseViews
             #AdminStudentViews(hidden)
-                +userViewsMixin("Student", {"username":"admin","password":"password","role":"admin","enabled":1,"_id":"DNMmw9pCKt5OnQHW"})
+                include StudentViewAdminPage
             #AdminTeacherViews(hidden)
-                +userViewsMixin("Teacher", {"username":"admin","password":"password","role":"admin","enabled":1,"_id":"DNMmw9pCKt5OnQHW"})
+                include TeacherViewAdminPage
