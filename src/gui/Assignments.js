@@ -5,6 +5,8 @@
 /* global AssignDb */
 /* global NodeForest */
 /* global CourseDb */
+/* global loadAssignmentGradesStudent */
+
 
 class Assignment {
 
@@ -65,6 +67,8 @@ async function submitAssignment() {
     else {
         document.getElementById("couldNotSubmit").hidden = false;
     }
+
+    await loadAssignmentGradesStudent();
 }
 
 async function startAssignment(elem) {

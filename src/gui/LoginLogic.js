@@ -11,7 +11,7 @@
 /* global loadAllTeachersCoursesList */
 /* global loadAllTeachersStudentsList */
 /* global filterOperators */
-/* global loadAllGradesList */
+/* global loadAssignmentGradesStudent */
 
 
 async function loadStudentView() {
@@ -23,7 +23,7 @@ async function loadStudentView() {
     const highestGrade = Math.max(...gradeLevels);
 
     filterOperators(highestGrade);
-    await loadAllGradesList();
+    await loadAssignmentGradesStudent();
 }
 
 function loadTeacherView() {
