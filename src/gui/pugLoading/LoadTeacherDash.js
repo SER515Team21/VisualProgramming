@@ -29,8 +29,8 @@ async function loadCourseStudentListTeacher(course) {
     for (let i = 0; i < students.length; i++) {
         // eslint-disable-next-line no-await-in-loop
         students[i] = await UserDb.getUserWithId(students[i]);
-        students[i] = [students[i][0].username, students[i][0].username, students[i][0].username];
-        studentTable.push(students[i][0]);
+        students[i] = [students[i].username, students[i].username, students[i].username];
+        studentTable.push(students[i]);
     }
 
 
@@ -46,21 +46,29 @@ async function loadAssignmentSubmissionsTeacher(assignmentId) {
     const assignment = await AssignDb.loadAssignment(assignmentId);
     if (assignment !== undefined && assignment.submissions !== undefined) {
         const users = await Promise.all(assignment.submissions.map(x =>
-                UserDb.getUserWithId(x.studentId)));
-        const usernames = users.map(x => x[0].username);
+            UserDb.getUserWithId(x.studentId)));
+        const usernames = users.map(x => x.username);
         const submissions = [];
         for (let i = 0; i < assignment.submissions.length; ++i) {
             if (assignment.submissions[i].grade !== undefined) {
                 submissions.push([usernames[i], `${assignment.submissions[i].grade} / ${assignment.points}`]);
-            }
-            else {
+            } else {
                 submissions.push([usernames[i], `X / ${assignment.points}`]);
             }
         }
-        const scrolledTable = compiledFunction({ name: assignment.name, submissions });
+        const scrolledTable = compiledFunction({name: assignment.name, submissions});
         const assignmentSubmissions = document.getElementById("teacherSubmissions");
         assignmentSubmissions.innerHTML = scrolledTable;
+
+        const rows = Array.from(assignmentSubmissions.getElementsByTagName("tr"));
+        for (let i = 0; i < assignment.submissions.length; i++) {
+            const td = document.createElement("td");
+            const studentId =
+                td.innerHTML = `<button onclick='showGradingView("${assignmentId}", "${assignment.submissions[i].studentId}")')>Grade</button>`;
+            rows[i+1].appendChild(td);
+        }
     }
+
     const submitButton = document.querySelectorAll("[data-for='teacherSubmissions']")[0];
     tabSwitcher(submitButton);
 }

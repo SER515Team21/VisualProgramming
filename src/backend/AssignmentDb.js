@@ -20,9 +20,14 @@ class AssignmentDb {
         return doc;
     }
 
+    async getAssignmentById(assignId) {
+        const doc = await this.assignmentDb.find({ _id: assignId});
+        return doc[0];
+    }
+
     async getSubmissions(assignId) {
-        const doc = await this.assignmentDb.find({ _id: assignId });
-        return doc[0].submissions;
+        const doc = await this.getAssignmentById(assignId);
+        return doc.submissions;
     }
 
     async loadCurrentAssignments() {

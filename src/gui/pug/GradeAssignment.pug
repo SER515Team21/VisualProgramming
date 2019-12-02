@@ -1,0 +1,16 @@
+mixin AssignmentGradingPane(assignmentId, studentId, assignmentName, studentName, questions, answers, points)
+    .AssignmentGradingPane
+        h3= `${studentName}'s submission for ${assignmentName}`
+        each question, index in questions
+            h4= `${index + 1}) ${question}`
+            p= answers[index]
+        label(for="assignmentGradeEntry") Grade:
+        input(type="number" id="assignmentGradeEntry", min="0" max=`${points}`)
+        br
+        label(for="assignmentCommentEntry") Comment:
+        input(type="text" id="assignmentCommentEntry")
+        br
+        button(type="button" onclick=`submitAssignmentGrade("${assignmentId}", "${studentId}")`) Submit
+
+
++AssignmentGradingPane(assignmentId, studentId, assignmentName, studentName, questions, answers, points)

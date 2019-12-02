@@ -30,8 +30,8 @@ async function loadCourseStudentList(course) {
     for (let i = 0; i < students.length; i++) {
         // eslint-disable-next-line no-await-in-loop
         students[i] = await UserDb.getUserWithId(students[i]);
-        students[i] = [students[i][0].username, students[i][0].username, students[i][0].username];
-        studentTable.push(students[i][0]);
+        students[i] = [students[i].username, students[i].username, students[i].username];
+        studentTable.push(students[i]);
     }
 
 
