@@ -50,13 +50,7 @@ async function submitAssignment() {
         if (solutions[i].firstChild.firstChild) {
             const test = solutions[i].firstChild.firstChild.getAttribute("id");
             const answer = NodeForest.getNode(test).getText();
-
-            if (isNaN(answer)) {
-                answers.push(0);
-            }
-            else {
-                answers.push(answer);
-            }
+            answers.push(answer);
         }
         else {
             doSave = false;
