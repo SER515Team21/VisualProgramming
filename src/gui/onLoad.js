@@ -48,15 +48,15 @@ function setDate() {
 async function updateAssignments() {
     const elems = document.getElementsByClassName("assignmentsList");
     const courses = await CourseDb.getStudentCourses(window.localStorage.getItem("userID"));
+    const assigns = await Promise.all(courses.map(course =>
+        AssignDb.getAssignmentsByCourse(course)));
     for (let i = 0; i < elems.length; i++) {
         const elem = elems[i];
         elem.innerHTML = "";
         for (let k = 0; k < courses.length; k++) {
-            // eslint-disable-next-line no-await-in-loop
-            const assigns = await AssignDb.getAssignmentsByCourse(courses[k]);
             const list = document.createElement("ul");
-            for (let j = 0; j < assigns.length; j++) {
-                const assign = assigns[j];
+            for (let j = 0; j < assigns[k].length; j++) {
+                const assign = assigns[k][j];
                 const item = document.createElement("li");
                 const assignElem = document.createElement("div");
                 const title = document.createElement("div");
