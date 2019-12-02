@@ -34,8 +34,12 @@ function handlePanelNode(node, target, event) {
         }
     }
 
+    // Insert into a unary node
+    if (target.id.toString().endsWith("Operand")) {
+        NodeForest.getNode(target.parentNode.id).setOperand(backendNode);
+    }
     // Insert into a binary node
-    if (target.id.toString().endsWith("Left")) {
+    else if (target.id.toString().endsWith("Left")) {
         NodeForest.getNode(target.parentNode.id).setLeftOperand(backendNode);
     }
     else if (target.id.toString().endsWith("Right")) {
@@ -91,8 +95,12 @@ function handleRootNodeNode(node, target, event) {
 
     node.parentNode.removeChild(node);
 
+    // Insert into a unary node
+    if (target.id.toString().endsWith("Operand")) {
+        NodeForest.getNode(target.parentNode.id).setOperand(backendNode);
+    }
     // Insert into a binary node
-    if (target.id.toString().endsWith("Left")) {
+    else if (target.id.toString().endsWith("Left")) {
         NodeForest.getNode(target.parentNode.id).setLeftOperand(backendNode);
     }
     else if (target.id.toString().endsWith("Right")) {
@@ -123,8 +131,12 @@ function handleRootNodeEquationPane(node, target, event) {
 }
 
 function handleChildNodeNode(node, target, event) {
-    // Remove from binary operator
-    if (target.id.toString().endsWith("Left")) {
+    // Remove from unary node
+    if (target.id.toString().endsWith("Operand")) {
+        NodeForest.getNode(node.parentNode.parentNode.id).setOperand(undefined);
+    }
+    // Remove from binary node
+    else if (target.id.toString().endsWith("Left")) {
         NodeForest.getNode(node.parentNode.parentNode.id).setLeftOperand(undefined);
     }
     else if (target.id.toString().endsWith("Right")) {
@@ -143,8 +155,12 @@ function handleChildNodeNode(node, target, event) {
     node.parentNode.removeChild(node);
 
     const backendNode = NodeForest.getNode(node.id);
+    // Insert into a unary node
+    if (target.id.toString().endsWith("Operand")) {
+        NodeForest.getNode(target.parentNode.id).setOperand(backendNode);
+    }
     // Insert into a binary node
-    if (target.id.toString().endsWith("Left")) {
+    else if (target.id.toString().endsWith("Left")) {
         NodeForest.getNode(target.parentNode.id).setLeftOperand(backendNode);
     }
     else if (target.id.toString().endsWith("Right")) {
@@ -168,8 +184,12 @@ function handleChildNodeNode(node, target, event) {
 function handleChildNodeEquationPane(node, target, event) {
     const backendNode = NodeForest.getNode(node.id);
 
-    // Remove from binary operator
-    if (target.id.toString().endsWith("Left")) {
+    // Remove from unary node
+    if (target.id.toString().endsWith("Operand")) {
+        NodeForest.getNode(node.parentNode.parentNode.id).setOperand(undefined);
+    }
+    // Remove from binary node
+    else if (target.id.toString().endsWith("Left")) {
         NodeForest.getNode(node.parentNode.parentNode.id).setLeftOperand(undefined);
     }
     else if (target.id.toString().endsWith("Right")) {

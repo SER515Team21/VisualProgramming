@@ -1,4 +1,13 @@
 .ListView
     ul
         each val in rows ? rows : []
-            li= val
+            - var data= ""
+            - var value= val
+            - var onclick=""
+            if val.data !== undefined
+                - data=val.data
+            if val.value !== undefined
+                - value=val.value
+            if func !== undefined
+            - onclick= func +"('" + data + "')"
+            li(onclick=onclick)= value

@@ -65,4 +65,9 @@ describe("Parser Facade", () => {
         this.parser = new ParserFacade("fraction(5, 2)");
         expect(this.parser.solution).toBe(2.5);
     });
+
+    it("shall support parentheses", () => {
+        this.parser = new ParserFacade("((5 + 5) + 6)");
+        expect(this.parser.solution).toBe(16);
+    });
 });
