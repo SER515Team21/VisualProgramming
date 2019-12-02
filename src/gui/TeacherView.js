@@ -29,10 +29,10 @@ async function showGradingView(assignmentId, studentId) {
         const pugPath = Path.relative(process.cwd(), "./src/gui/pug/GradeAssignment.pug");
         const compiledFunction = pug.compileFile(pugPath);
         const assignmentGrader = compiledFunction({
-            assignmentId: assignmentId,
-            studentId: studentId,
+            assignmentId,
+            studentId,
             assignmentName: assignment.name,
-            studentName: studentName,
+            studentName,
             questions: assignment.questions,
             answers: submissions[0].answers,
             points: assignment.points
