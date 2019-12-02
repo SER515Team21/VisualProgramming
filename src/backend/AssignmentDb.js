@@ -21,7 +21,7 @@ class AssignmentDb {
     }
 
     async getAssignmentById(assignId) {
-        const doc = await this.assignmentDb.find({ _id: assignId});
+        const doc = await this.assignmentDb.find({ _id: assignId });
         return doc[0];
     }
 

@@ -52,20 +52,20 @@ async function loadAssignmentSubmissionsTeacher(assignmentId) {
         for (let i = 0; i < assignment.submissions.length; ++i) {
             if (assignment.submissions[i].grade !== undefined) {
                 submissions.push([usernames[i], `${assignment.submissions[i].grade} / ${assignment.points}`]);
-            } else {
+            }
+            else {
                 submissions.push([usernames[i], `X / ${assignment.points}`]);
             }
         }
-        const scrolledTable = compiledFunction({name: assignment.name, submissions});
+        const scrolledTable = compiledFunction({ name: assignment.name, submissions });
         const assignmentSubmissions = document.getElementById("teacherSubmissions");
         assignmentSubmissions.innerHTML = scrolledTable;
 
         const rows = Array.from(assignmentSubmissions.getElementsByTagName("tr"));
         for (let i = 0; i < assignment.submissions.length; i++) {
             const td = document.createElement("td");
-            const studentId =
-                td.innerHTML = `<button onclick='showGradingView("${assignmentId}", "${assignment.submissions[i].studentId}")')>Grade</button>`;
-            rows[i+1].appendChild(td);
+            td.innerHTML = `<button onclick='showGradingView("${assignmentId}", "${assignment.submissions[i].studentId}")')>Grade</button>`;
+            rows[i + 1].appendChild(td);
         }
     }
 

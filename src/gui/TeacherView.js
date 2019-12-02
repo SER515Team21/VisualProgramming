@@ -2,6 +2,8 @@
 /* global UserDb */
 /* global loadAssignmentSubmissionsTeacher */
 /* global pug */
+/* global document */
+/* global Path */
 
 
 async function submitAssignmentGradeAsync(assignmentId, studentId) {
@@ -20,14 +22,15 @@ function submitAssignmentGrade(assignmentId, studentId) {
 
 async function showGradingView(assignmentId, studentId) {
     const assignment = await AssignDb.getAssignmentById(assignmentId);
-    const submissions = (await AssignDb.getSubmissions(assignmentId)).filter(function(x){ return x.studentId === studentId});
+    const submissions = (await AssignDb.getSubmissions(assignmentId))
+        .filter(x => (x.studentId === studentId));
     const studentName = (await UserDb.getUserWithId(studentId)).username;
     if (submissions.length === 1) {
         const pugPath = Path.relative(process.cwd(), "./src/gui/pug/GradeAssignment.pug");
         const compiledFunction = pug.compileFile(pugPath);
         const assignmentGrader = compiledFunction({
-            assignmentId,
-            studentId,
+            assignmentId: assignmentId,
+            studentId: studentId,
             assignmentName: assignment.name,
             studentName: studentName,
             questions: assignment.questions,
@@ -36,6 +39,5 @@ async function showGradingView(assignmentId, studentId) {
         });
         const assignmentSubmissions = document.getElementById("teacherSubmissions");
         assignmentSubmissions.innerHTML = assignmentGrader;
-
     }
 }
