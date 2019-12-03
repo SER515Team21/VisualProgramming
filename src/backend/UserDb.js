@@ -21,7 +21,7 @@ class UserDb {
 
     async userLogin(username, password) {
         const doc = await this.programDb.find({ username, password });
-        if (doc.find(item => item.enabled === 1)) {
+        if (doc[0] && doc[0].enabled) {
             return true;
         }
         return false;

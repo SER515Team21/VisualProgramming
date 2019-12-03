@@ -140,8 +140,8 @@ async function updateUser(id, userType) {
     user = user[0];
 
     const username = document.getElementById(`edit${userType}UserName`).value;
-    const role = document.getElementById(`edit${userType}Role`).value;
-    const enabled = document.getElementById(`edit${userType}Enabled`).value;
+    const role = document.getElementById(`teacherChoiceRadio${userType}`).checked ? "teacher" : "student";
+    const enabled = document.getElementById(`enabledChoiceRadio${userType}`).checked ? "1" : "0";
     const firstname = document.getElementById(`edit${userType}FirstName`).value;
     const lastname = document.getElementById(`edit${userType}LastName`).value;
 
@@ -151,7 +151,7 @@ async function updateUser(id, userType) {
         loadAStudentAdminPage(id);
         loadATeacherAdminPage("");
     }
-    else if (role === "student") {
+    else if (role === "teacher") {
         loadATeacherAdminPage(id);
         loadAStudentAdminPage("");
     }

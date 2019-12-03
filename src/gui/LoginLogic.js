@@ -54,7 +54,7 @@ async function sendLoginRequest() {
         document.getElementById("loginFail").hidden = false;
     }
     else {
-        const loginSuccess = await UserDb.userExists(username, password);
+        const loginSuccess = await UserDb.userLogin(username, password);
         if (!loginSuccess) {
             document.getElementById("loginFail").hidden = false;
         }
