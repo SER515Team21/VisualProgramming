@@ -2,6 +2,7 @@ include helpers/GenericDashboard
 include helpers/TabSwitcher
 include studentSearch
 include courseSearch
+include helpers/ScrolledTable
 
 #TeacherView(hidden='')
     +GenericDashboard()
@@ -22,10 +23,12 @@ include courseSearch
                     include helpers/ListView
         +MainPane()
             .tab-switcher
-                +tabbedFrame(['Students', 'Assignments', 'Create Assignment'], ['courseStudents', 'courseAssignments', 'createAssignment'])
+                +tabbedFrame(['Students', 'Assignments', 'Submissions', 'Create Assignment'], ['courseStudents', 'courseAssignments', 'teacherSubmissions', 'createAssignment'])
             .view.active(id='courseStudents')
-                include ViewStudentsScrollTable
+              //  include ViewStudentsScrollTable
             .view(id='courseAssignments')
-                include ViewAssignmentsScrollTable
+
             .view(id="createAssignment")
                 include CreateAssignment
+
+            .view(id="teacherSubmissions")

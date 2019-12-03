@@ -5,6 +5,8 @@
 /* global AssignDb */
 /* global NodeForest */
 /* global CourseDb */
+/* global loadAssignmentGradesStudent */
+
 
 class Assignment {
 
@@ -44,13 +46,7 @@ async function submitAssignment() {
         if (solutions[i].firstChild.firstChild) {
             const test = solutions[i].firstChild.firstChild.getAttribute("id");
             const answer = NodeForest.getNode(test).getText();
-
-            if (isNaN(answer)) {
-                answers.push(0);
-            }
-            else {
-                answers.push(answer);
-            }
+            answers.push(answer);
         }
         else {
             doSave = false;
@@ -71,6 +67,8 @@ async function submitAssignment() {
     else {
         document.getElementById("couldNotSubmit").hidden = false;
     }
+
+    await loadAssignmentGradesStudent();
 }
 
 async function startAssignment(elem) {
@@ -80,7 +78,7 @@ async function startAssignment(elem) {
     const compiledFunction = pug.compileFile(pugPath);
     const assignmentId = elem.getAttribute("data-for");
     const assignment = await AssignDb.loadAssignment(assignmentId);
-    const questions = assignment[0].questions;
+    const questions = assignment.questions;
     const submissionPane = compiledFunction({
         questions
     });

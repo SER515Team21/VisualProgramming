@@ -71,7 +71,7 @@ class UserDb {
 
     async getUserWithId(id) {
         const doc = await this.programDb.find({ _id: id });
-        return doc;
+        return doc[0];
     }
 
     async getUsers(role = "student") {
