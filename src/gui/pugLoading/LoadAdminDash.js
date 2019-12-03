@@ -84,8 +84,7 @@ async function loadAllTeachersList() {
 async function loadATeacherAdminPage(id) {
     const pugPath = Path.relative(process.cwd(), "./src/gui/pug/TeacherViewAdminPage.pug");
     const compiledFunction = pug.compileFile(pugPath);
-    let teach = await UserDb.getUserWithId(id);
-    teach = teach[0];
+    const teach = await UserDb.getUserWithId(id);
     const teacherpages = compiledFunction({
         teacher: teach
     });
@@ -111,8 +110,7 @@ async function loadAllStudentsList() {
 async function loadAStudentAdminPage(id) {
     const pugPath = Path.relative(process.cwd(), "./src/gui/pug/StudentViewAdminPage.pug");
     const compiledFunction = pug.compileFile(pugPath);
-    let stud = await UserDb.getUserWithId(id);
-    stud = stud[0];
+    const stud = await UserDb.getUserWithId(id);
     const studentpages = compiledFunction({
         student: stud
     });
@@ -136,8 +134,7 @@ async function validateInput(course, grade, teacher) {
 }
 
 async function updateUser(id, userType) {
-    let user = await UserDb.getUserWithId(id);
-    user = user[0];
+    const user = await UserDb.getUserWithId(id);
 
     const username = document.getElementById(`edit${userType}UserName`).value;
     const role = document.getElementById(`teacherChoiceRadio${userType}`).checked ? "teacher" : "student";

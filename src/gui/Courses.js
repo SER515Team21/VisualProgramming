@@ -82,7 +82,7 @@ async function addStudentToNewCourse() {
     const pugPath = Path.relative(process.cwd(), "./src/gui/pug/ViewStudentsScrollTable.pug");
     const compiledFunction = pug.compileFile(pugPath);
     const studentInfo = await UserDb.getUserWithId(studentId);
-    const row = [studentInfo[0].username, studentInfo[0].username, studentId];
+    const row = [studentInfo.username, studentInfo.username, studentId];
 
     if (!(studentId in Object.keys(newCourseStudents))) {
         newCourseStudents[studentId] = row;
