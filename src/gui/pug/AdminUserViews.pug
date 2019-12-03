@@ -25,9 +25,26 @@ mixin userViewsMixin(userType, userSelected)
                 h2 User Name
                 input(type='text' id='edit'+ userType + 'UserName' value=userSelected.username)
                 h2 Role
-                input(type='text' id='edit'+ userType +'Role' value=userSelected.role)
+                if userSelected.role === 'student'
+                    p Student
+                    input(type='radio' name='edit'+ userType +'Role' id='studentChoiceRadio' + userType value='student' checked)
+                    p Teacher
+                    input(type='radio' name='edit'+ userType +'Role' id='teacherChoiceRadio' + userType value='teacher')
+                else
+                    p Student
+                    input(type='radio' name='edit'+ userType +'Role' id='studentChoiceRadio' + userType value='student')
+                    p Teacher
+                    input(type='radio' name='edit'+ userType +'Role' id='teacherChoiceRadio' + userType value='teacher' checked)
                 h2 Enabled
-                input(type='text' id='edit'+ userType +'Enabled' value=userSelected.enabled)
-                button(onclick="updateUser('" + userSelected._id + "', '" + userType + "')") Save
+                if userSelected.enabled === '1'
+                    p Enabled
+                    input(type='radio' name='edit' + userType + 'Role' id='enabledChoiceRadio' + userType value='enabled' checked)
+                    p Disabled
+                    input(type='radio' name='edit' + userType + 'Role' id='disabledChoiceRadio' + userType value='disabled')
+                else
+                    p Enabled
+                    input(type='radio' name='edit' + userType + 'Role' id='enabledChoiceRadio' + userType value='enabled')
+                    p Disabled
+                    input(type='radio' name='edit' + userType + 'Role' id='disabledChoiceRadio' + userType value='disabled' checked)
         else
-            p Please Select {userType}
+            p(style='color:white') Please Select #{userType}
