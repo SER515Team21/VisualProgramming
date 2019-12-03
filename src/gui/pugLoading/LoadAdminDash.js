@@ -31,8 +31,8 @@ async function loadCourseStudentList(course) {
     for (let i = 0; i < students.length; i++) {
         // eslint-disable-next-line no-await-in-loop
         students[i] = await UserDb.getUserWithId(students[i]);
-        students[i] = [students[i][0].username, students[i][0].username, students[i][0].username];
-        studentTable.push(students[i][0]);
+        students[i] = [students[i].username, students[i].username, students[i].username];
+        studentTable.push(students[i]);
     }
 
     const scrolledTable = compiledFunction({
@@ -47,10 +47,10 @@ async function loadCourseStudentList(course) {
             parseInt(await CourseDb.getCourseGrade(course), 10);
         const teacherId = await CourseDb.getCourseTeacherId(course);
         const teacher = await UserDb.getUserWithId(teacherId);
-        document.getElementById("editCourseTeacherName").value = teacher[0].username;
+        document.getElementById("editCourseTeacherName").value = teacher.username;
 
         document.getElementById("CurrentCourseName").innerText = course;
-        document.getElementById("CurrentCourseTeacher").innerText = teacher[0].username;
+        document.getElementById("CurrentCourseTeacher").innerText = teacher.username;
         document.getElementById("CurrentCourseGrade").innerText =
             await CourseDb.getCourseGrade(course);
     }

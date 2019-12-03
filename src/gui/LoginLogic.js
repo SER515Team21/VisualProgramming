@@ -11,6 +11,7 @@
 /* global loadAllTeachersCoursesList */
 /* global loadAllTeachersStudentsList */
 /* global filterOperators */
+/* global loadAssignmentGradesStudent */
 /* global updateAssignments */
 
 
@@ -25,6 +26,7 @@ async function loadStudentView() {
     updateAssignments();
     setInterval(updateAssignments, 300000);
     filterOperators(highestGrade);
+    await loadAssignmentGradesStudent();
 }
 
 function loadTeacherView() {
