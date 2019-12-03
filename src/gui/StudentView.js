@@ -12,7 +12,12 @@ async function loadAssignmentGradesStudent() {
     const assignments = await AssignDb.loadCurrentAssignments();
     const user = window.localStorage.getItem("username");
     const userID = window.localStorage.getItem("userID");
-    const submissions = assignments.filter(assignment => assignment.submissions !== undefined)
+    const submissions = assignments.map((assignment) => {
+        if (assignment.submissions === undefined) {
+            assignment.submissions = [];
+        }
+        return assignment;
+    })
         .map((assignment) => {
             assignment.submissions.forEach((submission) => {
                 submission.name = assignment.name;

@@ -76,8 +76,8 @@ async function loadAssignmentSubmissionsTeacher(assignmentId) {
 async function loadCourseAssignmentListTeacher(course) {
     const pugPath = Path.relative(process.cwd(), "./src/gui/pug/ViewAssignmentsScrollTable.pug");
     const compiledFunction = pug.compileFile(pugPath);
-    const courseID = await CourseDb.getCourseId(course);
-    let assignments = await AssignDb.getAssignmentsByCourse(courseID);
+    // const courseID = await CourseDb.getCourseId(course);
+    let assignments = await AssignDb.getAssignmentsByCourse(course);
     const ids = assignments.map(assign => assign._id);
     assignments = assignments.map(assign => [assign.name, assign.dueDate, assign.points]);
     const scrolledTable = compiledFunction({
