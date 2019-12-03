@@ -38,13 +38,14 @@ mixin userViewsMixin(userType, userSelected)
                 h2 Enabled
                 if userSelected.enabled === '1'
                     p Enabled
-                    input(type='radio' name='edit' + userType + 'Role' id='enabledChoiceRadio' + userType value='enabled' checked)
+                    input(type='radio' name='edit' + userType + 'Enabled' id='enabledChoiceRadio' + userType value='enabled' checked)
                     p Disabled
-                    input(type='radio' name='edit' + userType + 'Role' id='disabledChoiceRadio' + userType value='disabled')
+                    input(type='radio' name='edit' + userType + 'Enabled' id='disabledChoiceRadio' + userType value='disabled')
                 else
                     p Enabled
-                    input(type='radio' name='edit' + userType + 'Role' id='enabledChoiceRadio' + userType value='enabled')
+                    input(type='radio' name='edit' + userType + 'Enabled' id='enabledChoiceRadio' + userType value='enabled')
                     p Disabled
-                    input(type='radio' name='edit' + userType + 'Role' id='disabledChoiceRadio' + userType value='disabled' checked)
+                    input(type='radio' name='edit' + userType + 'Enabled' id='disabledChoiceRadio' + userType value='disabled' checked)
+                button(onclick="updateUser('" + userSelected._id + "', '" + userType + "')") Save
         else
             p(style='color:white') Please Select #{userType}
