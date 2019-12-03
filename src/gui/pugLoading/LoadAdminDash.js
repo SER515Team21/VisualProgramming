@@ -84,8 +84,7 @@ async function loadAllTeachersList() {
 async function loadATeacherAdminPage(id) {
     const pugPath = Path.relative(process.cwd(), "./src/gui/pug/TeacherViewAdminPage.pug");
     const compiledFunction = pug.compileFile(pugPath);
-    let teach = await UserDb.getUserWithId(id);
-    teach = teach[0];
+    const teach = await UserDb.getUserWithId(id);
     const teacherpages = compiledFunction({
         teacher: teach
     });
@@ -111,8 +110,7 @@ async function loadAllStudentsList() {
 async function loadAStudentAdminPage(id) {
     const pugPath = Path.relative(process.cwd(), "./src/gui/pug/StudentViewAdminPage.pug");
     const compiledFunction = pug.compileFile(pugPath);
-    let stud = await UserDb.getUserWithId(id);
-    stud = stud[0];
+    const stud = await UserDb.getUserWithId(id);
     const studentpages = compiledFunction({
         student: stud
     });
