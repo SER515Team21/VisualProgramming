@@ -2,6 +2,7 @@
 /* global window */
 /* global UserDb */
 /* global AssignDb */
+/* global CourseDb */
 /* global populateGrades */
 /* global startAssignment */
 /* global filterOperators */
@@ -37,8 +38,6 @@ function roleSelectListener() {
 }
 
 function setDate() {
-    // document.getElementById("date").textContent = new Date().toDateString();
-
     // Changed to update all dates in DOM
     const dates = document.getElementsByClassName("date");
     for (let i = 0; i < dates.length; i++) {
@@ -48,40 +47,64 @@ function setDate() {
 
 async function updateAssignments() {
     const elems = document.getElementsByClassName("assignmentsList");
-    const assigns = await AssignDb.loadCurrentAssignments();
+    const courses = await CourseDb.getStudentCourses(window.localStorage.getItem("userID"));
+    const assigns = await Promise.all(courses.map(course =>
+        AssignDb.getAssignmentsByCourse(course)));
     for (let i = 0; i < elems.length; i++) {
         const elem = elems[i];
         elem.innerHTML = "";
-        const list = document.createElement("ul");
-        for (let j = 0; j < assigns.length; j++) {
-            const assign = assigns[j];
-            const item = document.createElement("li");
-            const assignElem = document.createElement("div");
-            const title = document.createElement("div");
-            const date = document.createElement("div");
-            const description = document.createElement("div");
+        for (let k = 0; k < courses.length; k++) {
+            const list = document.createElement("ul");
+            for (let j = 0; j < assigns[k].length; j++) {
+                const assign = assigns[k][j];
+                const item = document.createElement("li");
+                const assignElem = document.createElement("div");
+                const title = document.createElement("div");
+                const date = document.createElement("div");
+                const description = document.createElement("div");
 
-            title.textContent = assign.name;
-            date.textContent = assign.dueDate;
-            description.textContent = assign.description;
-            title.setAttribute("data-for", assign._id);
+                title.textContent = assign.name;
+                date.textContent = assign.dueDate;
+                description.textContent = assign.description;
+                title.setAttribute("data-for", assign._id);
 
-            assignElem.classList.add("assignment");
-            title.classList.add("assignTitle");
-            date.classList.add("assignDate");
-            description.classList.add("assignDescription");
+                assignElem.classList.add("assignment");
+                title.classList.add("assignTitle");
+                date.classList.add("assignDate");
+                description.classList.add("assignDescription");
 
-            title.onclick = function () {
-                startAssignment(title);
-            };
+                title.onclick = function () {
+                    startAssignment(title);
+                };
 
-            assignElem.appendChild(title);
-            assignElem.appendChild(date);
-            assignElem.appendChild(description);
-            item.appendChild(assignElem);
-            list.appendChild(item);
+                assignElem.appendChild(title);
+                assignElem.appendChild(date);
+                assignElem.appendChild(description);
+                item.appendChild(assignElem);
+                list.appendChild(item);
+            }
+            elem.appendChild(list);
         }
-        elem.appendChild(list);
+    }
+}
+
+async function adminViewStudentSelects() {
+    // Load all students into select option for adding to courses
+    const allStudents = await UserDb.getUsers("student");
+    for (let i = 0; i < allStudents.length; i++) {
+        const newCourseSelect = document.getElementById("newCourseStudentUserName");
+        const existingCourseSelect = document.getElementById("existingCourseStudentUserName");
+        const newOption = document.createElement("option");
+        newOption.id = `addToNewCourse${allStudents[i]._id}`;
+        newOption.value = allStudents[i]._id;
+        newOption.text = allStudents[i].username;
+        const existingOption = document.createElement("option");
+        existingOption.id = `addToExistingCourse${allStudents[i]._id}`;
+        existingOption.value = allStudents[i]._id;
+        existingOption.text = allStudents[i].username;
+
+        newCourseSelect.add(newOption);
+        existingCourseSelect.add(existingOption);
     }
 }
 
@@ -90,8 +113,7 @@ async function onLoad() {
     roleSelectListener();
     setDate();
     await populateGrades();
-    await updateAssignments();
-    setInterval(updateAssignments, 300000);
+    await adminViewStudentSelects();
 }
 
 window.onload = onLoad;
