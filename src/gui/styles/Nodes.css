@@ -124,6 +124,22 @@
     margin-top: 5px;
 }
 
+.parentheses::before {
+    content: "(";
+    font-size: xx-large;
+    vertical-align: middle;
+}
+
+.parentheses::after {
+    content: ")";
+    font-size: xx-large;
+    vertical-align: middle;
+}
+
+.parentheses > p::before {
+    content: none;
+}
+
 .fraction {
     background-color: mediumpurple !important;
 }

@@ -22,6 +22,7 @@ mixin node-search
                 +mixed_fraction_node('fifth').template
             button.accordion Arithmetic
             .panel
+                +unary_node('arithmetic', 'parentheses', 'fifth').template
                 +binary_node('arithmetic', 'addition', 'first').template
                 +binary_node('arithmetic', 'subtraction', 'first').template
                 +binary_node('arithmetic', 'multiplication', 'second').template
