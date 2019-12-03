@@ -2,12 +2,12 @@
     +tabbedFrame(['Course View', 'New Course', 'Edit Course'], ['CourseView', "NewCoursePage", "CourseEditorPage"])
     .view.active(id='CourseView')
         h1 View Course
-        h2 Course Name
-        h3 Grade
-        h4 Undefined
-        #CourseViewTeacher
-            h3 Teacher:
-            h4 Teacher Name
+        h3 Course Name:
+        h5#CurrentCourseName Select a course
+        h3 Teacher:
+        h5#CurrentCourseTeacher
+        h3 Grade:
+        h5#CurrentCourseGrade
         #CourseViewStudents
             include ViewStudentsScrollTable
     .view(id='NewCoursePage')
@@ -30,6 +30,12 @@
             | :
         input(type='text' id='newCourseTeacherUserName' placeholder="Teacher Name" oninput='validateInput('+
         'newCourseName.value, newCourseGrade.value, newCourseTeacherUserName.value)')
+        h3
+            | Students
+            sup(style='color: red') *
+            | :
+        select(id='newCourseStudentUserName' data-live-search=true)
+        button(id='NewCourseAddStudent' onclick='addStudentToNewCourse()') Add to Course
         br
         br
         button(id='adminSaveNewCourse' onclick='saveNewCourse()' disabled) Save Course
@@ -38,18 +44,21 @@
         h4(id='newCourseError' style='color: red' hidden=true) Error: Course already exists!
         #NewCourseStudents
             include ViewStudentsScrollTable
-            button(id='adminAddStudent') Add Student
     .view(id='CourseEditorPage')
         h1 Course Editor
         input(type='text' id='editCourseName' value="Course Name")
-        button(id='adminSaveCourseName') Save
+        button(id='adminSaveCourseName' onclick='updateCourse()') Save
         h3 Grade
         input(type='number' id='editCourseGrade' value="Course Grade")
-        button(id='adminSaveCourseGrade') Save
         #CourseEditorTeacher
             h3 Teacher:
             input(type='text' id='editCourseTeacherName' value="Teacher Name")
-            button(id='adminSaveCourseTeacherName') Save
+        h3
+            | Students
+            sup(style='color: red') *
+            | :
+        select(id='existingCourseStudentUserName' data-live-search=true)
+        button(id='existingCourseAddStudent' onclick='addStudentToCourse()') Add
         #CourseEditorStudents
             include ViewStudentsScrollTable
-            button(id='adminAddStudentEditCourse') Add Student
+            button(id='adminAddStudentEditCourse' onclick='updateCourse()') Save

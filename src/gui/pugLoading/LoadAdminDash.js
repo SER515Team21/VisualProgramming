@@ -5,6 +5,7 @@
 /* global CourseDb */
 /* global UserDb */
 /* global loadCourseStudentListTeacher */
+/* global window */
 /* global loadCourseAssignmentListTeacher */
 
 async function loadCourseStudentList(course) {
@@ -34,11 +35,25 @@ async function loadCourseStudentList(course) {
         studentTable.push(students[i]);
     }
 
-
     const scrolledTable = compiledFunction({
         students
     });
     document.getElementById("CourseViewStudents").innerHTML = scrolledTable;
+    document.getElementById("CourseEditorStudents").innerHTML = scrolledTable;
+
+    if (course !== undefined) {
+        document.getElementById("editCourseName").value = course;
+        document.getElementById("editCourseGrade").value =
+            parseInt(await CourseDb.getCourseGrade(course), 10);
+        const teacherId = await CourseDb.getCourseTeacherId(course);
+        const teacher = await UserDb.getUserWithId(teacherId);
+        document.getElementById("editCourseTeacherName").value = teacher.username;
+
+        document.getElementById("CurrentCourseName").innerText = course;
+        document.getElementById("CurrentCourseTeacher").innerText = teacher.username;
+        document.getElementById("CurrentCourseGrade").innerText =
+            await CourseDb.getCourseGrade(course);
+    }
 }
 
 async function loadAllCoursesList() {
@@ -106,6 +121,7 @@ async function loadAStudentAdminPage(id) {
 
 async function loadInfo(info) {
     if (await CourseDb.courseExists(info)) {
+        window.localStorage.setItem("currentCourse", info);
         await loadCourseStudentList(info);
         await loadCourseStudentListTeacher(info);
         await loadCourseAssignmentListTeacher(info);
