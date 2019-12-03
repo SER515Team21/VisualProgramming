@@ -134,8 +134,7 @@ async function validateInput(course, grade, teacher) {
 }
 
 async function updateUser(id, userType) {
-    let user = await UserDb.getUserWithId(id);
-    user = user[0];
+    const user = await UserDb.getUserWithId(id);
 
     const username = document.getElementById(`edit${userType}UserName`).value;
     const role = document.getElementById(`teacherChoiceRadio${userType}`).checked ? "teacher" : "student";
