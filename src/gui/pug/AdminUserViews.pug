@@ -1,0 +1,51 @@
+include helpers/TabSwitcher
+
+mixin userViewsMixin(userType, userSelected)
+    .tab-switcher
+        +tabbedFrame(['View ' + userType, 'Edit ' + userType ], ['View' + userType + 'Page', userType + "EditorPage"])
+        if userSelected !== undefined
+            .view.active(id='View' + userType + 'Page')
+                h1 View User
+                h2 First Name
+                h3 #{userSelected.firstname}
+                h2 Last Name
+                h3 #{userSelected.lastname}
+                h2 User Name
+                h3 #{userSelected.username}
+                h2 Role
+                h3 #{userSelected.role}
+                h2 Enabled
+                h3 #{userSelected.enabled}
+            .view(id=userType + "EditorPage")
+                h1 Edit User
+                h2 First Name
+                input(type='text' id='edit' + userType +'FirstName' value=userSelected.firstname)
+                h2 Last Name
+                input(type='text' id='edit' + userType + 'LastName' value=userSelected.lastname)
+                h2 User Name
+                input(type='text' id='edit'+ userType + 'UserName' value=userSelected.username)
+                h2 Role
+                if userSelected.role === 'student'
+                    p Student
+                    input(type='radio' name='edit'+ userType +'Role' id='studentChoiceRadio' + userType value='student' checked)
+                    p Teacher
+                    input(type='radio' name='edit'+ userType +'Role' id='teacherChoiceRadio' + userType value='teacher')
+                else
+                    p Student
+                    input(type='radio' name='edit'+ userType +'Role' id='studentChoiceRadio' + userType value='student')
+                    p Teacher
+                    input(type='radio' name='edit'+ userType +'Role' id='teacherChoiceRadio' + userType value='teacher' checked)
+                h2 Enabled
+                if userSelected.enabled === '1'
+                    p Enabled
+                    input(type='radio' name='edit' + userType + 'Enabled' id='enabledChoiceRadio' + userType value='enabled' checked)
+                    p Disabled
+                    input(type='radio' name='edit' + userType + 'Enabled' id='disabledChoiceRadio' + userType value='disabled')
+                else
+                    p Enabled
+                    input(type='radio' name='edit' + userType + 'Enabled' id='enabledChoiceRadio' + userType value='enabled')
+                    p Disabled
+                    input(type='radio' name='edit' + userType + 'Enabled' id='disabledChoiceRadio' + userType value='disabled' checked)
+                button(onclick="updateUser('" + userSelected._id + "', '" + userType + "')") Save
+        else
+            p(style='color:white') Please Select #{userType}

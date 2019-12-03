@@ -1,3 +1,4 @@
+const UnaryOperator = require("./UnaryOperator");
 const BinaryOperator = require("./BinaryOperator");
 const TertiaryOperator = require("./TertiaryOperator");
 
@@ -110,6 +111,17 @@ class ImproperFraction extends BinaryOperator {
     }
 }
 
+class Parentheses extends UnaryOperator {
+
+    constructor(operand = null) {
+        super("", operand);
+    }
+
+    getText() {
+        return `(${this.operand.getText()})`;
+    }
+}
+
 module.exports = {
     Addition,
     Subtraction,
@@ -118,5 +130,6 @@ module.exports = {
     LongMultiplication,
     LongDivision,
     MixedFraction,
-    ImproperFraction
+    ImproperFraction,
+    Parentheses
 };

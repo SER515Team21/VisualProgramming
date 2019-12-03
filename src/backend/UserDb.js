@@ -21,7 +21,7 @@ class UserDb {
 
     async userLogin(username, password) {
         const doc = await this.programDb.find({ username, password });
-        if (doc.find(item => item.enabled === 1)) {
+        if (doc[0] && doc[0].enabled) {
             return true;
         }
         return false;
@@ -35,12 +35,12 @@ class UserDb {
         return false;
     }
 
-    async addUser(username, password, role = "student", enabled = 1) {
+    async addUser(username, password, role = "student", enabled = 1, firstname = "NA", lastname = "NA") {
         const exists = await this.userExists(username);
         if (exists) {
             return false;
         }
-        await this.programDb.insert({ username, password, role, enabled });
+        await this.programDb.insert({ username, password, role, enabled, firstname, lastname });
         return true;
     }
 
@@ -71,7 +71,7 @@ class UserDb {
 
     async getUserWithId(id) {
         const doc = await this.programDb.find({ _id: id });
-        return doc;
+        return doc[0];
     }
 
     async getUsers(role = "student") {
@@ -86,6 +86,13 @@ class UserDb {
             return true;
         }
         return false;
+    }
+
+    async updateUser(id, username, password, role, enabled, firstname, lastname) {
+        await this.programDb.update({ _id: id },
+            { username, password, role, enabled, firstname, lastname },
+            {});
+        return true;
     }
 }
 

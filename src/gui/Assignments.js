@@ -5,6 +5,8 @@
 /* global AssignDb */
 /* global NodeForest */
 /* global CourseDb */
+/* global loadAssignmentGradesStudent */
+
 
 class Assignment {
 
@@ -14,12 +16,6 @@ class Assignment {
         this.dueDate = dueDate;
     }
 }
-
-// const assignments = [
-//     new Assignment("Deliverable 2", "", new Date(2019, 10, 4)),
-//     new Assignment("Deliverable 3", "", new Date(2019, 11, 3)),
-//     new Assignment("Final Test", "", new Date(2019, 10, 15)),
-// ];
 
 /*
  Takes an array of assignment objects
@@ -50,13 +46,7 @@ async function submitAssignment() {
         if (solutions[i].firstChild.firstChild) {
             const test = solutions[i].firstChild.firstChild.getAttribute("id");
             const answer = NodeForest.getNode(test).getText();
-
-            if (isNaN(answer)) {
-                answers.push(0);
-            }
-            else {
-                answers.push(answer);
-            }
+            answers.push(answer);
         }
         else {
             doSave = false;
@@ -77,6 +67,8 @@ async function submitAssignment() {
     else {
         document.getElementById("couldNotSubmit").hidden = false;
     }
+
+    await loadAssignmentGradesStudent();
 }
 
 async function startAssignment(elem) {
@@ -86,7 +78,7 @@ async function startAssignment(elem) {
     const compiledFunction = pug.compileFile(pugPath);
     const assignmentId = elem.getAttribute("data-for");
     const assignment = await AssignDb.loadAssignment(assignmentId);
-    const questions = assignment[0].questions;
+    const questions = assignment.questions;
     const submissionPane = compiledFunction({
         questions
     });
@@ -97,6 +89,21 @@ async function startAssignment(elem) {
         .appendChild(template.content.firstChild);
 
     window.localStorage.setItem("currentAssignment", assignmentId);
+}
+
+function removeEmptyAccordions() {
+    const accordions = document.getElementById("studentView")
+        .getElementsByClassName("node-search")[0]
+        .getElementsByClassName("panel");
+
+    const buttons = document.getElementById("studentView")
+        .getElementsByClassName("node-search")[0]
+        .getElementsByClassName("accordion");
+
+    for (let i = 0; i < accordions.length; i++) {
+        buttons[i].hidden = Array.from(accordions[i].children)
+            .filter(e => !e.hidden).length === 0;
+    }
 }
 
 function filterOperators(level) {
@@ -127,12 +134,12 @@ function filterOperators(level) {
             nodeTemplates[i].style.display = "block";
         }
     }
+    removeEmptyAccordions();
 }
 
 async function saveAssignment() {
     const teacherId = window.localStorage.getItem("userID");
     const courseName = document.getElementById("createAssignCourseSelect").value;
-    const courseId = CourseDb.getCourseId(courseName);
     const assignName = document.getElementById("createAssignName").value;
     const description = document.getElementById("createAssignDescription").value;
     const dueDate = document.getElementById("createAssignDueDate").value;
@@ -147,11 +154,5 @@ async function saveAssignment() {
     }
 
     await AssignDb.saveAssignment(
-        assignName, description, courseId, teacherId, questions, dueDate, points);
-    // if(assignment === null){
-    //     document.getElementById("teacherAssignmentFail").hidden = false;
-    // }
-    // else{
-    //     document.getElementById("teacherAssignmentFail").hidden = true;
-    // }
+        assignName, description, courseName, teacherId, questions, dueDate, points);
 }

@@ -11,6 +11,8 @@
 /* global loadAllTeachersCoursesList */
 /* global loadAllTeachersStudentsList */
 /* global filterOperators */
+/* global loadAssignmentGradesStudent */
+/* global updateAssignments */
 
 
 async function loadStudentView() {
@@ -21,14 +23,16 @@ async function loadStudentView() {
     const gradeLevels = gradeLevelStrings.map(grade => parseInt(grade, 10));
     const highestGrade = Math.max(...gradeLevels);
 
+    updateAssignments();
+    setInterval(updateAssignments, 300000);
     filterOperators(highestGrade);
+    await loadAssignmentGradesStudent();
 }
 
 function loadTeacherView() {
     document.getElementById("TeacherView").hidden = false;
 
     loadCourseStudentListTeacher();
-    loadCourseAssignmentListTeacher();
     loadAllTeachersCoursesList();
     loadAllTeachersStudentsList();
 }
@@ -50,7 +54,7 @@ async function sendLoginRequest() {
         document.getElementById("loginFail").hidden = false;
     }
     else {
-        const loginSuccess = await UserDb.userExists(username, password);
+        const loginSuccess = await UserDb.userLogin(username, password);
         if (!loginSuccess) {
             document.getElementById("loginFail").hidden = false;
         }
